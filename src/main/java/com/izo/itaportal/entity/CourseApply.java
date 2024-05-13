@@ -1,14 +1,12 @@
 package com.izo.itaportal.entity;
 
-import lombok.Data;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Course_apply {
+public class CourseApply {
 
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
