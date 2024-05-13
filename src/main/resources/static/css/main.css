@@ -1,0 +1,63 @@
+.mainArea {
+    width: 70%;
+    margin: auto;
+}
+.mainImg {
+    width: 100%;
+    margin-bottom: 30px;
+}
+.mainBoard {
+    display: flex;
+    justify-content: space-between;
+}
+.memberInfo {
+    min-width: 300px;
+    max-width: 400px;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	border: 1px solid #E0E0E0;
+	border-radius: 20px;
+	justify-content: flex-start;
+	align-items: flex-start;
+	margin-left: 60px;
+    margin-bottom: 60px;
+}
+.material-icons {
+    font-size: 1.5em;
+    vertical-align: bottom;
+}
+
+.profileButton {
+    margin-top: 20px;
+    font-size: 10px;
+    width: 100%;
+    height: 30px;  
+}
+.profileButton button{
+    margin-left: 10px;
+    margin-right: 20px;
+    border-radius: 10px;
+    width: 30%;
+    height: 30px;
+    color: rgb(1, 125, 195);
+    border: 1px solid rgb(133, 140, 146);
+    background-color: rgb(245, 245, 245);
+}
+#noticeBoard {
+    width: 600px;
+    height: 200px;
+    /* margin-top: 15px; */
+    margin-left: 10%;
+    margin-right: 5%;
+	white-space: nowrap;
+	overflow: hidden;
+	display: inline-block;
+    font-size: 18px;
+}
+.main--page--split {
+	height: 2px;
+	width: 100%;
+	background-color: #3c668a;
+	margin-bottom: 10px;
+}
