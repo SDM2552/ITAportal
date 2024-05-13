@@ -53,7 +53,6 @@ public class ProgController {
 
     @GetMapping("/progInput")
     public String progInput() {
-
         return "/program/progInput";
     }
 

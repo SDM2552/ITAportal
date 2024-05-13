@@ -16,7 +16,7 @@ public class ClassRoomService {
     @Autowired
     private ClassRoomRepository classRoomRepository;
 
-    public List<ClassRoom> getAllPrograms() {
+    public List<ClassRoom> getAllClassRoom() {
         List<ClassRoom> classRoom = new ArrayList<>();
         return classRoom;
     }

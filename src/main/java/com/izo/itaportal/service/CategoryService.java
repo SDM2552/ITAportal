@@ -17,8 +17,8 @@ public class CategoryService {
     @Autowired
     private CategoryRepository categoryRepository;
 
-    public List<ClassRoom> getAllPrograms() {
-        List<ClassRoom> category = new ArrayList<>();
+    public List<Category> getAllCategory() {
+        List<Category> category = new ArrayList<>();
         return category;
     }
 

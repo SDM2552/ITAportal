@@ -7,11 +7,11 @@
     </select>
 
     <insert id="insert">
-        insert into category (cate_id,
-                             cate_name)
+        insert into class_room (room_id,
+                             room_name)
 
 
-        values (#{cateId},#{cateName})
+        values (#{roomId},#{roomName})
 
     </insert>
     <update id="update">

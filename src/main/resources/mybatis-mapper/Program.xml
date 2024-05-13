@@ -16,7 +16,7 @@
                              room_id,
                              pgm_method,
                              pgm_per,
-                             pgm_fee
+                             pgm_fee)
                     values (#{pgmId},#{cateId},#{pgmName},#{stDt},#{endDt},
                                  #{pgmTarget},#{roomId},#{pgmMethod},#{pgmPer},#{pgmFee})
 
