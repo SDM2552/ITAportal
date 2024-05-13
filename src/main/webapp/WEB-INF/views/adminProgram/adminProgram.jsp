@@ -36,13 +36,27 @@
             <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>수강 내역</h3>
 
             <!-- 본문 -->
-            <form id="progInputForm" method="post" action="/categoryInsert">
-                <div class="form-group">
-                    <label for="cateName">주제분류명</label>
-                    <input type="text" class="form-control" id="cateName" placeholder="주제분류명 입력" name="cateName">
+            <div class="content">
+                <!-- 카테고리 -->
+                <div class="category">
+                    <h4>카테고리</h4>
+                    <ul>
+                        <c:forEach var="category" items="${cate}">
+                            <li>${category.name}</li>
+                        </c:forEach>
+                    </ul>
+                    <button id="addCategoryBtn">추가</button>
                 </div>
-
-                <button type="submit" class="btn btn-primary" >제출</button>
+                <!-- 프로그램 목록 -->
+                <div class="program">
+                    <h4>프로그램</h4>
+                    <ul>
+                        <c:forEach var="program" items="${prog}">
+                            <li>${program.name}</li>
+                        </c:forEach>
+                    </ul>
+                </div>
+            </div>
 
             <!-- 본문 끝 -->
         </div>
