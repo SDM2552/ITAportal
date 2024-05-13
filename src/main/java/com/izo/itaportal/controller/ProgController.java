@@ -28,7 +28,9 @@ public class ProgController {
 
     @GetMapping("/adminProgram")
     public String adminProgram(Model model) {
-        model.addAttribute()
+        model.addAttribute("cate",categoryService.getAllCategory());
+        model.addAttribute("prog",programService.getAllPrograms());
+        return "adminProgram/adminProgram";
     }
 
 

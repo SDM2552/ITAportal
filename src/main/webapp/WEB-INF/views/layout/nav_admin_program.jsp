@@ -4,7 +4,7 @@
     <h2 class="ltit">강의 관리</h2>
     <div class="lnbArea">
         <ul>
-            <li><a href="/categoryInput">교육과정관리</a></li>
+            <li><a href="/adminProgram">교육과정관리</a></li>
             <li><a href="#">수강현황조회</a></li>
             <li><a href="#">휴보강신청</a></li>
         </ul>
