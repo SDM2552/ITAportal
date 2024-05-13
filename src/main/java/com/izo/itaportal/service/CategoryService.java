@@ -18,7 +18,7 @@ public class CategoryService {
     private CategoryRepository categoryRepository;
 
     public List<Category> getAllCategory() {
-        List<Category> category = new ArrayList<>();
+        List<Category> category = categoryRepository.selectCategory();
         return category;
     }
 
