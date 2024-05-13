@@ -12,27 +12,47 @@
 </head>
 <body>
 <form id="progInputForm" method="post" action="/progInsert">
+
     <div class="form-group">
-        <label for="programName">교육분류명</label>
-        <input type="text" class="form-control" id="programName" placeholder="교육분류명 입력" name="programName">
+        <label for="cateId">주제분류코드</label>
+        <input type="text" class="form-control" id="cateId" placeholder="주제분류코드" name="cateId">
     </div>
     <div class="form-group">
-        <label for="progDesc">교육과정내용</label>
-        <input type="text" class="form-control" id="progDesc" placeholder="교육과정내용 입력" name="progDesc">
+        <label for="roomId">강의실코드</label>
+        <input type="text" class="form-control" id="roomId" placeholder="강의실코드" name="roomId">
     </div>
-    <button type="submit" class="btn btn-primary" >제출</button>
+
+
+    <div class="form-group">
+        <label for="pgmName">프로그램명</label>
+        <input type="text" class="form-control" id="pgmName" placeholder="프로그램명 입력" name="pgmName">
+    </div>
+    <div class="form-group">
+        <label for="stDt">교육시작일자</label>
+        <input type="text" class="form-control" id="stDt" placeholder="교육시작일자" name="stDt">
+    </div>
+    <div class="form-group">
+        <label for="endDt">교육종료일자</label>
+        <input type="text" class="form-control" id="endDt" placeholder="교육종료일자" name="endDt">
+    </div>
+    <div class="form-group">
+        <label for="pgmTarget">교육대상</label>
+        <input type="text" class="form-control" id="pgmTarget" placeholder="교육대상" name="pgmTarget">
+    </div>
+    <div class="form-group">
+        <label for="pgmMethod">교육방법</label>
+        <input type="text" class="form-control" id="pgmMethod" placeholder="교육방법" name="pgmMethod">
+    </div>
+    <div class="form-group">
+        <label for="pgmPer">교육인원</label>
+        <input type="text" class="form-control" id="pgmPer" placeholder="교육인원" name="pgmPer">
+    </div>
+    <div class="form-group">
+        <label for="pgmFee">교육비</label>
+        <input type="text" class="form-control" id="pgmFee" placeholder="교육비" name="pgmFee">
+    </div>
+    <button type="submit" class="btn btn-primary">제출</button>
 </form>
-
-
-
-
-
-
-
-
-
-
-
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

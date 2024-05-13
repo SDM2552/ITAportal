@@ -1,10 +1,11 @@
 package com.izo.itaportal.controller;
 
 
-
 import com.izo.itaportal.model.Category;
+import com.izo.itaportal.model.ClassRoom;
 import com.izo.itaportal.model.Program;
 import com.izo.itaportal.service.CategoryService;
+import com.izo.itaportal.service.ClassRoomService;
 import com.izo.itaportal.service.ProgramService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,8 @@ public class ProgController {
 
     @Autowired
     private CategoryService categoryService;
+    @Autowired
+    private ClassRoomService classRoomService;
 
     @GetMapping("/categoryInput")
     public String categoryInput() {
@@ -33,6 +36,20 @@ public class ProgController {
         return "redirect:/categoryInput";
     }
 
+    //-------------------------------------------------------------------
+    @GetMapping("/classRoomInput")
+    public String classRoomInput() {
+        return "/program/classRoomInput";
+    }
+
+    @PostMapping("/classRoomInsert")
+    public String classRoomInsert(ClassRoom classRoom) {
+        classRoomService.insertClassRoom(classRoom);
+        return "redirect:/classRoomInput";
+    }
+
+
+    //-------------------------------------------------------------------
 
     @GetMapping("/progInput")
     public String progInput() {
@@ -44,12 +61,8 @@ public class ProgController {
     public String progInputInsert(Program program) {
 
         programService.insertProgram(program);
-        return "/root";
+        return "redirect:/progInput";
     }
-
-
-
-
 
 
 }
