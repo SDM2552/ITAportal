@@ -1,5 +1,7 @@
 package com.izo.itaportal.model;
 
+import lombok.Data;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,11 +9,9 @@ import javax.persistence.Id;
 
 //김봄이
 
-@Entity
+@Data
 public class Professor {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idProf;
     //이름
     private String name;
