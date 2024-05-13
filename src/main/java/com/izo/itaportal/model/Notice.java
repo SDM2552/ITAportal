@@ -7,6 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+//공지사항
+//김봄이
+
 @Data
 public class Notice {
     //id
