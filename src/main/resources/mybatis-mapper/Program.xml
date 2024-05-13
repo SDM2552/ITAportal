@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.izo.itaportal.repository.ProgramRepository">
+    <select id="selectBoard">
+        select * from program
+    </select>
+
+    <insert id="insert">
+        insert into program (pgm_id,
+                             cate_id,
+                             pgm_name,
+                             st_dt,
+                             end_dt,
+                             pgm_target,
+                             room_id,
+                             pgm_method,
+                             pgm_per,
+                             pgm_fee
+                    values (#{pgmId},#{cateId},#{pgmName},#{stDt},#{endDt},
+                                 #{pgmTarget},#{roomId},#{pgmMethod},#{pgmPer},#{pgmFee})
+
+    </insert>
+    <update id="update">
+        update program
+        set programName = #{programName},
+            progDesc = #{progDesc}
+        where idProgram = #{idProgram}
+    </update>
+
+    <delete id="delete">
+        delete from program
+        where idProgram = #{idProgram}
+    </delete>
+</mapper>
