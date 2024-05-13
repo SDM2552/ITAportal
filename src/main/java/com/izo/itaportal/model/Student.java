@@ -10,14 +10,14 @@ import javax.persistence.Id;
 @Data
 public class Student {
 
-    private Long idStudent;
+    private int idStudent;
 
     private String name;
     private String birth;
     private String tel;
     private String address;
     private String gender;
-    private Long idUser;  //pk값
+    private int idUser;  //pk값
 
 
 

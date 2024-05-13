@@ -5,12 +5,12 @@ import lombok.Data;
 @Data
 public class Course_apply {
 
-   private Long id_course_apply;
-    private String course_name;
-    private String course_apply_date;
-    private String course_apply_status;
-    private Long id_student; //pk
-    private Long id_category; //pk
+   private int idCourseApply;
+    private String courseName;
+    private String courseApplyDate;
+    private String courseApplyStatus;
+    private int idStudent; //pk
+    private int idCategory; //pk
 
 
 }
