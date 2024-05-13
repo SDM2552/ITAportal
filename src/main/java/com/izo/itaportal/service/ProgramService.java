@@ -15,7 +15,7 @@ public class ProgramService {
     private ProgramRepository programRepository;
 
     public List<Program> getAllPrograms() {
-        List<Program> programs = new ArrayList<>();
+        List<Program> programs = programRepository.selectProgram();
         return programs;
     }
 
