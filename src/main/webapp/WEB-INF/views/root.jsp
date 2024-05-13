@@ -17,8 +17,9 @@
 <a href="/syllabus">강의계획서 입력</a>
 
 
-<a href="/categoryInput">교육과정 카테고리 추가</a>
-<a href="/progInput">프로그램 추가</a>
+<a href="/categoryInput">/교육과정 카테고리 추가</a>
+<a href="/classRoomInput">/강의실 추가</a>
+<a href="/progInput">/프로그램 추가</a>
 
 
 

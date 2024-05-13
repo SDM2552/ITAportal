@@ -11,7 +11,7 @@
     <title>프로그램 추가</title>
 </head>
 <body>
-<form id="progInputForm" method="post" action="/categoryInsert">
+<form id="progInputForm" method="post" action="/classRoomInsert">
     <div class="form-group">
         <label for="roomName">강의실명</label>
         <input type="text" class="form-control" id="roomName" placeholder="강의실명 입력" name="roomName">
