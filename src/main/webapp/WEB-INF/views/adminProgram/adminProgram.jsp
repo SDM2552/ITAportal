@@ -36,6 +36,7 @@
             <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>강의 관리</h3>
 
             <!-- 본문 -->
+
             <div class="category">
                 <h2>카테고리</h2>
                 <table class="category-table">
@@ -93,6 +94,7 @@
                     <button style="float: right;">프로그램 추가</button>
                 </a>
             </div>
+
 
 
             <!-- 본문 끝 -->
