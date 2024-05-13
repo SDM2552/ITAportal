@@ -10,6 +10,7 @@ import com.izo.itaportal.service.ProgramService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -25,9 +26,15 @@ public class ProgController {
     @Autowired
     private ClassRoomService classRoomService;
 
+    @GetMapping("/adminProgram")
+    public String adminProgram(Model model) {
+        model.addAttribute()
+    }
+
+
     @GetMapping("/categoryInput")
     public String categoryInput() {
-        return "/program/categoryInput";
+        return "/adminProgram/categoryInput";
     }
 
     @PostMapping("/categoryInsert")
@@ -39,7 +46,7 @@ public class ProgController {
     //-------------------------------------------------------------------
     @GetMapping("/classRoomInput")
     public String classRoomInput() {
-        return "/program/classRoomInput";
+        return "/adminProgram/classRoomInput";
     }
 
     @PostMapping("/classRoomInsert")
@@ -53,7 +60,7 @@ public class ProgController {
 
     @GetMapping("/progInput")
     public String progInput() {
-        return "/program/progInput";
+        return "/adminProgram/progInput";
     }
 
     @PostMapping("/progInsert")
