@@ -14,5 +14,6 @@ public class Admin {
     private Long idUser;
     private String gender;
     private Long idUser2;
+}
 
 
