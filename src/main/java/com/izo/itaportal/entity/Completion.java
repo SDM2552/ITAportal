@@ -13,6 +13,4 @@ public class Completion {
     private String score;
     private String completionDate;
     private boolean isCompleted;
-
-    // 생성자, 게터, 세터 등의 필요한 메서드를 추가하세요
 }
