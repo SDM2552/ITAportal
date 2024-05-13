@@ -17,6 +17,4 @@ public class Admin {
     private Long idUser;
     private String gender;
     private Long idUser2;
-
-    // 생성자, 게터, 세터 등의 필요한 메서드를 추가하세요
 }
