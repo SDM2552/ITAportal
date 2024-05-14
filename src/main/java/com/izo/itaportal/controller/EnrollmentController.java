@@ -17,11 +17,11 @@ public class EnrollmentController {
 
     @GetMapping("/form")
     public String showEnrollmentForm() {
-        return "enrollment";
+        return "enrollment/enrollment";
     }
     @GetMapping("/enrollmentapplylist")
     public String enrollmentapplylist() {
-        return "enrollmentapplylist";
+        return "enrollment/enrollmentapplylist";
     }
 
     @PostMapping("/apply")
