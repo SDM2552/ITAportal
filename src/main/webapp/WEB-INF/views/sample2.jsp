@@ -22,9 +22,8 @@
 
         <div class="mainBoard">
             <div class="memberInfo">
-                <li style="font-weight: 600; font-size: 18px; width: 100%;"><span
-                        class="material-icons">person</span>&nbsp;name님
-                    환영합니다.
+                <li style="font-weight: 600; font-size: 18px; width: 100%;">
+                    &nbsp;<i class="fa-solid fa-user"></i>&nbsp;name님 환영합니다.
                     <hr style="margin-top: 3px;">
                     <table>
                         <tr>
