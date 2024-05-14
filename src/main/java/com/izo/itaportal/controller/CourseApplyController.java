@@ -20,7 +20,7 @@ public class CourseApplyController {
         System.out.println("Page access log: enrollcourse page accessed.");
         return "enrollcourse";  // 'enrollcourse.jsp' 파일을 렌더링합니다.
     }
-    @GetMapping("/applylist")
+    @GetMapping("/courselist")
     public String courselist() {
          return "courselist";
     }
