@@ -21,6 +21,11 @@ public class ClassRoomService {
         return classRoom;
     }
 
+    public ClassRoom getClassRoomById(int idRoom) {
+        return classRoomRepository.selectClassRoomById(idRoom);
+
+    }
+
     public int insertClassRoom(ClassRoom classRoom) {
         int insertClassRoom = classRoomRepository.insert(classRoom);
         return insertClassRoom;

@@ -1,5 +1,6 @@
 package com.izo.itaportal.service;
 
+import com.izo.itaportal.model.Category;
 import com.izo.itaportal.model.Program;
 import com.izo.itaportal.repository.ProgramRepository;
 
@@ -17,6 +18,11 @@ public class ProgramService {
     public List<Program> getAllPrograms() {
         List<Program> programs = programRepository.selectProgram();
         return programs;
+    }
+
+    public Program selectCategoryById(int idPgm) {
+        return programRepository.selectProgramById(idPgm);
+
     }
 
     public int insertProgram(Program program) {

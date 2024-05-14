@@ -33,6 +33,14 @@ public class ProgController {
         return "adminProgram/adminProgram";
     }
 
+    @GetMapping("/adminClassRoom")
+    public String classRoom(Model model) {
+        model.addAttribute("classRoom",classRoomService.getAllClassRoom());
+        return "/adminProgram/adminClassRoom";
+    }
+
+    //-------------------------------------------------------------------
+
 
     @GetMapping("/categoryInput")
     public String categoryInput() {
@@ -46,14 +54,20 @@ public class ProgController {
     }
 
     @GetMapping("/categoryUpdateInput")
-    public String categoryUpdate(@ModelAttribute Category category,Model model,int cateId) {
-        model.addAttribute("cate", categoryService.getCategoryById(cateId));
+    public String categoryUpdate(@ModelAttribute Category category,Model model,int idCate) {
+        model.addAttribute("cate", categoryService.getCategoryById(category.getIdCate()));
         return "adminProgram/categoryUpdateInput";
     }
 
     @PostMapping("/categoryUpdate")
     public String categoryUpdate(@ModelAttribute Category category) {
         categoryService.updateCategory(category);
+        return "redirect:/adminProgram";
+    }
+
+    @GetMapping("/categoryDelete")
+    public String categoryDelete(int idCate) {
+        categoryService.deleteCategory(idCate);
         return "redirect:/adminProgram";
     }
 
@@ -72,12 +86,26 @@ public class ProgController {
         return "redirect:/adminProgram";
     }
 
-    //-------------------------------------------------------------------
-    @GetMapping("/adminClassRoom")
-    public String classRoom(Model model) {
-        model.addAttribute("classRoom",classRoomService.getAllClassRoom());
-        return "/adminProgram/adminClassRoom";
+    @GetMapping("/progUpdateInput")
+    public String progUpdateInput(int idPgm,Model model) {
+        model.addAttribute("pr",programService.selectCategoryById(idPgm));
+        return "adminProgram/progUpdateInput";
     }
+
+    @PostMapping("/progUpdate")
+    public String progUpdate(@ModelAttribute Program program) {
+        programService.updateProgram(program);
+        return "redirect:/adminProgram";
+    }
+
+    @GetMapping("/progDelete")
+    public String progDelete(int idPgm) {
+        programService.deleteProgram(idPgm);
+        return "redirect:/adminProgram";
+    }
+
+    //-------------------------------------------------------------------
+
 
 
     @GetMapping("/classRoomInput")
@@ -88,6 +116,24 @@ public class ProgController {
     @PostMapping("/classRoomInsert")
     public String classRoomInsert(ClassRoom classRoom) {
         classRoomService.insertClassRoom(classRoom);
+        return "redirect:/adminClassRoom";
+    }
+
+    @GetMapping("/classRoomUpdateInput")
+    public String classRoomUpdateInput(int idRoom,Model model) {
+        model.addAttribute("cr",classRoomService.getClassRoomById(idRoom));
+        return "adminProgram/classRoomUpdateInput";
+    }
+
+    @PostMapping("/classRoomUpdate")
+    public String classRoomUpdate(@ModelAttribute ClassRoom classRoom) {
+        classRoomService.updateClassRoom(classRoom);
+        return "redirect:/adminClassRoom";
+    }
+
+    @GetMapping("/classRoomDelete")
+    public String classRoomDelete(int idRoom) {
+        classRoomService.deleteClassRoom(idRoom);
         return "redirect:/adminClassRoom";
     }
 

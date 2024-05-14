@@ -6,6 +6,10 @@
         select * from program
     </select>
 
+    <select id="selectProgramById" resultType="com.izo.itaportal.model.Program">
+        select * from program where id_pgm=#{idPgm}
+    </select>
+
     <insert id="insert">
         insert into program (id_pgm,
                              id_cate,

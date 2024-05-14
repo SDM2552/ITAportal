@@ -8,7 +8,7 @@
     <script src="https://kit.fontawesome.com/93205cc57d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>샘플 페이지</title>
+    <title>카테고리추가</title>
 </head>
 <body>
 <div class="wrap">
@@ -24,17 +24,17 @@
             <!-- location -->
             <div class="location">
                 <span class="home" title="홈">홈으로 이동></span>
-                <span>수강 내역 조회></span>
-                <span class="on">수강 내역</span>
+                <span>강의관리></span>
+                <span class="on">교육과정관리</span>
             </div>
             <!-- //location -->
 
-            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>수강 내역</h3>
+            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>교육과정관리</h3>
 
             <!-- 본문 -->
             <form id="progInputForm" method="post" action="/categoryInsert">
                 <div class="form-group">
-                    <label for="cateName">주제분류명</label>
+                    <label for="cateName">주제분류명 : </label>
                     <input type="text" class="form-control" id="cateName" placeholder="주제분류명 입력" name="cateName">
                 </div>
 

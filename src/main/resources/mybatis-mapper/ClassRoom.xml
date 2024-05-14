@@ -6,6 +6,10 @@
         select * from class_room
     </select>
 
+    <select id="selectClassRoomById" resultType="com.izo.itaportal.model.ClassRoom">
+        select * from class_room where id_room=#{idRoom}
+    </select>
+
     <insert id="insert">
         insert into class_room (id_room,
                              room_name)
@@ -17,7 +21,7 @@
     <update id="update">
         update class_room
         set room_name = #{roomName}
-        where id_room = #{idRoom},
+        where id_room = #{idRoom}
     </update>
 
     <delete id="delete">
