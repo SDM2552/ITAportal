@@ -39,8 +39,8 @@ public class TestRunner implements ApplicationRunner{
                 "VALUES ('복학생', '19000130', '010-3333-4444', 'M', '경기도', '2023')");
 
         //강의리스트
-        jdbcTemplate.execute("INSERT INTO program (id_pgm,id_cate,pgm_name,st_dt,end_dt,pgm_target,id_room,pgm_method,pgm_per,pgm_fee) "+
-                "VALUES (1,1,'국제무역','2024-01-01','2024-05-31','대충성인',0301,'오프라인',30,100000)");
+        jdbcTemplate.execute("INSERT INTO program (id_pgm,id_cate,pgm_name,st_dt,end_dt,pgm_target,id_room,pgm_method,pgm_per,pgm_fee,id_prof) "+
+                "VALUES (1,1,'국제무역','2024-01-01','2024-05-31','대충성인',0301,'오프라인',30,100000,1000)");
 
 
         //exam
