@@ -14,9 +14,11 @@
 
 
 <br>
-<a href="/syllabus">강의계획서 입력</a>
 
+<a href="/prof/syllabus">강의계획서 입력</a>
+<a href="/classList">강의리스트</a>
 <a href="/adminProgram">관리자-Program||jiung</a>
+
 
 
 
