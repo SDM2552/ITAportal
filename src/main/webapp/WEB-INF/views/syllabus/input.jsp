@@ -15,7 +15,13 @@
     <div>
         <!-- 강의 정보 테이블 -->
         <table>
-            <caption>강의 정보</caption>
+            <colgroup>
+                <col style="width: 20%;">
+                <col style="width: 30%;">
+                <col style="width: 20%;">
+                <col style="width: 30%;">
+            </colgroup>
+            <h4>강의 정보</h4>
             <tbody>
             <tr>
                 <th><label for="category">카테고리<br>(Category)</label></th>
@@ -40,7 +46,7 @@
     </div>
 
     <!-- 강의 정보 입력 폼 -->
-    <form>
+    <form method="post" action="/prof/${idProf}/syllabus">
         <div class="form-group">
             <label for="lectureName">강의명:</label>
             <input type="text" class="form-control" id="lectureName" value="두둥탁" readonly >

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    김봄이
+    강의계획서 CRUD
+
+    PK와 FK를 제외한 나머지는 Nullable 조건으로, 주차별 강의계획에서 기술 가능하도록함
+    (매주 달라질 수 있으므로)
+    -->
+
+<mapper namespace="com.izo.itaportal.repository.SyllabusMapper">
+
+    <select id="selectSyllabus" parameterType="integer">
+
+    </select>
+
+    <!-- 강의계획서 입력 -->
+    <insert id="insertSyllabus" parameterType="com.izo.itaportal.model.Syllabus">
+        INSERT INTO syllabus (course_overview, objective, teaching, book, evaluation, remarks, id_prof)
+        VALUES (#{courseOverview}, #{objective}, #{teaching}, #{book}, #{evaluation}, #{remarks}, #{idProf})
+    </insert>
+
+    <!-- 강의계획서 수정 -->
+    <update id="updateSyllabus" parameterType="com.izo.itaportal.model.Syllabus">
+        UPDATE syllabus SET course_overview =#{courseOverview}, objective =#{objective}, teaching =#{teaching}, book =#{book}, remarks =#{remarks}
+        WHERE id_program =#{idProgram}
+    </update>
+
+
+</mapper>
