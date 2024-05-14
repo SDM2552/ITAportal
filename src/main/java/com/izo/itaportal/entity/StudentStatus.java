@@ -14,7 +14,7 @@ public class StudentStatus {
     private int attendanceTime; //출석횟수
     private int absenceTime; //결석횟수
     private int lateness; //지각횟수
-    private int examScore; //중간고사 점수
+    private int examScore; //과제 점수
     private int idStudent; //학생번호
     private int idProgram; //프로그램 코드
 }
