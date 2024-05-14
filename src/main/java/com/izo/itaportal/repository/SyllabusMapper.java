@@ -8,10 +8,13 @@ package com.izo.itaportal.repository;
  */
 
 import com.izo.itaportal.model.Syllabus;
+import com.izo.itaportal.model.SyllabusRequest;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface SyllabusMapper {
+    //강의계획서 불러오기(교수id, 프로그램id)
+    public Syllabus selectSyllabus(SyllabusRequest syllabusRequest);
     //강의계획서 입력
     public void insertSyllabus(Syllabus syllabus);
     //강의계획서 수정
