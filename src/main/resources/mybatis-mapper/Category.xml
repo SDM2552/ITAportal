@@ -7,7 +7,7 @@
     </select>
 
     <select id="selectCategoryById" resultType="com.izo.itaportal.model.Category">
-        select * from category where cate_id=#{cateId}
+        select * from category where id_cate=#{idCate}
     </select>
 
 
