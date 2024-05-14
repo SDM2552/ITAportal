@@ -10,6 +10,7 @@ import java.util.List;
 @Mapper
 public interface ClassRoomRepository {
     public List<ClassRoom> selectClassRoom();
+    public ClassRoom selectClassRoomById(int idRoom);
     public int insert(ClassRoom classRoom);
     public int update(ClassRoom classRoom);
     public int delete(int idRoom);

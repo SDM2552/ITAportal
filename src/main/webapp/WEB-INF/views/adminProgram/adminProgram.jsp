@@ -24,12 +24,12 @@
             <!-- location -->
             <div class="location">
                 <span class="home" title="홈">홈으로 이동></span>
-                <span>수강 내역 조회></span>
-                <span class="on">강의 관리</span>
+                <span>강의관리></span>
+                <span class="on">교육과정관리</span>
             </div>
             <!-- //location -->
 
-            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>강의 관리</h3>
+            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>교육과정관리</h3>
 
             <!-- 본문 -->
 
@@ -92,8 +92,8 @@
                             <td>${program.pgmPer}</td>
                             <td>${program.pgmFee}</td>
                             <td class="actions">
-                                <a href="programUpdateInput?idPgm=${program.idPgm}">수정</a>
-                                <a href="programDelete?idPgm=${program.idPgm}">삭제</a>
+                                <a href="progUpdateInput?idPgm=${program.idPgm}">수정</a>
+                                <a href="progDelete?idPgm=${program.idPgm}">삭제</a>
                             </td>
                         </tr>
                     </c:forEach>
