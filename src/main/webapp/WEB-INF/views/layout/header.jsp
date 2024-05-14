@@ -33,7 +33,7 @@
 <%--                    <li>--%>
                         <!-- gnb 수정 -->
                     <li>
-                        <a href="/enrollment/enrollment">수강 신청</a> <!-- 수강신청 페이지로 이동하는 링크 -->
+                        <a href="/enrollment/form">수강 신청</a> <!-- 수강신청 페이지로 이동하는 링크 -->
                     </li>
                     <li>
                         <a href="/enrollment/enrollmentapplylist">신청 수강목록</a> <!-- 수강신청 페이지로 이동하는 링크 -->

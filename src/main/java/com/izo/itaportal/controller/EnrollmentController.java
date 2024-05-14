@@ -4,11 +4,12 @@ import com.izo.itaportal.model.Enrollment;
 import com.izo.itaportal.service.EnrollmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/enrollment")
 public class EnrollmentController {
     @Autowired
@@ -17,6 +18,10 @@ public class EnrollmentController {
     @GetMapping("/form")
     public String showEnrollmentForm() {
         return "enrollment";
+    }
+    @GetMapping("/enrollmentapplylist")
+    public String enrollmentapplylist() {
+        return "enrollmentapplylist";
     }
 
     @PostMapping("/apply")
@@ -30,8 +35,14 @@ public class EnrollmentController {
         return ResponseEntity.ok(enrollmentService.getAllEnrollments());
     }
 
-    @GetMapping("/by-student/{idStudent}")
+    // 수정된 경로: RESTful 방식에 더 적합하게
+    @GetMapping("/student/{idStudent}")
     public ResponseEntity<List<Enrollment>> getEnrollmentsByIdStudent(@PathVariable int idStudent) {
         return ResponseEntity.ok(enrollmentService.getEnrollmentsByIdStudent(idStudent));
     }
 }
+
+//@GetMapping("/by-student/{idStudent}")
+//public ResponseEntity<List<Enrollment>> getEnrollmentsByIdStudent(@PathVariable int idStudent) {
+//    return ResponseEntity.ok(enrollmentService.getEnrollmentsByIdStudent(idStudent));
+//}

@@ -3,8 +3,8 @@
 <mapper namespace="com.izo.itaportal.mapper.EnrollmentMapper">
 
     <insert id="insertEnrollment" parameterType="com.izo.itaportal.model.Enrollment">
-        INSERT INTO Enrollment (id_student, pgm_name, id_pgm, st_dt, status)
-        VALUES (#{idStudent}, #{pgmName}, #{idPgm}, #{stDt}, #{status})
+        INSERT INTO Enrollment (id_enrollment,id_student, pgm_name, id_pgm, st_dt, status)
+        VALUES (#{idEnrollment},#{idStudent}, #{pgmName}, #{idPgm}, #{stDt}, #{status})
     </insert>
 
     <select id="findAllEnrollments" resultType="com.izo.itaportal.model.Enrollment">
