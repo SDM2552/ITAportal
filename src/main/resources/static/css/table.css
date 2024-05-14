@@ -1,0 +1,311 @@
+
+.subTit {
+    position: relative;
+    font-size: 22px;
+    color: #000000;
+    /*margin-top: 30px;*/
+    margin-bottom: 5px;
+    font-family: 'NotoKrM'
+}
+.subTit:before {
+    display: block;
+    width: 19px;
+    height: 3px;
+    content: '';
+    margin-bottom: 5px;
+    background: #005e93;
+}
+.tblData {
+    width: 100%;
+    border-top: 2px solid #123867;
+    border-bottom: 1px solid #99a0aa;
+    margin-bottom: 10px;
+}
+.tblData.borTble {
+    background: #123867;
+    padding: 5px;
+    border: none;
+    width: 98.8%;
+}
+.tblData table {
+    background: #fff;
+    table-layout: fixed;
+}
+.tblData table.subTbl td {
+    border-top: 1px solid #cccccc
+}
+.tblData table.subTbl thead {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    height: 1px;
+    overflow: hidden;
+}
+.tblData thead th {
+    padding: 11px 3px 14px 3px;
+    background: #dee7f1;
+    border-bottom: 1px solid #99a0aa;
+    border-left: 1px solid #cccccc;
+    text-align: center;
+    color: #142e4e;
+    font-size: 14px;
+    font-family: 'NotoKrM';
+    color: #333;
+}
+.tblData thead tr:first-child th:first-child {
+    border-left: 0;
+}
+.tblData tbody tr:last-child th {
+    border-bottom: none;
+}
+.tblData tbody th {
+    padding: 11px 7px 14px 7px;
+    border-bottom: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    text-align: center;
+    color: #333;
+    font-size: 14px;
+    background: #edf2f7;
+    font-family: 'NotoKrM';
+}
+.tblData tbody th.bg {
+    background: #dee7f1;
+    color: #142e4e
+}
+.tblData tbody td.bg {
+    background: #edf2f7;
+    color: #000000;
+    font-family: 'NotoKrM';
+}
+.tblData tbody td {
+    padding: 8px 5px 10px 5px;
+    border-bottom: 1px solid #cccccc;
+    border-left: 1px solid #cccccc;
+    text-align: center;
+    color: #555555;
+    font-size: 14px;
+    line-height: 24px;
+    word-break: break-all;
+}
+.tblData tbody td > .tbtns {
+    margin-left: 5px;
+}
+.tblData tbody td > .tbtns:first-child {
+    margin-left: 0;
+}
+.tblData tbody tr:last-child td {
+    border-bottom: 0;
+}
+.tblData tbody th.tal {
+    padding: 11px 10px 14px 20px !important;
+}
+.tblData tbody td:first-child {
+    border-left: 0;
+}
+.tblData tbody td.tal, .tblData tbody td.tar {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.tblData td.tdtit {
+    color: #007dc3;
+    font-family: 'NotoKrM';
+}
+.tblData td .link {
+    color: #007dc3;
+    text-decoration: underline;
+    font-family: 'NotoKrM';
+}
+.tblData td.tdtit.noGrade {
+    color: #000;
+}
+.tblData td.tdtit.noGrade .link {
+    color: #000;
+}
+.tblData td .tdline {
+    display: block;
+    position: relative;
+    padding-left: 10px;
+}
+.tblData td .tdline:before {
+    display: block;
+    content: '';
+    width: 5px;
+    height: 1px;
+    position: absolute;
+    top: 11px;
+    left: 0;
+    background: #555;
+}
+.tblData td .cau05 {
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+.tblData td .cau05:before {
+    top: 5px;
+}
+.tblData tfoot td {
+    padding: 11px 3px 14px 3px;
+    border-right: 1px solid #cccccc;
+    text-align: center;
+}
+.tblData th.borBn,
+.tblData td.borBn {
+    border-bottom: none
+}
+.tblData th.borRn,
+.tblData td.borRn {
+    border-right: none
+}
+.tblData th.borLy,
+.tblData td.borLy {
+    border-left: 1px solid #cccccc !important;
+}
+.tblData td.borRy {
+    border-right: 1px solid #cccccc !important;
+}
+.tblData tfoot td.total {
+    padding: 15px 10px;
+    background: #005e93;
+    color: #fff;
+}
+.tblData .trBg {
+    background: #f2f8fc;
+}
+.tblData .trBg th {
+    padding-left: 10px;
+    padding-right: 10px;
+    border-bottom: 1px solid #007dc3 !important;
+    color: #007dc3;
+    text-align: left;
+}
+.tblData .trBg td {
+    padding-left: 10px;
+    padding-right: 10px;
+    border-top: 1px solid #99a0aa !important;
+    color: #007dc3;
+    text-align: center;
+}
+.tblData .trBg th:last-child {
+    border-right: 0 !important;
+}
+.tblData td.tdB, .tblData td.num01 {
+    font-family: 'NotoKrM';
+    color: #000;
+}
+.tblData .borBt th, .tblData .borBt td {
+    border-bottom: 1px solid #007dc3 !important;
+}
+.tblData .sum td {
+    background: #f2f8fc;
+    font-family: 'NotoKrM';
+    color: #000;
+    border-top: 1px solid #99a0aa !important;
+}
+.tblData .sum td:last-child {
+    border-right: 0;
+}
+.tblForm {
+    width: 100%;
+    border-top: 2px solid #123867;
+    border-bottom: 1px solid #99a0aa;
+    margin-bottom: 10px;
+}
+.tblForm.inputForm th {
+    padding: 10px 15px 10px 15px;
+    font-family: 'NotoKrM';
+}
+.tblForm.inputForm th > label {
+    color: #333;
+}
+.tblForm.inputForm td {
+    padding: 6px 15px 6px 15px;
+}
+.tblForm tbody th {
+    padding: 11px 15px 14px 18px;
+    background: #f6f6f6;
+    color: #333333;
+    border-bottom: 1px solid #cccccc;
+    text-align: left;
+    font-size: 14px;
+    font-family: 'NotoKrM';
+}
+.tblForm tbody th label {
+    color: #333333;
+    font-family: 'NotoKrM';
+}
+.tblForm tbody td {
+    padding: 6px 15px 6px 18px;
+    border-bottom: 1px solid #cccccc;
+    text-align: left;
+    font-size: 14px;
+}
+.tblForm tfoot td .inpText {
+    background: #fafafa
+}
+.tblForm tbody tr:last-child th {
+    border-bottom: 0;
+}
+.tblForm tbody tr:last-child td {
+    border-bottom: 0;
+}
+.tblForm tbody td:last-child {
+    border-right: 0;
+}
+.tblForm tfoot td {
+    padding: 15px 10px;
+    background: #005e93;
+    font-size: 14px;
+}
+.tblForm th.borBn,
+.tblForm td.borBn {
+    border-bottom: none
+}
+.tblForm td .key {
+    display: inline-block;
+    margin-left: 5px;
+    color: #e6000c;
+    font-family: 'NotoKrM';
+}
+.tblForm td .selectboxWrap {
+    vertical-align: top;
+}
+.tblForm td .cau05 {
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+.tblForm td .inTxt::placeholder {
+    color: #505050;
+}
+.tblForm td .inTxt::-ms-input-placeholder {
+    color: #505050;
+}
+.tblForm td .inTxt::-webkit-input-placeholder {
+    color: #505050;
+}
+.tblForm td .inTxt::-moz-placeholder {
+    color: #505050;
+}
+.tblForm td .majorTime {
+    margin-left: -8px;
+}
+.tblForm .tblTab a {
+    display: inline-block;
+    margin-right: 18px;
+    position: relative;
+}
+.tblForm .tblTab a:after {
+    display: block;
+    content: '';
+    width: 1px;
+    height: 13px;
+    position: absolute;
+    top: 4px;
+    right: -11px;
+    background: #ccc;
+}
+.tblForm .tblTab a:last-child:after {
+    background: none;
+}
+.mt10 {
+    width: 80%;
+}
