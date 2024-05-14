@@ -9,6 +9,7 @@
             <div class="util">
                 <!-- util -->
                 <a href="#">회원가입</a>
+                <a href="/loginRegister/adminregister">(임시)관리자회원가입</a>
                 <a href="#">로그인</a>
                 <a href="#">사이트맵</a>
                 이용자01 님 환영합니다. [로그아웃]
