@@ -17,7 +17,7 @@ public class Student {
     private String tel;
     private String address;
     private String gender;
-    private int idUser;  //pk값
+    private int idUser;  //pk값 아이디x, 아이디번호
 
 
 

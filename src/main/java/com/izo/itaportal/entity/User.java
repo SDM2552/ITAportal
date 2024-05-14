@@ -10,7 +10,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUser;
-    private String logId;
+    private String loginId;
     private String password;
     private String role;
     private String registDate;

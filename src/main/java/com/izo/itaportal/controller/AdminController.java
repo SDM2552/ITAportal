@@ -1,6 +1,8 @@
 package com.izo.itaportal.controller;
 
+import com.izo.itaportal.model.Professor;
 import com.izo.itaportal.model.Student;
+import com.izo.itaportal.service.ProfessorService;
 import com.izo.itaportal.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,11 +17,19 @@ import java.util.List;
 public class AdminController {
     @Autowired
     private StudentService studentService;
+    @Autowired
+    private ProfessorService professorService;
 
     @GetMapping("/studentList")
-    public String Member(Model model){
+    public String studentList(Model model){
         List<Student> students = studentService.getAllStudents();
         model.addAttribute("students", students);
         return "adminMember/studentList";
+    }
+    @GetMapping("/professorList")
+    public String professorList(Model model){
+        List<Professor> professors = professorService.getAllProfessors();
+        model.addAttribute("professors", professors);
+        return "adminMember/professorList";
     }
 }

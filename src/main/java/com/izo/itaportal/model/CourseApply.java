@@ -10,7 +10,7 @@ public class CourseApply {
     private String courseApplyDate;
     private String courseApplyStatus;
     private int idStudent; //pk
-    private int idCategory; //pk
+    private int cateId; //pk
 
 
 }

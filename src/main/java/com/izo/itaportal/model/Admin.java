@@ -11,9 +11,8 @@ public class Admin {
     private String birth;
     private String tel;
     private String address;
-    private int idUser;
     private String gender;
-    private int idUser2;
+    private int idUser;
 }
 
 
