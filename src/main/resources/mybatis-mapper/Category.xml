@@ -7,7 +7,7 @@
     </select>
 
     <select id="selectCategoryById" resultType="com.izo.itaportal.model.Category">
-        select * from category where id_cate=#{idCate}
+        select id_cate,cate_name from category where id_cate=#{idCate}
     </select>
 
 
@@ -25,7 +25,7 @@
         where id_cate = #{idCate}
     </update>
 
-    <delete id="delete">
+    <delete id="delete" parameterType="int">
         delete from category
         where id_cate = #{idCate}
     </delete>
