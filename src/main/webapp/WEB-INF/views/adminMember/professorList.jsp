@@ -29,12 +29,12 @@
             </div>
             <!-- //location -->
 
-            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>학생 명단 조회</h3>
+            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>강사 명단 조회</h3>
             <!-- 본문 -->
             <table border="1">
                 <thead>
                 <tr>
-                    <th>강사번호</th>
+                    <th>학번</th>
                     <th>이름</th>
                     <th>생년월일</th>
                     <th>성별</th>
@@ -43,14 +43,14 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${students}" var="student">
+                <c:forEach items="${professors}" var="professors">
                     <tr>
-                        <td>${student.idProf}</td>
-                        <td>${student.name}</td>
-                        <td>${student.birth}</td>
-                        <td>${student.gender}</td>
-                        <td>${student.address}</td>
-                        <td>${student.tel}</td>
+                        <td>${professors.idProf}</td>
+                        <td>${professors.name}</td>
+                        <td>${professors.birth}</td>
+                        <td>${professors.gender}</td>
+                        <td>${professors.address}</td>
+                        <td>${professors.tel}</td>
                     </tr>
                 </c:forEach>
                 </tbody>
