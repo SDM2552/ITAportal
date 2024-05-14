@@ -3,7 +3,7 @@ package com.izo.itaportal.model;
 import lombok.Data;
 
 @Data
-public class Course_apply {
+public class CourseApply {
 
    private int idCourseApply;
     private String courseName;
