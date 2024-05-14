@@ -30,14 +30,20 @@ public class TestRunner implements ApplicationRunner{
                 "VALUES ('김교수', '950320', '010-1234-1234', 'F', '경기도 고양시 어쩌구', '1')");
         jdbcTemplate.execute("INSERT INTO professor(name, birth, tel, gender, address, id_user)" +
                 "VALUES ('박교수', '9301231', '010-9876-5432', 'M', '서울시 성북구 근처', '24001')");
-        jdbcTemplate.execute("INSERT INTO admin(name, birth, tel, gender, address, id_user, id_user2)" +
-                "VALUES ('관리자01', '990101', '010-1000-2000', 'M', '서울시 종로3가', '1234', '1234')");
+        jdbcTemplate.execute("INSERT INTO admin(name, birth, tel, gender, address, id_user)" +
+                "VALUES ('관리자01', '990101', '010-1000-2000', 'M', '서울시 종로3가', '1234')");
         jdbcTemplate.execute("INSERT INTO student(name, birth, tel, gender, address, id_user)" +
                 "VALUES ('김학생', '20020202', '010-2222-3333', 'M', '강원도', '2024')");
         jdbcTemplate.execute("INSERT INTO student(name, birth, tel, gender, address, id_user)" +
                 "VALUES ('복학생', '19000130', '010-3333-4444', 'M', '경기도', '2023')");
 
 
+        //exam
+        jdbcTemplate.execute("INSERT INTO exam(name, start_date, end_date, status, count, description, id_program, id_prof, id_file)" +
+                "VALUES ('자유무역의이해', '2024-05-10', '2024-05-24', '진행중?', '1', '자유무역에 대해 서술하시오.','100','2024001','9999')");
+
+        jdbcTemplate.execute("INSERT INTO exam_submission(id_program, id_exam, id_student, id_file)" +
+                "VALUES ('100', '1', '2', '9999')");
     }
 
 }
