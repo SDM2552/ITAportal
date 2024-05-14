@@ -36,15 +36,15 @@
             <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>수강 내역</h3>
 
             <!-- 본문 -->
-            <form id="progInputForm" method="post" action="/classRoomInsert">
+            <form id="progInputForm" method="post" action="/categoryUpdate">
                 <div class="form-group">
-                    <label for="roomName">강의실명</label>
-                    <input type="text" class="form-control" id="roomName" placeholder="강의실명 입력" name="roomName">
+                    <label for="cateName">주제분류명</label>
+                    <input type="text" class="form-control" id="cateName" placeholder="주제분류명 입력" name="cateName" value="${cate.cateName}">
                 </div>
 
                 <button type="submit" class="btn btn-primary" >제출</button>
             </form>
-                <!-- 본문 끝 -->
+            <!-- 본문 끝 -->
         </div>
         <!-- //contents -->
     </div>

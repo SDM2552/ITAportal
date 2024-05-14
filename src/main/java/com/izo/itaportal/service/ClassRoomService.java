@@ -17,7 +17,7 @@ public class ClassRoomService {
     private ClassRoomRepository classRoomRepository;
 
     public List<ClassRoom> getAllClassRoom() {
-        List<ClassRoom> classRoom = new ArrayList<>();
+        List<ClassRoom> classRoom = classRoomRepository.selectClassRoom();
         return classRoom;
     }
 
@@ -26,14 +26,15 @@ public class ClassRoomService {
         return insertClassRoom;
     }
 
-    public int updateClassRoom(int roomId) {
-        int updateClassRoom = classRoomRepository.update(roomId);
+    public int updateClassRoom(ClassRoom classRoom) {
+        int updateClassRoom = classRoomRepository.update(classRoom);
         return updateClassRoom;
     }
 
-    public int deleteClassRoom(int roomId) {
-        int deleteClassRoom = classRoomRepository.delete(roomId);
+    public int deleteClassRoom(int idRoom) {
+        int deleteClassRoom = classRoomRepository.delete(idRoom);
         return deleteClassRoom;
     }
+
 
 }

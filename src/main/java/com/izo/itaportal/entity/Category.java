@@ -10,7 +10,7 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int cateId;    //주제분류코드
+    private int idCate;    //주제분류코드
     private String cateName;   //주제분류명
 
 }

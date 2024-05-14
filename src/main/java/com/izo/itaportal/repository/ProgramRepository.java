@@ -10,10 +10,11 @@ import java.util.List;
 @Mapper
 public interface ProgramRepository {
     public List<Program> selectProgram();
+
     public int insert(Program program);
 
-    public int update(int pgmId);
+    public int update(Program program);
 
-    public int delete(int pgmId);
+    public int delete(int idPgm);
 
 }
