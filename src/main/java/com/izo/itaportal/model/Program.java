@@ -8,6 +8,7 @@ public class Program {
     private int idPgm; //프로그램코드
     private int idCate;    //주제분류코드
     private int idRoom;        //강의실코드
+    private int idProf;     //강사번호
     private String pgmName;    //프로그램명
     private String stDt;    //교육시작일자
     private String endDt;  //교육종료일자

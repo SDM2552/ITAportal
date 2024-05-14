@@ -47,16 +47,20 @@
                     <input type="text" class="form-control" id="idRoom" placeholder="강의실코드" value="${pr.idRoom}" name="idRoom">
                 </div>
                 <div class="form-group">
+                    <label for="idProf">강사코드 :</label>
+                    <input type="text" class="form-control" id="idProf" placeholder="강사코드" value="${pr.idProf}" name="idProf">
+                </div>
+                <div class="form-group">
                     <label for="pgmName">프로그램명 : </label>
                     <input type="text" class="form-control" id="pgmName" placeholder="프로그램명 입력" value="${pr.pgmName}" name="pgmName">
                 </div>
                 <div class="form-group">
                     <label for="stDt">교육시작일자 : </label>
-                    <input type="text" class="form-control" id="stDt" placeholder="교육시작일자" value="${pr.stDt}" name="stDt">
+                    <input type="date" class="form-control" id="stDt" placeholder="교육시작일자" value="${pr.stDt}" name="stDt">
                 </div>
                 <div class="form-group">
                     <label for="endDt">교육종료일자 : </label>
-                    <input type="text" class="form-control" id="endDt" placeholder="교육종료일자" value="${pr.endDt}" name="endDt">
+                    <input type="date" class="form-control" id="endDt" placeholder="교육종료일자" value="${pr.endDt}" name="endDt">
                 </div>
                 <div class="form-group">
                     <label for="pgmTarget">교육대상 : </label>

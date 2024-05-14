@@ -42,6 +42,10 @@
                     <label for="idRoom">강의실코드 :</label>
                     <input type="text" class="form-control" id="idRoom" placeholder="강의실코드" name="idRoom">
                 </div>
+                <div class="form-group">
+                    <label for="idProf">강사코드 :</label>
+                    <input type="text" class="form-control" id="idProf" placeholder="강사코드" name="idProf">
+                </div>
 
 
                 <div class="form-group">
@@ -50,11 +54,11 @@
                 </div>
                 <div class="form-group">
                     <label for="stDt">교육시작일자 :</label>
-                    <input type="text" class="form-control" id="stDt" placeholder="교육시작일자" name="stDt">
+                    <input type="date" class="form-control" id="stDt" placeholder="교육시작일자" name="stDt">
                 </div>
                 <div class="form-group">
                     <label for="endDt">교육종료일자 :</label>
-                    <input type="text" class="form-control" id="endDt" placeholder="교육종료일자" name="endDt">
+                    <input type="date" class="form-control" id="endDt" placeholder="교육종료일자" name="endDt">
                 </div>
                 <div class="form-group">
                     <label for="pgmTarget">교육대상 : </label>
