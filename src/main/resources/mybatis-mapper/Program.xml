@@ -13,6 +13,7 @@
     <insert id="insert">
         insert into program (id_pgm,
                              id_cate,
+                             id_prof,
                              pgm_name,
                              st_dt,
                              end_dt,
@@ -21,7 +22,7 @@
                              pgm_method,
                              pgm_per,
                              pgm_fee)
-                    values (#{idPgm},#{idCate},#{pgmName},#{stDt},#{endDt},
+                    values (#{idPgm},#{idCate},#{idProf},#{pgmName},#{stDt},#{endDt},
                                  #{pgmTarget},#{idRoom},#{pgmMethod},#{pgmPer},#{pgmFee})
 
     </insert>
@@ -36,7 +37,8 @@
             id_room=#{idRoom},
             pgm_method=#{pgmMethod},
             pgm_per=#{pgmPer},
-            pgm_fee=#{pgmFee}
+            pgm_fee=#{pgmFee},
+            id_prof=#{idProf}
 
         where id_pgm = #{idPgm}
     </update>
