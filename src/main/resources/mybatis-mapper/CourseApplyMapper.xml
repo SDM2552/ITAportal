@@ -3,8 +3,8 @@
 <mapper namespace="com.izo.itaportal.mapper.CourseApplyMapper">
 
     <insert id="insertCourseApply" parameterType="com.izo.itaportal.model.CourseApply">
-        INSERT INTO CourseApplies (course_name, course_apply_date, course_apply_status, id_student, cate_id)
-        VALUES (#{courseName}, #{courseApplyDate}, #{courseApplyStatus}, #{idStudent}, #{cateId})
+        INSERT INTO CourseApplies (course_name, course_apply_date, course_apply_status, id_student, id_cate)
+        VALUES (#{courseName}, #{courseApplyDate}, #{courseApplyStatus}, #{idStudent}, #{idCate})
     </insert>
 
     <select id="findAllCourseApplies" resultType="com.izo.itaportal.model.CourseApply">

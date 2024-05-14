@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.izo.itaportal.mapper.EnrollmentMapper">
+
+    <insert id="insertEnrollment" parameterType="com.izo.itaportal.model.Enrollment">
+        INSERT INTO Enrollment (id_enrollment,id_student, pgm_name, id_pgm, st_dt, status)
+        VALUES (#{idEnrollment},#{idStudent}, #{pgmName}, #{idPgm}, #{stDt}, #{status})
+    </insert>
+
+    <select id="findAllEnrollments" resultType="com.izo.itaportal.model.Enrollment">
+        SELECT * FROM Enrollment
+    </select>
+
+    <select id="findEnrollmentsByIdStudent" resultType="com.izo.itaportal.model.Enrollment">
+        SELECT * FROM Enrollment WHERE id_student = #{idStudent}
+    </select>
+</mapper>

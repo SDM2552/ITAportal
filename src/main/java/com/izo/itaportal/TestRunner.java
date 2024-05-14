@@ -43,6 +43,12 @@ public class TestRunner implements ApplicationRunner{
                 "VALUES (1,1,'국제무역','2024-01-01','2024-05-31','대충성인',0301,'오프라인',30,100000)");
 
 
+        //exam
+        jdbcTemplate.execute("INSERT INTO exam(name, start_date, end_date, status, count, description, id_program, id_prof, id_file)" +
+                "VALUES ('자유무역의이해', '2024-05-10', '2024-05-24', '진행중?', '1', '자유무역에 대해 서술하시오.','100','2024001','9999')");
+
+        jdbcTemplate.execute("INSERT INTO exam_submission(id_program, id_exam, id_student, id_file)" +
+                "VALUES ('100', '1', '2', '9999')");
     }
 
 }

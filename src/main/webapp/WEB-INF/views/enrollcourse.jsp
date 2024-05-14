@@ -14,10 +14,9 @@
         <input type="text" id="courseName" name="courseName"><br>
         <label for="courseApplyDate">신청 날짜:</label>
         <input type="date" id="courseApplyDate" name="courseApplyDate"><br>
-        <label for="idStudent">학생 ID:</label>
-        <input type="text" id="idStudent" name="idStudent"><br>
-        <label for="cateId">카테고리 ID:</label>
-        <input type="text" id="cateId" name="cateId"><br>
+        <label for="logId">로그인(학생) ID:</label>
+        <input type="text" id="logId" name="logId"><br>
+
         <button type="submit">신청하기</button>
     </form>
 </div>

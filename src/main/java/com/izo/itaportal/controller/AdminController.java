@@ -20,13 +20,13 @@ public class AdminController {
     @Autowired
     private ProfessorService professorService;
 
-    @GetMapping("/studentList")
+    @GetMapping("/studentList") //학생 리스트 출력 페이지
     public String studentList(Model model){
         List<Student> students = studentService.getAllStudents();
         model.addAttribute("students", students);
         return "adminMember/studentList";
     }
-    @GetMapping("/professorList")
+    @GetMapping("/professorList") //강사 리스트 출력 페이지
     public String professorList(Model model){
         List<Professor> professors = professorService.getAllProfessors();
         model.addAttribute("professors", professors);

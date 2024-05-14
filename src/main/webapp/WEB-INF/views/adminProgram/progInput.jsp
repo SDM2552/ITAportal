@@ -8,7 +8,7 @@
     <script src="https://kit.fontawesome.com/93205cc57d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>샘플 페이지</title>
+    <title>프로그램추가</title>
 </head>
 <body>
 <div class="wrap">
@@ -24,52 +24,56 @@
             <!-- location -->
             <div class="location">
                 <span class="home" title="홈">홈으로 이동></span>
-                <span>수강 내역 조회></span>
-                <span class="on">수강 내역</span>
+                <span>강의관리></span>
+                <span class="on">교육과정관리</span>
             </div>
             <!-- //location -->
 
-            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>수강 내역</h3>
+            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>교육과정관리</h3>
 
             <!-- 본문 -->
             <form id="progInputForm" method="post" action="/progInsert">
 
                 <div class="form-group">
-                    <label for="idCate">주제분류코드</label>
+                    <label for="idCate">주제분류코드 :</label>
                     <input type="text" class="form-control" id="idCate" placeholder="주제분류코드" name="idCate">
                 </div>
                 <div class="form-group">
-                    <label for="idRoom">강의실코드</label>
+                    <label for="idRoom">강의실코드 :</label>
                     <input type="text" class="form-control" id="idRoom" placeholder="강의실코드" name="idRoom">
+                </div>
+                <div class="form-group">
+                    <label for="idProf">강사코드 :</label>
+                    <input type="text" class="form-control" id="idProf" placeholder="강사코드" name="idProf">
                 </div>
 
 
                 <div class="form-group">
-                    <label for="pgmName">프로그램명</label>
+                    <label for="pgmName">프로그램명 :</label>
                     <input type="text" class="form-control" id="pgmName" placeholder="프로그램명 입력" name="pgmName">
                 </div>
                 <div class="form-group">
-                    <label for="stDt">교육시작일자</label>
-                    <input type="text" class="form-control" id="stDt" placeholder="교육시작일자" name="stDt">
+                    <label for="stDt">교육시작일자 :</label>
+                    <input type="date" class="form-control" id="stDt" placeholder="교육시작일자" name="stDt">
                 </div>
                 <div class="form-group">
-                    <label for="endDt">교육종료일자</label>
-                    <input type="text" class="form-control" id="endDt" placeholder="교육종료일자" name="endDt">
+                    <label for="endDt">교육종료일자 :</label>
+                    <input type="date" class="form-control" id="endDt" placeholder="교육종료일자" name="endDt">
                 </div>
                 <div class="form-group">
-                    <label for="pgmTarget">교육대상</label>
+                    <label for="pgmTarget">교육대상 : </label>
                     <input type="text" class="form-control" id="pgmTarget" placeholder="교육대상" name="pgmTarget">
                 </div>
                 <div class="form-group">
-                    <label for="pgmMethod">교육방법</label>
+                    <label for="pgmMethod">교육방법 : </label>
                     <input type="text" class="form-control" id="pgmMethod" placeholder="교육방법" name="pgmMethod">
                 </div>
                 <div class="form-group">
-                    <label for="pgmPer">교육인원</label>
+                    <label for="pgmPer">교육인원 : </label>
                     <input type="text" class="form-control" id="pgmPer" placeholder="교육인원" name="pgmPer">
                 </div>
                 <div class="form-group">
-                    <label for="pgmFee">교육비</label>
+                    <label for="pgmFee">교육비 : </label>
                     <input type="text" class="form-control" id="pgmFee" placeholder="교육비" name="pgmFee">
                 </div>
                 <button type="submit" class="btn btn-primary">제출</button>
