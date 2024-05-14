@@ -6,15 +6,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Admin {
+public class Student {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idAdmin;
+    private int idStudent;
+
     private String name;
     private String birth;
     private String tel;
     private String address;
-    private int idUser;
     private String gender;
-    private int idUser2;
+    private int idUser;  //pk값
+
+
+
 }

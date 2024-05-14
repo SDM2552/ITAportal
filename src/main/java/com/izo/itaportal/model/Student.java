@@ -1,20 +1,24 @@
-package com.izo.itaportal.entity;
+package com.izo.itaportal.model;
+
+import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
-public class Admin {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idAdmin;
+@Data
+public class Student {
+
+    private int idStudent;
+
     private String name;
     private String birth;
     private String tel;
     private String address;
-    private int idUser;
     private String gender;
-    private int idUser2;
+    private int idUser;  //pk값
+
+
+
 }

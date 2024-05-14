@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
@@ -40,9 +41,9 @@ public class ProgController {
     }
 
     @PostMapping("/categoryInsert")
-    public String categoryInsert(Category category) {
+    public String categoryInsert(@ModelAttribute Category category) {
         categoryService.insertCategory(category);
-        return "redirect:/categoryInput";
+        return "redirect:/adminProgram";
     }
 
     //-------------------------------------------------------------------
@@ -69,7 +70,7 @@ public class ProgController {
     public String progInputInsert(Program program) {
 
         programService.insertProgram(program);
-        return "redirect:/progInput";
+        return "redirect:/adminProgram";
     }
 
 

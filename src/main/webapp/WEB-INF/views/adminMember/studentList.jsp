@@ -13,12 +13,12 @@
 <body>
 <div class="wrap">
     <!-- header -->
-    <c:import url="layout/header.jsp" />
+    <c:import url="../layout/header_admin.jsp" />
 
     <!-- container -->
     <div id="container" class="container responCont">
         <!-- 왼쪽 네비바 -->
-        <c:import url="layout/nav_student.jsp" />
+        <c:import url="../layout/nav_admin_member.jsp" />
         <!-- contents -->
         <div id="contents" class="eduIntroCont">
             <!-- location -->
@@ -29,17 +29,39 @@
             </div>
             <!-- //location -->
 
-            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>수강 내역</h3>
-
+            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>학생 명단 조회</h3>
             <!-- 본문 -->
-
+            <table border="1">
+                <thead>
+                <tr>
+                    <th>강사번호</th>
+                    <th>이름</th>
+                    <th>생년월일</th>
+                    <th>성별</th>
+                    <th>주소</th>
+                    <th>전화번호</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach items="${students}" var="student">
+                    <tr>
+                        <td>${student.idProf}</td>
+                        <td>${student.name}</td>
+                        <td>${student.birth}</td>
+                        <td>${student.gender}</td>
+                        <td>${student.address}</td>
+                        <td>${student.tel}</td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
             <!-- 본문 끝 -->
         </div>
         <!-- //contents -->
     </div>
 
     <!-- footer -->
-    <c:import url="layout/footer.jsp" />
+    <c:import url="../layout/footer.jsp" />
 </div>
 </body>
 

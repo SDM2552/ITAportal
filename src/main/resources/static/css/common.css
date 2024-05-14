@@ -50,6 +50,28 @@
 	url(../font/NotoSans-Bold.woff) format('woff');
 	font-stretch: normal;
 }
+
+.category-table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.category-table th, .category-table td {
+	border: 1px solid black;
+	padding: 8px;
+	text-align: left;
+}
+
+.program-table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.program-table th, .program-table td {
+	border: 1px solid black;
+	padding: 8px;
+	text-align: left;
+}
 /* reset */
 html, body {width:100%; height:100%;}
 body {-webkit-font-smoothing:subpixel-antialiased;}
