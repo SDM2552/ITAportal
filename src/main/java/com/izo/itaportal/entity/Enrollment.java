@@ -13,11 +13,11 @@ public class Enrollment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int IdEnrollment; // 수강 신청 ID
+    private int idEnrollment; // 수강 신청 ID
 
-    private int IdStudent;    // 학생 ID
+    private int idStudent;    // 학생 ID
     private String pgmName;  //프로그램 이름
-    private int IdProgram;    // 프로그램 ID
+    private int idProgram;    // 프로그램 ID
     private String stDt;    // 수강 신청 날짜
     private String status;    // 수강 신청 상태 (예: "확인중", "승인", "취소")
 
