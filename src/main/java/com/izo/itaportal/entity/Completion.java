@@ -12,5 +12,5 @@ public class Completion {
     private String course;
     private String score;
     private String completionDate;
-    private boolean isCompleted;
+    private boolean Completed;
 }
