@@ -7,29 +7,38 @@
     </select>
 
     <insert id="insert">
-        insert into program (pgm_id,
-                             cate_id,
+        insert into program (id_pgm,
+                             id_cate,
                              pgm_name,
                              st_dt,
                              end_dt,
                              pgm_target,
-                             room_id,
+                             id_room,
                              pgm_method,
                              pgm_per,
                              pgm_fee)
-                    values (#{pgmId},#{cateId},#{pgmName},#{stDt},#{endDt},
-                                 #{pgmTarget},#{roomId},#{pgmMethod},#{pgmPer},#{pgmFee})
+                    values (#{idPgm},#{idCate},#{pgmName},#{stDt},#{endDt},
+                                 #{pgmTarget},#{idRoom},#{pgmMethod},#{pgmPer},#{pgmFee})
 
     </insert>
     <update id="update">
         update program
-        set programName = #{programName},
-            progDesc = #{progDesc}
-        where idProgram = #{idProgram}
+        set pgm_name = #{pgmName},
+            id_cate = #{idCate},
+            pgm_name = #{pgmName},
+            st_dt=#{stDt},
+            end_dt=#{endDt},
+            pgm_target=#{pgmTarget},
+            id_room=#{idRoom},
+            pgm_method=#{pgmMethod},
+            pgm_per=#{pgmPer},
+            pgm_fee=#{pgmFee}
+
+        where id_pgm = #{idPgm}
     </update>
 
     <delete id="delete">
         delete from program
-        where idProgram = #{idProgram}
+        where id_pgm = #{idPgm}
     </delete>
 </mapper>

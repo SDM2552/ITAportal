@@ -21,7 +21,6 @@ public class ProgController {
 
     @Autowired
     private ProgramService programService;
-
     @Autowired
     private CategoryService categoryService;
     @Autowired
@@ -29,8 +28,8 @@ public class ProgController {
 
     @GetMapping("/adminProgram")
     public String adminProgram(Model model) {
-        model.addAttribute("cate",categoryService.getAllCategory());
-        model.addAttribute("prog",programService.getAllPrograms());
+        model.addAttribute("cate", categoryService.getAllCategory());
+        model.addAttribute("prog", programService.getAllPrograms());
         return "adminProgram/adminProgram";
     }
 
@@ -46,16 +45,16 @@ public class ProgController {
         return "redirect:/adminProgram";
     }
 
-    //-------------------------------------------------------------------
-    @GetMapping("/classRoomInput")
-    public String classRoomInput() {
-        return "/adminProgram/classRoomInput";
+    @GetMapping("/categoryUpdateInput")
+    public String categoryUpdate(@ModelAttribute Category category,Model model,int cateId) {
+        model.addAttribute("cate", categoryService.getCategoryById(cateId));
+        return "adminProgram/categoryUpdateInput";
     }
 
-    @PostMapping("/classRoomInsert")
-    public String classRoomInsert(ClassRoom classRoom) {
-        classRoomService.insertClassRoom(classRoom);
-        return "redirect:/classRoomInput";
+    @PostMapping("/categoryUpdate")
+    public String categoryUpdate(@ModelAttribute Category category) {
+        categoryService.updateCategory(category);
+        return "redirect:/adminProgram";
     }
 
 
@@ -71,6 +70,25 @@ public class ProgController {
 
         programService.insertProgram(program);
         return "redirect:/adminProgram";
+    }
+
+    //-------------------------------------------------------------------
+    @GetMapping("/adminClassRoom")
+    public String classRoom(Model model) {
+        model.addAttribute("classRoom",classRoomService.getAllClassRoom());
+        return "/adminProgram/adminClassRoom";
+    }
+
+
+    @GetMapping("/classRoomInput")
+    public String classRoomInput() {
+        return "/adminProgram/classRoomInput";
+    }
+
+    @PostMapping("/classRoomInsert")
+    public String classRoomInsert(ClassRoom classRoom) {
+        classRoomService.insertClassRoom(classRoom);
+        return "redirect:/adminClassRoom";
     }
 
 

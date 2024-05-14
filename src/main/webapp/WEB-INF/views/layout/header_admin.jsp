@@ -3,7 +3,7 @@
 <div id="header">
     <!-- hgroup -->
     <div class="hgroup">
-        <h1 class="logo"><a href="#">국제무역아카데미 로고</a></h1>
+        <h1 class="logo"><a href="/">국제무역아카데미 로고</a></h1>
         <!-- headUtil -->
         <div class="headerF">
             <div class="util">

@@ -10,7 +10,7 @@ public class ClassRoom {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int roomId;    //강의실코드
+    private int idRoom;    //강의실코드
     private String roomName;   //강의실명
 
 }

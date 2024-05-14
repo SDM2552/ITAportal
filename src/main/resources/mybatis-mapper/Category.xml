@@ -6,23 +6,27 @@
         select * from category
     </select>
 
+    <select id="selectCategoryById" resultType="com.izo.itaportal.model.Category">
+        select * from category where cate_id=#{cateId}
+    </select>
+
 
     <insert id="insert">
-        insert into category (cate_id,
+        insert into category (id_cate,
                              cate_name)
 
 
-        values (#{cateId},#{cateName})
+        values (#{idCate},#{cateName})
 
     </insert>
     <update id="update">
         update category
         set cate_name = #{cateName}
-        where cate_id = #{cateId},
+        where id_cate = #{idCate}
     </update>
 
     <delete id="delete">
         delete from category
-        where cate_id = #{cateId}
+        where id_cate = #{idCate}
     </delete>
 </mapper>

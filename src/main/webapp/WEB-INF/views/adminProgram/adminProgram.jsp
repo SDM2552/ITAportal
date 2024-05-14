@@ -8,12 +8,12 @@
     <script src="https://kit.fontawesome.com/93205cc57d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>샘플 페이지</title>
+    <title>교육과정관리</title>
 </head>
 <body>
 <div class="wrap">
     <!-- header -->
-    <c:import url="../layout/header.jsp"/>
+    <c:import url="../layout/header_admin.jsp"/>
 
     <!-- container -->
     <div id="container" class="container responCont">
@@ -34,20 +34,28 @@
             <!-- 본문 -->
 
             <div class="category">
-                <h2>카테고리</h2>
+                <h2>￭카테고리</h2>
+
+
                 <table class="category-table">
 
                     <thead>
                     <tr>
                         <th>ID</th>
                         <th>카테고리명</th>
+                        <th></th>
+
                     </tr>
                     </thead>
                     <tbody>
                     <c:forEach var="category" items="${cate}">
                         <tr>
-                            <td>${category.cateId}</td>
+                            <td>${category.idCate}</td>
                             <td>${category.cateName}</td>
+                            <td class="actions">
+                                <a href="categoryUpdateInput?idCate=${category.idCate}">수정</a>
+                                <a href="categoryDelete?idCate=${category.idCate}">삭제</a>
+                            </td>
                         </tr>
                     </c:forEach>
                     </tbody>
@@ -57,10 +65,10 @@
                 </a>
                 <br>
             </div>
-                <!-- 프로그램 목록 -->
+            <!-- 프로그램 목록 -->
             <div class="program">
-                <h2>프로그램</h2>
-                <table class="program-table">
+                <h2>￭프로그램</h2>
+                <table class="category-table">
                     <thead>
                     <tr>
                         <th>프로그램명</th>
@@ -70,6 +78,7 @@
                         <th>교육 방법</th>
                         <th>교육 인원</th>
                         <th>교육 비용</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -82,15 +91,18 @@
                             <td>${program.pgmMethod}</td>
                             <td>${program.pgmPer}</td>
                             <td>${program.pgmFee}</td>
+                            <td class="actions">
+                                <a href="programUpdateInput?idPgm=${program.idPgm}">수정</a>
+                                <a href="programDelete?idPgm=${program.idPgm}">삭제</a>
+                            </td>
                         </tr>
                     </c:forEach>
                     </tbody>
                 </table>
                 <a href="/progInput">
-                    <button style="float: right;">프로그램 추가</button>
+                    <button style="float: right;">추가</button>
                 </a>
             </div>
-
 
 
             <!-- 본문 끝 -->

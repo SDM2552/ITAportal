@@ -10,8 +10,9 @@ import java.util.List;
 @Mapper
 public interface CategoryRepository {
     public List<Category> selectCategory();
+    public Category selectCategoryById(int idCate);
     public int insert(Category category);
-    public int update(int cateId);
-    public int delete(int cateId);
+    public int update(Category category);
+    public int delete(int idCate);
 
 }

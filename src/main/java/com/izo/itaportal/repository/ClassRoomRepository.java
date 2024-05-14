@@ -5,11 +5,13 @@ import com.izo.itaportal.model.ClassRoom;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface ClassRoomRepository {
-
+    public List<ClassRoom> selectClassRoom();
     public int insert(ClassRoom classRoom);
-    public int update(int roomId);
-    public int delete(int roomId);
+    public int update(ClassRoom classRoom);
+    public int delete(int idRoom);
 
 }
