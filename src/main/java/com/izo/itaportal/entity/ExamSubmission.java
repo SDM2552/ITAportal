@@ -14,4 +14,5 @@ public class ExamSubmission {
     private int idExam; //과제 코드
     private int idStudent; //학생 코드
     private int idFile; //파일 코드
+    private String examStatus; //과제 제출 여부
 }

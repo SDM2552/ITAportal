@@ -14,5 +14,6 @@ public class File {
     private  String originFilename; //원본파일이름
     private  String saveFilename; //저장파일이름
     private String filePath; //파일 경로
+    private int fileSize; //파일 용량
 
 }

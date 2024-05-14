@@ -1,10 +1,14 @@
 package com.izo.itaportal.repository;
 
-import com.izo.itaportal.service.StudentService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import com.izo.itaportal.model.Admin;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
-@Repository
+import java.util.List;
+
+@Mapper
 public interface AdminRepository  {
+    @Select("SELECT * FROM admin")
+    List<Admin> findAll();
 
 }

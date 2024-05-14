@@ -9,6 +9,7 @@
             <div class="util">
                 <!-- util -->
                 <a href="#">회원가입</a>
+                <a href="/loginRegister/adminregister">(임시)관리자회원가입</a>
                 <a href="#">로그인</a>
                 <a href="#">사이트맵</a>
                 이용자01 님 환영합니다. [로그아웃]
@@ -38,10 +39,8 @@
                     <li>
                         <a href="/enrollment/enrollmentapplylist">신청 수강목록</a> <!-- 수강신청 페이지로 이동하는 링크 -->
                     </li>
-
                         <a href="#">공지사항</a>
                     </li>
-
                 </ul>
             </div>
         </div>
