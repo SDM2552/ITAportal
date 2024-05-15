@@ -35,6 +35,13 @@
         <label for="address">주소</label>
         <input type="text" id="address" placeholder="주소"/>
     </div>
+    <div>
+        <label>성별</label><br>
+        <input type="radio" id="M" name="gender" value="M">
+        <label for="M">남성</label><br>
+        <input type="radio" id="F" name="gender" value="F">
+        <label for="F">여성</label><br>
+    </div>
     <input type="hidden" id="role" value="${role}">
     <button type="submit">가입하기</button>
 </form>

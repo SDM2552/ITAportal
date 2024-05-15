@@ -1,9 +1,9 @@
 package com.izo.itaportal.controller;
 
+import com.izo.itaportal.service.AdminService;
 import com.izo.itaportal.service.ProfessorService;
 import com.izo.itaportal.service.StudentService;
 import com.izo.itaportal.service.UserService;
-import com.izo.itaportal.service.adminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MyPageController {
     @Autowired
-    private adminService service;
+    private AdminService service;
 
     @Autowired
     private ProfessorService professorService;

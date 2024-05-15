@@ -24,11 +24,11 @@ public class UserController {
 
     @PostMapping("signUpCheck")
     public String signUpCheck(){
-        if(role == "stu") {
-
-        } else if (role == "prof") {
-
-        }
+//        if(role == "stu") {
+//
+//        } else if (role == "prof") {
+//
+//        }
         return "";
     }
 
