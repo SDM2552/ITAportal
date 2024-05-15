@@ -9,16 +9,19 @@
 <mapper namespace="com.izo.itaportal.mapper.UserMapper">
 
     <!-- 유저 테이블 추가 (가입) -->
-    <insert id="isertUser">
+    <insert id="insertUser" parameterType="com.izo.itaportal.model.SignUpRequest"
+            useGeneratedKeys="true" keyProperty="idUser">
         INSERT INTO user (login_id, password, role, regist_date)
-        VALUES (#{loginId}, #{password}, #{role}, #{registDate})
+        VALUES (#{loginId}, #{password}, #{role}, now())
     </insert>
 
     <!-- 학생테이블 추가 (가입) -->
-    <insert id="insertStu">
+    <insert id="insertStu" parameterType="com.izo.itaportal.model.SignUpRequest">
         INSERT INTO student (name, birth, tel, address, gender, id_user)
         VALUES (#{name}, #{birth}, #{tel}, #{address}, #{gender}, #{idUser})
     </insert>
+
+    <!-- 교수테이블 추가 (가입) -->
 
 
 
