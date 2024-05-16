@@ -5,7 +5,7 @@
     <div class="lnbArea">
         <ul>
             <li><a href="/enrollment/enrollmentapplylist">수강 내역 조회</a></li>
-            <li><a href="#">과제 제출</a></li>
+            <li><a href="/stu/exam">과제 제출</a></li>
             <li><a href="#">성적 조회</a></li>
         </ul>
     </div>

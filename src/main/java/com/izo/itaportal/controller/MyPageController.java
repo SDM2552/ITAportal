@@ -10,10 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
 
 @Controller
+@RequestMapping("/myPage")
 public class MyPageController {
 
 
@@ -21,23 +23,26 @@ public class MyPageController {
     private MyPageService myPageService;
 
     @Autowired
-    HttpSession httpSession;
+    private HttpSession httpSession;
 
+    //myPage/stuMyPage?idUser=2024
     @GetMapping("/stuMyPage")
     public String myPage(Model model,int idUser) {
         model.addAttribute("user", myPageService.getStudentById(idUser));
-        return "stuMyPage";
+        return "/myPage/stuMyPage";
     }
 
+    //myPage/profMyPage?idUser=1
     @GetMapping("/profMyPage")
     public String profMyPage(Model model,int idUser) {
         model.addAttribute("user", myPageService.getProfessorById(idUser));
-        return "profMyPage";
+        return "/myPage/profMyPage";
     }
 
+    //myPage/adminMyPage?idUser=1234
     @GetMapping("/adminMyPage")
     public String adminMyPage(Model model,int idUser) {
         model.addAttribute("user", myPageService.getAdminById(idUser));
-        return "adminMyPage";
+        return "/myPage/adminMyPage";
     }
 }
