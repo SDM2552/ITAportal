@@ -34,7 +34,7 @@ public class UserController {
             //교수일경우
             userService.insertProf(signUpRequest);
         }
-        return "redirect:root";
+        return "member/signUpSuccess";
     }
 
 }
