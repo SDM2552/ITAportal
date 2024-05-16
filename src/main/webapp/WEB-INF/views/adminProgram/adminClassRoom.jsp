@@ -64,7 +64,7 @@
                 <a href="/classRoomInput">
                     <button style="float: right;">추가</button>
                 </a>
-                <br>
+
             </div>
                 <!-- 프로그램 목록 -->
 
