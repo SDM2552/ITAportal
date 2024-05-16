@@ -35,7 +35,7 @@
                         <a href="/admin/studentList">회원 관리</a>
                     </li>
                     <li>
-                        <a href="/notices/noticeList">공지사항</a>
+                        <a href="/notice/noticeList">공지사항</a>
                     </li>
 
                 </ul>

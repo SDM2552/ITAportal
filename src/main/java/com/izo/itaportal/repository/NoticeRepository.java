@@ -1,12 +1,14 @@
 package com.izo.itaportal.repository;
-import org.apache.ibatis.annotations.Mapper;
+
 import com.izo.itaportal.model.Notice;
+import org.apache.ibatis.annotations.Mapper;
+
 import java.util.List;
 
 @Mapper
 public interface NoticeRepository {
 
-    List<Notice> findAllNotices();
+    List<Notice> findAllNotice();
 
     Notice findNoticeById(int idNotice);
 
