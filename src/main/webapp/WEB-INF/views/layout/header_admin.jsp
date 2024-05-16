@@ -33,7 +33,7 @@
                         <a href="/admin/studentList">회원 관리</a>
                     </li>
                     <li>
-                        <a href="#">공지사항</a>
+                        <a href="/notices/noticeList">공지사항</a>
                     </li>
 
                 </ul>
