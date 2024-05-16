@@ -1,4 +1,4 @@
-package com.izo.itaportal.repository;
+package com.izo.itaportal.mapper;
 
 /**
  * 강의계획서 CRUD
