@@ -24,11 +24,11 @@
             <div class="location">
                 <span class="home" title="홈">홈으로 이동</span>
                 <span>수강 내역 조회</span>
-                <span class="on">수강 내역</span>
+                <span class="on">회원가입</span>
             </div>
             <!-- //location -->
 
-            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>수강 내역</h3>
+            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>역할 선택 > 회원정보 입력 > 가입완료</h3>
 
             <!-- 본문 -->
             <h1>회원가입</h1>
