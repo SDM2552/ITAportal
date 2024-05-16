@@ -40,12 +40,16 @@ public class TestRunner implements ApplicationRunner{
 
         //강의리스트
         jdbcTemplate.execute("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,pgm_target,id_room,pgm_method,pgm_per,pgm_fee,id_prof) "+
-                "VALUES (1,'국제무역1','2024-01-01','2024-05-31','대충성인',0301,'오프라인',30,100000,1)");
+                "VALUES (1,'국제무역1','2024-01-01','2024-05-31','대충성인',1,'오프라인',30,100000,1)");
         jdbcTemplate.execute("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,pgm_target,id_room,pgm_method,pgm_per,pgm_fee,id_prof) "+
-                "VALUES (1,'국제무역2','2024-06-01','2024-08-31','대충성인',0301,'오프라인',30,200000,1)");
+                "VALUES (1,'국제무역2','2024-06-01','2024-08-31','대충성인',1,'오프라인',30,200000,1)");
         jdbcTemplate.execute("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,pgm_target,id_room,pgm_method,pgm_per,pgm_fee,id_prof) "+
-                "VALUES (1,'국제무역3','2024-03-01','2024-08-31','대충성인',0301,'오프라인',30,300000,1)");
+                "VALUES (1,'국제무역3','2024-03-01','2024-08-31','대충성인',1,'오프라인',30,300000,1)");
 
+        //강의실
+        jdbcTemplate.execute("INSERT INTO category VALUES (1,'국제무역')");
+        //카테고리
+        jdbcTemplate.execute("INSERT INTO class_room VALUES (1,'이대캠퍼스 301호')");
 
         //exam
         jdbcTemplate.execute("INSERT INTO exam(name, start_date, end_date, status, count, description, id_program, id_prof, id_file)" +

@@ -7,6 +7,7 @@ package com.izo.itaportal.mapper;
  * @author 김봄이
  */
 
+import com.izo.itaportal.model.ProgramView;
 import com.izo.itaportal.model.Syllabus;
 import com.izo.itaportal.model.SyllabusRequest;
 import org.apache.ibatis.annotations.Mapper;
@@ -19,5 +20,7 @@ public interface SyllabusMapper {
     public void insertSyllabus(Syllabus syllabus);
     //강의계획서 수정
     public void updateSyllabus(Syllabus syllabus);
+    //프로그램 정보(카테고리 + 강의실)
+    public ProgramView selectJoinPgmByidPgm(int idPgm);
 
 }
