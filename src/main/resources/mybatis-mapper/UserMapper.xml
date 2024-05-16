@@ -31,5 +31,7 @@
     <insert id="insertAdmin" parameterType="com.izo.itaportal.model.SignUpRequest">
         INSERT INTO Admin (name, birth, tel, address, gender, id_user)
         VALUES (#{name}, #{birth}, #{tel}, #{address}, #{gender}, #{idUser}
+    </insert>
+    
 
 </mapper>
