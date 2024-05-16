@@ -39,6 +39,7 @@
                     <li>
                         <a href="/enrollment/enrollmentapplylist">신청 수강목록</a> <!-- 수강신청 페이지로 이동하는 링크 -->
                     </li>
+                    <li>
                         <a href="#">공지사항</a>
                     </li>
                 </ul>

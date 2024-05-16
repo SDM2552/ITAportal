@@ -54,11 +54,11 @@ public class ProgController {
         return "redirect:/adminProgram";
     }
 
-    @GetMapping("/categoryUpdateInput")
-    public String categoryUpdate(@ModelAttribute Category category,Model model,int idCate) {
-        model.addAttribute("cate", categoryService.getCategoryById(category.getIdCate()));
-        return "adminProgram/categoryUpdateInput";
-    }
+//    @GetMapping("/categoryUpdateInput")
+//    public String categoryUpdate(@ModelAttribute Category category,Model model,int idCate) {
+//        model.addAttribute("cate", categoryService.getCategoryById(category.getIdCate()));
+//        return "adminProgram/categoryUpdateInput";
+//    }
 
     @PostMapping("/categoryUpdate")
     public String categoryUpdate(@ModelAttribute Category category) {
