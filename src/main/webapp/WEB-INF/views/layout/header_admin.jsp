@@ -8,10 +8,12 @@
         <div class="headerF">
             <div class="util">
                 <!-- util -->
-                <a href="#">회원가입</a>
+                <a href="/user/signUp1">회원가입</a>
                 <a href="#">로그인</a>
-                <a href="#">사이트맵</a>
-                이용자01 님 환영합니다. [로그아웃]
+                <a href="/sample3">❗비회원</a>
+                <a href="/stu/exam">❗학생</a>
+                <a href="/prof/list">❗강사</a>
+                <a href="/adminProgram">❗관리자</a>
                 <!-- util -->
             </div>
         </div>
@@ -27,7 +29,7 @@
                         <a href="#">MY</a>
                     </li>
                     <li>
-                        <a href="#">강의 관리</a>
+                        <a href="/adminProgram">강의 관리</a>
                     </li>
                     <li>
                         <a href="/admin/studentList">회원 관리</a>
