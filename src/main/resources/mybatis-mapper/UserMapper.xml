@@ -22,7 +22,10 @@
     </insert>
 
     <!-- 교수테이블 추가 (가입) -->
-
+    <insert id="insertProf" parameterType="com.izo.itaportal.model.SignUpRequest">
+        INSERT INTO professor (name, birth, tel, gender, address, id_user)
+        VALUES (#{name}, #{birth}, #{tel}, #{gender}, #{address}, #{idUser})
+    </insert>
 
 
 </mapper>
