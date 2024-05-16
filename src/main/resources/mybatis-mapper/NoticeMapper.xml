@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.izo.itaportal.repository.NoticeRepository">
+
+    <!-- 공지사항 목록 조회 -->
+    <select id="findAllNotices" resultType="com.izo.itaportal.model.Notice">
+        SELECT idNotice, title, content, datePosted FROM notices
+    </select>
+
+    <!-- 특정 공지사항 조회 -->
+    <select id="findNoticeById" parameterType="int" resultType="com.izo.itaportal.model.Notice">
+        SELECT idNotice, title, content, datePosted FROM notices WHERE idNotice = #{idNotice}
+    </select>
+
+    <!-- 공지사항 신규 추가 -->
+    <insert id="insertNotice" parameterType="com.izo.itaportal.model.Notice">
+        INSERT INTO notices (title, content, datePosted)
+        VALUES (#{title}, #{content}, NOW())
+    </insert>
+
+    <!-- 공지사항 수정 -->
+    <update id="updateNotice" parameterType="com.izo.itaportal.model.Notice">
+        UPDATE notices SET title = #{title}, content = #{content} WHERE idNotice = #{idNotice}
+    </update>
+
+    <!-- 공지사항 삭제 -->
+    <delete id="deleteNotice" parameterType="int">
+        DELETE FROM notices WHERE idNotice = #{idNotice}
+    </delete>
+
+</mapper>
