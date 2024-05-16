@@ -11,5 +11,5 @@ public interface UserMapper {
     //학생테이블 추가
     public void insertStu(SignUpRequest signUpRequest);
     //교수테이블 추가
-
+    public void insertProf(SignUpRequest signUpRequest);
 }
