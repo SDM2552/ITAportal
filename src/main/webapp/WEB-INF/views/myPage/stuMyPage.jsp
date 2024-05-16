@@ -45,15 +45,30 @@
     </tr>
     <tr>
         <th>생년월일</th>
-        <td><c:out value="${user.birth}" /></td>
+        <td>
+            <form action="/updateStu" method="post">
+                <input type="date" name="birth" value="${user.birth}" />
+                <button type="submit">수정</button>
+            </form>
+        </td>
     </tr>
     <tr>
         <th>휴대전화</th>
-        <td><c:out value="${user.tel}" /></td>
+        <td>
+            <form action="/updateUserTel" method="post">
+                <input type="text" name="tel" value="${user.tel}" />
+                <button type="submit">수정</button>
+            </form>
+        </td>
     </tr>
     <tr>
         <th>주소</th>
-        <td><c:out value="${user.address}" /></td>
+        <td>
+            <form action="/updateUserAddress" method="post">
+                <input type="text" name="address" value="${user.address}" />
+                <button type="submit">수정</button>
+            </form>
+        </td>
     </tr>
     <tr>
         <th>성별</th>

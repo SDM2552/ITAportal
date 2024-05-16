@@ -1,6 +1,7 @@
 package com.izo.itaportal.controller;
 
 //import com.izo.itaportal.service.AdminService;
+
 import com.izo.itaportal.service.MyPageService;
 import com.izo.itaportal.service.ProfessorService;
 import com.izo.itaportal.service.StudentService;
@@ -27,22 +28,34 @@ public class MyPageController {
 
     //myPage/stuMyPage?idUser=2024
     @GetMapping("/stuMyPage")
-    public String myPage(Model model,int idUser) {
-        model.addAttribute("user", myPageService.getStudentById(idUser));
-        return "/myPage/stuMyPage";
+    public String myPage(Model model, int idUser) {
+        if (myPageService.isStudent(idUser)) {
+            model.addAttribute("user", myPageService.getStudentById(idUser));
+            return "/myPage/stuMyPage";
+        } else if (myPageService.isProfessor(idUser)) {
+            model.addAttribute("user", myPageService.getProfessorById(idUser));
+            return "/myPage/profMyPage";
+        } else if (myPageService.isAdmin(idUser)) {
+            model.addAttribute("user", myPageService.getAdminById(idUser));
+            return "/myPage/adminMyPage";
+        }else {
+            return "error";
+
     }
 
-    //myPage/profMyPage?idUser=1
-    @GetMapping("/profMyPage")
-    public String profMyPage(Model model,int idUser) {
-        model.addAttribute("user", myPageService.getProfessorById(idUser));
-        return "/myPage/profMyPage";
-    }
+}
 
-    //myPage/adminMyPage?idUser=1234
-    @GetMapping("/adminMyPage")
-    public String adminMyPage(Model model,int idUser) {
-        model.addAttribute("user", myPageService.getAdminById(idUser));
-        return "/myPage/adminMyPage";
-    }
+////myPage/profMyPage?idUser=1
+//@GetMapping("/profMyPage")
+//public String profMyPage(Model model, int idUser) {
+//    model.addAttribute("user", myPageService.getProfessorById(idUser));
+//    return "/myPage/profMyPage";
+//}
+//
+////myPage/adminMyPage?idUser=1234
+//@GetMapping("/adminMyPage")
+//public String adminMyPage(Model model, int idUser) {
+//    model.addAttribute("user", myPageService.getAdminById(idUser));
+//    return "/myPage/adminMyPage";
+//}
 }
