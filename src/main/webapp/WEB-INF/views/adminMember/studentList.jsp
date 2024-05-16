@@ -34,7 +34,7 @@
             <table border="1">
                 <thead>
                 <tr>
-                    <th>강사번호</th>
+                    <th>학생 번호</th>
                     <th>이름</th>
                     <th>생년월일</th>
                     <th>성별</th>
@@ -45,7 +45,7 @@
                 <tbody>
                 <c:forEach items="${students}" var="student">
                     <tr>
-                        <td>${student.idProf}</td>
+                        <td>${student.idStudent}</td>
                         <td>${student.name}</td>
                         <td>${student.birth}</td>
                         <td>${student.gender}</td>
