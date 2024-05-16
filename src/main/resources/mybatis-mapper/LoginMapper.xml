@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    황선호
+        -->
+
+<mapper namespace="com.izo.itaportal.mapper.UserMapper">
+
+    <select id="getPasswordByLoginId" parameterType="String" resultType="java.lang.String">
+        SELECT password FROM user WHERE login_id = #{loginId}
+    </select>
+
+</mapper>
