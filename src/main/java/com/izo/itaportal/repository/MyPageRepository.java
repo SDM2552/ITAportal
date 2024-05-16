@@ -15,5 +15,14 @@ public interface MyPageRepository {
     public Professor selectProfById(int idUser);
     public Admin selectAdminById(int idUser);
 
+    public int updateStudent(Student student);
+    public int updateProf(Professor professor);
+    public int updateAdmin(Admin admin);
+
+    public int deleteStudent(int idUser);
+    public int deleteProf(int idUser);
+    public int deleteAdmin(int idUser);
+
+
 
 }

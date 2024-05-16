@@ -28,5 +28,35 @@ public class MyPageService {
         return myPageRepository.selectAdminById(idUser);
     }
 
+    public int updateStudent(Student student) {
+        int updateStudent = myPageRepository.updateStudent(student);
+        return updateStudent;
+    }
+
+    public int updateProfessor(Professor professor) {
+        int updateProfessor = myPageRepository.updateProf(professor);
+        return updateProfessor;
+    }
+
+    public int updateAdmin(Admin admin) {
+        int updateAdmin = myPageRepository.updateAdmin(admin);
+        return updateAdmin;
+    }
+
+    public int deleteStudent(int idUser) {
+        int deleteStudent = myPageRepository.deleteStudent(idUser);
+        return deleteStudent;
+    }
+
+    public int deleteProfessor(int idUser) {
+        int deleteProfessor = myPageRepository.deleteProf(idUser);
+        return deleteProfessor;
+    }
+
+    public int deleteAdmin(int idUser) {
+        int deleteAdmin = myPageRepository.deleteAdmin(idUser);
+        return deleteAdmin;
+    }
+
 
 }
