@@ -23,12 +23,10 @@ public class MyPageController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/myPage")
+    @GetMapping("/stuMyPage")
     public String myPage(Model model) {
-        model.addAttribute("user", professorService.getAllProfessors());
+
         model.addAttribute("user", studentService.getAllStudents());
-//        model.addAttribute("user",userService.g)
-//        model.addAttribute("mp", adminService.get);
-        return "myPage";
+        return "stuMyPage";
     }
 }

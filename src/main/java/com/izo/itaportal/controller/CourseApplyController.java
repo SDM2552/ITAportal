@@ -18,12 +18,14 @@ public class CourseApplyController {
     @GetMapping("/enrollcourse")
     public String showEnrollmentForm() {
         System.out.println("Page access log: enrollcourse page accessed.");
-        return "course/enrollcourse";  // 'enrollcourse.jsp' 파일을 렌더링합니다.
+
+        return "/course/enrollcourse";  // 'enrollcourse.jsp' 파일을 렌더링합니다.
     }
     @GetMapping("/courseapplylist")
     public String courseapplylist() {
-         return "course/courseapplylist";
+         return "/course/courseapplylist";
     }
+        
 
 
     @PostMapping("/apply")

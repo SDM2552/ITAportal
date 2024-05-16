@@ -18,7 +18,9 @@ public class EnrollmentController {
 
     @GetMapping("/form")
     public String showEnrollmentForm() {
-        return "enrollment/enrollment";
+
+        return "/enrollment/enrollment";
+
     }
     @GetMapping("/enrollmentapplylist")
 
