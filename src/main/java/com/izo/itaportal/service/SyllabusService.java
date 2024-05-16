@@ -2,7 +2,7 @@ package com.izo.itaportal.service;
 
 import com.izo.itaportal.model.Syllabus;
 import com.izo.itaportal.model.SyllabusRequest;
-import com.izo.itaportal.repository.SyllabusMapper;
+import com.izo.itaportal.mapper.SyllabusMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

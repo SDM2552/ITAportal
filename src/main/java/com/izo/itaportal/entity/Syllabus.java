@@ -10,10 +10,10 @@ import javax.persistence.Id;
 @Entity
 public class Syllabus {
 
-    //프로그램 코드
+    //프로그램 코드 (PK/FK)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idSyllabus;
+    private int idPgm;
     //프로그램 개요
     private String course_overview;
     //수업목표
