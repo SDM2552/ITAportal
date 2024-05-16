@@ -29,5 +29,14 @@
         WHERE id_program =#{idProgram}
     </update>
 
+    <!-- 강의계획서 입력을 위한 program + classroom + category -->
+    <select id="selectJoinPgmByidPgm" parameterType="integer" resultType="com.izo.itaportal.model.ProgramView">
+        SELECT cate_name, room_name, pgm_name, st_dt, end_dt, pgm_per, pgm_fee
+        FROM program p
+                 JOIN category c ON p.id_cate = c.id_cate
+                 JOIN class_room r ON p.id_room = r.id_room
+        WHERE p.id_pgm=#{idPgm}
+    </select>
+
 
 </mapper>

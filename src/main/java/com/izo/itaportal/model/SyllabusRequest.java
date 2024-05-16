@@ -1,5 +1,6 @@
 package com.izo.itaportal.model;
 
+import lombok.Builder;
 import lombok.Data;
 
 /**
@@ -7,6 +8,7 @@ import lombok.Data;
  * @author 김봄이
  */
 @Data
+@Builder
 public class SyllabusRequest {
     private int idProf;
     private int idPgm;
