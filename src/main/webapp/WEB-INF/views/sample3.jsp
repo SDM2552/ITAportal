@@ -14,7 +14,7 @@
 <body>
 <div class="wrap">
     <!-- header -->
-<c:import url="layout/header.jsp" />
+    <c:import url="layout/header.jsp" />
 
     <!-- contents -->
     <div class="mainArea">
@@ -23,32 +23,27 @@
         <div class="mainBoard">
             <div class="memberInfo">
                 <li style="font-weight: 600; font-size: 18px; width: 100%;">
-                    &nbsp;<i class="fa-solid fa-user"></i>&nbsp;name님 환영합니다.
-                    <hr style="margin-top: 3px;">
-                    <table>
-                        <tr>
-                            <td>이메일</td>
-                            <td>email@mail.com</td>
-                        </tr>
-                        <tr>
-                            <td>소속</td>
-                            <td>중국무역학과</td>
-                        </tr>
-                        <tr>
-                            <td>학기</td>
-                            <td>1학년&nbsp;1학기</td>
-                        </tr>
-                        <tr>
-                            <td>학적상태 </td>
-                            <td>재학</td>
-                        </tr>
-                    </table>
-
-                    <div class="profileButton">
-                        <button onclick="location.href='#'">마이페이지</button>
-                        <button onclick="location.href='#'">로그아웃</button>
-                    </div>
-                </li>
+                    로그인 </li>
+                <div class="loginFormBorder">
+                    <ul class="loginForm">
+                        <li>
+                            <input type="text" class="inTxt" id="userId" name="userId" style="ime-mode:disabled;"
+                                   maxlength="20" onkeypress="fEnter();" placeholder="  아이디" title="아이디 입력">
+                        </li>
+                        <li>
+                            <input type="password" class="inTxt" id="password" name="password"
+                                   style="ime-mode:disabled;" maxlength="20" onkeypress="fEnter();" placeholder=" 비밀번호"
+                                   title="비밀번호 입력">
+                        </li>
+                    </ul>
+                    <a href="javascript:jsonLogin();" class="logBtn">
+                        <span>로그인</span>
+                    </a>
+                </div>
+                <div class="profileButton">
+                    <a href="#">회원가입</a> |
+                    <a href="#">아이디/비밀번호 찾기</a>
+                </div>
             </div>
             <div id="noticeBoard">
                 <h2>

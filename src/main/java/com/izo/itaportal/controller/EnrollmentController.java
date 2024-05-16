@@ -18,12 +18,14 @@ public class EnrollmentController {
 
     @GetMapping("/form")
     public String showEnrollmentForm() {
-        return "enrollment";
+        return "enrollment/enrollment";
     }
     @GetMapping("/enrollmentapplylist")
+
     public String enrollmentapplylist(Model model) {
         model.addAttribute("enrollments",enrollmentService.getAllEnrollments());
         return "/enrollment/enrollmentapplylist";
+
     }
 
     @PostMapping("/apply")

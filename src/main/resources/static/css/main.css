@@ -13,14 +13,14 @@
 .memberInfo {
     min-width: 300px;
     max-width: 400px;
-	padding: 20px;
-	display: flex;
-	flex-direction: column;
-	border: 1px solid #E0E0E0;
-	border-radius: 20px;
-	justify-content: flex-start;
-	align-items: flex-start;
-	margin-left: 60px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e0e0e0;
+    border-radius: 20px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-left: 60px;
     margin-bottom: 60px;
 }
 .material-icons {
@@ -32,9 +32,9 @@
     margin-top: 20px;
     font-size: 10px;
     width: 100%;
-    height: 30px;  
+    height: 30px;
 }
-.profileButton button{
+.profileButton button {
     margin-left: 10px;
     margin-right: 20px;
     border-radius: 10px;
@@ -50,14 +50,69 @@
     /* margin-top: 15px; */
     margin-left: 10%;
     margin-right: 5%;
-	white-space: nowrap;
-	overflow: hidden;
-	display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
     font-size: 18px;
 }
 .main--page--split {
-	height: 2px;
-	width: 100%;
-	background-color: #3c668a;
-	margin-bottom: 10px;
+    height: 2px;
+    width: 100%;
+    background-color: #3c668a;
+    margin-bottom: 10px;
+}
+.loginForm {
+    margin-right: 12px;
+    flex: 60;
+}
+.loginForm li {
+    margin-bottom: 5px;
+}
+.loginForm .inTxt {
+    width: 100%;
+    height: 40px;
+    line-height: 38px;
+    padding-left: 5px;
+}
+.logBtn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-family: "NotoKrM";
+    background: #047fc4;
+    line-height: 35px;
+    color: #fff;
+    flex: 20;
+    height: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -5px;
+
+}
+.logout {
+    padding: 7px 0 0 0;
+    text-align: center;
+}
+.memberInfo li {
+    font-weight: 600;
+    font-size: 18px;
+    width: 100%;
+
+}
+.loginFormBorder {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+
+.logBtn span {
+    font-size: 20px;
+}
+.profileButton {
+    text-align: center;
+}
+.profileButton a {
+    font-size: 15px;
 }
