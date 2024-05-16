@@ -44,6 +44,10 @@
     border: 1px solid rgb(133, 140, 146);
     background-color: rgb(245, 245, 245);
 }
+.profileButton span {
+    margin-left: 10px;
+    margin-right: 10px;
+}
 #noticeBoard {
     width: 600px;
     height: 200px;

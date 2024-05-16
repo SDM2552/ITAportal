@@ -19,7 +19,7 @@ public class MyController {
     public String sample02(){
         return "sample2";
     }
-    @GetMapping("/sample33")
+    @GetMapping("/sample3")
     public String sample03(){ return "sample3"; }
 
 

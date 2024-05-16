@@ -306,6 +306,40 @@
 .tblForm .tblTab a:last-child:after {
     background: none;
 }
+.tbtns {
+    display: inline-block;
+    margin-right: 18px;
+    position: relative;
+    width: 80px;
+    border: 1px solid black;
+    background-color: #F5F5F5;
+    text-align: center;
+    line-height: 30px;
+
+}
+.essR {vertical-align:top;display:inline-block;position:relative;font-size:0;width:10px;height:10px;}
+.essR:before {display:block; content: ' \002A';position:absolute;top:0;left:3px;color:#e6000c;font-size:20px}
+.tblForm td .inTxt::placeholder {color:#505050;}
+.tblForm td .inTxt::-ms-input-placeholder { color: #505050; }
+.tblForm td .inTxt::-webkit-input-placeholder { color: #505050; }
+.tblForm td .inTxt::-moz-placeholder { color: #505050; }
+/* Button */
+.btnArea {text-align:center;font-size:16px;position:relative;display:table;width:80%;margin-top:30px;margin-bottom:40px;}
+.btnArea:after {display:block;clear:both;content:''}
+.btnArea.left{text-align:left}
+.btnArea.right {text-align:right}
+.btnArea .btns{display: inline-block; margin-left:10px; color: white; width: 100px;
+    height: 44px;
+    line-height: 44px; /* 버튼 내용을 수직 가운데 정렬하기 위한 선언 */
+    text-align: center; /* 버튼 내용을 수평 가운데 정렬하기 위한 선언 */
+    margin-right: 10px; /* 버튼들 사이의 간격 설정 */
+    text-decoration: none;}
+.btnArea .mBtns {margin-left:5px;}
+.btnArea .sbtns {margin-left:5px;}
+.btnArea.btnBt {margin-top:30px;padding-top:30px;border-top:1px solid #ccc;}
+/* Button - big */
+.btnSt01 {background:#123867} /* blue */
+.btnSt02 {background:#555555} /* gray */
 .mt10 {
     width: 80%;
 }

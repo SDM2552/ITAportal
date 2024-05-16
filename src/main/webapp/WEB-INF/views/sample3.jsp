@@ -14,7 +14,7 @@
 <body>
 <div class="wrap">
     <!-- header -->
-    <c:import url="layout/header.jsp" />
+    <c:import url="layout/header_anonymous.jsp" />
 
     <!-- contents -->
     <div class="mainArea">
@@ -41,8 +41,9 @@
                     </a>
                 </div>
                 <div class="profileButton">
-                    <a href="#">회원가입</a> |
-                    <a href="#">아이디/비밀번호 찾기</a>
+                    <a href="#">회원 가입</a>
+                    <span>|</span>
+                    <a href="#">아이디 / 비밀번호 찾기</a>
                 </div>
             </div>
             <div id="noticeBoard">

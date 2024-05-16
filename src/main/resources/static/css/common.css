@@ -64,7 +64,28 @@
     padding-left: 40px;
     padding-right: 50px;
 }
+input, textarea, select {margin:0; padding:0; font-family:'NotoKrD', dotum,'돋움',gulim,'굴림',Arial, AppleGothic, verdana, sans-serif, helvetica;font-size:15px;color:#000; vertical-align:middle}
+.disn {position:absolute; left:-10000px; top:auto; height:1px; overflow:hidden;}
+/* Input Text */
+/*label {color:#555;vertical-align:middle;}*/
+/*select {-webkit-appearance: none;-moz-appearance: none;appearance: none;border-radius: 0px;}*/
+.inputWrap {display:inline-block;}
+.inTxt{display:inline-block;vertical-align:top;width:98%;height:32px;padding:0 9px;line-height:32px;border:1px solid #bbbbbb;background:#fff;color:#555;font-size:14px;box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-webkit-appearance: none;-moz-appearance: none;appearance: none;border-radius: 0px;}
+.inTxt2{display:inline-block;vertical-align:top;width:90px;height:32px;padding:0 9px;line-height:32px;border:1px solid #bbbbbb;background:#fff;color:#555;font-size:14px;box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-webkit-appearance: none;-moz-appearance: none;appearance: none;border-radius: 0px;}
+.inTxt.disabled,
+.inTxt[disabled],
+.inTxt[readonly]{background:#ececec;color:#555;border:1px solid #dddddd;}
+select {
+    height: 32px;
+    padding: 0 9px;
+    line-height: 32px;
+    border: 1px solid #bbbbbb; /* 원하는 테두리 색상과 두께로 변경하세요 */
+    background: #fff;
+    color: #555;
+    font-size: 14px;
+    border-radius: 0;
 
+}
 .lnbNone #contents {
     width: auto;
     min-width: 100%;
@@ -226,7 +247,10 @@ body {
     clear: both;
     content: '';
 }
-
+/* radio */
+.radioWrap {}
+.radioWrap label {display:inline-block;margin-right:10px;margin-left:3px;}
+.radioWrap label input {margin-right:4px;vertical-align:middle;}
 /* Header */
 #header {
     position: relative;

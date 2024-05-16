@@ -3,12 +3,13 @@
 <div id="header">
     <!-- hgroup -->
     <div class="hgroup">
-        <h1 class="logo"><a href="/">국제무역아카데미 로고</a></h1>
+        <h1 class="logo"><a href="#">국제무역아카데미 로고</a></h1>
         <!-- headUtil -->
         <div class="headerF">
             <div class="util">
                 <!-- util -->
                 <a href="#">회원가입</a>
+                <a href="/loginRegister/adminregister">(임시)관리자회원가입</a>
                 <a href="#">로그인</a>
                 <a href="#">사이트맵</a>
                 이용자01 님 환영합니다. [로그아웃]
@@ -27,15 +28,13 @@
                         <a href="#">MY</a>
                     </li>
                     <li>
-                        <a href="#">강의 관리</a>
-                    </li>
+                        <a href="#">수업</a>
                     <li>
-                        <a href="/admin/studentList">회원 관리</a>
+                        <a href="/enrollment/form">수강 신청</a> <!-- 수강신청 페이지로 이동하는 링크 -->
                     </li>
                     <li>
                         <a href="#">공지사항</a>
                     </li>
-
                 </ul>
             </div>
         </div>
