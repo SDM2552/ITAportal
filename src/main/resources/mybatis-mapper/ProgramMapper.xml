@@ -48,8 +48,10 @@
         where id_pgm = #{idPgm}
     </delete>
 
+
     <!-- 강사용 강의리스트 조회 쿼리 @김봄이 -->
     <select id="selectPgmForProf" parameterType="integer" resultType="com.izo.itaportal.model.Program">
         SELECT * FROM program WHERE id_prof=#{idProf}
     </select>
+
 </mapper>

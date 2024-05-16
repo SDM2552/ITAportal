@@ -1,6 +1,7 @@
 package com.izo.itaportal.controller;
 
 //import com.izo.itaportal.service.AdminService;
+import com.izo.itaportal.service.MyPageService;
 import com.izo.itaportal.service.ProfessorService;
 import com.izo.itaportal.service.StudentService;
 import com.izo.itaportal.service.UserService;
@@ -15,18 +16,11 @@ public class MyPageController {
 
 
     @Autowired
-    private ProfessorService professorService;
-
-    @Autowired
-    private StudentService studentService;
-
-    @Autowired
-    private UserService userService;
+    private MyPageService myPageService;
 
     @GetMapping("/stuMyPage")
-    public String myPage(Model model) {
-
-        model.addAttribute("user", studentService.getAllStudents());
+    public String myPage(Model model,int idUser) {
+        model.addAttribute("user", myPageService.getStudentById(idUser));
         return "stuMyPage";
     }
 }
