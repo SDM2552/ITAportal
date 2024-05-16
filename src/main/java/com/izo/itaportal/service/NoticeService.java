@@ -1,8 +1,10 @@
 package com.izo.itaportal.service;
+
 import com.izo.itaportal.model.Notice;
 import com.izo.itaportal.repository.NoticeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
@@ -12,7 +14,7 @@ public class NoticeService {
     private NoticeRepository noticeRepository;
 
     public List<Notice> getAllNotices() {
-        return noticeRepository.findAllNotices();
+        return noticeRepository.findAllNotice();
     }
 
     public Notice getNoticeById(int idNotice) {
@@ -24,7 +26,6 @@ public class NoticeService {
     }
 
     public void updateNotice(int idNotice, Notice notice) {
-        // Notice 객체의 idNotice 필드를 설정합니다.
         notice.setIdNotice(idNotice);
         noticeRepository.updateNotice(notice);
     }
