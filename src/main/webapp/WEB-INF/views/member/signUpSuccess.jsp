@@ -15,11 +15,10 @@
     <div class="wrap">
         <!-- header -->
         <c:import url="/WEB-INF/views/layout/header.jsp" />
-
         <!-- container -->
         <div id="container" class="container responCont">
-
-
+            <!-- 왼쪽 네비바 -->
+            <c:import url="../layout/nav_signUp.jsp"/>
             <!-- contents -->
             <div id="contents" class="eduIntroCont">
                 <!-- location -->

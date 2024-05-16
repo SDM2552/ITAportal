@@ -46,6 +46,6 @@ public class AdminController {
     @PostMapping("/adminSignUp")
     public String registAdmin(@ModelAttribute SignUpRequest request){
         registrationService.registerUserAndAdmin(request);
-        return "signupSuccess";
+        return "redirect:/admin/registAdmin";
     }
 }
