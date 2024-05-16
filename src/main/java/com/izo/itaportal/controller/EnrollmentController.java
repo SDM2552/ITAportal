@@ -5,6 +5,7 @@ import com.izo.itaportal.service.EnrollmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,11 +18,16 @@ public class EnrollmentController {
 
     @GetMapping("/form")
     public String showEnrollmentForm() {
-        return "enrollment/enrollment";
+
+        return "/enrollment/enrollment";
+
     }
     @GetMapping("/enrollmentapplylist")
-    public String enrollmentapplylist() {
-        return "enrollment/enrollmentapplylist";
+
+    public String enrollmentapplylist(Model model) {
+        model.addAttribute("enrollments",enrollmentService.getAllEnrollments());
+        return "/enrollment/enrollmentapplylist";
+
     }
 
     @PostMapping("/apply")

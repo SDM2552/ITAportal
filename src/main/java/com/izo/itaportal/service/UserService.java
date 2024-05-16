@@ -26,6 +26,12 @@ public class UserService {
     }
 
     //교수 회원가입
+    @Transactional
+    public void insertProf(SignUpRequest signUpRequest){
+        userMapper.insertUser(signUpRequest);
+        String idUser = signUpRequest.getIdUser();
+        userMapper.insertProf(signUpRequest);
+    }
 
 
     //중복 가입 체크

@@ -9,5 +9,5 @@ import lombok.Data;
 @Data
 public class SyllabusRequest {
     private int idProf;
-    private int idProgram;
+    private int idPgm;
 }

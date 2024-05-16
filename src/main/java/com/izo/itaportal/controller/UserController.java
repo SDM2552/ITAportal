@@ -32,8 +32,9 @@ public class UserController {
             userService.insertStu(signUpRequest);
         } else if (signUpRequest.getRole().equals("prof")) {
             //교수일경우
+            userService.insertProf(signUpRequest);
         }
-        return "redirect:root";
+        return "member/signUpSuccess";
     }
 
 }
