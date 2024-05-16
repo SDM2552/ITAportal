@@ -53,7 +53,7 @@
                     <tr>
                         <th scope="row">아이디<span class="essR">필수</span></th>
                         <td colspan="3">
-                            <input type="text" class="inTxt rs-w100" id="m_szId" name="userId" maxlength="20"
+                            <input type="text" class="inTxt rs-w100" id="m_szId" name="loginId" maxlength="20"
                                    style="width:180px;ime-mode:disabled;" title="아이디 입력">
                             <label for="m_szId"><a href="javascript:DupWebIdCheck();" class="tbtns rs-mt5"
                                                    title="중복확인">중복확인</a></label>
@@ -126,17 +126,17 @@
                         <th scope="row"><label for="email_01">이메일</label><span class="essR">필수</span></th>
                         <td colspan="3" class="email">
                             <input type="hidden" name="m_szEmail" />
-                            <input type="text" class="inTxt rs-w40" id="email_01" name="email_01"
+                            <input type="text" class="inTxt rs-w40" id="email_01" name="email01"
                                    onFocus="checkLen(this.value);" onBlur="checkMail(this.value);"
                                    style="width:120px;ime-mode:disabled;" title="이메일 아이디 입력" />
                             <span class="dash"> @ </span>
                             <label for="email_02" class="disn">이메일 입력</label>
-                            <input type="text" class="inTxt rs-w45" id="email_02" name="email_02"
+                            <input type="text" class="inTxt rs-w45" id="email_02" name="email2"
                                    onFocus="checkLen(this.value);" onBlur="checkMail(this.value);"
                                    style="width:120px;ime-mode:disabled;" title="이메일 입력" />
                             <span class="selectboxWrap" style="width:180px">
                             <label for="email_03" class="disn">이메일 선택</label>
-                            <select class="select selectBg" id="email_03" name="email_03"
+                            <select class="select selectBg" id="email_03" name="email2"
                                     onchange="chgEmail(this.value, this.selectedIndex);" title="이메일 선택">
                                 <option value="">직접입력</option>
 
@@ -162,7 +162,7 @@
                     <tr>
                         <th scope="row"><label for="m_szPwdChk">주소</label></th>
                         <td colspan="3" class="line2"><input type="text" class="inTxt rs-w100"
-                                                             name="m_szPwdChk" maxlength="14" style="width:180px;ime-mode:disabled;" title="비밀번호 확인">
+                                                             name="address" maxlength="50" style="width:180px;ime-mode:disabled;" title="주소">
                         </td>
                     </tr>
                     </tr>
