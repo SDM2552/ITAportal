@@ -13,12 +13,12 @@
 <body>
 <div class="wrap">
     <!-- header -->
-    <c:import url="layout/header.jsp" />
+    <c:import url="../layout/header.jsp" />
 
     <!-- container -->
     <div id="container" class="container responCont">
         <!-- 왼쪽 네비바 -->
-        <c:import url="layout/nav_student.jsp" />
+        <c:import url="../layout/nav_stu_myPage.jsp" />
         <!-- contents -->
         <div id="contents" class="eduIntroCont">
             <!-- location -->
@@ -68,7 +68,7 @@
     </div>
 
     <!-- footer -->
-    <c:import url="layout/footer.jsp" />
+    <c:import url="../layout/footer.jsp" />
 </div>
 </body>
 
