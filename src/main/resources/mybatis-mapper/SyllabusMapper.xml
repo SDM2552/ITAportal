@@ -9,12 +9,12 @@
     (매주 달라질 수 있으므로)
     -->
 
-<mapper namespace="com.izo.itaportal.repository.SyllabusMapper">
+<mapper namespace="com.izo.itaportal.mapper.SyllabusMapper">
 
     <!-- 강의계획서 불러오기 (프로그램코드, 강사코드) -->
     <select id="selectSyllabus" parameterType="com.izo.itaportal.model.SyllabusRequest" resultType="com.izo.itaportal.model.Syllabus">
         SELECT course_overview, objective, teaching, book, evaluation, remarks
-        FROM syllabus WHERE id_prof=#{idProf} AND id_program={idProgram}
+        FROM syllabus WHERE id_prof=#{idProf} AND id_pgm=#{idPgm}
     </select>
 
     <!-- 강의계획서 입력 -->

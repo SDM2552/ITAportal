@@ -16,5 +16,7 @@ public interface ProgramRepository {
     public int update(Program program);
 
     public int delete(int idPgm);
+    //강사용 강의리스트 조회 쿼리 @김봄이
+    public List<Program> selectPgmForProf(int idProf);
 
 }
