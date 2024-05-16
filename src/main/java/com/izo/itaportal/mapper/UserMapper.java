@@ -12,4 +12,6 @@ public interface UserMapper {
     public void insertStu(SignUpRequest signUpRequest);
     //교수테이블 추가
     public void insertProf(SignUpRequest signUpRequest);
+
+    void insertAdmin(SignUpRequest request); // 관리자 등록
 }

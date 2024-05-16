@@ -1,7 +1,7 @@
 package com.izo.itaportal.controller;
 
-import com.izo.itaportal.dto.RegistrationRequest;
 import com.izo.itaportal.model.Professor;
+import com.izo.itaportal.model.SignUpRequest;
 import com.izo.itaportal.model.Student;
 import com.izo.itaportal.service.ProfessorService;
 import com.izo.itaportal.service.RegistrationService;
@@ -44,7 +44,7 @@ public class AdminController {
     }
 
     @PostMapping("/adminSignUp")
-    public String registAdmin(@ModelAttribute RegistrationRequest request){
+    public String registAdmin(@ModelAttribute SignUpRequest request){
         registrationService.registerUserAndAdmin(request);
         return "signupSuccess";
     }
