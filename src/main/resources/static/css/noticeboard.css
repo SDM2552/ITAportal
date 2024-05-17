@@ -1,39 +1,57 @@
 /* noticeboard.css */
-.dashboard-container, .noticeboard-container, .create-notice-container {
-    width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+
+/* 버튼 스타일 */
+.button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
 }
 
-ul {
-    list-style: none;
-    padding: 0;
+.button:hover {
+    background-color: #0056b3;
 }
 
-li {
-    padding: 8px;
-    margin-bottom: 5px;
-}
-
-a {
-    color: #007BFF;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-textarea {
+/* 입력 필드 스타일 */
+.input-field {
     width: 100%;
-    height: 100px;
+    padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
 }
 
-.form-group {
-    margin-bottom: 15px;
+/* 텍스트 영역 스타일 */
+.textarea-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    resize: vertical;
+}
+
+/* 폼 레이블 스타일 */
+.form-label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* 페이지 제목 스타일 */
+.page-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* 중앙 정렬 */
+.center {
+    text-align: center;
 }

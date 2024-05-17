@@ -28,4 +28,16 @@
         DELETE FROM notice WHERE id_notice = #{idNotice}
     </delete>
 
+    <!-- 공지사항 검색 기능 -->
+    <select id="searchNoticesByKeyword" resultType="com.izo.itaportal.model.Notice">
+        SELECT id_notice, title, content, created_date, views FROM notice
+        WHERE title LIKE CONCAT('%', #{keyword}, '%') OR content LIKE CONCAT('%', #{keyword}, '%')
+    </select>
+
+    <!-- 공지사항 페이지 이동 기능 -->
+    <select id="findNoticesByPage" resultType="com.izo.itaportal.model.Notice">
+        SELECT id_notice, title, content, created_date, views FROM notice
+        ORDER BY created_date DESC
+            LIMIT #{offset}, #{limit}
+    </select>
 </mapper>
