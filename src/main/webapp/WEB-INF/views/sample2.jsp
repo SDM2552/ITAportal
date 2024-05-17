@@ -27,16 +27,16 @@
                     <hr style="margin-top: 3px;">
                     <table>
                         <tr>
-                            <td>이메일</td>
-                            <td>email@mail.com</td>
+                            <td>이름</td>
+                            <td>${userInfo.name}</td>
                         </tr>
                         <tr>
-                            <td>소속</td>
-                            <td>중국무역학과</td>
+                            <td>직업</td>
+                            <td>${role}</td>
                         </tr>
                         <tr>
-                            <td>학기</td>
-                            <td>1학년&nbsp;1학기</td>
+                            <td>가입일</td>
+                            <td>${registDate}</td>
                         </tr>
                         <tr>
                             <td>학적상태 </td>
