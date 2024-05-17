@@ -44,15 +44,15 @@
                     </colgroup>
                     <tbody>
                     <tr>
-                        <th scope="col">구분</th>
+                        <th scope="col">분류</th>
                         <td colspan="3">
-                            신 중년맞춤프로그램
+                            무역 거래 실무
                         </td>
                     </tr>
                     <tr>
                         <th scope="col">프로그램명</th>
                         <td colspan="3">
-                            국외여행인솔자 자격증 과정
+                            통관 및 관세 실무 이해
                         </td>
                     </tr>
                     <tr>
@@ -86,9 +86,26 @@
                         </td>
                     </tr>
                     <tr>
+                        <th scope="col">강좌 구분</th>
+                        <td>
+                            오프라인
+                        </td>
                         <th scope="col">교육 장소</th>
+                        <td>
+                            이대캠퍼스 301호
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">신청 대상</th>
                         <td colspan="3">
-                            동서울대학교 평생교육원 130호
+                            통관 및 관세에 관심이 있는 재직자
+                        </td>
+                    </tr>
+                    <tr>
+                    <tr>
+                        <th scope="col">수강료</th>
+                        <td colspan="3">
+                            55,000원
                         </td>
                     </tr>
 

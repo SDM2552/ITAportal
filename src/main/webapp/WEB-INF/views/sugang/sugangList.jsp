@@ -35,33 +35,34 @@
             <!-- 본문 -->
             <form name="frm" id="frm" method="post">
                 <div class="boardSearch_g type">
-                    <span class="tit">강좌구분 </span>
+                    <span class="tit">분류 </span>
                     <select title="선택" id="lecIdxSel" name="lecIdxSel">
                         <option value="">전체</option>
-                        <option value="1">실무능력강화프로그램</option>
-                        <option value="2">신(新)문해프로그램</option>
-                        <option value="3">문화공감프로그램</option>
-                        <option value="4">신(新)중년맞춤프로그램</option>
-                        <option value="5">4차산업혁명 프로그램</option>
-                        <option value="6">지역사회 공헌 자율과제</option>
+                        <option value="1">국제통상정책</option>
+                        <option value="2">무역거래실무</option>
+                        <option value="3">디지털마케팅</option>
+                        <option value="4">공급망관리(SCM)</option>
+                        <option value="5">인적자원관리</option>
                     </select>
                     <span class="tit">프로그램명</span>
                     <input type="text" title="키워드 입력" placeholder="프로그램명을 입력하세요" id="proTitleSel" name="proTitleSel"
-                           value="" />
+                           value=""/>
                     <button class="btn_search">검색</button>
                 </div>
                 <div class="tblData mt10">
                     <table>
                         <colgroup>
-                            <col width="10%">
+                            <col width="5%">
+                            <col width="15%">
                             <col width="30%">
-                            <col width="30%">
+                            <col width="25%">
                             <col width="20%">
                             <col width="10%">
                         </colgroup>
                         <thead>
                         <tr>
                             <th scope="col">번호</th>
+                            <th scope="col">분류</th>
                             <th scope="col">프로그램명</th>
                             <th scope="col">교육 기간</th>
                             <th scope="col">수강신청 기간</th>
@@ -69,17 +70,33 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>2</td>
-                            <td>자유무역</td>
-                            <td>2024-11-09 ~ 2024-11-10</td>
-                            <td>2024-04-15 09:00<br>
-                                2024-11-01 18:00
-                            </td>
-                            <td>
-                                <button type="button" onclick="window.location.href = '/program/applyForm';">수강신청</button>
-                            </td>
-                        </tr>
+
+                        <c:forEach var="program" items="${programs}">
+                            <tr>
+                                <td>${program.idPgm}</td>
+                                <td>${program.cateName}</td>
+                                <td>${program.pgmName}</td>
+                                <td>${program.stDt} ~ ${program.endDt}</td>
+                                <td>${program.sugangStDt}<br>${program.sugangEndDt}</td>
+                                <td>
+                                    <button type="button" onclick="window.location.href = '/program/applyForm';">수강신청</button>
+                                </td>
+                            </tr>
+                        </c:forEach>
+
+                        <%--                        <tr>--%>
+<%--                            <td>1</td>--%>
+<%--                            <td>무역거래실무</td>--%>
+<%--                            <td>통관 및 관세 실무 이해</td>--%>
+<%--                            <td>2024-11-09 ~ 2024-11-10</td>--%>
+<%--                            <td>2024-04-15 09:00<br>--%>
+<%--                                2024-11-01 18:00--%>
+<%--                            </td>--%>
+<%--                            <td>--%>
+<%--                                <button type="button" onclick="window.location.href = '/program/applyForm';">수강신청--%>
+<%--                                </button>--%>
+<%--                            </td>--%>
+<%--                        </tr>--%>
                         </tbody>
                     </table>
                 </div>
