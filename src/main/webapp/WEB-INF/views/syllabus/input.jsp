@@ -109,15 +109,15 @@
                         <tbody>
                         <tr>
                             <th><label for="category">카테고리<br>(Category)</label></th>
-                            <td><div id="category"></div></td>
+                            <td><div id="category">${programinfo.cateName}</div></td>
                             <th><label for="pgmName">교과목명<br>(Program Title)</label></th>
-                            <td><div id="pgmName"></div></td>
+                            <td><div id="pgmName">${programinfo.pgmName}</div></td>
                         </tr>
                         <tr>
                             <th><label for="classRoom">수업시간/강의실<br>(Class Time/Class Room)</label></th>
                             <td><div id="classRoom"></div></td>
                             <th><label for="programDuration">강의기간<br>(Program Duration)</label></th>
-                            <td><div id="programDuration"></div></td>
+                            <td><div id="programDuration">${programinfo.stDt}~${programinfo.endDt}</div></td>
                         </tr>
                         </tbody>
                     </table>
