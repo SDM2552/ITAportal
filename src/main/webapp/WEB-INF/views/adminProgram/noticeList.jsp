@@ -44,6 +44,7 @@
                         <th>제목</th>
                         <th>내용</th>
                         <th>게시 날짜</th>
+                        <th>조회수</th>
                         <th>수정</th>
                         <th>삭제</th>
                     </tr>
@@ -55,6 +56,7 @@
                             <td><a href="/notice/view/${notice.idNotice}">${notice.title}</a></td>
                             <td><a href="/notice/view/${notice.idNotice}">${notice.content}</a></td>
                             <td>${notice.createdDate}</td>
+                            <td>${notice.views}</td>
                             <td><a href="/notice/edit/${notice.idNotice}">수정</a></td>
                             <td><a href="/notice/delete/${notice.idNotice}" onclick="return confirm('정말 삭제하시겠습니까?');">삭제</a></td>
                         </tr>
