@@ -3,6 +3,7 @@ package com.izo.itaportal.controller;
 import com.izo.itaportal.model.LoginRequest;
 import com.izo.itaportal.model.LoginResponse;
 import com.izo.itaportal.model.SignUpRequest;
+import com.izo.itaportal.model.User;
 import com.izo.itaportal.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -56,6 +57,15 @@ public class UserController {
 
         return user;
     }
+
+    @GetMapping("logined")
+    public String logined(Model model, HttpSession session){
+        LoginResponse user = (LoginResponse) session.getAttribute("loginUser");
+        model.addAttribute("loginUser", user);
+        return "redirect:/sample2";
+    }
+
+
 
     //로그아웃
     @PostMapping("/logout")
