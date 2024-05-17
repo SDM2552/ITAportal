@@ -15,7 +15,7 @@
     <!-- 공지사항 신규 추가 -->
     <insert id="insertNotice" parameterType="com.izo.itaportal.model.Notice">
         INSERT INTO notice (title, content, created_date, views)
-        VALUES (#{title}, #{content}, #{createdDate}, #{views})
+        VALUES (#{title}, #{content}, NOW(), #{views})
     </insert>
 
     <!-- 공지사항 수정 -->

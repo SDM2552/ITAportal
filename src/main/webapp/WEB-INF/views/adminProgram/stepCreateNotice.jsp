@@ -17,10 +17,10 @@
     <textarea id="content" name="content">${notice.content}</textarea>
     <br />
     <label for="createdDate">작성 날짜:</label>
-    <input type="text" id="createdDate" name="createdDate" value="${notice.createdDate}" />
+    <span id="createdDate">${notice.createdDate}</span>
     <br />
     <label for="views">조회수:</label>
-    <input type="text" id="views" name="views" value="${notice.views}" readonly />
+    <span id="views">${notice.views}</span>
     <br />
     <button type="submit">저장</button>
 </form>

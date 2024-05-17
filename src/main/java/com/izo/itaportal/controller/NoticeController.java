@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Controller
@@ -40,14 +42,16 @@ public class NoticeController {
     public String saveNotice(@ModelAttribute Notice notice) {
         if (notice.getIdNotice() != 0) {  // 0이 아닌 경우 업데이트
             Notice existingNotice = noticeService.getNoticeById(notice.getIdNotice());
+            notice.setCreatedDate(existingNotice.getCreatedDate());  // 기존 작성 날짜 유지
             notice.setViews(existingNotice.getViews());  // 기존 조회수 유지
             noticeService.updateNotice(notice.getIdNotice(), notice);
         } else {  // 0인 경우 새로 생성
+            String createdDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+            notice.setCreatedDate(createdDate);
             noticeService.createNotice(notice);
         }
         return "redirect:/notice/noticeList";
     }
-
 
     @GetMapping("/edit/{idNotice}")
     public ModelAndView showEditForm(@PathVariable int idNotice) {

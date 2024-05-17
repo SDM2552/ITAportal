@@ -22,13 +22,11 @@ public class NoticeService {
     }
 
     public void createNotice(Notice notice) {
+        notice.setViews(0);  // 초기 조회수 설정
         noticeRepository.insertNotice(notice);
     }
 
     public void updateNotice(int idNotice, Notice notice) {
-        Notice existingNotice = noticeRepository.findNoticeById(idNotice);
-        notice.setViews(existingNotice.getViews());  // 기존 조회수 유지
-        notice.setIdNotice(idNotice);
         noticeRepository.updateNotice(notice);
     }
 
@@ -36,15 +34,13 @@ public class NoticeService {
         noticeRepository.deleteNotice(idNotice);
     }
 
-    // 공지사항 검색 서비스 추가
     public List<Notice> searchNoticesByKeyword(String keyword) {
         return noticeRepository.searchNoticesByKeyword(keyword);
     }
 
-    // 공지사항 페이지 이동 서비스 추가
     public List<Notice> getNoticesByPage(int pageNum) {
-        int offset = (pageNum - 1) * 10;
-        int limit = 10;
+        int limit = 10;  // 페이지당 10개 항목 표시
+        int offset = (pageNum - 1) * limit;
         return noticeRepository.findNoticesByPage(offset, limit);
     }
 }
