@@ -1,5 +1,6 @@
 package com.izo.itaportal.service;
 
+import com.izo.itaportal.model.ProgramView;
 import com.izo.itaportal.model.Syllabus;
 import com.izo.itaportal.model.SyllabusRequest;
 import com.izo.itaportal.repository.SyllabusRepository;
@@ -17,6 +18,11 @@ public class SyllabusService {
 
     @Autowired
     SyllabusRepository syllabusRepository;
+
+    //강의계획서 CRUD를 위한 수업정보 불러오기
+    public ProgramView selectJoinPgmByidPgm(int idPgm){
+        return syllabusRepository.selectJoinPgmByidPgm(idPgm);
+    }
 
     //강의계획서 불러오기
     public Syllabus selectSyllabus(SyllabusRequest syllabusRequest){

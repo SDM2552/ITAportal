@@ -20,7 +20,6 @@ public class ProfController {
 
     private final SyllabusService syllabusService;
     private final ProfessorService professorService;
-    private final ProgramService programService;
 
     // 교수별 강의리스트 조회
     // 로그인 구현 후 @RequestParam("idProf") int idProf 넣어야함
@@ -35,9 +34,10 @@ public class ProfController {
     // 강의계획서 입력폼
     // 로그인 구현 후 SyllabusRequest 를 커맨드객체로 이용할 것
     @GetMapping("/syllabus")
-    public String syllabus(@RequestParam int idPgm, Model model){
+    public String syllabus(@RequestParam("idPgm") int idPgm, Model model){
+        System.out.println(idPgm);
         SyllabusRequest req = SyllabusRequest.builder().idPgm(idPgm).idProf(1).build();
-        model.addAttribute("programInfo", programService.selectCategoryById(idPgm));
+        model.addAttribute("programInfo", syllabusService.selectJoinPgmByidPgm(idPgm));
         model.addAttribute("syllabus", syllabusService.selectSyllabus(req));
         return "syllabus/input";
     }
