@@ -2,7 +2,7 @@ package com.izo.itaportal.service;
 
 import com.izo.itaportal.model.Syllabus;
 import com.izo.itaportal.model.SyllabusRequest;
-import com.izo.itaportal.mapper.SyllabusMapper;
+import com.izo.itaportal.repository.SyllabusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,21 +16,21 @@ import org.springframework.stereotype.Service;
 public class SyllabusService {
 
     @Autowired
-    SyllabusMapper syllabusMapper;
+    SyllabusRepository syllabusRepository;
 
     //강의계획서 불러오기
     public Syllabus selectSyllabus(SyllabusRequest syllabusRequest){
-        return syllabusMapper.selectSyllabus(syllabusRequest);
+        return syllabusRepository.selectSyllabus(syllabusRequest);
     }
 
     //강의계획서 입력
     public void insertSyllabus(Syllabus syllabus){
-        syllabusMapper.insertSyllabus(syllabus);
+        syllabusRepository.insertSyllabus(syllabus);
     }
 
     //강의계획서 수정
     public void updateSyllabus(Syllabus syllabus){
-        syllabusMapper.updateSyllabus(syllabus);
+        syllabusRepository.updateSyllabus(syllabus);
     }
 
 }
