@@ -7,7 +7,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <script src="https://kit.fontawesome.com/93205cc57d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <title>마이페이지</title>
 </head>
 <body>
@@ -31,60 +33,87 @@
 
             <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>회원정보</h3>
             <table class="table table-bordered">
-<%--                <tr>--%>
-<%--                    <th>아이디</th>--%>
-<%--                    <td th:text="${user.idUser}"></td>--%>
-<%--                </tr>--%>
-<%--                <tr>--%>
-<%--                    <th>비밀번호</th>--%>
-<%--                    <td th:text="${user.password}"></td>--%>
-<%--                </tr>--%>
-    <tr>
-        <th>이름</th>
-        <td><c:out value="${user.name}" /></td>
-    </tr>
-    <tr>
-        <th>생년월일</th>
-        <td>
-            <form action="/updateStu" method="post">
-                <input type="date" name="birth" value="${user.birth}" />
-                <button type="submit">수정</button>
-            </form>
-        </td>
-    </tr>
-    <tr>
-        <th>휴대전화</th>
-        <td>
-            <form action="/updateUserTel" method="post">
-                <input type="text" name="tel" value="${user.tel}" />
-                <button type="submit">수정</button>
-            </form>
-        </td>
-    </tr>
-    <tr>
-        <th>주소</th>
-        <td>
-            <form action="/updateUserAddress" method="post">
-                <input type="text" name="address" value="${user.address}" />
-                <button type="submit">수정</button>
-            </form>
-        </td>
-    </tr>
-    <tr>
-        <th>성별</th>
-        <td><c:out value="${user.gender == 'M' ? '남성' : '여성'}" /></td>
-    </tr>
+                <!-- Other fields -->
+                <tr>
+                    <th>이름</th>
+                    <td><c:out value="${user.name}" /></td>
+                </tr>
+                <tr>
+                    <th>생년월일</th>
+                    <td>
+                        <form id="updateForm1" action="/user/updateInfo" method="post">
+                            <input type="date" name="birth" value="${user.birth}" />
+                            <input type="hidden" name="idUser" value="${user.idUser}" />
+                            <input type="hidden" name="tel" value="${user.tel}" />
+                            <input type="hidden" name="address" value="${user.address}" />
+                            <button type="button" class="btn btn-primary" onclick="showModal('updateForm1')">수정</button>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <th>휴대전화</th>
+                    <td>
+                        <form id="updateForm2" action="/user/updateInfo" method="post">
+                            <input type="text" name="tel" value="${user.tel}" />
+                            <input type="hidden" name="idUser" value="${user.idUser}" />
+                            <input type="hidden" name="address" value="${user.address}" />
+                            <input type="hidden" name="birth" value="${user.birth}" />
+                            <button type="button" class="btn btn-primary" onclick="showModal('updateForm2')">수정</button>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <th>주소</th>
+                    <td>
+                        <form id="updateForm3" action="/user/updateInfo" method="post">
+                            <input type="text" name="address" value="${user.address}" />
+                            <input type="hidden" name="idUser" value="${user.idUser}" />
+                            <input type="hidden" name="birth" value="${user.birth}" />
+                            <input type="hidden" name="tel" value="${user.tel}" />
+                            <button type="button" class="btn btn-primary" onclick="showModal('updateForm3')">수정</button>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <th>성별</th>
+                    <td><c:out value="${user.gender == 'M' ? '남성' : '여성'}" /></td>
+                </tr>
             </table>
-            <!-- 본문 -->
-
-            <!-- 본문 끝 -->
         </div>
-        <!-- //contents -->
+    </div>
+    <c:import url="../layout/footer.jsp" />
+
+    <!-- Modal -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">정보 수정</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    정보를 변경하시겠습니까?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+                    <button type="button" class="btn btn-primary" id="confirmBtn">확인</button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- footer -->
-    <c:import url="../layout/footer.jsp" />
+    <script>
+        function showModal(formId) {
+            $('#confirmBtn').attr('onclick', 'submitForm("' + formId + '")');
+            $('#confirmationModal').modal('show');
+        }
+
+        function submitForm(formId) {
+            document.getElementById(formId).submit();
+        }
+    </script>
 </div>
 </body>
-
 </html>

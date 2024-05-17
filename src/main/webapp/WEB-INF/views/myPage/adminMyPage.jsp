@@ -31,49 +31,59 @@
 
             <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>회원정보</h3>
             <table class="table table-bordered">
-<%--                <tr>--%>
-<%--                    <th>아이디</th>--%>
-<%--                    <td th:text="${user.idUser}"></td>--%>
-<%--                </tr>--%>
-<%--                <tr>--%>
-<%--                    <th>비밀번호</th>--%>
-<%--                    <td th:text="${user.password}"></td>--%>
-<%--                </tr>--%>
-    <tr>
-        <th>이름</th>
-        <td><c:out value="${user.name}" /></td>
-    </tr>
-    <tr>
-        <th>생년월일</th>
-        <td>
-            <form action="/updateStu" method="post">
-                <input type="date" name="birth" value="${user.birth}" />
-                <button type="submit">수정</button>
-            </form>
-        </td>
-    </tr>
-    <tr>
-        <th>휴대전화</th>
-        <td>
-            <form action="/updateUserTel" method="post">
-                <input type="text" name="tel" value="${user.tel}" />
-                <button type="submit">수정</button>
-            </form>
-        </td>
-    </tr>
-    <tr>
-        <th>주소</th>
-        <td>
-            <form action="/updateUserAddress" method="post">
-                <input type="text" name="address" value="${user.address}" />
-                <button type="submit">수정</button>
-            </form>
-        </td>
-    </tr>
-    <tr>
-        <th>성별</th>
-        <td><c:out value="${user.gender == 'M' ? '남성' : '여성'}" /></td>
-    </tr>
+                <%--                <tr>--%>
+                <%--                    <th>아이디</th>--%>
+                <%--                    <td th:text="${user.idUser}"></td>--%>
+                <%--                </tr>--%>
+                <%--                <tr>--%>
+                <%--                    <th>비밀번호</th>--%>
+                <%--                    <td th:text="${user.password}"></td>--%>
+                <%--                </tr>--%>
+                <tr>
+                    <th>이름</th>
+                    <td><c:out value="${user.name}" /></td>
+                </tr>
+                <tr>
+                    <th>생년월일</th>
+                    <td>
+                        <form action="/user/updateInfo" method="post">
+                            <input type="date" name="birth" value="${user.birth}" />
+                            <input type="hidden" name="idUser" value="${user.idUser}" />
+                            <input type="hidden" name="tel" value="${user.tel}" />
+                            <input type="hidden" name="address" value="${user.address}" />
+                            <button type="submit">수정</button>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <th>휴대전화</th>
+                    <td>
+                        <form action="/user/updateInfo" method="post">
+                            <input type="text" name="tel" value="${user.tel}" />
+                            <input type="hidden" name="idUser" value="${user.idUser}" />
+                            <input type="hidden" name="address" value="${user.address}" />
+                            <input type="hidden" name="birth" value="${user.birth}" />
+                            <button type="submit">수정</button>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <th>주소</th>
+                    <td>
+                        <form action="/user/updateInfo" method="post">
+                            <input type="text" name="address" value="${user.address}" />
+                            <input type="hidden" name="idUser" value="${user.idUser}" />
+                            <input type="hidden" name="birth" value="${user.birth}" />
+                            <input type="hidden" name="tel" value="${user.tel}" />
+                            <button type="submit">수정</button>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <th>성별</th>
+                    <td><c:out value="${user.gender == 'M' ? '남성' : '여성'}" /></td>
+                </tr>
+
             </table>
             <!-- 본문 -->
 

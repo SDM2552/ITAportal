@@ -28,11 +28,10 @@
     </select>
 
 
-    <update id="updateStudent">
+    <update id="updateStudent" >
         update student
         set address = #{address},
             birth = #{birth},
-            name = #{name},
             tel = #{tel}
         where id_user = #{idUser}
     </update>
@@ -41,7 +40,6 @@
         update professor
         set address = #{address},
             birth = #{birth},
-            name = #{name},
             tel = #{tel}
         where id_user = #{idUser}
     </update>
@@ -50,7 +48,6 @@
         update admin
         set address = #{address},
             birth = #{birth},
-            name = #{name},
             tel = #{tel}
         where id_user = #{idUser}
     </update>
