@@ -95,7 +95,7 @@
                     </tbody>
                 </table>
             </div>
-            <br><br><br><br><br><br>
+            <br><br><br><br><br>
             <h4 class="subTit">신청자 정보</h4>
             <div class="coment_form mt10">
                 <p>* 주소, 휴대폰번호, 이메일 정보를 변경하시려면 <strong>마이페이지 > 회원정보변경</strong>에서 변경하시면 됩니다</p>
@@ -111,51 +111,27 @@
                     </colgroup>
                     <tbody>
                     <tr>
-                        <th scope="col">구분</th>
+                        <th scope="col">신청자명</th>
                         <td colspan="3">
-                            신 중년맞춤프로그램
+                            김학생
                         </td>
                     </tr>
                     <tr>
-                        <th scope="col">프로그램명</th>
+                        <th scope="col">주소</th>
                         <td colspan="3">
-                            국외여행인솔자 자격증 과정
+                            서울시 성남구
                         </td>
                     </tr>
                     <tr>
-                        <th scope="col">교육기간</th>
-                        <td>
-                            2024-11-09 ~ 2024-11-10
-                        </td>
-                        <th scope="col">강의 요일/시간</th>
-                        <td>
-                            토,일/09:00~18:00
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="col">총시수</th>
-                        <td>
-                            15시간
-                        </td>
-                        <th scope="col">교육일수</th>
-                        <td>
-                            2일
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="col">모집 정원</th>
-                        <td>
-                            10명
-                        </td>
-                        <th scope="col">일일시수</th>
-                        <td>
-                            8시간
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="col">교육 장소</th>
+                        <th scope="col">휴대폰번호</th>
                         <td colspan="3">
-                            동서울대학교 평생교육원 130호
+                            010-1234-1234
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">이메일</th>
+                        <td colspan="3">
+                            asd@naver.com
                         </td>
                     </tr>
 

@@ -5,8 +5,8 @@
         <ul>
             <li><a href="/admin/studentList">학생 명단 조회</a></li>
             <li><a href="/admin/professorList">강사 명단 조회</a></li>
-            <li><a href="#">관리자 명단 조회</a></li>
-            <li><a href="#">강사 등록</a></li>
+            <li><a href="/admin/adminList">관리자 명단 조회</a></li>
+            <li><a href="/admin/registProfessor">강사 등록</a></li>
             <li><a href="/admin/registAdmin">관리자 등록</a></li>
         </ul>
     </div>

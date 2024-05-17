@@ -4,15 +4,11 @@
 <html lang="ko">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/common.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/noticeList.css">
+    <script src="https://kit.fontawesome.com/93205cc57d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="../css/common.css">
+    <link rel="stylesheet" type="text/css" href="../css/table.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>공지사항 목록</title>
+    <title>샘플 페이지</title>
 </head>
 <body>
 <div class="wrap">
@@ -22,55 +18,60 @@
     <!-- container -->
     <div id="container" class="container responCont">
         <!-- 왼쪽 네비바 -->
-        <c:import url="../layout/nav_admin_program.jsp" />
+        <c:import url="../layout/nav_admin_notice.jsp" />
         <!-- contents -->
         <div id="contents" class="noticesListCont">
             <!-- location -->
             <div class="location">
                 <span class="home" title="홈">홈으로 이동></span>
                 <span>관리자 페이지></span>
-                <span class="on">공지사항 목록</span>
+                <span class="on">공지사항</span>
             </div>
             <!-- //location -->
 
-            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>공지사항 목록</h3>
+            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>공지사항</h3>
 
             <!-- 본문 -->
-            <div class="notice">
-                <table class="category-table">
+            <div class="tblData mt10">
+                <table>
                     <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>제목</th>
-                        <th>내용</th>
-                        <th>게시 날짜</th>
-                        <th>수정</th>
-                        <th>삭제</th>
-                    </tr>
+                    <colgroup>
+                        <col width="10%">
+                        <col width="70%">
+                        <col width="20%">
+                        <col width="10%">
+                    </colgroup>
+
                     </thead>
                     <tbody>
+                    <tr>
+                        <th>글 번호</th>
+                        <th>제목</th>
+                        <th>등록일</th>
+                        <th>조회수</th>
+                    </tr>
                     <c:forEach var="notice" items="${notices}">
                         <tr>
                             <td>${notice.idNotice}</td>
-                            <td><a href="/notice/view/${notice.idNotice}">${notice.title}</a></td>
-                            <td><a href="/notice/view/${notice.idNotice}">${notice.content}</a></td>
+                            <td id="noticetitle"><a href="/notice/view/${notice.idNotice}">${notice.title}</a></td>
                             <td>${notice.createdDate}</td>
-                            <td><a href="/notice/edit/${notice.idNotice}">수정</a></td>
-                            <td><a href="/notice/delete/${notice.idNotice}" onclick="return confirm('정말 삭제하시겠습니까?');">삭제</a></td>
+                            <td>${notice.views}</td>
+
                         </tr>
                     </c:forEach>
                     </tbody>
                 </table>
-                <a href="/notice/create">
-                    <button style="float: right;">공지사항 작성</button>
-                </a>
 
-                <!-- 페이지네이션 -->
-                <div class="pagination">
-                    <c:forEach begin="1" end="${totalPages}" var="i">
-                        <a href="/notice/page/${i}" class="${currentPage == i ? 'active' : ''}">${i}</a>
-                    </c:forEach>
                 </div>
+            <a href="/notice/edit/${notice.idNotice}">수정</a>
+            <a href="/notice/delete/${notice.idNotice}" onclick="return confirm('정말 삭제하시겠습니까?');">삭제</a>
+            <a href="/notice/create"><button>공지사항 작성</button></a>
+
+            <!-- 페이지네이션 -->
+            <div class="pagination">
+                <c:forEach begin="1" end="${totalPages}" var="i">
+                    <a href="/notice/page/${i}" class="${currentPage == i ? 'active' : ''}">${i}</a>
+                </c:forEach>
             </div>
             <!-- 프로그램 목록 -->
             <!-- 본문 끝 -->

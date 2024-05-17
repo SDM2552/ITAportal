@@ -15,13 +15,17 @@ public class RegistrationService {
     @Autowired
     private UserRepository userRepository;
 
-    @Transactional
+    @Transactional // 강사 회원 등록
+    public void registerUserAndProfessor(SignUpRequest request){
+        System.out.println("체크"+request.toString());
+        userRepository.insertUser(request);
+        userRepository.insertProf(request);
+    }
+    @Transactional //관리자 회원 등록
     public void registerUserAndAdmin(SignUpRequest request){
         System.out.println("체크"+request.toString());
-
-
         userRepository.insertUser(request);
-
         userRepository.insertAdmin(request);
     }
+
 }

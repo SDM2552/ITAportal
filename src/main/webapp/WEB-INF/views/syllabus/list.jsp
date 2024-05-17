@@ -18,8 +18,7 @@
     <!-- container -->
     <div id="container" class="container responCont">
         <!-- 왼쪽 네비바 -->
-        <!-- @@@@@@@@@@@@@@@@강사용으로 수정해야됨!@@@@@@@@@@@@@@@@@@@@ -->
-        <c:import url="/WEB-INF/views/layout/nav_student.jsp" />
+        <c:import url="/WEB-INF/views/layout/nav_prof_program.jsp"/>
         <!-- contents -->
         <div id="contents" class="eduIntroCont">
             <!-- location -->
