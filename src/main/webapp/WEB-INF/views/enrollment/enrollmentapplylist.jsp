@@ -42,7 +42,7 @@
             <!-- 본문 -->
             <c:forEach items="${enrollments}" var="enrollment">
                 <tr>
-                    <td>${enrollment.pgmName}</td>  <!-- EL 표현식 수정 -->
+                    <td><a href="enrollment?idEnrollment=${enrollment.idEnrollment}"/> ${enrollment.pgmName}</td>  <!-- EL 표현식 수정 -->
                     <td>${enrollment.stDt}</td>      <!-- EL 표현식 수정 -->
                     <td>${enrollment.status}</td>   <!-- EL 표현식 수정 -->
                 </tr>

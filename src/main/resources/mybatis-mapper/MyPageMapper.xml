@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.izo.itaportal.repository.MyPageRepository">
+    <select id="selectStudent" resultType="com.izo.itaportal.model.Student">
+        select * from student
+    </select>
+
+    <select id="selectProf" resultType="com.izo.itaportal.model.Professor">
+        select * from professor
+    </select>
+
+    <select id="selectAdmin" resultType="com.izo.itaportal.model.Admin">
+        select * from admin
+    </select>
+
+
+    <select id="selectStudentById" resultType="com.izo.itaportal.model.Student">
+        select id_student, address, birth, gender, id_user, name, tel from student where id_user=#{idUser}
+    </select>
+
+    <select id="selectProfById" resultType="com.izo.itaportal.model.Professor">
+        select id_prof, address, birth, gender, id_user, name, tel from professor where id_user=#{idUser}
+    </select>
+
+    <select id="selectAdminById" resultType="com.izo.itaportal.model.Admin">
+        select id_admin, address, birth, gender, id_user, name, tel from admin where id_user=#{idUser}
+    </select>
+
+
+    <update id="updateStudent">
+        update student
+        set address = #{address},
+            birth = #{birth},
+            name = #{name},
+            tel = #{tel}
+        where id_user = #{idUser}
+    </update>
+
+    <update id="updateProf">
+        update professor
+        set address = #{address},
+            birth = #{birth},
+            name = #{name},
+            tel = #{tel}
+        where id_user = #{idUser}
+    </update>
+
+    <update id="updateAdmin">
+        update admin
+        set address = #{address},
+            birth = #{birth},
+            name = #{name},
+            tel = #{tel}
+        where id_user = #{idUser}
+    </update>
+
+    <delete id="deleteStudent" parameterType="int">
+        delete from student
+        where id_user = #{idUser}
+    </delete>
+
+    <delete id="deleteProf" parameterType="int">
+        delete from professor
+        where id_user = #{idUser}
+    </delete>
+
+    <delete id="deleteAdmin" parameterType="int">
+        delete from admin
+        where id_user = #{idUser}
+    </delete>
+</mapper>

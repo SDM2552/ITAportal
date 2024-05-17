@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<link rel="stylesheet" type="text/css" href="css/common.css">
 <div class="leftWrap" id="lnb">
-    <h2 class="ltit">회원 관리</h2>
+    <h2 class="ltit">마이페이지</h2>
     <div class="lnbArea">
         <ul>
-            <li><a href="/admin/studentList">학생 명단 조회</a></li>
-            <li><a href="/admin/professorList">강사 명단 조회</a></li>
+            <li><a href="#">학생 명단 조회</a></li>
+            <li><a href="#">강사 명단 조회</a></li>
             <li><a href="#">관리자 명단 조회</a></li>
-            <li><a href="#">강사 등록</a></li>
-            <li><a href="/admin/registAdmin">관리자 등록</a></li>
+
         </ul>
     </div>
 </div>

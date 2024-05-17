@@ -26,6 +26,12 @@
         INSERT INTO professor (name, birth, tel, gender, address, id_user)
         VALUES (#{name}, #{birth}, #{tel}, #{gender}, #{address}, #{idUser})
     </insert>
-
+  
+       <!-- 관리자 테이블 추가 (가입) -->
+    <insert id="insertAdmin" parameterType="com.izo.itaportal.model.SignUpRequest">
+        INSERT INTO Admin (name, birth, tel, address, gender, id_user)
+        VALUES (#{name}, #{birth}, #{tel}, #{address}, #{gender}, #{idUser}
+    </insert>
+    
 
 </mapper>

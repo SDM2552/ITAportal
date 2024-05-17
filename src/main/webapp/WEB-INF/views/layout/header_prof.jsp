@@ -24,13 +24,10 @@
             <div id="gnb">
                 <ul class="gnbDep1">
                     <li>
-                        <a href="#">MY</a>
+                        <a href="#">마이페이지</a>
                     </li>
                     <li>
-                        <a href="#">강의 관리</a>
-                    </li>
-                    <li>
-                        <a href="/admin/studentList">회원 관리</a>
+                        <a href="/prof/list">강의 관리</a>
                     </li>
                     <li>
                         <a href="#">공지사항</a>
