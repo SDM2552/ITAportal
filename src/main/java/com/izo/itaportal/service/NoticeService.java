@@ -43,4 +43,7 @@ public class NoticeService {
         int offset = (pageNum - 1) * limit;
         return noticeRepository.findNoticesByPage(offset, limit);
     }
+    public int getTotalNotices() {
+        return noticeRepository.countAllNotices(); // 총 공지사항 수를 가져오는 메서드
+    }
 }
