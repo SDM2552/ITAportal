@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Comparator;
 import java.util.List;
 
 @Controller
@@ -26,6 +27,8 @@ public class NoticeController {
     @GetMapping("/noticeList")
     public ModelAndView showNoticeList() {
         List<Notice> notices = noticeService.getAllNotices();
+        Comparator<Notice> comparator = Comparator.comparing(Notice::getIdNotice).reversed();
+        notices.sort(comparator);
         ModelAndView modelAndView = new ModelAndView("adminProgram/noticeList");
         modelAndView.addObject("notices", notices);
         return modelAndView;

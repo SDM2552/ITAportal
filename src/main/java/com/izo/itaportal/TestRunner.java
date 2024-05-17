@@ -70,6 +70,20 @@ public class TestRunner implements ApplicationRunner{
         //enrollment
         jdbcTemplate.execute("INSERT INTO enrollment(id_enrollment, id_cate, id_program, id_student, pgm_name, st_dt, status)" +
                 "VALUES ('100','1','2','3','무역을합시다','2024-05-16','보류 중')");
+
+        //공지사항 글
+        jdbcTemplate.execute("INSERT INTO notice(title, content, created_date, views)" +
+                "VALUES ('[무역실무기초] 개강일자 변경 안내','무역실무기초 1차 강의가 본교 사정으로 인하여 개강일자가 변경 됩니다.\n" +
+                "\n" +
+                "일정에 참고하시기 바랍니다\n" +
+                "\n" +
+                " \n" +
+                "\n" +
+                "- 교육일정: 5월25일(토) ~ 7월 14일(일)\n" +
+                "\n" +
+                "- 접수일정: 4월22일(월) ~ 5월 3일(금)',now(),0)");
+        jdbcTemplate.execute("INSERT INTO notice(title, content, created_date, views)" +
+                "VALUES ('공지사항 제목2','공지사항 내용2',now(),0)");
     }
 
 }
