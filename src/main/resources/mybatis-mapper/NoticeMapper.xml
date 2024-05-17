@@ -40,4 +40,7 @@
         ORDER BY created_date DESC
             LIMIT #{offset}, #{limit}
     </select>
+    <select id="countAllNotices" resultType="int">
+        SELECT COUNT(*) FROM notice
+    </select>
 </mapper>

@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,10 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
-    <!-- css 반응형 스타일 적용 -->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/common.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/noticeList.css">
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>공지사항 목록</title>
 </head>
@@ -67,6 +64,13 @@
                 <a href="/notice/create">
                     <button style="float: right;">공지사항 작성</button>
                 </a>
+
+                <!-- 페이지네이션 -->
+                <div class="pagination">
+                    <c:forEach begin="1" end="${totalPages}" var="i">
+                        <a href="/notice/page/${i}" class="${currentPage == i ? 'active' : ''}">${i}</a>
+                    </c:forEach>
+                </div>
             </div>
             <!-- 프로그램 목록 -->
             <!-- 본문 끝 -->
@@ -78,5 +82,4 @@
     <c:import url="../layout/footer.jsp"/>
 </div>
 </body>
-
 </html>

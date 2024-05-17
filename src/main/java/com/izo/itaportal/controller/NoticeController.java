@@ -86,11 +86,25 @@ public class NoticeController {
     }
 
     // 공지사항 페이지 이동 기능 추가
+//    @GetMapping("/page/{pageNum}")
+//    public ModelAndView paginateNotices(@PathVariable int pageNum) {
+//        List<Notice> notices = noticeService.getNoticesByPage(pageNum);
+//        ModelAndView modelAndView = new ModelAndView("adminProgram/noticeList");
+//        modelAndView.addObject("notices", notices);
+//        return modelAndView;
+//    }
+    // 공지사항 페이지 이동 기능 추가
     @GetMapping("/page/{pageNum}")
     public ModelAndView paginateNotices(@PathVariable int pageNum) {
         List<Notice> notices = noticeService.getNoticesByPage(pageNum);
+        int totalNotices = noticeService.getTotalNotices(); // 총 공지사항 수를 가져오는 메서드
+        int totalPages = (int) Math.ceil(totalNotices / 10.0); // 총 페이지 수 계산
+
         ModelAndView modelAndView = new ModelAndView("adminProgram/noticeList");
         modelAndView.addObject("notices", notices);
+        modelAndView.addObject("totalPages", totalPages);
+        modelAndView.addObject("currentPage", pageNum);
         return modelAndView;
     }
+
 }

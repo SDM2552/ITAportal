@@ -24,4 +24,5 @@ public interface NoticeRepository {
 
     // 공지사항 페이지 이동 기능 추가
     List<Notice> findNoticesByPage(@Param("offset") int offset, @Param("limit") int limit);
+    int countAllNotices();
 }
