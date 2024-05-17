@@ -19,6 +19,4 @@ public class Student {
     private String gender;
     private int idUser;  //pk값 아이디x, 아이디번호
 
-
-
 }
