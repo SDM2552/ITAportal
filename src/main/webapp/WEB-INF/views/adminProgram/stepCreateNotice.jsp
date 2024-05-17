@@ -1,11 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/noticeboard.css?ver=1.0">
     <title>공지 작성 및 수정</title>
 </head>
 <body>
 <h1>공지 작성 및 수정</h1>
-<form action="save" method="post">
+<form action="/notice/save" method="post">
     <input type="hidden" id="idNotice" name="idNotice" value="${notice.idNotice}" />
     <label for="title">제목:</label>
     <input type="text" id="title" name="title" value="${notice.title}" />
@@ -17,7 +20,7 @@
     <input type="text" id="createdDate" name="createdDate" value="${notice.createdDate}" />
     <br />
     <label for="views">조회수:</label>
-    <input type="text" id="views" name="views" value="${notice.views}" />
+    <input type="text" id="views" name="views" value="${notice.views}" readonly />
     <br />
     <button type="submit">저장</button>
 </form>

@@ -39,12 +39,15 @@ public class NoticeController {
     @PostMapping("/save")
     public String saveNotice(@ModelAttribute Notice notice) {
         if (notice.getIdNotice() != 0) {  // 0이 아닌 경우 업데이트
+            Notice existingNotice = noticeService.getNoticeById(notice.getIdNotice());
+            notice.setViews(existingNotice.getViews());  // 기존 조회수 유지
             noticeService.updateNotice(notice.getIdNotice(), notice);
         } else {  // 0인 경우 새로 생성
             noticeService.createNotice(notice);
         }
         return "redirect:/notice/noticeList";
     }
+
 
     @GetMapping("/edit/{idNotice}")
     public ModelAndView showEditForm(@PathVariable int idNotice) {
@@ -58,5 +61,32 @@ public class NoticeController {
     public String deleteNotice(@PathVariable int idNotice) {
         noticeService.deleteNotice(idNotice);
         return "redirect:/notice/noticeList";
+    }
+
+    // 공지사항 상세 조회 기능 추가
+    @GetMapping("/view/{idNotice}")
+    public ModelAndView viewNotice(@PathVariable int idNotice) {
+        Notice notice = noticeService.getNoticeById(idNotice);
+        ModelAndView modelAndView = new ModelAndView("adminProgram/viewNotice");
+        modelAndView.addObject("notice", notice);
+        return modelAndView;
+    }
+
+    // 공지사항 검색 기능 추가
+    @GetMapping("/search")
+    public ModelAndView searchNotices(@RequestParam("keyword") String keyword) {
+        List<Notice> notices = noticeService.searchNoticesByKeyword(keyword);
+        ModelAndView modelAndView = new ModelAndView("adminProgram/noticeList");
+        modelAndView.addObject("notices", notices);
+        return modelAndView;
+    }
+
+    // 공지사항 페이지 이동 기능 추가
+    @GetMapping("/page/{pageNum}")
+    public ModelAndView paginateNotices(@PathVariable int pageNum) {
+        List<Notice> notices = noticeService.getNoticesByPage(pageNum);
+        ModelAndView modelAndView = new ModelAndView("adminProgram/noticeList");
+        modelAndView.addObject("notices", notices);
+        return modelAndView;
     }
 }

@@ -10,7 +10,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/css/common.css">
+<%--    css--%>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/noticelist.css?ver=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>공지사항 목록</title>
 </head>
@@ -52,16 +54,16 @@
                     <c:forEach var="notice" items="${notices}">
                         <tr>
                             <td>${notice.idNotice}</td>
-                            <td>${notice.title}</td>
+                            <td><a href="/notice/view/${notice.idNotice}">${notice.title}</a></td>
                             <td>${notice.content}</td>
-                            <td>${notice.datePosted}</td>
-                            <td><a href="/admin/notices/edit/${notice.idNotice}">수정</a></td>
-                            <td><a href="/admin/notices/delete/${notice.idNotice}" onclick="return confirm('정말 삭제하시겠습니까?');">삭제</a></td>
+                            <td>${notice.createdDate}</td>
+                            <td><a href="/notice/edit/${notice.idNotice}">수정</a></td>
+                            <td><a href="/notice/delete/${notice.idNotice}" onclick="return confirm('정말 삭제하시겠습니까?');">삭제</a></td>
                         </tr>
                     </c:forEach>
                     </tbody>
                 </table>
-                <a href="/admin/notices/create">
+                <a href="/notice/create">
                     <button style="float: right;">새 공지사항 작성</button>
                 </a>
             </div>
