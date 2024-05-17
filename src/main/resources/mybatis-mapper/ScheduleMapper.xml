@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    김봄이
+    주차별 강의계획 CRUD
+    -->
+
+<mapper namespace="com.izo.itaportal.repository.ScheduleRepository">
+
+    <!-- 주차별 강의계획 입력 -->
+    <insert id="insertSchedule" parameterType="com.izo.itaportal.model.Schedule">
+        INSERT INTO schedule (id_pgm, day_sched, start_sched, end_sched, learning_contents, learning_detail, note)
+        VALUES (#{idPgm}, #{daySched}, #{startSched}, #{endSched}, #{learningContents}, #{learningDetail}, #{note})
+    </insert>
+
+
+</mapper>

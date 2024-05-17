@@ -1,6 +1,4 @@
-package com.izo.itaportal.model;
-
-import lombok.Data;
+package com.izo.itaportal.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,12 +7,14 @@ import javax.persistence.Id;
 
 //김봄이
 
-@Data
-public class schedule {
+@Entity
+public class Schedule {
 
-    private int idSchedule;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idSche;
     //프로그램코드 (FK)
-    private int idProgram;
+    private int idPgm;
     //수업일자
     private String daySched;
     //시작시간

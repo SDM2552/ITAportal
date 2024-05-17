@@ -26,7 +26,7 @@ public class ProfController {
         int idProf = 1;
         List<Program> pgms = professorService.selectPgmForProf(idProf);
         model.addAttribute("pgms", pgms);
-        return "syllabus/list";
+        return "prof/list";
     }
     
     // 강의계획서 입력폼
@@ -35,7 +35,7 @@ public class ProfController {
         System.out.println(idPgm);
         model.addAttribute("programInfo", syllabusService.selectJoinPgmByidPgm(idPgm));
         model.addAttribute("syllabus", syllabusService.selectSyllabus(idPgm));
-        return "syllabus/input";
+        return "prof/syllabusInput";
     }
 
     // 강의계획서 입력 및 수정
@@ -49,5 +49,12 @@ public class ProfController {
             syllabusService.updateSyllabus(params);
         }
         return syllabus;
+    }
+
+    //주차별 강의계획 입력폼
+    @GetMapping("/schedule")
+    public String schedule(@RequestParam("idPgm") int idPgm, Model model){
+        model.addAttribute("programInfo", syllabusService.selectJoinPgmByidPgm(idPgm));
+        return "prof/scheduleInput";
     }
 }

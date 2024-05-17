@@ -29,7 +29,25 @@
         th {
             background-color: #f2f2f2;
         }
+        .classForm {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .classForm div {
+            display: flex;
+            flex-direction: column;
+        }
 
+        .classForm label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
     </style>
 </head>
 <body>
@@ -40,7 +58,7 @@
     <!-- container -->
     <div id="container" class="container responCont">
         <!-- 왼쪽 네비바 -->
-        <c:import url="/WEB-INF/views/layout/nav_prof_program.jsp"/>
+        <c:import url="/WEB-INF/views/layout/nav_student.jsp" />
         <!-- contents -->
         <div id="contents" class="eduIntroCont">
             <!-- location -->
@@ -51,7 +69,7 @@
             </div>
             <!-- //location -->
 
-            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>강의계획서 입력</h3>
+            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>주차별 계획 입력</h3>
 
             <!-- 본문 -->
                 <!-- 강의 정보 테이블 -->
@@ -82,37 +100,30 @@
 
                 <!-- 강의 정보 입력 폼 -->
 
-                    <div class="syllabusForm">
+                    <div class="classForm">
                         <div>
                             <label for="lectureName">강의명:</label>
                             <input type="text" id="lectureName" value="${programInfo.pgmName}" readonly>
                         </div>
                         <div>
-                            <label for="teaching">강의방식</label>
-                            <select id="teaching">
-                                <option value="online">온라인</option>
-                                <option value="offline">오프라인</option>
-                            </select>
+                            <label for="daySched">수업일자</label>
+                            <input type="text" id="daySched" placeholder="수업일자 입력(YYMMDD)" value="">
                         </div>
                         <div>
-                            <label for="book">교재 및 참고 자료:</label>
-                            <input type="text" id="book" placeholder="교재 및 참고 자료 입력" value="${syllabus.book}">
+                            <label for="startSched">시작시간</label>
+                            <input type="text" id="startSched" placeholder="수업시작시간(HH:MM)" value="">
                         </div>
                         <div>
-                            <label for="courseOverview">교과목 개요:</label>
-                            <textarea id="courseOverview" rows="5" placeholder="강의 개요 입력" >${syllabus.courseOverview}</textarea>
+                            <label for="endSched">종료시간</label>
+                            <input type="text" id="endSched" placeholder="수업종료시간(HH:MM)" value="">
                         </div>
                         <div>
-                            <label for="objective">수업 목표:</label>
-                            <textarea id="objective" rows="3" placeholder="수업 목표 입력" >${syllabus.objective}</textarea>
+                            <label for="evaluation">학습내용</label>
+                            <textarea id="evaluation" rows="3" placeholder="학습내용 입력" >${syllabus.evaluation}</textarea>
                         </div>
                         <div>
-                            <label for="evaluation">평가 방법:</label>
-                            <textarea id="evaluation" rows="3" placeholder="평가 방법 입력" >${syllabus.evaluation}</textarea>
-                        </div>
-                        <div>
-                            <label for="remarks">비고</label>
-                            <textarea id="remarks" rows="3" placeholder="기타 메모사항 입력" >${syllabus.remarks}</textarea>
+                            <label for="note">비고</label>
+                            <textarea id="note" rows="3" placeholder="기타 메모사항 입력" >${syllabus.remarks}</textarea>
                         </div>
                         <input type="hidden" id="idProf" value="${syllabus.idProf}">
                         <input type="hidden" id="idPgm" value="${programInfo.idPgm}">
@@ -132,30 +143,17 @@
 
 <script>
     function save(){
-        const idPgm = document.querySelector('.syllabusForm input#idPgm').value;
-        const courseOverview = document.querySelector('.syllabusForm textarea#courseOverview').value;
-        const objective = document.querySelector('.syllabusForm textarea#objective').value;
-        const teaching = document.querySelector('.syllabusForm select#teaching').value;
-        const book = document.querySelector('.syllabusForm input#book').value;
-        const evaluation = document.querySelector('.syllabusForm textarea#evaluation').value;
-        const remarks = document.querySelector('.syllabusForm textarea#remarks').value;
-        const idProf = document.querySelector('.syllabusForm input#idProf').value;
+        const idPgm = document.querySelector('.classForm input#idPgm').value;
+
 
         const params = {
-            idPgm : idPgm,
-            courseOverview : courseOverview,
-            objective : objective,
-            teaching : teaching,
-            book : book,
-            evaluation : evaluation,
-            remarks : remarks,
-            idProf : idProf,
+
         }
 
         console.log(params);
 
         $.ajax({
-            url : `/prof/syllabus/input`,
+            url : `/prof/schedule/input`,
             type : 'post',
             contentType : 'application/json; charset=utf-8',
             dataType : 'json',
