@@ -49,6 +49,7 @@
                         <th>제목</th>
                         <th>등록일</th>
                         <th>조회수</th>
+
                     </tr>
                     <c:forEach var="notice" items="${notices}">
                         <tr>
@@ -56,7 +57,6 @@
                             <td id="noticetitle"><a href="/notice/view/${notice.idNotice}">${notice.title}</a></td>
                             <td>${notice.createdDate}</td>
                             <td>${notice.views}</td>
-
                         </tr>
                     </c:forEach>
                     </tbody>

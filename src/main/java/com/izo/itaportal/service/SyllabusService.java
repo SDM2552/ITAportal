@@ -2,7 +2,6 @@ package com.izo.itaportal.service;
 
 import com.izo.itaportal.model.ProgramView;
 import com.izo.itaportal.model.Syllabus;
-import com.izo.itaportal.model.SyllabusRequest;
 import com.izo.itaportal.repository.SyllabusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,8 +24,8 @@ public class SyllabusService {
     }
 
     //강의계획서 불러오기
-    public Syllabus selectSyllabus(SyllabusRequest syllabusRequest){
-        return syllabusRepository.selectSyllabus(syllabusRequest);
+    public Syllabus selectSyllabus(int idPgm){
+        return syllabusRepository.selectSyllabus(idPgm);
     }
 
     //강의계획서 입력

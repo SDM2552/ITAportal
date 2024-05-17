@@ -52,6 +52,9 @@ public class TestRunner implements ApplicationRunner{
         jdbcTemplate.execute("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,pgm_target,id_room,pgm_method,pgm_per,pgm_fee,id_prof) "+
                 "VALUES (1,'국제무역3','2024-03-01','2024-08-31','대충성인',1,'오프라인',30,300000,1)");
 
+        //강의계획서
+        jdbcTemplate.execute("INSERT INTO syllabus (id_pgm, course_overview, objective, teaching, book, evaluation, remarks, id_prof)" +
+                "VALUES (1, '임시데이터', '임시데이터', '온라인', '임시데이터', '임시데이터', '임시데이터', 1)");
         //강의실
         jdbcTemplate.execute("INSERT INTO category VALUES (1,'국제무역')");
         //카테고리

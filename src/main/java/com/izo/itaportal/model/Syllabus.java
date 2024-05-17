@@ -15,7 +15,7 @@ public class Syllabus {
     //프로그램 코드
     private int idPgm;
     //프로그램 개요
-    private String course_overview;
+    private String courseOverview;
     //수업목표
     private String objective;
     //강의 방식
