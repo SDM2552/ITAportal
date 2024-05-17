@@ -11,17 +11,17 @@ import java.util.List;
 
 @Mapper
 public interface MyPageRepository {
-    public Student selectStudentById(int idUser);
-    public Professor selectProfById(int idUser);
-    public Admin selectAdminById(int idUser);
+    public Student selectStudentById(Integer idUser);
+    public Professor selectProfById(Integer idUser);
+    public Admin selectAdminById(Integer idUser);
 
     public int updateStudent(Student student);
     public int updateProf(Professor professor);
     public int updateAdmin(Admin admin);
 
-    public int deleteStudent(int idUser);
-    public int deleteProf(int idUser);
-    public int deleteAdmin(int idUser);
+    public int deleteStudent(Integer idUser);
+    public int deleteProf(Integer idUser);
+    public int deleteAdmin(Integer idUser);
 
 
 

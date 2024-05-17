@@ -4,8 +4,8 @@
     <h2 class="ltit">마이페이지</h2>
     <div class="lnbArea">
         <ul>
-            <li><a href="/myPage/stuMyPage">회원정보</a></li>
-            <li><a href="#">회원탈퇴</a></li>
+            <li><a href="/user/info">회원정보</a></li>
+            <li><a href="/user/deleteInfo">회원탈퇴</a></li>
             <li><a href="#">공지사항</a></li>
 
         </ul>
