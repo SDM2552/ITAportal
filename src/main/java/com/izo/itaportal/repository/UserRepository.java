@@ -1,16 +1,23 @@
 package com.izo.itaportal.repository;
 
-import com.izo.itaportal.model.User;
+import com.izo.itaportal.model.LoginResponse;
+import com.izo.itaportal.model.SignUpRequest;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface UserRepository {
-    String getPasswordByLoginId(String LoginId);
 
-    @Select("select * from User where login_id = #{loginId}")
-    User findByLoginId(String loginId); //이미 가입한 ID인지 중복 체크용
+    //유저테이블 추가
+    public void insertUser(SignUpRequest signUpRequest);
 
-    void insertUser(User user); // 신규 유저 등록
+    //학생테이블 추가
+    public void insertStu(SignUpRequest signUpRequest);
+
+    //교수테이블 추가
+    public void insertProf(SignUpRequest signUpRequest);
+
+    void insertAdmin(SignUpRequest request); // 관리자 등록
+
+    public LoginResponse getUserByLoginId(String loginId);
 
 }

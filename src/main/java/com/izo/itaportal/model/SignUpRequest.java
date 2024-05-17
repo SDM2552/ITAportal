@@ -26,4 +26,6 @@ public class SignUpRequest {
     public String getTel() {
         return String.format("%03d-%d-%d", phone1, phone2, phone3);
     }
+
+
 }
