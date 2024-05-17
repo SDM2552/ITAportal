@@ -174,14 +174,12 @@
 
             <!-- btn -->
             <div class="btnArea">
-
                 <button type="submit" class="btns btnSt01">
                     <span>등록</span>
                 </button>
                 <button type="button" class="btns btnSt02" onclick="history.back();">
                     <span>취소</span>
                 </button>
-
             </div>
             <!-- btn -->
             </form>

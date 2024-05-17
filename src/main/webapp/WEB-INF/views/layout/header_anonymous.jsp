@@ -31,7 +31,7 @@
                     <li>
                         <a href="#">수업</a>
                     <li>
-                        <a href="/enrollment/form">수강 신청</a> <!-- 수강신청 페이지로 이동하는 링크 -->
+                        <a href="/program/list">수강 신청</a> <!-- 수강신청 페이지로 이동하는 링크 -->
                     </li>
                     <li>
                         <a href="#">공지사항</a>
