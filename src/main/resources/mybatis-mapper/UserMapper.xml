@@ -34,7 +34,18 @@
     </insert>
 
     <select id="getUserByLoginId" parameterType="String" resultType="com.izo.itaportal.model.LoginResponse">
-        SELECT login_id, password, role FROM user WHERE login_id = #{loginId}
+        SELECT login_id, password, role, id_user FROM user WHERE login_id = #{loginId}
     </select>
+    <!-- 교수 -->
+    <select id="selectProf" parameterType="integer" resultType="com.izo.itaportal.model.Professor">
+        SELECT id_prof, address, birth, gender, id_user, name, tel FROM professor WHERE id_user = #{idUser}
+    </select>
+
+    <!-- 학생 -->
+    <select id="selectStu" parameterType="integer" resultType="com.izo.itaportal.model.Student">
+        SELECT id_student, address, birth, gender, id_user, name, tel FROM student WHERE id_user = #{idUser}
+    </select>
+
+
 
 </mapper>
