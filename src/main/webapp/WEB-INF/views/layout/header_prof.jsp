@@ -32,7 +32,7 @@
                         <a href="/prof/list">강의 관리</a>
                     </li>
                     <li>
-                        <a href="#">공지사항</a>
+                        <a href="/notice/noticeList">공지사항</a>
                     </li>
 
                 </ul>
