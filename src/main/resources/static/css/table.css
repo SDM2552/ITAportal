@@ -317,6 +317,13 @@
     line-height: 30px;
 
 }
+.coment_form{display: flex; position:relative;padding-right:100px;}
+.coment_form p{font-size:15px;color:#e65151; display: inline-block;  margin-bottom: -15px;}
+.coment_form strong{font-weight:600}
+.coment_form a{top:-12px;right:0;width:110px;height:30px;line-height:30px;font-size:15px;text-align:center;color:#fff;background: #177d94;border-radius: 30px;
+    display: inline-block;
+    margin-left: auto; margin-bottom: 5px;}
+
 .essR {vertical-align:top;display:inline-block;position:relative;font-size:0;width:10px;height:10px;}
 .essR:before {display:block; content: ' \002A';position:absolute;top:0;left:3px;color:#e6000c;font-size:20px}
 .tblForm td .inTxt::placeholder {color:#505050;}
@@ -330,16 +337,53 @@
 .btnArea.right {text-align:right}
 .btnArea .btns{display: inline-block; margin-left:10px; color: white; width: 100px;
     height: 44px;
-    line-height: 44px; /* 버튼 내용을 수직 가운데 정렬하기 위한 선언 */
-    text-align: center; /* 버튼 내용을 수평 가운데 정렬하기 위한 선언 */
-    margin-right: 10px; /* 버튼들 사이의 간격 설정 */
+    line-height: 44px;
+    text-align: center;
+    margin-right: 10px;
     text-decoration: none;}
 .btnArea .mBtns {margin-left:5px;}
 .btnArea .sbtns {margin-left:5px;}
 .btnArea.btnBt {margin-top:30px;padding-top:30px;border-top:1px solid #ccc;}
+
+/* Search bar */
+.boardSearch_g{margin-bottom:15px; text-align:center;padding-right: 10%}
+.boardSearch_g.type .tit{font-size:17px;color:#000;font-weight:600;vertical-align: middle;}
+.gallery_list .tit{font-size:18px;color:#222;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+#proTitleSel, #lecIdxSel {
+    width: 30%;
+    border: none;
+    font-size: 17px;
+    color: #666;
+    border-bottom: 2px solid black;
+    padding: 5px;
+    box-sizing: border-box;
+}
+#lecIdxSel {
+    width: 20%;
+}
+.tit{
+    border-left: 10px;
+    padding-left: 20px;
+}
+#lecIdxSel option {
+
+}
+.btn_search {
+    font-size: 17px;
+    background-color: rgb(1,125,195);
+    color: white;
+    width: 60px;
+    height: 40px;
+    text-align: center;
+    line-height: 30px;
+    border-left: 15px;
+    cursor: pointer;
+}
+
+
 /* Button - big */
-.btnSt01 {background:#123867} /* blue */
-.btnSt02 {background:#555555} /* gray */
+.btnSt01 {background:#123867}
+.btnSt02 {background:#555555}
 .mt10 {
     width: 80%;
 }

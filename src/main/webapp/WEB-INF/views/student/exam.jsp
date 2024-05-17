@@ -55,7 +55,7 @@
                         <td>오늘부터</td>
                         <td>내일까지</td>
                         <td>아직임</td>
-                        <td><button>제출</button></td>
+                        <td><button onclick="location.href='/stu/examSubmit'">제출</button></td>
                     </tr>
                     </tbody>
                 </table>
