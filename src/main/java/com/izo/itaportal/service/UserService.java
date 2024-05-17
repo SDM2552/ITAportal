@@ -1,12 +1,8 @@
 package com.izo.itaportal.service;
 
-import com.izo.itaportal.model.LoginRequest;
-import com.izo.itaportal.model.LoginResponse;
+import com.izo.itaportal.model.*;
 import com.izo.itaportal.repository.UserRepository;
-import com.izo.itaportal.model.SignUpRequest;
-import com.izo.itaportal.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +28,7 @@ public class UserService {
     //교수 회원가입
     @Transactional
     public void insertProf(SignUpRequest signUpRequest){
+        signUpRequest.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
         userRepository.insertUser(signUpRequest);
         String idUser = signUpRequest.getIdUser();
         userRepository.insertProf(signUpRequest);
@@ -52,6 +49,15 @@ public class UserService {
         return user;
     }
 
+    //교수정보 가져오기
+    public Professor getProfessorInfo(int idUser) {
+        return userRepository.selectProf(idUser);
+    }
+
+    //학생정보 가져오기
+    public Student getStudentInfo(int idUser) {
+        return userRepository.selectStu(idUser);
+    }
 
     //중복 가입 체크
 //    private void validateDuplicateUser(User user){

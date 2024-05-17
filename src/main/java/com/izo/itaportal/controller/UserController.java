@@ -3,12 +3,13 @@ package com.izo.itaportal.controller;
 import com.izo.itaportal.model.LoginRequest;
 import com.izo.itaportal.model.LoginResponse;
 import com.izo.itaportal.model.SignUpRequest;
-import com.izo.itaportal.model.User;
+
 import com.izo.itaportal.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -59,9 +60,15 @@ public class UserController {
     }
 
     @GetMapping("logined")
-    public String logined(Model model, HttpSession session){
+    public String logined(RedirectAttributes model, HttpSession session){
         LoginResponse user = (LoginResponse) session.getAttribute("loginUser");
-        model.addAttribute("loginUser", user);
+        if (user.getRole().equals("stu")) {
+            System.out.println(userService.getStudentInfo(user.getIdUser()));
+            model.addFlashAttribute("userInfo",userService.getStudentInfo(user.getIdUser()));
+        } else if (user.getRole().equals("prof")) {
+            model.addFlashAttribute("userInfo",userService.getProfessorInfo(user.getIdUser()));
+        }
+        model.addFlashAttribute("loginUser", user);
         return "redirect:/sample2";
     }
 
