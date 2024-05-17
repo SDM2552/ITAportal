@@ -9,7 +9,7 @@
     (매주 달라질 수 있으므로)
     -->
 
-<mapper namespace="com.izo.itaportal.mapper.SyllabusMapper">
+<mapper namespace="com.izo.itaportal.repository.SyllabusRepository">
 
     <!-- 강의계획서 불러오기 (프로그램코드, 강사코드) -->
     <select id="selectSyllabus" parameterType="com.izo.itaportal.model.SyllabusRequest" resultType="com.izo.itaportal.model.Syllabus">

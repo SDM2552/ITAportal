@@ -1,4 +1,4 @@
-package com.izo.itaportal.mapper;
+package com.izo.itaportal.repository;
 
 /**
  * 강의계획서 CRUD
@@ -13,7 +13,7 @@ import com.izo.itaportal.model.SyllabusRequest;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public interface SyllabusMapper {
+public interface SyllabusRepository {
     //강의계획서 불러오기(교수id, 프로그램id)
     public Syllabus selectSyllabus(SyllabusRequest syllabusRequest);
     //강의계획서 입력
