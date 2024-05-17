@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+/*
+* 엔롤먼트서비스로 IdStudent
+* */
 
 @Service
 public class StudentService {
@@ -15,5 +18,10 @@ public class StudentService {
 
     public List<Student> getAllStudents(){
         return studentRepository.findAll();
+    }
+
+    //엔롤먼트서비스로
+    public Student getStudentById(int idStudent) {
+        return studentRepository.findStudentById(idStudent);
     }
 }

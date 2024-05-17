@@ -40,4 +40,8 @@ public class ProgramService {
         return deleteProgram;
     }
 
+    //추가적인 의존성주인-엔롤먼트
+    public Program selectProgramById(int idPgm) {
+        return programRepository.selectProgramById(idPgm);
+    }
 }

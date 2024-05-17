@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -7,6 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <script src="https://kit.fontawesome.com/93205cc57d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/table.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>수강내역목록</title>
 </head>
@@ -39,25 +40,20 @@
                 </tr>
                 </thead>
                 <tbody>
-            <!-- 본문 -->
-            <c:forEach items="${enrollments}" var="enrollment">
-                <tr>
-                    <td><a href="enrollment?idEnrollment=${enrollment.idEnrollment}"/> ${enrollment.pgmName}</td>  <!-- EL 표현식 수정 -->
-                    <td>${enrollment.stDt}</td>      <!-- EL 표현식 수정 -->
-                    <td>${enrollment.status}</td>   <!-- EL 표현식 수정 -->
-                </tr>
-            </c:forEach>
+                <!-- 본문 -->
+                <c:forEach items="${enrollments}" var="enrollment">
+                    <tr>
+                        <td><a href="enrollment?idEnrollment=${enrollment.idEnrollment}"/> ${enrollment.pgmName}</td> <!-- EL 표현식 수정 -->
+                        <td>${enrollment.stDt}</td> <!-- EL 표현식 수정 -->
+                        <td>${enrollment.status}</td> <!-- EL 표현식 수정 -->
+                    </tr>
+                </c:forEach>
                 </tbody>
             </table>
             <!-- 본문 끝 -->
         </div>
-            <!-- //contents -->
-
+        <!-- //contents -->
     </div>
-        <!-- footer -->
-        <c:import url="../layout/footer.jsp"/>
-
+    <!-- footer -->
+    <c:import url="../layout/footer.jsp"/>
 </div>
-</body>
-
-</html>

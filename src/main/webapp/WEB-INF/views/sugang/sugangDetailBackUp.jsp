@@ -91,6 +91,7 @@
                             동서울대학교 평생교육원 130호
                         </td>
                     </tr>
+
                     </tbody>
                 </table>
             </div>
@@ -133,21 +134,15 @@
                             asd@naver.com
                         </td>
                     </tr>
+
                     </tbody>
                 </table>
             </div>
             <!-- btn -->
             <div class="btnArea">
-                <form id="enrollmentForm" action="/enrollment/apply" method="post">
-                    <input type="hidden" name="idStudent" value="${student.idStudent}">
-                    <input type="hidden" name="pgmName" value="${program.pgmName}">
-                    <input type="hidden" name="idPgm" value="${program.idPgm}">
-                    <input type="hidden" name="stDt" value="${program.stDt}">
-                    <input type="hidden" name="status" value="확인중">
-                    <button type="submit" class="btns btnSt01">
-                        <span>수강신청</span>
-                    </button>
-                </form>
+                <button type="submit" class="btns btnSt01">
+                    <span>수강신청</span>
+                </button>
                 <button type="button" class="btns btnSt02" onclick="history.back();">
                     <span>취소</span>
                 </button>
