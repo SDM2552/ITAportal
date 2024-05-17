@@ -30,10 +30,10 @@
             </div>
             <!-- //location -->
 
-            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>관리자 등록</h3>
+            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>강사 등록</h3>
 
             <!-- 본문 -->
-            <form action="adminSignUp" method="post">
+            <form action="professorSignUp" method="post">
             <div class="tblForm inputForm mt10">
                 <table>
                     <colgroup>

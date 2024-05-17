@@ -1,10 +1,8 @@
 package com.izo.itaportal.service;
 
-import com.izo.itaportal.dto.RegistrationRequest;
-import com.izo.itaportal.model.Admin;
-import com.izo.itaportal.model.User;
-import com.izo.itaportal.repository.AdminRepository;
 import com.izo.itaportal.repository.UserRepository;
+import com.izo.itaportal.model.SignUpRequest;
+import com.izo.itaportal.repository.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,30 +11,21 @@ import org.springframework.transaction.annotation.Transactional;
 public class RegistrationService {
 
     @Autowired
-    private UserRepository userRepository;
-    @Autowired
     private AdminRepository adminRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-    @Transactional
-    public void registerUserAndAdmin(RegistrationRequest request){
-
-        User user = new User();
-        user.setLoginId(request.getLoginId());
-        user.setPassword(request.getPassword());
-        user.setRole(request.getRole());
-        user.setRegistDate(request.getRegistDate());
-
-        userRepository.insertUser(user);
-        int idUser = user.getIdUser();
-
-        Admin admin = new Admin();
-        admin.setName(request.getName());
-        admin.setBirth(request.getBirth());
-        admin.setTel(request.getTel());
-        admin.setAddress(request.getAddress());
-        admin.setGender(request.getGender());
-        admin.setIdUser(idUser);
-
-        adminRepository.insertAdmin(admin);
+    @Transactional // 강사 회원 등록
+    public void registerUserAndProfessor(SignUpRequest request){
+        System.out.println("체크"+request.toString());
+        userRepository.insertUser(request);
+        userRepository.insertProf(request);
     }
+    @Transactional //관리자 회원 등록
+    public void registerUserAndAdmin(SignUpRequest request){
+        System.out.println("체크"+request.toString());
+        userRepository.insertUser(request);
+        userRepository.insertAdmin(request);
+    }
+
 }

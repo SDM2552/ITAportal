@@ -8,11 +8,12 @@
         <div class="headerF">
             <div class="util">
                 <!-- util -->
-                <a href="#">회원가입</a>
-                <a href="/loginRegister/adminregister">(임시)관리자회원가입</a>
+                <a href="/user/signUp1">회원가입</a>
                 <a href="#">로그인</a>
-                <a href="#">사이트맵</a>
-                이용자01 님 환영합니다. [로그아웃]
+                <a href="/sample3">❗비회원</a>
+                <a href="/stu/exam">❗학생</a>
+                <a href="/prof/list">❗강사</a>
+                <a href="/adminProgram">❗관리자</a>
                 <!-- util -->
             </div>
         </div>
@@ -30,7 +31,7 @@
                     <li>
                         <a href="#">수업</a>
                     <li>
-                        <a href="/enrollment/form">수강 신청</a> <!-- 수강신청 페이지로 이동하는 링크 -->
+                        <a href="/program/list">수강 신청</a> <!-- 수강신청 페이지로 이동하는 링크 -->
                     </li>
                     <li>
                         <a href="#">공지사항</a>

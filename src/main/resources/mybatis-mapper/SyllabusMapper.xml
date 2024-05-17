@@ -9,12 +9,12 @@
     (매주 달라질 수 있으므로)
     -->
 
-<mapper namespace="com.izo.itaportal.mapper.SyllabusMapper">
+<mapper namespace="com.izo.itaportal.repository.SyllabusRepository">
 
-    <!-- 강의계획서 불러오기 (프로그램코드, 강사코드) -->
-    <select id="selectSyllabus" parameterType="com.izo.itaportal.model.SyllabusRequest" resultType="com.izo.itaportal.model.Syllabus">
+    <!-- 강의계획서 불러오기 (프로그램코드) -->
+    <select id="selectSyllabus" parameterType="integer" resultType="com.izo.itaportal.model.Syllabus">
         SELECT course_overview, objective, teaching, book, evaluation, remarks
-        FROM syllabus WHERE id_prof=#{idProf} AND id_pgm=#{idPgm}
+        FROM syllabus WHERE id_pgm=#{idPgm}
     </select>
 
     <!-- 강의계획서 입력 -->
@@ -26,12 +26,12 @@
     <!-- 강의계획서 수정 -->
     <update id="updateSyllabus" parameterType="com.izo.itaportal.model.Syllabus">
         UPDATE syllabus SET course_overview =#{courseOverview}, objective =#{objective}, teaching =#{teaching}, book =#{book}, remarks =#{remarks}
-        WHERE id_program =#{idProgram}
+        WHERE id_pgm =#{idPgm}
     </update>
 
     <!-- 강의계획서 입력을 위한 program + classroom + category -->
     <select id="selectJoinPgmByidPgm" parameterType="integer" resultType="com.izo.itaportal.model.ProgramView">
-        SELECT cate_name, room_name, pgm_name, st_dt, end_dt, pgm_per, pgm_fee
+        SELECT id_pgm, cate_name, room_name, pgm_name, st_dt, end_dt, pgm_per, pgm_fee
         FROM program p
                  JOIN category c ON p.id_cate = c.id_cate
                  JOIN class_room r ON p.id_room = r.id_room

@@ -1,0 +1,154 @@
+/* noticeboard.css */
+
+/* 버튼 스타일 */
+.button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+/* 테이블 스타일 */
+.category-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.category-table th, .category-table td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+.category-table th {
+    background-color: #f2f2f2;
+}
+
+/* 페이지 제목 스타일 */
+.pgTit {
+    font-size: 30px;
+    margin-bottom: 30px;
+    color: #142e4e;
+}
+
+.pgTit .prev {
+    display: none;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    margin: 0 5px;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #007bff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.pagination a.active {
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #007bff;
+}
+
+.pagination a:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+
+/* 링크 스타일 */
+.link {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+    .location span {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .pgTit .prev {
+        display: none;
+    }
+
+    .category-table, .category-table thead, .category-table tbody, .category-table th, .category-table td, .category-table tr {
+        display: block;
+        width: 100%;
+    }
+
+    .category-table thead tr {
+        display: none;
+    }
+
+    .category-table tr {
+        margin-bottom: 15px;
+    }
+
+    .category-table td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    .category-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        width: calc(50% - 20px);
+        text-align: left;
+        font-weight: bold;
+    }
+
+    .button {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .wrap {
+        min-width: 100%;
+    }
+
+    .container {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    #footer .footerArea {
+        width: 100%;
+    }
+
+    #header .hgroup {
+        width: 100%;
+    }
+
+    #header .gnbInner #gnb .gnbDep1 {
+        width: 100%;
+    }
+
+    #header .gnbInner #gnb .gnbDep1 > li {
+        font-size: 14px;
+    }
+
+    #header .gnbInner #gnb .gnbDep1 > li > a {
+        padding: 10px 20px;
+    }
+}
