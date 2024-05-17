@@ -45,24 +45,31 @@ public class TestRunner implements ApplicationRunner{
                 "VALUES(1, 'stu', '" + encryptedPassword + "', '2024-05-17', 'stu')");
 
         //강의리스트
-        jdbcTemplate.execute("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,pgm_target,id_room,pgm_method,pgm_per,pgm_fee,id_prof) "+
-                "VALUES (1,'국제무역1','2024-01-01','2024-05-31','대충성인',1,'오프라인',30,100000,1)");
-        jdbcTemplate.execute("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,pgm_target,id_room,pgm_method,pgm_per,pgm_fee,id_prof) "+
-                "VALUES (1,'국제무역2','2024-06-01','2024-08-31','대충성인',1,'오프라인',30,200000,1)");
-        jdbcTemplate.execute("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,pgm_target,id_room,pgm_method,pgm_per,pgm_fee,id_prof) "+
-                "VALUES (1,'국제무역3','2024-03-01','2024-08-31','대충성인',1,'오프라인',30,300000,1)");
+        jdbcTemplate.execute("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,sugang_st_dt,sugang_end_dt,pgm_target,id_room,pgm_method,pgm_per,pgm_fee,id_prof) "+
+                "VALUES (2,'통관 및 관세 실무 이해','2024-11-09','2024-11-10','2024-10-15 09:00','2024-10-30 18:00','통관 및 관세에 관심이 있는 재직자',1,'오프라인',10,55000,1)");
+        jdbcTemplate.execute("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,sugang_st_dt,sugang_end_dt,pgm_target,id_room,pgm_method,pgm_per,pgm_fee,id_prof) "+
+                "VALUES (1,'자유무역협정(FTA) 실무','2024-06-01','2024-08-31','2024-10-15 09:00','2024-10-30 18:00','자유무역에 관심이 있는 성인',99,'온라인',30,75000,1)");
+        jdbcTemplate.execute("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,sugang_st_dt,sugang_end_dt,pgm_target,id_room,pgm_method,pgm_per,pgm_fee,id_prof) "+
+                "VALUES (3,'검색 엔진 최적화(SEO) 원리','2024-06-01','2024-08-31','2024-10-15 09:00','2024-10-30 18:00','SEO를 통한 마케팅에 관심있는 전공자',1,'오프라인',30,35000,1)");
+
 
         //강의계획서
         jdbcTemplate.execute("INSERT INTO syllabus (id_pgm, course_overview, objective, teaching, book, evaluation, remarks, id_prof)" +
                 "VALUES (1, '임시데이터', '임시데이터', '온라인', '임시데이터', '임시데이터', '임시데이터', 1)");
         //강의실
-        jdbcTemplate.execute("INSERT INTO category VALUES (1,'국제무역')");
-        //카테고리
         jdbcTemplate.execute("INSERT INTO class_room VALUES (1,'이대캠퍼스 301호')");
+        jdbcTemplate.execute("INSERT INTO class_room VALUES (99,'온라인 학습 관리 시스템(LMS)')");
+        //카테고리
+        jdbcTemplate.execute("INSERT INTO category VALUES (1,'국제통상정책')");
+        jdbcTemplate.execute("INSERT INTO category VALUES (2,'무역거래실무')");
+        jdbcTemplate.execute("INSERT INTO category VALUES (3,'디지털마케팅')");
+        jdbcTemplate.execute("INSERT INTO category VALUES (4,'공급망관리(SCM)')");
+        jdbcTemplate.execute("INSERT INTO category VALUES (5,'인적자원관리')");
+        jdbcTemplate.execute("INSERT INTO category VALUES (6,'일반교양')");
 
         //exam
         jdbcTemplate.execute("INSERT INTO exam(name, start_date, end_date, status, count, description, id_program, id_prof, id_file)" +
-                "VALUES ('자유무역의이해', '2024-05-10', '2024-05-24', '진행중?', '1', '자유무역에 대해 서술하시오.','100','2024001','9999')");
+                "VALUES ('통관 및 관세 실무 이해', '2024-05-10', '2024-05-24', '진행중?', '1', '수업 내용을 요약해서 레포트로 제출할 것.','100','2024001','9999')");
 
         jdbcTemplate.execute("INSERT INTO exam_submission(id_program, id_exam, id_student, id_file)" +
                 "VALUES ('100', '1', '2', '9999')");

@@ -63,8 +63,6 @@
                 </table>
 
                 </div>
-            <a href="/notice/edit/${notice.idNotice}">수정</a>
-            <a href="/notice/delete/${notice.idNotice}" onclick="return confirm('정말 삭제하시겠습니까?');">삭제</a>
             <a href="/notice/create"><button>공지사항 작성</button></a>
 
             <!-- 페이지네이션 -->

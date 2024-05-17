@@ -59,7 +59,7 @@
 
             <!-- btn -->
             <div class="btnArea">
-                <a href="javascript:fnList();" class="btns btnSt02">
+                <a href="/notice/noticeList" class="btns btnSt02">
                     <span>목록</span>
                 </a>
             </div>
