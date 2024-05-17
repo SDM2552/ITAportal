@@ -6,7 +6,7 @@
     유저 (학생, 교수, 관리자)
     -->
 
-<mapper namespace="com.izo.itaportal.mapper.UserMapper">
+<mapper namespace="com.izo.itaportal.repository.UserRepository">
 
     <!-- 유저 테이블 추가 (가입) -->
     <insert id="insertUser" parameterType="com.izo.itaportal.model.SignUpRequest"
@@ -32,5 +32,9 @@
         INSERT INTO Admin (name, birth, tel, address, gender, id_user)
         VALUES (#{name}, #{birth}, #{tel}, #{address}, #{gender}, #{idUser})
     </insert>
+
+    <select id="getUserByLoginId" parameterType="String" resultType="com.izo.itaportal.model.LoginResponse">
+        SELECT login_id, password, role FROM user WHERE login_id = #{loginId}
+    </select>
 
 </mapper>

@@ -27,16 +27,16 @@
                 <div class="loginFormBorder">
                     <ul class="loginForm">
                         <li>
-                            <input type="text" class="inTxt" id="userId" name="userId" style="ime-mode:disabled;"
-                                   maxlength="20" onkeypress="fEnter();" placeholder="  아이디" title="아이디 입력">
+                            <input type="text" class="inTxt" id="loginId" name="loginId" style="ime-mode:disabled;"
+                                   maxlength="20" placeholder="  아이디" title="아이디 입력">
                         </li>
                         <li>
                             <input type="password" class="inTxt" id="password" name="password"
-                                   style="ime-mode:disabled;" maxlength="20" onkeypress="fEnter();" placeholder=" 비밀번호"
+                                   style="ime-mode:disabled;" maxlength="20" placeholder=" 비밀번호"
                                    title="비밀번호 입력">
                         </li>
                     </ul>
-                    <a href="javascript:jsonLogin();" class="logBtn">
+                    <a href="javascript:login();" class="logBtn">
                         <span>로그인</span>
                     </a>
                 </div>
@@ -83,6 +83,52 @@
 
 <!-- footer -->
 <c:import url="layout/footer.jsp" />
+
+<script>
+
+    // Enter 로그인 이벤트 바인딩
+    window.onload = () => {
+        document.querySelectorAll('#loginId, #password').forEach(element => {
+            element.addEventListener('keyup', (e) => {
+                if (e.keyCode === 13) {
+                    login();
+                }
+            })
+        })
+    }
+
+    function login() {
+
+        const loginId = document.querySelector('.loginForm input[name="loginId"]').value;
+        const password = document.querySelector('.loginForm input[name="password"]').value;
+
+
+        if ( !loginId || !password ) {
+            alert('아이디와 비밀번호를 모두 입력해 주세요.');
+            return false;
+        }
+
+        $.ajax({
+            url : '/user/loginCheck',
+            type : 'POST',
+            dataType : 'json',
+            data : {
+                loginId: loginId,
+                password: password
+            },
+            async : false,
+            success : function (response) {
+                alert('로그인 되었습니다.>_<');
+                window.location.href = "/sample2";
+            },
+            error : function (request, status, error) {
+                alert('아이디와 비밀번호를 확인해 주세요.');
+            }
+        })
+    }
+
+</script>
+
 </body>
 
 </html>

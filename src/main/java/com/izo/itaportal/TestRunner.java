@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
@@ -19,11 +20,14 @@ public class TestRunner implements ApplicationRunner{
     DataSource dataSource;
     @Autowired
     JdbcTemplate jdbcTemplate;
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
         Connection connection = dataSource.getConnection();
+        String encryptedPassword = passwordEncoder.encode("1234");
 
         //JdbcTemplete
         //member
@@ -37,6 +41,8 @@ public class TestRunner implements ApplicationRunner{
                 "VALUES ('김학생', '20020202', '010-2222-3333', 'M', '강원도', '2024')");
         jdbcTemplate.execute("INSERT INTO student(name, birth, tel, gender, address, id_user)" +
                 "VALUES ('복학생', '19000130', '010-3333-4444', 'M', '경기도', '2023')");
+        jdbcTemplate.execute("INSERT INTO user(id_user, login_id, password, regist_date, role) " +
+                "VALUES(1, 'stu', '" + encryptedPassword + "', '2024-05-17', 'stu')");
 
         //강의리스트
         jdbcTemplate.execute("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,pgm_target,id_room,pgm_method,pgm_per,pgm_fee,id_prof) "+
