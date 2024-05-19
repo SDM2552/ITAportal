@@ -7,6 +7,7 @@ import com.izo.itaportal.model.SignUpRequest;
 import com.izo.itaportal.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -21,41 +22,57 @@ public class UserController {
 
     private final UserService userService;
 
-    @GetMapping("signUp1")
-    public String signUpSun(){
-        return "member/signUpSun";
-    }
+//    @GetMapping("signUp1")
+//    public String signUpSun(){
+//        return "member/signUpSun";
+//    }
 
-    @PostMapping("signUp2")
+    @PostMapping("signUp")
     public String signUp(@RequestParam String role, Model model){
-            model.addAttribute("role",role);
+            model.addAttribute("role","stu");
 //        System.out.println(role);
         return "member/signUp";
     }
 
     @PostMapping("signUpCheck")
     public String signUpCheck(SignUpRequest signUpRequest){
-        if(signUpRequest.getRole().equals("stu")) {
+//        if(signUpRequest.getRole().equals("stu")) {
             userService.insertStu(signUpRequest);
-        } else if (signUpRequest.getRole().equals("prof")) {
-            //교수일경우
-            userService.insertProf(signUpRequest);
-        }
+//        } else if (signUpRequest.getRole().equals("prof")) {
+//            //교수일경우
+//            userService.insertProf(signUpRequest);
+//        }
         return "member/signUpSuccess";
     }
 
     //로그인
     @PostMapping("loginCheck")
     @ResponseBody
+    @Transactional
     public LoginResponse loginCheck(LoginRequest loginReq, HttpServletRequest request){
         LoginResponse user = userService.loginCheck(loginReq);
+        String userName;
 
         if (user != null) {
+            switch (user.getRole()) {
+                // idUser값으로 회원 이름 가져오기
+                case "stu":
+                    userName = userService.getStudentName(user.getIdUser());
+                    break;
+                case "prof":
+                    userName = userService.getProfessorName(user.getIdUser());
+                    break;
+                case "admin":
+                    userName = userService.getAdminName(user.getIdUser());
+                    break;
+                default:
+                    throw new IllegalArgumentException("허가받지 않은 사용자 입니다.");
+            }
+            user.setName(userName);
             HttpSession session = request.getSession();
             session.setAttribute("loginUser", user);
             session.setMaxInactiveInterval(60 * 30);
         }
-
         return user;
     }
 
@@ -69,16 +86,14 @@ public class UserController {
             model.addFlashAttribute("userInfo",userService.getProfessorInfo(user.getIdUser()));
         }
         model.addFlashAttribute("loginUser", user);
-        return "redirect:/sample2";
+        return "redirect:/";
     }
 
-
-
     //로그아웃
-    @PostMapping("/logout")
+    @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
-        return "redirect:/sample3";
+        return "redirect:/";
     }
 
 }

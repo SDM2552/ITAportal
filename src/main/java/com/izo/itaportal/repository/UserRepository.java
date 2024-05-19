@@ -27,6 +27,13 @@ public interface UserRepository {
 
     //학생정보 가져오기
     public Student selectStu(int idUser);
+    //관리자 정보 가져오기
+    public Student selectAdmin(int idUser);
+
+    //이름값 가져오기
+    public String getStuName(int idUser);
+    public String getProfName(int idUser);
+    public String getAdminName(int idUser);
 
 
 

@@ -11,7 +11,6 @@ import javax.persistence.Id;
 public class Student {
 
     private int idStudent;
-
     private String name;
     private String birth;
     private String tel;

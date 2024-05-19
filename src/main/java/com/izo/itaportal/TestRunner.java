@@ -32,17 +32,21 @@ public class TestRunner implements ApplicationRunner{
         //JdbcTemplete
         //member
         jdbcTemplate.execute("INSERT INTO professor(name, birth, tel, gender, address, id_user)" +
-                "VALUES ('김교수', '950320', '010-1234-1234', 'F', '경기도 고양시 어쩌구', '1')");
+                "VALUES ('김교수02', '950320', '010-1234-1234', 'F', '경기도 고양시 어쩌구', '2')");
         jdbcTemplate.execute("INSERT INTO professor(name, birth, tel, gender, address, id_user)" +
-                "VALUES ('박교수', '931231', '010-9876-5432', 'M', '서울시 성북구 근처', '24001')");
+                "VALUES ('박교수03', '931231', '010-9876-5432', 'M', '서울시 성북구 근처', '3')");
         jdbcTemplate.execute("INSERT INTO admin(name, birth, tel, gender, address, id_user)" +
-                "VALUES ('관리자01', '990101', '010-1000-2000', 'M', '서울시 종로3가', '1234')");
+                "VALUES ('관리자01', '990101', '010-1000-2000', 'M', '서울시 종로3가', '4')");
         jdbcTemplate.execute("INSERT INTO student(name, birth, tel, gender, address, id_user)" +
-                "VALUES ('김학생', '20020202', '010-2222-3333', 'M', '강원도', '2024')");
+                "VALUES ('김학생01', '20020202', '010-2222-3333', 'M', '강원도', '1')");
         jdbcTemplate.execute("INSERT INTO student(name, birth, tel, gender, address, id_user)" +
-                "VALUES ('복학생', '19000130', '010-3333-4444', 'M', '경기도', '2023')");
+                "VALUES ('복학생', '19000130', '010-3333-4444', 'M', '경기도', '5')");
         jdbcTemplate.execute("INSERT INTO user(id_user, login_id, password, regist_date, role) " +
                 "VALUES(1, 'stu', '" + encryptedPassword + "', '2024-05-17', 'stu')");
+        jdbcTemplate.execute("INSERT INTO user(id_user, login_id, password, regist_date, role) " +
+                "VALUES(2, 'prof', '" + encryptedPassword + "', '2024-05-19', 'prof')");
+        jdbcTemplate.execute("INSERT INTO user(id_user, login_id, password, regist_date, role) " +
+                "VALUES(4, 'admin', '" + encryptedPassword + "', '2024-05-18', 'admin')");
 
         //강의리스트
         jdbcTemplate.execute("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,sugang_st_dt,sugang_end_dt,pgm_target,id_room,pgm_method,pgm_per,pgm_fee,id_prof) "+

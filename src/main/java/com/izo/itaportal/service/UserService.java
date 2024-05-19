@@ -58,6 +58,21 @@ public class UserService {
     public Student getStudentInfo(int idUser) {
         return userRepository.selectStu(idUser);
     }
+    //관리자 정보 가져오기
+    public Student getAdminInfo(int idUser) {
+        return userRepository.selectAdmin(idUser);
+    }
+
+    //id로 이름 가져오기
+    public String getStudentName(int idUser){
+        return userRepository.getStuName(idUser);
+    }
+    public String getProfessorName(int idUser){
+        return userRepository.getProfName(idUser);
+    }
+    public String getAdminName(int idUser){
+        return userRepository.getAdminName(idUser);
+    }
 
     //중복 가입 체크
 //    private void validateDuplicateUser(User user){
