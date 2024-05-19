@@ -14,7 +14,7 @@
 <body>
 <div class="wrap">
     <!-- header -->
-    <c:import url="../layout/header.jsp" />
+    <c:import url="../layout/header.jsp"/>
 
     <!-- container -->
     <div id="container" class="container responCont">
@@ -46,66 +46,66 @@
                     <tr>
                         <th scope="col">분류</th>
                         <td colspan="3">
-                            무역 거래 실무
+                            ${program.cateName}
                         </td>
                     </tr>
                     <tr>
                         <th scope="col">프로그램명</th>
                         <td colspan="3">
-                            통관 및 관세 실무 이해
+                            ${program.pgmName}
                         </td>
                     </tr>
                     <tr>
                         <th scope="col">교육기간</th>
                         <td>
-                            2024-11-09 ~ 2024-11-10
+                            ${program.stDt} ~ ${program.endDt}
                         </td>
                         <th scope="col">강의 요일/시간</th>
                         <td>
-                            토,일/09:00~18:00
+                            토,일/09:00~18:00(수정해야함)
                         </td>
                     </tr>
                     <tr>
                         <th scope="col">총시수</th>
                         <td>
-                            15시간
+                            15시간(수정해야함)
                         </td>
                         <th scope="col">교육일수</th>
                         <td>
-                            2일
+                            2일(수정해야함)
                         </td>
                     </tr>
                     <tr>
                         <th scope="col">모집 정원</th>
                         <td>
-                            10명
+                            ${program.pgmPer}명
                         </td>
                         <th scope="col">일일시수</th>
                         <td>
-                            8시간
+                            8시간(수정해야함)
                         </td>
                     </tr>
                     <tr>
                         <th scope="col">강좌 구분</th>
                         <td>
-                            오프라인
+                            ${program.pgmMethod}
                         </td>
                         <th scope="col">교육 장소</th>
                         <td>
-                            이대캠퍼스 301호
+                            ${program.roomName}
                         </td>
                     </tr>
                     <tr>
                         <th scope="col">신청 대상</th>
                         <td colspan="3">
-                            통관 및 관세에 관심이 있는 재직자
+                            ${program.pgmTarget}
                         </td>
                     </tr>
                     <tr>
                     <tr>
                         <th scope="col">수강료</th>
                         <td colspan="3">
-                            55,000원
+                            ${program.pgmFee}원
                         </td>
                     </tr>
 
@@ -113,7 +113,7 @@
                 </table>
             </div>
             <br><br><br><br><br>
-            <h4 class="subTit">신청자 정보</h4>
+            <h4 class="subTit">신청자 정보(수정해야함)</h4>
             <div class="coment_form mt10">
                 <p>* 주소, 휴대폰번호, 이메일 정보를 변경하시려면 <strong>마이페이지 > 회원정보변경</strong>에서 변경하시면 됩니다</p>
                 <a href="/mypage/myPage.do">회원정보변경</a>
@@ -157,7 +157,7 @@
             </div>
             <!-- btn -->
             <div class="btnArea">
-                <button type="submit" class="btns btnSt01">
+                <button type="button" class="btns btnSt01" onclick="applyEnrollment(${loginUser.idUser}, ${program.idPgm});">
                     <span>수강신청</span>
                 </button>
                 <button type="button" class="btns btnSt02" onclick="history.back();">
@@ -173,6 +173,28 @@
     <!-- footer -->
     <c:import url="../layout/footer.jsp" />
 </div>
+<script>
+    function applyEnrollment(idUser, idPgm) {
+        $.ajax({
+            type: "POST",
+            url: "/program/result",
+            data: JSON.stringify({
+                idUser: idUser,
+                idPgm: idPgm
+            }),
+            contentType: "application/json",
+            success: function(response) {
+                console.log("수강 신청이 완료되었습니다.");
+                // 성공 페이지 링크할 것
+            },
+            error: function(xhr, status, error) {
+                console.error("수강 신청 중 오류가 발생했습니다:", error);
+                // 실패 시 alert로 이유 알려주기
+            }
+        });
+    }
+
+</script>
 </body>
 
 </html>

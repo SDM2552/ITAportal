@@ -20,6 +20,7 @@ public class UserService {
     @Transactional
     public void insertStu(SignUpRequest signUpRequest){
         signUpRequest.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
+        signUpRequest.setRole("stu");
         userRepository.insertUser(signUpRequest);
         String idUser = signUpRequest.getIdUser();
         userRepository.insertStu(signUpRequest);

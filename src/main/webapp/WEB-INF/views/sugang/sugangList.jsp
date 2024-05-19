@@ -79,24 +79,10 @@
                                 <td>${program.stDt} ~ ${program.endDt}</td>
                                 <td>${program.sugangStDt}<br>${program.sugangEndDt}</td>
                                 <td>
-                                    <button type="button" onclick="window.location.href = '/program/applyForm';">수강신청</button>
+                                    <button type="button" onclick="applyProgram(${program.idPgm});">수강신청</button>
                                 </td>
                             </tr>
                         </c:forEach>
-
-                        <%--                        <tr>--%>
-<%--                            <td>1</td>--%>
-<%--                            <td>무역거래실무</td>--%>
-<%--                            <td>통관 및 관세 실무 이해</td>--%>
-<%--                            <td>2024-11-09 ~ 2024-11-10</td>--%>
-<%--                            <td>2024-04-15 09:00<br>--%>
-<%--                                2024-11-01 18:00--%>
-<%--                            </td>--%>
-<%--                            <td>--%>
-<%--                                <button type="button" onclick="window.location.href = '/program/applyForm';">수강신청--%>
-<%--                                </button>--%>
-<%--                            </td>--%>
-<%--                        </tr>--%>
                         </tbody>
                     </table>
                 </div>
@@ -109,6 +95,12 @@
     <!-- footer -->
     <c:import url="../layout/footer.jsp"/>
 </div>
+<script>
+    <!-- 수강신청 상세 페이지로 이동 -->
+    function applyProgram(programId) {
+        window.location.href = '/program/applyForm?id=' + programId;
+    }
+</script>
 </body>
 
 </html>
