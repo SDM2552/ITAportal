@@ -46,6 +46,21 @@
         SELECT id_student, address, birth, gender, id_user, name, tel FROM student WHERE id_user = #{idUser}
     </select>
 
+    <!-- 관리자 -->
+    <select id="selectAdmin" parameterType="integer" resultType="com.izo.itaportal.model.Admin">
+        SELECT id_admin, address, birth, gender, id_user, name, tel FROM admin WHERE id_user = #{idUser}
+    </select>
+
+    <!--이름값 가져오기-->
+    <select id="getStuName" resultType="java.lang.String">
+        SELECT name FROM student WHERE id_User = #{idUser}
+    </select>
+    <select id="getProfName" resultType="java.lang.String">
+        SELECT name FROM professor WHERE id_User = #{idUser}
+    </select>
+    <select id="getAdminName" resultType="java.lang.String">
+        SELECT name FROM admin WHERE id_User = #{idUser}
+    </select>
 
 
 </mapper>

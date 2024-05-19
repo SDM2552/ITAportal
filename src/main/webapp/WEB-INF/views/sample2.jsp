@@ -28,7 +28,7 @@
                     <table>
                         <tr>
                             <td>이름</td>
-                            <td>${userInfo.name}</td>
+                            <td>${loginUser.name}</td>
                         </tr>
                         <tr>
                             <td>직업</td>
