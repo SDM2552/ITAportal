@@ -1,12 +1,13 @@
 package com.izo.itaportal.controller;
 
 import com.izo.itaportal.dto.ProgramAllDto;
+import com.izo.itaportal.model.Enrollment;
+import com.izo.itaportal.model.Sugang;
 import com.izo.itaportal.service.SugangService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,7 +26,22 @@ public class SugangController {
     }
 
     @GetMapping("/applyForm") //수강신청 개별과목 정보 페이지
-    public String programDetail(){
+    public String applyForm(@RequestParam("id") int programId, Model model) {
+        ProgramAllDto program = sugangService.getProgramDetail(programId);
+        model.addAttribute("program", program);
         return "sugang/sugangDetail";
     }
+
+    @PostMapping("/result")
+    public String sugang(@RequestBody Sugang sugang){
+        int idUser = sugang.getIdUser();
+        int idPgm = sugang.getIdPgm();
+        sugangService.applyEnrollmentRequest(idUser, idPgm);
+        return "redirect:/program/result";
+    }
+    @GetMapping("/result")
+    public String sugang2(){
+        return "sugang/sugangSuccess";
+    }
+
 }

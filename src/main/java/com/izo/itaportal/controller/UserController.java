@@ -27,10 +27,8 @@ public class UserController {
 //        return "member/signUpSun";
 //    }
 
-    @PostMapping("signUp")
-    public String signUp(@RequestParam String role, Model model){
-            model.addAttribute("role","stu");
-//        System.out.println(role);
+    @GetMapping("signUp")
+    public String signUp(){
         return "member/signUp";
     }
 

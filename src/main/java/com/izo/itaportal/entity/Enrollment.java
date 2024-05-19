@@ -14,7 +14,6 @@ public class Enrollment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idEnrollment; // 수강 신청 ID
-
     private int idStudent;    // 학생 ID
     private String pgmName;  //프로그램 이름
     private int idProgram;    // 프로그램 ID
