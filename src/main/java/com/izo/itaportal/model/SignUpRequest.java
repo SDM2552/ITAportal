@@ -19,6 +19,7 @@ public class SignUpRequest {
     private String gender;
     private String idUser;
     private String role;
+    private String email;
 
     public String getBirth() {
         return String.format("%04d%02d%02d", birthyy, birthmm, birthdd);

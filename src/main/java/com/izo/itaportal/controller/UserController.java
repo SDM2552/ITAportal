@@ -33,7 +33,11 @@ public class UserController {
     }
 
     @PostMapping("signUpCheck")
-    public String signUpCheck(SignUpRequest signUpRequest){
+    public String signUpCheck(SignUpRequest signUpRequest, String email01, String email2){
+
+           String email = email01+"@"+email2;
+        email = email.replace(",", "");
+        signUpRequest.setEmail(email);
 //        if(signUpRequest.getRole().equals("stu")) {
             userService.insertStu(signUpRequest);
 //        } else if (signUpRequest.getRole().equals("prof")) {
