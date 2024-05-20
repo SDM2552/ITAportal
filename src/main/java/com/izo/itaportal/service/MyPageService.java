@@ -3,6 +3,7 @@ package com.izo.itaportal.service;
 import com.izo.itaportal.model.Admin;
 import com.izo.itaportal.model.Professor;
 import com.izo.itaportal.model.Student;
+import com.izo.itaportal.model.User;
 import com.izo.itaportal.repository.AdminRepository;
 import com.izo.itaportal.repository.MyPageRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -30,6 +31,10 @@ public class MyPageService {
         return myPageRepository.selectAdminById(idUser);
     }
 
+    public User getUserById(Integer idUser) {
+        return myPageRepository.selectUserById(idUser);
+    }
+
     public int updateStudent(Student student) {
         int updateStudent = myPageRepository.updateStudent(student);
         return updateStudent;
@@ -44,6 +49,8 @@ public class MyPageService {
         int updateAdmin = myPageRepository.updateAdmin(admin);
         return updateAdmin;
     }
+
+
 
     public int deleteStudent(Integer idUser) {
         int deleteStudent = myPageRepository.deleteStudent(idUser);
@@ -83,6 +90,18 @@ public class MyPageService {
         boolean isAdmin = admin != null;
         log.debug("Is admin? {} for user id: {}", isAdmin, idUser);
         return isAdmin;
+    }
+
+    public boolean updatePassword(Integer idUser, String currentPassword, String newPassword) {
+        // 현재 비밀번호가 일치하는지 확인
+        User user = myPageRepository.selectUserById(idUser);
+        if (user == null || !user.getPassword().equals(currentPassword)) {
+            return false;
+        }
+
+        // 새 비밀번호로 업데이트
+        myPageRepository.updatePassword(idUser, newPassword);
+        return true;
     }
 
 
