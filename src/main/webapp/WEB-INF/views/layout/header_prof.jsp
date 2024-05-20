@@ -26,7 +26,7 @@
             <div id="gnb">
                 <ul class="gnbDep1">
                     <li>
-                        <a href="#">마이페이지</a>
+                        <a href="/user/info">마이페이지</a>
                     </li>
                     <li>
                         <a href="/prof/list">강의 관리</a>
