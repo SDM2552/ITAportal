@@ -68,7 +68,7 @@ public class TestRunner implements ApplicationRunner{
                 "VALUES ('100', '1', '2', '9999')");
 
         //enrollment
-        jdbcTemplate.execute("INSERT INTO enrollment(id_enrollment, id_cate, id_program, id_student, pgm_name, st_dt, status)" +
+        jdbcTemplate.execute("INSERT INTO enrollment(id_enrollment, id_cate, id_pgm, id_student, pgm_name, st_dt, status)" +
                 "VALUES ('100','1','2','3','무역을합시다','2024-05-16','보류 중')");
 
         //공지사항 글
