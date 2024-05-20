@@ -5,6 +5,7 @@ package com.izo.itaportal.repository;
 import com.izo.itaportal.model.Admin;
 import com.izo.itaportal.model.Professor;
 import com.izo.itaportal.model.Student;
+import com.izo.itaportal.model.User;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -14,10 +15,12 @@ public interface MyPageRepository {
     public Student selectStudentById(Integer idUser);
     public Professor selectProfById(Integer idUser);
     public Admin selectAdminById(Integer idUser);
+    public User selectUserById(Integer idUser);
 
     public int updateStudent(Student student);
     public int updateProf(Professor professor);
     public int updateAdmin(Admin admin);
+    public int updatePassword(Integer idUser,String newPassword);
 
     public int deleteStudent(Integer idUser);
     public int deleteProf(Integer idUser);

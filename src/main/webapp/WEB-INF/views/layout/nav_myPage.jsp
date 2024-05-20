@@ -5,6 +5,7 @@
     <div class="lnbArea">
         <ul>
             <li><a href="/user/info">회원정보</a></li>
+            <li><a href="/user/passwordUpdateInput">비밀번호 변경</a></li>
             <li><a href="/user/deleteInfo">회원탈퇴</a></li>
             <li><a href="/notice/noticeList">공지사항</a></li>
 

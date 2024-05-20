@@ -1,8 +1,10 @@
 package com.izo.itaportal.controller;
 
 import com.izo.itaportal.dto.ProgramAllDto;
+import com.izo.itaportal.model.Category;
 import com.izo.itaportal.model.Enrollment;
 import com.izo.itaportal.model.Sugang;
+import com.izo.itaportal.service.CategoryService;
 import com.izo.itaportal.service.SugangService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,12 +18,17 @@ import java.util.List;
 public class SugangController {
     @Autowired
     SugangService sugangService;
+    @Autowired
+    CategoryService categoryService;
 
     @GetMapping("/list") //수강신청 목록 페이지
     public String programList(Model model){
         List<ProgramAllDto> programs = sugangService.getAllProgram();
         System.out.println("출력"+programs.toString());
         model.addAttribute("programs", programs);
+        List<Category> categories = categoryService.getAllCategory();
+        model.addAttribute("categories",categories);
+
         return "sugang/sugangList";
     }
 

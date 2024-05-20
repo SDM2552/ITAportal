@@ -3,8 +3,10 @@ package com.izo.itaportal.controller;
 import com.izo.itaportal.dto.ProgramAllDto;
 import com.izo.itaportal.model.LoginResponse;
 import com.izo.itaportal.model.Program;
+import com.izo.itaportal.model.Schedule;
 import com.izo.itaportal.model.Syllabus;
 import com.izo.itaportal.service.ProfessorService;
+import com.izo.itaportal.service.ScheduleService;
 import com.izo.itaportal.service.SyllabusService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -21,6 +23,7 @@ public class ProfController {
 
     private final SyllabusService syllabusService;
     private final ProfessorService professorService;
+    private final ScheduleService scheduleService;
 
     //idProf 값을 저장함. 이후 매개변수에 @RequestParam("idPgm") int idPgm를 넣으면 세션 생성 없이 idProf를 쓸수있음
     @ModelAttribute("idProf")
@@ -74,11 +77,18 @@ public class ProfController {
     @GetMapping("/schedule")
     public String schedule(@RequestParam("idPgm") int idPgm, Model model){
         model.addAttribute("programInfo", syllabusService.selectJoinPgmByidPgm(idPgm));
+        model.addAttribute("schedules", scheduleService.selectAllSchedule(idPgm));
         return "prof/scheduleInput";
     }
+
 
     @GetMapping("/examList")
     public String examList(){
         return "prof/examList";
+
+    @PostMapping("schedule/input")
+    @ResponseBody
+    public void upsertSchedule(@RequestBody final List<Schedule> schedules){
+        scheduleService.upsertSchedule(schedules);
     }
 }

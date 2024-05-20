@@ -6,7 +6,7 @@
         <ul>
             <li><a href="/adminProgram">교육과정관리</a></li>
             <li><a href="/adminClassRoom">강의실관리</a></li>
-            <li><a href="#">수강현황조회</a></li>
+            <li><a href="/courseStatus/list">수강현황조회</a></li>
             <li><a href="#">휴보강신청</a></li>
         </ul>
     </div>
