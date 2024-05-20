@@ -26,7 +26,7 @@
             <div id="gnb">
                 <ul class="gnbDep1">
                     <li>
-                        <a href="#">MY</a>
+                        <a href="/user/info">MY</a>
                     </li>
                     <li>
                         <a href="#">수업</a>
