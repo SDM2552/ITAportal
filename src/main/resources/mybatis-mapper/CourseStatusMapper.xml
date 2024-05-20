@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.izo.itaportal.mapper.EnrollmentMapper">
+
+
+<!-- 프로그램 조회 -->
+    <select id="selectProgramByIdPgm" parameterType="integer"  resultType="com.izo.itaportal.model.Program">
+        SELECT pgm_name, st_dt, end_dt, pgm_per
+        FROM program
+        WHERE id_pgm = #{idPgm}
+    </select>
+
+</mapper>

@@ -50,7 +50,7 @@ public class TestRunner implements ApplicationRunner{
 
         //강의리스트
         jdbcTemplate.execute("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,sugang_st_dt,sugang_end_dt,pgm_target,id_room,pgm_method,pgm_per,pgm_fee,id_prof) "+
-                "VALUES (2,'통관 및 관세 실무 이해','2024-11-09','2024-11-10','2024-10-15 09:00','2024-10-30 18:00','통관 및 관세에 관심이 있는 재직자',1,'오프라인',10,55000,1)");
+                "VALUES (2,'통관 및 관세 실무 이해','2024-03-09','2024-11-10','2024-10-15 09:00','2024-10-30 18:00','통관 및 관세에 관심이 있는 재직자',1,'오프라인',10,55000,1)");
         jdbcTemplate.execute("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,sugang_st_dt,sugang_end_dt,pgm_target,id_room,pgm_method,pgm_per,pgm_fee,id_prof) "+
                 "VALUES (1,'자유무역협정(FTA) 실무','2024-06-01','2024-08-31','2024-10-15 09:00','2024-10-30 18:00','자유무역에 관심이 있는 성인',99,'온라인',30,75000,2)");
         jdbcTemplate.execute("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,sugang_st_dt,sugang_end_dt,pgm_target,id_room,pgm_method,pgm_per,pgm_fee,id_prof) "+
@@ -60,6 +60,9 @@ public class TestRunner implements ApplicationRunner{
         //강의계획서
         jdbcTemplate.execute("INSERT INTO syllabus (id_pgm, course_overview, objective, teaching, book, evaluation, remarks, id_prof)" +
                 "VALUES (1, '임시데이터', '임시데이터', '온라인', '임시데이터', '임시데이터', '임시데이터', 1)");
+        //주차별 강의계획서
+        jdbcTemplate.execute("INSERT INTO schedule (id_pgm, day_sched, start_sched, end_sched, learning_contents, learning_detail, note)" +
+                "VALUES (1, '2024-05-20', '09:00:00', '12:00:00', '관세선의 개념에 대해 이해한다.', '대면수업', '오티랑 함께 진행합니다~~!')");
         //강의실
         jdbcTemplate.execute("INSERT INTO class_room VALUES (1,'이대캠퍼스 301호')");
         jdbcTemplate.execute("INSERT INTO class_room VALUES (99,'온라인 학습 관리 시스템(LMS)')");

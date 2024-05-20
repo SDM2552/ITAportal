@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class Schedule {
 
-    private int idSche;
+    private int idSched;
     //프로그램코드 (FK)
     private int idPgm;
     //수업일자

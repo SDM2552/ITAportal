@@ -58,7 +58,7 @@
     <!-- container -->
     <div id="container" class="container responCont">
         <!-- 왼쪽 네비바 -->
-        <c:import url="/WEB-INF/views/layout/nav_student.jsp" />
+        <c:import url="/WEB-INF/views/layout/nav_prof_program.jsp"/>
         <!-- contents -->
         <div id="contents" class="eduIntroCont">
             <!-- location -->
@@ -99,36 +99,65 @@
 
 
                 <!-- 강의 정보 입력 폼 -->
+            <div class="classForm">
+                <table id="schedule" >
+                    <caption>
 
-                    <div class="classForm">
-                        <div>
-                            <label for="lectureName">강의명:</label>
-                            <input type="text" id="lectureName" value="${programInfo.pgmName}" readonly>
-                        </div>
-                        <div>
-                            <label for="daySched">수업일자</label>
-                            <input type="text" id="daySched" placeholder="수업일자 입력(YYMMDD)" value="">
-                        </div>
-                        <div>
-                            <label for="startSched">시작시간</label>
-                            <input type="text" id="startSched" placeholder="수업시작시간(HH:MM)" value="">
-                        </div>
-                        <div>
-                            <label for="endSched">종료시간</label>
-                            <input type="text" id="endSched" placeholder="수업종료시간(HH:MM)" value="">
-                        </div>
-                        <div>
-                            <label for="evaluation">학습내용</label>
-                            <textarea id="evaluation" rows="3" placeholder="학습내용 입력" >${syllabus.evaluation}</textarea>
-                        </div>
-                        <div>
-                            <label for="note">비고</label>
-                            <textarea id="note" rows="3" placeholder="기타 메모사항 입력" >${syllabus.remarks}</textarea>
-                        </div>
+                    </caption>
+                    <colgroup>
+                        <col width="5%">
+                        <col width="10%">
+                        <col width="5%">
+                        <col width="5%">
+                        <col width="*%">
+                        <col width="10%">
+                        <col width="15%%">
+                    </colgroup>
+                    <thead>
+                        <th scope="col">수업주차</th>
+                        <th scope="col">수업일자</th>
+                        <th scope="col">시작시간</th>
+                        <th scope="col">종료시간</th>
+                        <th scope="col">수업내용</th>
+                        <th scope="col">수업방법</th>
+                        <th scope="col">비고</th>
+                    </thead>
+
+                    <tbody>
+                    <c:forEach var="schedules" items="${schedules}" >
+                    <tr>
+                        <td>
+                            <span><select id="idSched"></select></span>
+                        </td>
+                        <td>
+                            <span><input type="date" id="daySched" value="${programInfo.stDt}" min="${programInfo.stDt}" max="${programInfo.endDt}"></span>
+                        </td>
+                        <td>
+                            <span><input type="time" id="startSched" value="${schedules.startSched}" min="06:00:00" max="19:00:00"></span>
+                        </td>
+                        <td>
+                            <span><input type="time" id="endSched" value="${schedules.endSched}" min="07:00:00" max="20:00:00"></span>
+                        </td>
+                        <td>
+                            <span><textarea id="learningContents" rows="3" placeholder="수업 내용" >${schedules.learningContents}</textarea></span>
+                        </td>
+                        <td>
+                            <span><input type="text" id="learningDetail" placeholder="학습 방법" value="${schedules.learningDetail}"></span>
+                        </td>
+                        <td>
+                            <textarea id="note" rows="3" placeholder="기타 메모사항 입력" >${schedules.note}</textarea>
+                        </td>
                         <input type="hidden" id="idProf" value="${syllabus.idProf}">
                         <input type="hidden" id="idPgm" value="${programInfo.idPgm}">
-                        <button onclick="save()">저장</button>
-                    </div>
+
+                    </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+
+                <button onclick="add()">추가</button>
+                <button onclick="save()">저장</button>
+            </div>
 
 
 
@@ -142,25 +171,84 @@
 </div>
 
 <script>
+    const selectElement = document.getElementById("idSched");
+    for (let i = 1; i <= 15; i++) {
+        const option = document.createElement("option");
+        option.value = i;
+        option.text = i;
+        selectElement.appendChild(option);
+    }
+
+    function add(){
+        const lastRow = document.querySelector("#schedule tbody tr:last-child");
+        const lastDate = new Date(lastRow.querySelector("#daySched").value);
+        const newDate = new Date(lastDate.getTime() + (7 * 24 * 60 * 60 * 1000)); // 현재 날짜에 7일을 더함
+        const formattedDate = newDate.toISOString().split('T')[0]; // 날짜 형식을 YYYY-MM-DD로 변환
+
+        const newRow = document.createElement("tr");
+        const newRowHTML = `
+    <td>
+        <span><select id="idSched"></select></span>
+    </td>
+    <td>
+        <span><input type="date" id="daySched" value="${formattedDate}" min="${formattedDate}" max="${programInfo.endDt}"></span>
+    </td>
+    <td>
+        <span><input type="time" id="startSched" value="09:00:00" min="06:00:00" max="19:00:00"></span>
+    </td>
+    <td>
+        <span><input type="time" id="endSched" value="10:00:00" min="07:00:00" max="20:00:00"></span>
+    </td>
+    <td>
+        <span><textarea id="learningContents" rows="3" placeholder="수업 내용"></textarea></span>
+    </td>
+    <td>
+        <span><input type="text" id="learningDetail" placeholder="학습 방법" value=""></span>
+    </td>
+    <td>
+        <textarea id="note" rows="3" placeholder="기타 메모사항 입력"></textarea>
+    </td>
+    <input type="hidden" id="idPgm" value="${programInfo.idPgm}">
+    `;
+        newRow.innerHTML = newRowHTML;
+        document.getElementById("schedule").getElementsByTagName("tbody")[0].appendChild(newRow);
+    }
+
     function save(){
-        const idPgm = document.querySelector('.classForm input#idPgm').value;
 
+        const schedules = [];
 
-        const params = {
+        document.querySelectorAll("#schedule tbody tr").forEach(row => {
+            const idSched = parseInt(row.querySelector("#idSched").value);
+            const idPgm = document.querySelector('.classForm input#idPgm').value;
+            const daySched = row.querySelector("#daySched").value;
+            const startSched = row.querySelector("#startSched").value;
+            const endSched = row.querySelector("#endSched").value;
+            const learningContents = row.querySelector("#learningContents").value;
+            const learningDetail = row.querySelector("#learningDetail").value;
+            const note = row.querySelector("#note").value;
 
-        }
-
-        console.log(params);
+            schedules.push({
+                idSched: idSched,
+                idPgm: idPgm,
+                daySched: daySched,
+                startSched: startSched,
+                endSched: endSched,
+                learningContents: learningContents,
+                learningDetail: learningDetail,
+                note: note
+            })
+        })
 
         $.ajax({
             url : `/prof/schedule/input`,
             type : 'post',
             contentType : 'application/json; charset=utf-8',
             dataType : 'json',
-            data : JSON.stringify(params),
+            data : JSON.stringify(schedules),
             async : false,
             success : function (response) {
-                alert('입력되었습니다.')
+                alert('저장되었습니다.')
             },
             error : function (request, status, error) {
                 console.log(error)
