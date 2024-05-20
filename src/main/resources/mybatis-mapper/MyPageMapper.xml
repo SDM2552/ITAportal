@@ -66,4 +66,9 @@
         delete from admin
         where id_user = #{idUser}
     </delete>
+
+    <delete id="deleteUser" parameterType="int">
+        delete from user
+        where id_user = #{idUser}
+    </delete>
 </mapper>

@@ -84,17 +84,17 @@ public class MyPageController {
         Integer idUser = user.getIdUser();
 
         if (myPageService.isStudent(idUser)) {
-            return "/myPage/deleteInfo?idUser=" + idUser;
+            return "/myPage/deleteInfo";
         } else if (myPageService.isProfessor(idUser)) {
-            return "/myPage/deleteInfo?idUser=" + idUser;
+            return "/myPage/deleteInfo";
         } else if (myPageService.isAdmin(idUser)) {
-            return "/myPage/deleteInfo?idUser=" + idUser;
+            return "/myPage/deleteInfo";
         } else {
             return "/";
         }
     }
 
-    @PostMapping("/delete")
+    @GetMapping("/delete")
     public String delete() {
         LoginResponse user = (LoginResponse) httpSession.getAttribute("loginUser");
         if (user == null) {
@@ -105,13 +105,16 @@ public class MyPageController {
 
         if (myPageService.isStudent(idUser)) {
             myPageService.deleteStudent(idUser);
-            return "sample2";
+            myPageService.deleteUser(idUser);       //외래묶으면 삭제
+            return "redirect:/";
         } else if (myPageService.isProfessor(idUser)) {
             myPageService.deleteProfessor(idUser);
-            return "sample2";
+            myPageService.deleteUser(idUser);
+            return "redirect:/";
         } else if (myPageService.isAdmin(idUser)) {
             myPageService.deleteAdmin(idUser);
-            return "sample2";
+            myPageService.deleteUser(idUser);
+            return "redirect:/";
         } else {
             return "/";
         }

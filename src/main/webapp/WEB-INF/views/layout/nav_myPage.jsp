@@ -4,9 +4,9 @@
     <h2 class="ltit">마이페이지</h2>
     <div class="lnbArea">
         <ul>
-            <li><a href="#">학생 명단 조회</a></li>
-            <li><a href="#">강사 명단 조회</a></li>
-            <li><a href="#">관리자 명단 조회</a></li>
+            <li><a href="/user/info">회원정보</a></li>
+            <li><a href="/user/deleteInfo">회원탈퇴</a></li>
+            <li><a href="/notice/noticeList">공지사항</a></li>
 
         </ul>
     </div>
