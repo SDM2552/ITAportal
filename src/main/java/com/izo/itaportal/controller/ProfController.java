@@ -81,10 +81,10 @@ public class ProfController {
         return "prof/scheduleInput";
     }
 
-
+    //과제 페이지
     @GetMapping("/examList")
     public String examList(){
-        return "prof/examList";
+        return "prof/examList";}
 
     @PostMapping("schedule/input")
     @ResponseBody
