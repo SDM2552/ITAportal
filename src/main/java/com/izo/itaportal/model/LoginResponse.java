@@ -10,4 +10,6 @@ public class LoginResponse {
     private int idUser;
     private int commonId;//id(stu,prof,admin 통합)
     private String name;
+
+
 }

@@ -11,8 +11,8 @@
     <!-- 유저 테이블 추가 (가입) -->
     <insert id="insertUser" parameterType="com.izo.itaportal.model.SignUpRequest"
             useGeneratedKeys="true" keyProperty="idUser">
-        INSERT INTO user (login_id, password, role, regist_date)
-        VALUES (#{loginId}, #{password}, #{role}, now())
+        INSERT INTO user (login_id, password, role, regist_date, email)
+        VALUES (#{loginId}, #{password}, #{role}, now(), #{email})
     </insert>
 
     <!-- 학생테이블 추가 (가입) -->
