@@ -83,9 +83,9 @@ public class ProfController {
 
 
     @GetMapping("/examList")
-    public String examList(){
+    public String examList() {
         return "prof/examList";
-
+    }
     @PostMapping("schedule/input")
     @ResponseBody
     public void upsertSchedule(@RequestBody final List<Schedule> schedules){
