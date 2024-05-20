@@ -7,39 +7,20 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <script src="https://kit.fontawesome.com/93205cc57d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="/css/table.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>샘플 페이지</title>
     <style>
-        div#contents.eduIntroCont {
-            display: flex;
-            flex-direction: column;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
 
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
         .classForm {
             margin-top: 20px;
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+
             background-color: #f9f9f9;
         }
         .classForm div {
+            padding: 10px;
             display: flex;
             flex-direction: column;
         }
@@ -59,7 +40,7 @@
     <!-- container -->
     <div id="container" class="container responCont">
         <!-- 왼쪽 네비바 -->
-        <c:import url="/WEB-INF/views/layout/nav_student.jsp" />
+        <c:import url="../layout/nav_prof_program.jsp" />
         <!-- contents -->
         <div id="contents" class="eduIntroCont">
             <!-- location -->
@@ -70,18 +51,19 @@
             </div>
             <!-- //location -->
 
-            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>강의계획서 입력</h3>
+            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>강의계획서</h3>
 
             <!-- 본문 -->
+            <h4 class="subTit">프로그램 정보</h4>
                 <!-- 강의 정보 테이블 -->
-                    <table>
+                    <table class="tblData mt10">
                         <colgroup>
                             <col style="width: 20%;">
                             <col style="width: 30%;">
                             <col style="width: 20%;">
                             <col style="width: 30%;">
                         </colgroup>
-                        <h2>강의 정보</h2>
+
                         <tbody>
                         <tr>
                             <th><label for="category">카테고리<br>(Category)</label></th>
@@ -93,7 +75,7 @@
                             <th><label for="classRoom">수업시간/강의실<br>(Class Time/Class Room)</label></th>
                             <td><div id="classRoom">${programInfo.roomName}</div></td>
                             <th><label for="programDuration">강의기간<br>(Program Duration)</label></th>
-                            <td><div id="programDuration">${programInfo.stDt}~${programInfo.endDt}</div></td>
+                            <td><div id="programDuration">${programInfo.stDt} ~ ${programInfo.endDt}</div></td>
                         </tr>
                         </tbody>
                     </table>
@@ -101,7 +83,7 @@
             <button onclick="scheduleInput()">주차별 강의계획 입력</button>
                 <!-- 강의 정보 입력 폼 -->
 
-                    <div class="classForm">
+                    <div class="classForm tblData mt10">
                         <div>
                             <label for="lectureName">강의명:</label>
                             <input type="text" id="lectureName" value="${programInfo.pgmName}" readonly>
@@ -135,7 +117,11 @@
                         </div>
                         <input type="hidden" id="idProf" value="${syllabus.idProf}">
                         <input type="hidden" id="idPgm" value="${programInfo.idPgm}">
-                        <button onclick="save()">저장</button>
+                        <div class="btnArea">
+                            <button type="button" class="btns btnSt01" onclick="save()" style="display: block; margin: 0 auto;">
+                                <span>저장</span>
+                            </button>
+                        </div>
                     </div>
 
 

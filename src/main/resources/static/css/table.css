@@ -315,7 +315,16 @@
     background-color: #F5F5F5;
     text-align: center;
     line-height: 30px;
-
+}
+.btns {
+    display: inline-block;
+    margin-right: 18px;
+    position: relative;
+    width: 80px;
+    border: 1px solid black;
+    background-color: #F5F5F5;
+    text-align: center;
+    line-height: 30px;
 }
 .coment_form{display: flex; position:relative;padding-right:100px;}
 .coment_form p{font-size:15px;color:#e65151; display: inline-block;  margin-bottom: -15px;}

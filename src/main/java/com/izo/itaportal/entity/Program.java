@@ -20,8 +20,9 @@ public class Program {
     private String pgmTarget;  //교육대상
     private int idRoom;        //강의실코드
     private String pgmMethod;  //교육방법
-    private String pgmPer;     //교육인원
-    private String pgmFee;     //교육비
+    private int pgmPer;     //교육 정원
+    private int num_of_stu; //수강 인원
+    private int pgmFee;     //교육비
 
 
 }
