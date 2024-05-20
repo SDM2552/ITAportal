@@ -4,10 +4,11 @@
     <h2 class="ltit">강의 관리</h2>
     <div class="lnbArea">
         <ul>
+            <li><a href="/prof/list">내 강의 목록</a></li>
             <li><a href="/prof/list">강의계획서</a></li>
             <li><a href="#">휴보강신청</a></li>
             <li><a href="#">출석관리</a></li>
-            <li><a href="#">과제관리</a></li>
+            <li><a href="/prof/examList">과제관리</a></li>
 
         </ul>
     </div>

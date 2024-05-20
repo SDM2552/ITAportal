@@ -444,6 +444,7 @@ body {
 .leftWrap {
     float: left;
     width: 280px;
+    margin-left: -50px;
 }
 
 .leftWrap h2.ltit {

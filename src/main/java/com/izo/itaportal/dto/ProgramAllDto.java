@@ -15,8 +15,10 @@ public class ProgramAllDto {
     private String sugangEndDt; //접수종료일자
     private String pgmTarget;  //교육대상
     private String pgmMethod;  //교육방법(온라인,오프라인)
-    private String pgmPer;     //교육인원
-    private String pgmFee;     //교육비
+    private int pgmPer;     //교육인원
+    private int numOfStu; //수강 인원
+
+    private int pgmFee;     //교육비
 
     private String cateName;   //주제분류명
     private String roomName;   //강의실명

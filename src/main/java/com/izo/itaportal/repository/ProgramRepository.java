@@ -1,9 +1,11 @@
 package com.izo.itaportal.repository;
 
 
+import com.izo.itaportal.dto.ProgramAllDto;
 import com.izo.itaportal.model.Program;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -18,5 +20,7 @@ public interface ProgramRepository {
     public int delete(int idPgm);
     //강사용 강의리스트 조회 쿼리 @김봄이
     public List<Program> selectPgmForProf(int idProf);
+    public List<ProgramAllDto> selectAllPgm(int idProf);
+    ProgramAllDto selectPgmDetail(@Param("idProf") int idProf, @Param("idPgm") int idPgm);
 
 }
