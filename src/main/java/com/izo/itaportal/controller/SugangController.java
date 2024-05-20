@@ -28,6 +28,7 @@ public class SugangController {
     @GetMapping("/applyForm") //수강신청 개별과목 정보 페이지
     public String applyForm(@RequestParam("id") int programId, Model model) {
         ProgramAllDto program = sugangService.getProgramDetail(programId);
+        System.out.println("프로그램 정보:"+program.toString());
         model.addAttribute("program", program);
         return "sugang/sugangDetail";
     }
@@ -36,7 +37,9 @@ public class SugangController {
     public String sugang(@RequestBody Sugang sugang){
         int commonId = sugang.getCommonId();
         int idPgm = sugang.getIdPgm();
-        sugangService.applyEnrollmentRequest(commonId, idPgm);
+        int idCate = sugang.getIdCate();
+        System.out.println("idcate값: "+idCate);
+        sugangService.applyEnrollmentRequest(commonId, idPgm, idCate);
         return "sugang/sugangSuccess";
     }
     @GetMapping("/result") //수강신청 결과 페이지

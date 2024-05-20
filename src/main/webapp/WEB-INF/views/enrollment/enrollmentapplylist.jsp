@@ -47,27 +47,19 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>무역</td>
-                        <td>김교수</td>
-                        <td>무슨무슨과제</td>
-                        <td>오늘부터</td>
-                        <td>내일까지</td>
-                        <td>아직임</td>
-                        <td><button onclick="location.href='/stu/examSubmit'">제출</button></td>
-                    </tr>
+                    <c:forEach var="sugang" items="${sugangList}">
+                        <tr>
+                            <td>${sugang.cateName}</td>
+                            <td>${sugang.pgmName}</td>
+                            <td>${sugang.stDt} ~ ${sugang.endDt}</td>
+                            <td>${sugang.sugangStDt}</td>
+                            <td>${sugang.pgmFee}</td>
+                            <td>${sugang.status}</td>
+                        </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
             </div>
-            <c:forEach items="${enrollments}" var="enrollment">
-                <tr>
-                    <td><a href="enrollment?idEnrollment=${enrollment.idEnrollment}"/> ${enrollment.pgmName}</td>  <!-- EL 표현식 수정 -->
-                    <td>${enrollment.stDt}</td>      <!-- EL 표현식 수정 -->
-                    <td>${enrollment.status}</td>   <!-- EL 표현식 수정 -->
-                </tr>
-            </c:forEach>
-                </tbody>
-            </table>
             <!-- 본문 끝 -->
         </div>
             <!-- //contents -->
