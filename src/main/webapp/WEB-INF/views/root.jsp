@@ -47,7 +47,7 @@
                             </table>
 
                             <div class="profileButton">
-                                <button onclick="location.href='#'">마이페이지</button>
+                                <button onclick="location.href='/user/info'">마이페이지</button>
                                 <button onclick="location.href='/user/logout'">로그아웃</button>
                             </div>
                         </li>

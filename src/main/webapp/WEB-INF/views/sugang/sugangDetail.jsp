@@ -116,7 +116,7 @@
             <h4 class="subTit">신청자 정보(수정해야함)</h4>
             <div class="coment_form mt10">
                 <p>* 주소, 휴대폰번호, 이메일 정보를 변경하시려면 <strong>마이페이지 > 회원정보변경</strong>에서 변경하시면 됩니다</p>
-                <a href="/mypage/myPage.do">회원정보변경</a>
+                <a href="/user/info">회원정보변경</a>
             </div>
             <div class="tblData mt10">
                 <table>
