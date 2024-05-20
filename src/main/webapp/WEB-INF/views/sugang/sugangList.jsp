@@ -35,14 +35,14 @@
             <!-- 본문 -->
             <div class="boardSearch_g type">
                 <span class="tit">분류 </span>
-                <select title="선택" id="cateName" name="cateName">
+                <select title="선택" id="lecIdxSel" name="cateName">
                     <option value="">전체</option>
                     <c:forEach var="category" items="${categories}">
                         <option value="${category.cateName}">${category.cateName}</option>
                     </c:forEach>
                 </select>
                 <span class="tit">프로그램명</span>
-                <input type="text" title="키워드 입력" placeholder="프로그램명을 입력하세요" id="pgmName" name="pgmName" value=""/>
+                <input type="text" title="키워드 입력" placeholder="프로그램명을 입력하세요" id="proTitleSel" name="pgmName" value=""/>
                 <button type="button" class="btn_search" onclick="searchPrograms()">검색</button>
             </div>
             <div class="tblData mt10">
@@ -91,8 +91,8 @@
 </div>
 <script>
     function searchPrograms() {
-        var cateName = $('#cateName').val();
-        var pgmName = $('#pgmName').val();
+        var cateName = $('#lecIdxSel').val();
+        var pgmName = $('#proTitleSel').val();
         window.location.href = '/search/program?cateName=' + cateName + '&pgmName=' + pgmName;
     }
 
