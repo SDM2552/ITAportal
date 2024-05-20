@@ -50,29 +50,38 @@ public class UserService {
         return user;
     }
 
-    //교수정보 가져오기
-    public Professor getProfessorInfo(int idUser) {
-        return userRepository.selectProf(idUser);
-    }
 
     //학생정보 가져오기
     public Student getStudentInfo(int idUser) {
         return userRepository.selectStu(idUser);
+    }
+    //교수정보 가져오기
+    public Professor getProfessorInfo(int idUser) {
+        return userRepository.selectProf(idUser);
     }
     //관리자 정보 가져오기
     public Student getAdminInfo(int idUser) {
         return userRepository.selectAdmin(idUser);
     }
 
-    //id로 이름 가져오기
+    //id로 단일정보 가져오기
     public String getStudentName(int idUser){
         return userRepository.getStuName(idUser);
+    }
+    public int getStudentId(int idUser){
+        return userRepository.getStuId(idUser);
     }
     public String getProfessorName(int idUser){
         return userRepository.getProfName(idUser);
     }
+    public int getProfessorId(int idUser){
+        return userRepository.getProfId(idUser);
+    }
     public String getAdminName(int idUser){
         return userRepository.getAdminName(idUser);
+    }
+    public int getAdminId(int idUser){
+        return userRepository.getAdminId(idUser);
     }
 
     //중복 가입 체크

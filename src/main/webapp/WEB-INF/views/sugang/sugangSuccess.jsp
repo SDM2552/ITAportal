@@ -33,7 +33,13 @@
             <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>수강 신청</h3>
 
             <!-- 본문 -->
-            <h1>수강신청이 완료되었습니다.</h1>
+            <h1>수강신청이 접수되었습니다.</h1>
+            <ul>
+                <li>※ 신청하신 수강을 취소하시려면  <strong>마이페이지 > 나의 강의실</strong> 에서 하시면 됩니다. </li>
+                <li>※ 교육생 합격자 발표는 추후 SMS 로 알려드립니다.</li>
+            </ul>
+            <h2>(수강 정보 재출력)</h2>
+
             <!-- 본문 끝 -->
         </div>
         <!-- //contents -->
@@ -42,12 +48,7 @@
     <!-- footer -->
     <c:import url="../layout/footer.jsp"/>
 </div>
-<script>
-    <!-- 수강신청 상세 페이지로 이동 -->
-    function applyProgram(programId) {
-        window.location.href = '/program/applyForm?id=' + programId;
-    }
-</script>
+
 </body>
 
 </html>

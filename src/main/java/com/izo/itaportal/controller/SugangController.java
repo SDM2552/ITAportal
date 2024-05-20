@@ -32,14 +32,14 @@ public class SugangController {
         return "sugang/sugangDetail";
     }
 
-    @PostMapping("/result")
+    @PostMapping("/result") //수강신청 처리
     public String sugang(@RequestBody Sugang sugang){
-        int idUser = sugang.getIdUser();
+        int commonId = sugang.getCommonId();
         int idPgm = sugang.getIdPgm();
-        sugangService.applyEnrollmentRequest(idUser, idPgm);
-        return "redirect:/program/result";
+        sugangService.applyEnrollmentRequest(commonId, idPgm);
+        return "sugang/sugangSuccess";
     }
-    @GetMapping("/result")
+    @GetMapping("/result") //수강신청 결과 페이지
     public String sugang2(){
         return "sugang/sugangSuccess";
     }
