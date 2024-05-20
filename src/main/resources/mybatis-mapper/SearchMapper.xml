@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.izo.itaportal.repository.SearchRepository">
+
+    <select id="findAllCategories" resultType="com.izo.itaportal.dto.CategoryDto">
+        SELECT id_Cate AS idCate, cate_Name AS cateName
+        FROM Category
+    </select>
+
+    <select id="searchProgramsByCategoryAndName" resultType="com.izo.itaportal.dto.ProgramSearchDto">
+        SELECT p.id_Pgm, p.pgm_Name, c.cate_Name, p.st_Dt, p.end_Dt, p.sugang_St_Dt, p.sugang_End_Dt, p.pgm_Fee
+        FROM Program p
+        JOIN Category c ON p.id_Cate = c.id_Cate
+        WHERE 1=1
+        <if test="cateName != null and cateName != ''">
+            AND c.cate_Name = #{cateName}
+        </if>
+        <if test="pgmName != null and pgmName != ''">
+            AND p.pgm_Name LIKE CONCAT('%', #{pgmName}, '%')
+        </if>
+    </select>
+
+</mapper>
