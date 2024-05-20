@@ -14,5 +14,41 @@
         VALUES (#{idPgm}, #{daySched}, #{startSched}, #{endSched}, #{learningContents}, #{learningDetail}, #{note})
     </insert>
 
+    <!-- 주차별 강의계획 입력 또는 업데이트 -->
+    <insert id="upsertSchedule" parameterType="com.izo.itaportal.model.Schedule">
+        INSERT INTO schedule (id_sched, id_pgm, day_sched, start_sched, end_sched, learning_contents, learning_detail, note)
+        VALUES
+            (
+                #{idSched},
+                #{idPgm},
+                #{daySched},
+                #{startSched},
+                #{endSched},
+                #{learningContents},
+                #{learningDetail},
+                #{note}
+            )
+            ON DUPLICATE KEY UPDATE
+                                 day_sched = VALUES(day_sched),
+                                 start_sched = VALUES(start_sched),
+                                 end_sched = VALUES(end_sched),
+                                 learning_contents = VALUES(learning_contents),
+                                 learning_detail = VALUES(learning_detail),
+                                 note = VALUES(note);
+    </insert>
+
+    <!-- idPgm별 최대 idSched값 -->
+    <select id="selectMaxIdSchedByIdPgm" resultType="Integer">
+        SELECT count(id_sched)
+        FROM schedule
+        WHERE id_pgm = #{idPgm}
+    </select>
+
+    <!-- 주차별 강의계획서 조회 -->
+    <select id="selectAllSchedule" parameterType="integer" resultType="com.izo.itaportal.model.Schedule">
+        SELECT * FROM schedule WHERE id_pgm=#{idPgm}
+    </select>
+
+
 
 </mapper>

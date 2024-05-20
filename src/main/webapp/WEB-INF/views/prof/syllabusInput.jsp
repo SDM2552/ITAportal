@@ -59,7 +59,7 @@
     <!-- container -->
     <div id="container" class="container responCont">
         <!-- 왼쪽 네비바 -->
-        <c:import url="/WEB-INF/views/layout/nav_student.jsp" />
+        <c:import url="/WEB-INF/views/layout/nav_prof_program.jsp"/>
         <!-- contents -->
         <div id="contents" class="eduIntroCont">
             <!-- location -->

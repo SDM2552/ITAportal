@@ -12,7 +12,7 @@ public class Schedule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idSche;
+    private int idSched;
     //프로그램코드 (FK)
     private int idPgm;
     //수업일자
