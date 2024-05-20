@@ -27,6 +27,7 @@ public class SugangService {
     //수강 신청
     public void applyEnrollmentRequest(int commonId, int idPgm, int idCate){
        sugangRepository.saveSugang(commonId, idPgm, idCate);
+
     }
 
 }

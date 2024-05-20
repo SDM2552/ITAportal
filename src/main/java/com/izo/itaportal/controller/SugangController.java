@@ -40,6 +40,7 @@ public class SugangController {
         int idCate = sugang.getIdCate();
         System.out.println("idcate값: "+idCate);
         sugangService.applyEnrollmentRequest(commonId, idPgm, idCate);
+
         return "sugang/sugangSuccess";
     }
     @GetMapping("/result") //수강신청 결과 페이지

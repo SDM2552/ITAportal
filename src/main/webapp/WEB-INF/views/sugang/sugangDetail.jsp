@@ -158,6 +158,7 @@
             <!-- btn -->
             <div class="btnArea">
                 <button type="button" class="btns btnSt01" onclick="applyEnrollment(${loginUser.commonId}, ${program.idPgm}, ${program.idCate});">
+
                     <span>수강신청</span>
                 </button>
                 <button type="button" class="btns btnSt02" onclick="history.back();">
@@ -182,6 +183,7 @@
                 commonId: commonId,
                 idPgm: idPgm,
                 idCate: idCate
+
             }),
             contentType: "application/json",
             success: function(response) {

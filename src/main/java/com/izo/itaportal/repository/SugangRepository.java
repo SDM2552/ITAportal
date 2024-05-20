@@ -16,6 +16,4 @@ public interface SugangRepository {
 
     public void saveSugang(int commonId, int idPgm, int idCate);
 
-
-
 }
