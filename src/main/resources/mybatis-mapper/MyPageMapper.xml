@@ -19,6 +19,8 @@
         select id_student, address, birth, gender, id_user, name, tel from student where id_user=#{idUser}
     </select>
 
+
+
     <select id="selectProfById" resultType="com.izo.itaportal.model.Professor">
         select id_prof, address, birth, gender, id_user, name, tel from professor where id_user=#{idUser}
     </select>
@@ -71,4 +73,14 @@
         delete from user
         where id_user = #{idUser}
     </delete>
+
+    <select id="selectUserById" resultType="com.izo.itaportal.model.User">
+        select login_id, password from user where id_user=#{idUser}
+    </select>
+
+    <update id="updatePassword">
+        update user
+        set password = #{newPassword}
+        where id_user = #{idUser}
+    </update>
 </mapper>

@@ -65,8 +65,12 @@
                     <input type="text" class="form-control" id="pgmTarget" placeholder="교육대상" name="pgmTarget">
                 </div>
                 <div class="form-group">
-                    <label for="pgmMethod">교육방법 : </label>
-                    <input type="text" class="form-control" id="pgmMethod" placeholder="교육방법" name="pgmMethod">
+                    <label for="pgmMethod">교육방법 :</label>
+                    <select class="form-control" id="pgmMethod" name="pgmMethod">
+                        <option value="">선택하세요</option>
+                        <option value="온라인">온라인</option>
+                        <option value="오프라인">오프라인</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="pgmPer">교육인원 : </label>

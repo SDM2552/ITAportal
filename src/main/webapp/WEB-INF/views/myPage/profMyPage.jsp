@@ -104,6 +104,26 @@
         </div>
     </div>
 
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="successModalLabel">변경 완료</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    정보가 변경되었습니다.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">확인</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         function showModal(formId) {
             $('#confirmBtn').attr('onclick', 'submitForm("' + formId + '")');
@@ -111,7 +131,15 @@
         }
 
         function submitForm(formId) {
-            document.getElementById(formId).submit();
+            $.ajax({
+                type: 'POST',
+                url: $('#' + formId).attr('action'),
+                data: $('#' + formId).serialize(),
+                success: function() {
+                    $('#confirmationModal').modal('hide');
+                    $('#successModal').modal('show');
+                }
+            });
         }
     </script>
 </div>
