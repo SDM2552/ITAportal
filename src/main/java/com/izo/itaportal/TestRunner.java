@@ -52,7 +52,7 @@ public class TestRunner implements ApplicationRunner{
         jdbcTemplate.execute("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,sugang_st_dt,sugang_end_dt,pgm_target,id_room,pgm_method,pgm_per,pgm_fee,id_prof) "+
                 "VALUES (2,'통관 및 관세 실무 이해','2024-11-09','2024-11-10','2024-10-15 09:00','2024-10-30 18:00','통관 및 관세에 관심이 있는 재직자',1,'오프라인',10,55000,1)");
         jdbcTemplate.execute("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,sugang_st_dt,sugang_end_dt,pgm_target,id_room,pgm_method,pgm_per,pgm_fee,id_prof) "+
-                "VALUES (1,'자유무역협정(FTA) 실무','2024-06-01','2024-08-31','2024-10-15 09:00','2024-10-30 18:00','자유무역에 관심이 있는 성인',99,'온라인',30,75000,1)");
+                "VALUES (1,'자유무역협정(FTA) 실무','2024-06-01','2024-08-31','2024-10-15 09:00','2024-10-30 18:00','자유무역에 관심이 있는 성인',99,'온라인',30,75000,2)");
         jdbcTemplate.execute("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,sugang_st_dt,sugang_end_dt,pgm_target,id_room,pgm_method,pgm_per,pgm_fee,id_prof) "+
                 "VALUES (3,'검색 엔진 최적화(SEO) 원리','2024-06-01','2024-08-31','2024-10-15 09:00','2024-10-30 18:00','SEO를 통한 마케팅에 관심있는 전공자',1,'오프라인',30,35000,1)");
 

@@ -22,11 +22,11 @@ public interface UserRepository {
 
     public LoginResponse getUserByLoginId(String loginId);
 
-    //교수정보 가져오기
-    public Professor selectProf(int idUser);
 
     //학생정보 가져오기
     public Student selectStu(int idUser);
+    //교수정보 가져오기
+    public Professor selectProf(int idUser);
     //관리자 정보 가져오기
     public Student selectAdmin(int idUser);
 
@@ -34,6 +34,11 @@ public interface UserRepository {
     public String getStuName(int idUser);
     public String getProfName(int idUser);
     public String getAdminName(int idUser);
+
+    //id값 가져오기
+    public int getStuId(int idUser);
+    public int getProfId(int idUser);
+    public int getAdminId(int idUser);
 
 
 

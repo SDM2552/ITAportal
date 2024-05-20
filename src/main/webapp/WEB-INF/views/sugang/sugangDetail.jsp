@@ -157,7 +157,7 @@
             </div>
             <!-- btn -->
             <div class="btnArea">
-                <button type="button" class="btns btnSt01" onclick="applyEnrollment(${loginUser.idUser}, ${program.idPgm});">
+                <button type="button" class="btns btnSt01" onclick="applyEnrollment(${loginUser.commonId}, ${program.idPgm});">
                     <span>수강신청</span>
                 </button>
                 <button type="button" class="btns btnSt02" onclick="history.back();">
@@ -174,18 +174,18 @@
     <c:import url="../layout/footer.jsp" />
 </div>
 <script>
-    function applyEnrollment(idUser, idPgm) {
+    function applyEnrollment(commonId, idPgm) {
         $.ajax({
             type: "POST",
             url: "/program/result",
             data: JSON.stringify({
-                idUser: idUser,
+                commonId: commonId,
                 idPgm: idPgm
             }),
             contentType: "application/json",
             success: function(response) {
                 console.log("수강 신청이 완료되었습니다.");
-                // 성공 페이지 링크할 것
+                window.location.href = "/program/result?idPgm=" + idPgm;
             },
             error: function(xhr, status, error) {
                 console.error("수강 신청 중 오류가 발생했습니다:", error);

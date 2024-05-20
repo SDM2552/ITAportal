@@ -13,6 +13,6 @@ public interface SugangRepository {
 
     public ProgramAllDto findById(int programId);
 
-    public void saveSugang(int idUser, int idPgm);
+    public void saveSugang(int commonId, int idPgm);
 
 }

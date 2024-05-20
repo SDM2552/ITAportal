@@ -7,6 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <script src="https://kit.fontawesome.com/93205cc57d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="/css/table.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>수강내역목록</title>
 </head>
@@ -30,16 +31,34 @@
             <!-- //location -->
 
             <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>수강 내역 조회</h3>
-            <table class="category-table">
-                <thead>
-                <tr>
-                    <th>프로그램명</th>
-                    <th>수강신청날짜</th>
-                    <th>수강신청상태</th>
-                </tr>
-                </thead>
-                <tbody>
+
             <!-- 본문 -->
+            <h4 class="subTit">수강 내역 조회</h4>
+            <div class="tblData mt10">
+                <table>
+                    <thead>
+                    <tr>
+                        <th scope="col">분류</th>
+                        <th scope="col">프로그램명</th>
+                        <th scope="col">교육 기간</th>
+                        <th scope="col">신청일</th>
+                        <th scope="col">수강료</th>
+                        <th scope="col">수강 상태</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>무역</td>
+                        <td>김교수</td>
+                        <td>무슨무슨과제</td>
+                        <td>오늘부터</td>
+                        <td>내일까지</td>
+                        <td>아직임</td>
+                        <td><button onclick="location.href='/stu/examSubmit'">제출</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
             <c:forEach items="${enrollments}" var="enrollment">
                 <tr>
                     <td><a href="enrollment?idEnrollment=${enrollment.idEnrollment}"/> ${enrollment.pgmName}</td>  <!-- EL 표현식 수정 -->

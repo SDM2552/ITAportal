@@ -49,24 +49,29 @@ public class UserController {
     @Transactional
     public LoginResponse loginCheck(LoginRequest loginReq, HttpServletRequest request){
         LoginResponse user = userService.loginCheck(loginReq);
-        String userName;
+        String userName; //로그인 유저 아이디
+        int commonId; //stu,prof,admin 통합 id값 저장
 
         if (user != null) {
             switch (user.getRole()) {
                 // idUser값으로 회원 이름 가져오기
                 case "stu":
                     userName = userService.getStudentName(user.getIdUser());
+                    commonId = userService.getStudentId(user.getIdUser());
                     break;
                 case "prof":
                     userName = userService.getProfessorName(user.getIdUser());
+                    commonId = userService.getProfessorId(user.getIdUser());
                     break;
                 case "admin":
                     userName = userService.getAdminName(user.getIdUser());
+                    commonId = userService.getAdminId(user.getIdUser());
                     break;
                 default:
                     throw new IllegalArgumentException("허가받지 않은 사용자 입니다.");
             }
             user.setName(userName);
+            user.setCommonId(commonId);
             HttpSession session = request.getSession();
             session.setAttribute("loginUser", user);
             session.setMaxInactiveInterval(60 * 30);
