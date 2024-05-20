@@ -39,7 +39,7 @@
                     <c:when test="${sessionScope.loginUser.role eq 'stu'}">
                     <!-- 학생 -->
                         <li>
-                            <a href="#">MY(학생)</a>
+                            <a href="/user/info">MY(학생)</a>
                         </li>
                         <li>
                             <a href="/enrollment/enrollmentapplylist">수업</a>
