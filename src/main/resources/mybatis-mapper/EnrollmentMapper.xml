@@ -1,17 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.izo.itaportal.mapper.EnrollmentMapper">
+<mapper namespace="com.izo.itaportal.repository.EnrollmentRepository">
 
     <insert id="insertEnrollment" parameterType="com.izo.itaportal.model.Enrollment">
-        INSERT INTO Enrollment (id_enrollment,id_student, pgm_name, id_pgm, st_dt, status)
-        VALUES (#{idEnrollment},#{idStudent}, #{pgmName}, #{idPgm}, #{stDt}, #{status})
+        INSERT INTO enrollment (id_student, pgm_name, id_pgm, st_dt, status, id_cate)
+        VALUES (#{idStudent}, #{pgmName}, #{idPgm}, #{stDt}, #{status}, #{idCate})
     </insert>
 
     <select id="findAllEnrollments" resultType="com.izo.itaportal.model.Enrollment">
-        SELECT * FROM Enrollment
+        SELECT * FROM enrollment
     </select>
 
     <select id="findEnrollmentsByIdStudent" resultType="com.izo.itaportal.model.Enrollment">
-        SELECT * FROM Enrollment WHERE id_student = #{idStudent}
+        SELECT * FROM enrollment WHERE id_student = #{idStudent}
     </select>
+
+    <delete id="deleteEnrollment">
+        DELETE FROM enrollment WHERE id_student = #{idStudent} AND id_pgm = #{idPgm}
+    </delete>
+
+    <update id="updateEnrollmentStatus">
+        UPDATE enrollment SET status = #{status} WHERE id_enrollment = #{idEnrollment}
+    </update>
 </mapper>
