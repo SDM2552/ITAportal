@@ -60,7 +60,7 @@
             p.id_Pgm = #{programId};
     </select>
     <insert id="saveSugang" parameterType="com.izo.itaportal.model.Sugang">
-        INSERT INTO Sugang (id_student, id_Pgm, st_Dt, status)
-        VALUES (#{commonId}, #{idPgm}, now(), '신청중')
+        INSERT INTO Sugang (id_student, id_Pgm, id_Cate, st_Dt, status)
+        VALUES (#{commonId}, #{idPgm},#{idCate}, now(), '신청중')
     </insert>
 </mapper>

@@ -1,5 +1,6 @@
 package com.izo.itaportal.service;
 
+import com.izo.itaportal.dto.SugangDto;
 import com.izo.itaportal.model.Student;
 
 import com.izo.itaportal.repository.StudentRepository;
@@ -13,7 +14,12 @@ public class StudentService {
     @Autowired
     private StudentRepository studentRepository;
 
+
     public List<Student> getAllStudents(){
         return studentRepository.findAll();
+    }
+
+    public List<SugangDto> GetSugangList(int idStudent){
+        return studentRepository.findByIdStudent(idStudent);
     }
 }

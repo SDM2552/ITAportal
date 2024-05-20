@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.izo.itaportal.repository.StudentRepository">
+    <select id="findByIdStudent" resultType="com.izo.itaportal.dto.SugangDto">
+        SELECT
+            s.id_Sugang AS idEnrollment,
+            s.id_Student,
+            p.pgm_Name,
+            s.id_Pgm,
+            p.id_Cate,
+            s.st_Dt AS SugangStDt,
+            s.status,
+            p.st_Dt,
+            p.end_Dt,
+            p.pgm_Fee,
+            c.cate_Name,
+            cr.room_Name,
+            prof.name
+        FROM
+            Sugang s
+                JOIN
+            Program p ON s.id_Pgm = p.id_Pgm
+                JOIN
+            Category c ON p.id_Cate = c.id_Cate
+                JOIN
+            Class_Room cr ON p.id_Room = cr.id_Room
+                JOIN
+            Professor prof ON p.id_Prof = prof.id_Prof
+        WHERE
+            s.id_Student = #{idStudent}
+    </select>
+
+</mapper>

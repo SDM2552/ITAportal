@@ -157,7 +157,8 @@
             </div>
             <!-- btn -->
             <div class="btnArea">
-                <button type="button" class="btns btnSt01" onclick="applyEnrollment(${loginUser.commonId}, ${program.idPgm});">
+                <button type="button" class="btns btnSt01" onclick="applyEnrollment(${loginUser.commonId}, ${program.idPgm}, ${program.idCate});">
+
                     <span>수강신청</span>
                 </button>
                 <button type="button" class="btns btnSt02" onclick="history.back();">
@@ -174,13 +175,15 @@
     <c:import url="../layout/footer.jsp" />
 </div>
 <script>
-    function applyEnrollment(commonId, idPgm) {
+    function applyEnrollment(commonId, idPgm, idCate) {
         $.ajax({
             type: "POST",
             url: "/program/result",
             data: JSON.stringify({
                 commonId: commonId,
-                idPgm: idPgm
+                idPgm: idPgm,
+                idCate: idCate
+
             }),
             contentType: "application/json",
             success: function(response) {
