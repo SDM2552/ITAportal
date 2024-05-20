@@ -60,6 +60,11 @@ public class MyPageService {
         return deleteAdmin;
     }
 
+    public int deleteUser(Integer idUser) {
+        int deleteUser = myPageRepository.deleteUser(idUser);
+        return deleteUser;
+    }
+
     public boolean isStudent(Integer idUser) {
         // idUser에 해당하는 사용자가 학생 테이블에 존재하는지 확인하는 로직
         // 예를 들어, Student 테이블에서 idUser를 조회하여 해당하는 사용자가 있는지 확인하는 방법을 사용할 수 있습니다.

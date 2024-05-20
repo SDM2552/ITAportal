@@ -22,7 +22,7 @@ public interface MyPageRepository {
     public int deleteStudent(Integer idUser);
     public int deleteProf(Integer idUser);
     public int deleteAdmin(Integer idUser);
-
+    public int deleteUser(Integer idUser);
 
 
 }
