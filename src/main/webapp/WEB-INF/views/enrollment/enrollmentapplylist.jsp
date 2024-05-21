@@ -58,7 +58,7 @@
                                 <tr>
                                     <td>${sugang.cateName}</td>
                                     <td>${sugang.pgmName}</td>
-                                    <td>${sugang.stDt} ~ ${sugang.endDt}</td>
+                                    <td>${sugang.stDt} ~ <br>${sugang.endDt}</td>
                                     <td>${sugang.sugangStDt}</td>
                                     <td>${sugang.pgmFee} 원</td>
                                     <td>${sugang.status}</td>

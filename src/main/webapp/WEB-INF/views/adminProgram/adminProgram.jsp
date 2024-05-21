@@ -7,6 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <script src="https://kit.fontawesome.com/93205cc57d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="../css/table.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>교육과정관리</title>
 </head>
@@ -32,22 +33,22 @@
             <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>교육과정관리</h3>
 
             <!-- 본문 -->
-
-            <div class="category">
-                <h2>￭카테고리</h2>
-
-
-                <table class="category-table">
-
+            <h4 class="subTit">카테고리</h4>
+            <div class="tblData mt10" style="width: 30%">
+                <table>
                     <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>카테고리명</th>
-                        <th></th>
-
-                    </tr>
+                    <colgroup>
+                        <col width="15%">
+                        <col width="55%">
+                        <col width="30%">
+                    </colgroup>
                     </thead>
                     <tbody>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">카테고리명</th>
+                        <th scope="col">변경</th>
+                    </tr>
                     <c:forEach var="category" items="${cate}">
                         <tr>
                             <td>${category.idCate}</td>
@@ -60,28 +61,35 @@
                     </c:forEach>
                     </tbody>
                 </table>
-                <a href="/categoryInput">
-                    <button style="float: right;">추가</button>
-                </a>
-                <br>
-            </div>
+            </div><br><br><br><br>
+
             <!-- 프로그램 목록 -->
-            <div class="program">
-                <h2>￭프로그램</h2>
-                <table class="category-table">
+            <h4 class="subTit">프로그램</h4>
+            <div class="tblData mt10">
+                <table>
                     <thead>
-                    <tr>
-                        <th>프로그램명</th>
-                        <th>교육 시작일자</th>
-                        <th>교육 종료일자</th>
-                        <th>교육 대상</th>
-                        <th>교육 방법</th>
-                        <th>교육 인원</th>
-                        <th>교육 비용</th>
-                        <th></th>
-                    </tr>
+                    <colgroup>
+                        <col width="30%">
+                        <col width="20%">
+                        <col width="20%">
+                        <col width="30%">
+                        <col width="16%">
+                        <col width="10%">
+                        <col width="15%">
+                        <col width="15%">
+                    </colgroup>
                     </thead>
                     <tbody>
+                    <tr>
+                        <th scope="col">프로그램명</th>
+                        <th scope="col">교육시작일자</th>
+                        <th scope="col">교육종료일자</th>
+                        <th scope="col">교육 대상</th>
+                        <th scope="col">교육 방법</th>
+                        <th scope="col">교육 인원</th>
+                        <th scope="col">교육 비용</th>
+                        <th scope="col">변경</th>
+                    </tr>
                     <c:forEach var="program" items="${prog}">
                         <tr>
                             <td>${program.pgmName}</td>
@@ -99,12 +107,7 @@
                     </c:forEach>
                     </tbody>
                 </table>
-                <a href="/progInput">
-                    <button style="float: right;">추가</button>
-                </a>
             </div>
-
-
             <!-- 본문 끝 -->
         </div>
         <!-- //contents -->

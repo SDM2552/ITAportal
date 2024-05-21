@@ -29,9 +29,7 @@
                 <span class="on">수강 내역</span>
             </div>
             <!-- //location -->
-
             <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>과제 관리</h3>
-
             <!-- 본문 -->
             <h4 class="subTit">과제 생성</h4>
             <div class="tblData mt10">
