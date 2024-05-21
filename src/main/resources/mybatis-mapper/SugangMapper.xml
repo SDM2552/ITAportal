@@ -59,8 +59,43 @@
         WHERE
             p.id_Pgm = #{programId};
     </select>
+    <select id="findByIdStudentAndCourseStatus" parameterType="int" resultType="com.izo.itaportal.dto.ProgramAllDto">
+        SELECT
+            sugang.id_sugang AS idEnrollment,
+            sugang.id_student AS idStudent,
+            program.pgm_Name AS pgmName,
+            program.id_Pgm AS idPgm,
+            program.id_Cate AS idCate,
+            sugang.Sugang_St_Dt AS SugangStDt,
+            sugang.status AS status,
+            sugang.cource_Status AS courseStatus,
+            program.st_Dt AS stDt,
+            program.end_Dt AS endDt,
+            program.pgm_Fee AS pgmFee,
+            category.cate_Name AS cateName,
+            class_room.room_Name AS roomName,
+            professor.name AS name
+        FROM
+            Sugang sugang
+                JOIN
+            Program program ON sugang.id_Pgm = program.id_Pgm
+                JOIN
+            Category category ON program.id_Cate = category.id_Cate
+                JOIN
+            ClassRoom class_room ON program.id_Room = class_room.id_Room
+                JOIN
+            Professor professor ON program.id_Prof = professor.id_Prof
+        WHERE
+            sugang.id_student = #{idStudent}
+          AND sugang.cource_Status = true;
+    </select>
     <insert id="saveSugang" parameterType="com.izo.itaportal.model.Sugang">
-        INSERT INTO Sugang (id_student, id_Pgm, id_Cate, st_Dt, status)
-        VALUES (#{commonId}, #{idPgm},#{idCate}, now(), '신청중')
+        INSERT INTO Sugang (id_student, id_Pgm, id_Cate, st_Dt, status, course_status)
+        VALUES (#{commonId}, #{idPgm},#{idCate}, now(), '신청중', false)
     </insert>
+    <update id="updateSugangStatus">
+        UPDATE sugang
+        SET status = '취소됨'
+        WHERE id_pgm = #{idPgm} AND id_student = #{idStudent}
+    </update>
 </mapper>

@@ -16,5 +16,5 @@ public class Sugang {
     private int idPgm; // 프로그램 ID
     private  String stDt; // 수강신청일
     private String status; //수강신청상태
-
+    private boolean courseStatus; //수강상태
 }
