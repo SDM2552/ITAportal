@@ -72,7 +72,8 @@
                             <td>${program.cateName}</td>
                             <td>${program.pgmName}</td>
                             <td>${program.stDt} ~ ${program.endDt}</td>
-                            <td>${program.sugangStDt} ~ ${program.sugangEndDt}</td>
+                            <td>${program.sugangStDt} 09:00 ~<br>
+                                    ${program.sugangEndDt} 18:00</td>
                             <td>
                                 <button type="button" onclick="applyProgram(${program.idPgm});">수강신청</button>
                             </td>

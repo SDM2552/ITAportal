@@ -85,6 +85,16 @@ public class ProfController {
     @GetMapping("/examList")
     public String examList(){
         return "prof/examList";}
+    
+    //과제 상세 페이지
+    @GetMapping("/examDetail")
+    public String examDetail(){
+        return "prof/examDetail";
+    }
+    @GetMapping("/new")
+    public String examNew(){
+        return "prof/examNew";
+    }
 
     @PostMapping("schedule/input")
     @ResponseBody

@@ -33,38 +33,58 @@
             <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>과제 관리</h3>
 
             <!-- 본문 -->
-            <h4 class="subTit">과제 현황</h4>
+            <h4 class="subTit">과제 생성</h4>
             <div class="tblData mt10">
                 <table>
-                    <thead>
+                    <colgroup>
+                        <col width="20%">
+                        <col width="30%">
+                        <col width="20%">
+                        <col width="30%">
+                    </colgroup>
+                    <tbody class="mid">
                     <tr>
-                        <th scope="col">과목</th>
+                        <th scope="col">강좌명</th>
+                        <td colspan="3">
+                            자유무역의 이해
+                        </td>
+                    </tr>
+                    <tr>
                         <th scope="col">과제명</th>
-                        <th scope="col">과제 시작일</th>
-                        <th scope="col">과제 마감일</th>
-                        <th scope="col">제출 인원</th>
-                        <th scope="col">진행 상태</th>
-                        <th scope="col">상세 정보</th>
+                        <td colspan="3">
+                            <input type="text" placeholder="과제명을 입력하세요.">
+                        </td>
                     </tr>
-                    </thead>
-                    <tbody>
                     <tr>
-                        <td>무역</td>
-                        <td>무슨무슨과제</td>
-                        <td>오늘부터</td>
-                        <td>내일까지</td>
-                        <td>0/10 명</td>
-                        <td>진행중</td>
-                        <td><button onclick="location.href='/prof/examDetail'">상세정보</button></td>
+                        <th scope="col">과제 내용</th>
+                        <td colspan="3">
+                            <textarea placeholder="과제 내용을 입력하세요."></textarea>
+                        </td>
                     </tr>
+                    <tr>
+                        <th scope="col">과제 시작일</th>
+                        <td>
+                            <input type="text" style="width: 100%;">
+                        </td>
+                        <th scope="col">과제 마감일</th>
+                        <td>
+                            <input type="text"  style="width: 100%;">
+                        </td>
+                    </tr>
+
                     </tbody>
                 </table>
             </div>
+            <!-- btn -->
             <div class="btnArea">
-                <button type="button" class="btns btnSt01" onclick="window.location.href='/prof/new';">
-                    <span>과제 생성</span>
+                <button type="submit" class="btns btnSt01">
+                    <span>생성</span>
+                </button>
+                <button type="button" class="btns btnSt02" onclick="history.back();">
+                    <span>목록으로</span>
                 </button>
             </div>
+            <!-- btn -->
             <!-- 본문 끝 -->
         </div>
         <!-- //contents -->
