@@ -51,7 +51,6 @@
                         <col width="20%">
                         <col width="10%">
                     </colgroup>
-
                     </thead>
                     <tbody>
                     <tr>

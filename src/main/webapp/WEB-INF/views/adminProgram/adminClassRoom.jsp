@@ -7,6 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <script src="https://kit.fontawesome.com/93205cc57d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="../css/table.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>강의실관리</title>
 </head>
@@ -32,19 +33,22 @@
             <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>강의실관리</h3>
 
             <!-- 본문 -->
-
-            <div class="category">
-                <h2>￭강의실</h2>
-                <table class="category-table">
-
+            <h4 class="subTit">강의실</h4>
+            <div class="tblData mt10" style="width: 30%">
+                <table>
                     <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>강의실명</th>
-                        <th></th>
-                    </tr>
+                    <colgroup>
+                        <col width="15%">
+                        <col width="55%">
+                        <col width="30%">
+                    </colgroup>
                     </thead>
                     <tbody>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">강의실명</th>
+                        <th scope="col">변경</th>
+                    </tr>
                     <c:forEach var="cr" items="${classRoom}">
                         <tr>
                             <td>${cr.idRoom}</td>
@@ -57,15 +61,7 @@
                     </c:forEach>
                     </tbody>
                 </table>
-                <a href="/classRoomInput">
-                    <button style="float: right;">추가</button>
-                </a>
-
-            </div>
-                <!-- 프로그램 목록 -->
-
-
-
+            </div><br><br><br><br>
 
             <!-- 본문 끝 -->
         </div>
