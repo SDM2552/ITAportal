@@ -88,10 +88,8 @@ public class MyPageController {
             response.put("error", "현재 비밀번호가 일치하지 않습니다.");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
-        System.out.println("!@#$!@#$"+user.getIdUser());
-        System.out.println("!@#$!@#$"+currentPassword);
-        System.out.println("!@#$!@#$"+newPassword);
-        boolean isUpdated = myPageService.updatePassword(user.getIdUser(), currentPassword, newPassword);
+
+        boolean isUpdated = myPageService.updatePassword(user.getIdUser(), newPassword);
         if (!isUpdated) {
             response.put("error", "비밀번호 업데이트에 실패했습니다.");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
