@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -6,21 +6,23 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <script src="https://kit.fontawesome.com/93205cc57d.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="css/common.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/common.css">
+    <link rel="stylesheet" type="text/css" href="/css/table.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>마이페이지</title>
 </head>
 <body>
 <div class="wrap">
     <!-- header -->
-    <c:import url="../layout/header_prof.jsp" />
+    <c:import url="../layout/header_prof.jsp"/>
 
     <!-- container -->
     <div id="container" class="container responCont">
         <!-- 왼쪽 네비바 -->
-        <c:import url="../layout/nav_myPage.jsp" />
+        <c:import url="../layout/nav_myPage.jsp"/>
         <!-- contents -->
         <div id="contents" class="eduIntroCont">
             <!-- location -->
@@ -32,20 +34,28 @@
             <!-- //location -->
 
             <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>회원정보</h3>
-            <table class="table table-bordered">
+            <table class="tblData mt10">
                 <!-- Other fields -->
                 <tr>
+                    <th>아이디</th>
+                    <td><c:out value="${member.loginId}"/></td>
+                </tr>
+
+
+
+
+                <tr>
                     <th>이름</th>
-                    <td><c:out value="${user.name}" /></td>
+                    <td><c:out value="${user.name}"/></td>
                 </tr>
                 <tr>
                     <th>생년월일</th>
                     <td>
                         <form id="updateForm1" action="/user/updateInfo" method="post">
-                            <input type="date" name="birth" value="${user.birth}" />
-                            <input type="hidden" name="idUser" value="${user.idUser}" />
-                            <input type="hidden" name="tel" value="${user.tel}" />
-                            <input type="hidden" name="address" value="${user.address}" />
+                            <input type="date" name="birth" value="${user.birth}"/>
+                            <input type="hidden" name="idUser" value="${user.idUser}"/>
+                            <input type="hidden" name="tel" value="${user.tel}"/>
+                            <input type="hidden" name="address" value="${user.address}"/>
                             <button type="button" class="btn btn-primary" onclick="showModal('updateForm1')">수정</button>
                         </form>
                     </td>
@@ -54,10 +64,10 @@
                     <th>휴대전화</th>
                     <td>
                         <form id="updateForm2" action="/user/updateInfo" method="post">
-                            <input type="text" name="tel" value="${user.tel}" />
-                            <input type="hidden" name="idUser" value="${user.idUser}" />
-                            <input type="hidden" name="address" value="${user.address}" />
-                            <input type="hidden" name="birth" value="${user.birth}" />
+                            <input type="text" name="tel" value="${user.tel}"/>
+                            <input type="hidden" name="idUser" value="${user.idUser}"/>
+                            <input type="hidden" name="address" value="${user.address}"/>
+                            <input type="hidden" name="birth" value="${user.birth}"/>
                             <button type="button" class="btn btn-primary" onclick="showModal('updateForm2')">수정</button>
                         </form>
                     </td>
@@ -66,25 +76,26 @@
                     <th>주소</th>
                     <td>
                         <form id="updateForm3" action="/user/updateInfo" method="post">
-                            <input type="text" name="address" value="${user.address}" />
-                            <input type="hidden" name="idUser" value="${user.idUser}" />
-                            <input type="hidden" name="birth" value="${user.birth}" />
-                            <input type="hidden" name="tel" value="${user.tel}" />
+                            <input type="text" name="address" value="${user.address}"/>
+                            <input type="hidden" name="idUser" value="${user.idUser}"/>
+                            <input type="hidden" name="birth" value="${user.birth}"/>
+                            <input type="hidden" name="tel" value="${user.tel}"/>
                             <button type="button" class="btn btn-primary" onclick="showModal('updateForm3')">수정</button>
                         </form>
                     </td>
                 </tr>
                 <tr>
                     <th>성별</th>
-                    <td><c:out value="${user.gender == 'M' ? '남성' : '여성'}" /></td>
+                    <td><c:out value="${user.gender == 'M' ? '남성' : '여성'}"/></td>
                 </tr>
             </table>
         </div>
     </div>
-    <c:import url="../layout/footer.jsp" />
+    <c:import url="../layout/footer.jsp"/>
 
     <!-- Modal -->
-    <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -105,7 +116,8 @@
     </div>
 
     <!-- Success Modal -->
-    <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -135,7 +147,7 @@
                 type: 'POST',
                 url: $('#' + formId).attr('action'),
                 data: $('#' + formId).serialize(),
-                success: function() {
+                success: function () {
                     $('#confirmationModal').modal('hide');
                     $('#successModal').modal('show');
                 }

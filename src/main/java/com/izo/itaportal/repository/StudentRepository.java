@@ -15,4 +15,8 @@ public interface StudentRepository {
     //idStudent로 수강내역 조회
     public List<SugangDto> findByIdStudent(int idStudent);
 
+
+    //어드민 수강신청취소대기완료
+    @Select("SELECT * FROM student WHERE id_user = #{idUser}")
+    Student findStudentByIdUser(int idUser);
 }

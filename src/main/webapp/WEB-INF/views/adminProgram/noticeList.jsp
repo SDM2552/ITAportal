@@ -11,6 +11,16 @@
     <title>샘플 페이지</title>
 </head>
 <body>
+<script>
+    <%--var userRole = '<%= session.getAttribute("loginUser") != null ? session.getAttribute("loginUser").getRole() : "" %>';--%>
+    $(document).ready(function() {
+        // 관리자 권한 체크
+        if (userRole !== 'admin') {
+            // 관리자가 아닌 경우 저장 버튼 숨김
+            $('.noticecreate').hide();
+        }
+    });
+</script>
 <div class="wrap">
     <!-- header -->
     <c:import url="../layout/header.jsp" />
@@ -63,7 +73,7 @@
                 </table>
 
                 </div>
-            <a href="/notice/create"><button>공지사항 작성</button></a>
+            <a href="/notice/create"><button class="noticecreate">공지사항 작성</button></a>
 
             <!-- 페이지네이션 -->
             <div class="pagination">

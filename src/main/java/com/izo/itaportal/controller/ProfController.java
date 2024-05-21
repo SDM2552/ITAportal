@@ -35,25 +35,26 @@ public class ProfController {
     // 교수별 강의리스트 조회
     // 로그인 구현 후 @RequestParam("idProf") int idProf 넣어야함
     @GetMapping("/list")
-    public String getPrograms(Model model, HttpSession session){
+    public String getPrograms(Model model, HttpSession session) {
         LoginResponse loginUser = (LoginResponse) session.getAttribute("loginUser");
         int idProf = loginUser.getCommonId();
         List<ProgramAllDto> pgms = professorService.selectAllPgmForProf(idProf);
         model.addAttribute("pgms", pgms);
         return "prof/list";
     }
+
     //강의 상세정보
     @GetMapping("/programDetails")
     public String programDetails(@RequestParam("idPgm") int idPgm, Model model, @ModelAttribute("idProf") int idProf) {
-        ProgramAllDto programAllDto = professorService.selectPgmDetail(idProf,idPgm);
+        ProgramAllDto programAllDto = professorService.selectPgmDetail(idProf, idPgm);
         System.out.println(programAllDto);
         model.addAttribute("ProgramDetail", programAllDto);
         return "prof/programDetails";
     }
-    
+
     // 강의계획서 입력폼
     @GetMapping("/syllabus")
-    public String syllabus(@RequestParam("idPgm") int idPgm, Model model){
+    public String syllabus(@RequestParam("idPgm") int idPgm, Model model) {
         System.out.println(idPgm);
         model.addAttribute("programInfo", syllabusService.selectJoinPgmByidPgm(idPgm));
         model.addAttribute("syllabus", syllabusService.selectSyllabus(idPgm));
@@ -63,9 +64,9 @@ public class ProfController {
     // 강의계획서 입력 및 수정
     @PostMapping("/syllabus/input")
     @ResponseBody
-    public Syllabus insertSyllabus(@RequestBody final Syllabus params){
+    public Syllabus insertSyllabus(@RequestBody final Syllabus params) {
         Syllabus syllabus = syllabusService.selectSyllabus(params.getIdPgm());
-        if(syllabus == null){
+        if (syllabus == null) {
             syllabusService.insertSyllabus(params);
         } else {
             syllabusService.updateSyllabus(params);
@@ -75,7 +76,7 @@ public class ProfController {
 
     //주차별 강의계획 입력폼
     @GetMapping("/schedule")
-    public String schedule(@RequestParam("idPgm") int idPgm, Model model){
+    public String schedule(@RequestParam("idPgm") int idPgm, Model model) {
         model.addAttribute("programInfo", syllabusService.selectJoinPgmByidPgm(idPgm));
         model.addAttribute("schedules", scheduleService.selectAllSchedule(idPgm));
         return "prof/scheduleInput";
@@ -91,14 +92,16 @@ public class ProfController {
     public String examDetail(){
         return "prof/examDetail";
     }
+    //과제 생성 페이지
     @GetMapping("/new")
     public String examNew(){
         return "prof/examNew";
     }
 
+
     @PostMapping("schedule/input")
     @ResponseBody
-    public void upsertSchedule(@RequestBody final List<Schedule> schedules){
+    public void upsertSchedule(@RequestBody final List<Schedule> schedules) {
         scheduleService.upsertSchedule(schedules);
     }
 }
