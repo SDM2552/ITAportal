@@ -13,7 +13,7 @@
 <body>
 <div class="wrap">
     <!-- header -->
-    <c:import url="../layout/header.jsp"/>
+    <c:import url="../layout/header_admin.jsp"/>
 
     <!-- container -->
     <div id="container" class="container responCont">
