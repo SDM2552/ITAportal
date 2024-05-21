@@ -8,6 +8,8 @@ import com.izo.itaportal.repository.AdminRepository;
 import com.izo.itaportal.repository.MyPageRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +20,12 @@ public class MyPageService {
 
     @Autowired
     MyPageRepository myPageRepository;
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public Student getStudentById(Integer idUser) {
         return myPageRepository.selectStudentById(idUser);
@@ -92,15 +100,14 @@ public class MyPageService {
         return isAdmin;
     }
 
-    public boolean updatePassword(Integer idUser, String currentPassword, String newPassword) {
-        // 현재 비밀번호가 일치하는지 확인
+    public boolean updatePassword(Integer idUser, String newPassword) {
         User user = myPageRepository.selectUserById(idUser);
-        if (user == null || !user.getPassword().equals(currentPassword)) {
+        if (user == null) {
             return false;
         }
 
-        // 새 비밀번호로 업데이트
-        myPageRepository.updatePassword(idUser, newPassword);
+        String encryptedNewPassword = passwordEncoder.encode(newPassword);
+        myPageRepository.updatePassword(idUser, encryptedNewPassword);
         return true;
     }
 

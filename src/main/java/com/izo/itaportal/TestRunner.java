@@ -48,6 +48,7 @@ public class TestRunner implements ApplicationRunner{
         jdbcTemplate.execute("INSERT INTO user(id_user, login_id, password, regist_date, role) " +
                 "VALUES(4, 'admin', '" + encryptedPassword + "', '2024-05-18', 'admin')");
 
+
         //강의리스트
 
         jdbcTemplate.execute("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,sugang_st_dt,sugang_end_dt,pgm_target,id_room,pgm_method,pgm_per, num_of_stu, pgm_fee,id_prof) "+
