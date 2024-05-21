@@ -38,9 +38,9 @@ public class NoticeController {
     //공지사항작성 common_id=admin
     @GetMapping("/create")
     public ModelAndView showCreateForm(HttpSession session) {
-        if (!isAdmin(session)) {
-            return new ModelAndView("error/403");
-        }
+//        if (!isAdmin(session)) {
+//            return new ModelAndView("error/403");
+//        }
         ModelAndView modelAndView = new ModelAndView("adminProgram/stepCreateNotice");
         modelAndView.addObject("notice", new Notice());
         return modelAndView;
@@ -56,9 +56,9 @@ public class NoticeController {
     //공지사항 저장 common_id=admin이 아니면 에러
     @PostMapping("/save")
     public String saveNotice(@ModelAttribute Notice notice, HttpSession session) {
-        if (!isAdmin(session)) {
-            return "error/403";
-        }
+//        if (!isAdmin(session)) {
+//            return "error/403";
+//        }
         if (notice.getIdNotice() != 0) {  // 0이 아닌 경우 업데이트
             Notice existingNotice = noticeService.getNoticeById(notice.getIdNotice());
             notice.setCreatedDate(existingNotice.getCreatedDate());  // 기존 작성 날짜 유지
@@ -89,9 +89,9 @@ public class NoticeController {
     //공지사항 수정
     @GetMapping("/edit/{idNotice}")
     public ModelAndView showEditForm(@PathVariable int idNotice, HttpSession session) {
-        if (!isAdmin(session)) {
-            return new ModelAndView("error/403");
-        }
+//        if (!isAdmin(session)) {
+//            return new ModelAndView("error/403");
+//        }
         Notice notice = noticeService.getNoticeById(idNotice);
         ModelAndView modelAndView = new ModelAndView("adminProgram/stepCreateNotice");
         modelAndView.addObject("notice", notice);
@@ -108,9 +108,9 @@ public class NoticeController {
     //삭제
     @GetMapping("/delete/{idNotice}")
     public String deleteNotice(@PathVariable int idNotice, HttpSession session) {
-        if (!isAdmin(session)) {
-            return "error/403";
-        }
+//        if (!isAdmin(session)) {
+//            return "error/403";
+//        }
         noticeService.deleteNotice(idNotice);
         return "redirect:/notice/noticeList";
     }
@@ -162,9 +162,9 @@ public class NoticeController {
 
 //
     private boolean isAdmin(HttpSession session) {
-        if (session.getAttribute("loginUser") == null) {
-            return false;
-        }
+//        if (session.getAttribute("loginUser") == null) {
+//            return false;
+//        }
         String role = (String) session.getAttribute("role");
         return "admin".equals(role);
     }

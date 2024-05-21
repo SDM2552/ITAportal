@@ -9,6 +9,7 @@ import com.izo.itaportal.service.ProfessorService;
 import com.izo.itaportal.service.ScheduleService;
 import com.izo.itaportal.service.SyllabusService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +26,9 @@ public class ProfController {
     private final ProfessorService professorService;
     private final ScheduleService scheduleService;
 
+    @Autowired
+    HttpSession session;
+
     //idProf 값을 저장함. 이후 매개변수에 @RequestParam("idPgm") int idPgm를 넣으면 세션 생성 없이 idProf를 쓸수있음
     @ModelAttribute("idProf")
     public int getIdProf(HttpSession session) {
@@ -35,7 +39,7 @@ public class ProfController {
     // 교수별 강의리스트 조회
     // 로그인 구현 후 @RequestParam("idProf") int idProf 넣어야함
     @GetMapping("/list")
-    public String getPrograms(Model model, HttpSession session) {
+    public String getPrograms(Model model) {
         LoginResponse loginUser = (LoginResponse) session.getAttribute("loginUser");
         int idProf = loginUser.getCommonId();
         List<ProgramAllDto> pgms = professorService.selectAllPgmForProf(idProf);
@@ -80,6 +84,12 @@ public class ProfController {
         model.addAttribute("programInfo", syllabusService.selectJoinPgmByidPgm(idPgm));
         model.addAttribute("schedules", scheduleService.selectAllSchedule(idPgm));
         return "prof/scheduleInput";
+    }
+
+    //휴보강 페이지
+    @GetMapping("/etc")
+    public String classRequest(){
+        return "prof/leaveProgram";
     }
 
     //과제 페이지
