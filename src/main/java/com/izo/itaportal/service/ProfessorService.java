@@ -1,5 +1,6 @@
 package com.izo.itaportal.service;
 
+import com.izo.itaportal.dto.ProgramAllDto;
 import com.izo.itaportal.model.Professor;
 import com.izo.itaportal.model.Program;
 import com.izo.itaportal.repository.ProfessorRepository;
@@ -23,5 +24,11 @@ public class ProfessorService {
 
     public List<Program> selectPgmForProf(int idProf){
         return programRepository.selectPgmForProf(idProf);
+    }
+    public List<ProgramAllDto> selectAllPgmForProf(int idProf){
+        return programRepository.selectAllPgm(idProf);
+    }
+    public ProgramAllDto selectPgmDetail(int idProf, int idPgm) {
+        return programRepository.selectPgmDetail(idProf, idPgm);
     }
 }

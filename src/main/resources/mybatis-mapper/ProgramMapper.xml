@@ -21,9 +21,10 @@
                              id_room,
                              pgm_method,
                              pgm_per,
+                             num_of_stu,
                              pgm_fee)
                     values (#{idPgm},#{idCate},#{idProf},#{pgmName},#{stDt},#{endDt},
-                                 #{pgmTarget},#{idRoom},#{pgmMethod},#{pgmPer},#{pgmFee})
+                                 #{pgmTarget},#{idRoom},#{pgmMethod},#{pgmPer},0,#{pgmFee})
 
     </insert>
     <update id="update">
@@ -53,5 +54,62 @@
     <select id="selectPgmForProf" parameterType="integer" resultType="com.izo.itaportal.model.Program">
         SELECT * FROM program WHERE id_prof=#{idProf}
     </select>
+
+    <select id="selectAllPgm" parameterType="integer" resultType="com.izo.itaportal.dto.ProgramAllDto">
+        SELECT
+            p.id_Pgm,
+            p.id_Cate,
+            p.id_Room,
+            p.id_Prof,
+            p.pgm_Name,
+            p.st_Dt,
+            p.end_Dt,
+            p.sugang_St_Dt,
+            p.sugang_End_Dt,
+            p.pgm_Target,
+            p.pgm_Method,
+            p.pgm_Per,
+            p.pgm_Fee,
+            c.cate_Name,
+            r.room_Name,
+            pr.name AS prof_Name
+        FROM
+            Program p
+                JOIN
+            Category c ON p.id_Cate = c.id_Cate
+                JOIN
+            class_room r ON p.id_Room = r.id_Room
+                JOIN
+            Professor pr ON p.id_Prof = pr.id_Prof
+        WHERE
+            p.id_Prof = #{idProf};
+    </select>
+    <select id="selectPgmDetail" resultType="com.izo.itaportal.dto.ProgramAllDto">
+        SELECT
+            p.id_Pgm,
+            p.id_Cate,
+            p.id_Room,
+            p.id_Prof,
+            p.pgm_Name,
+            p.st_Dt,
+            p.end_Dt,
+            p.sugang_St_Dt,
+            p.sugang_End_Dt,
+            p.pgm_Target,
+            p.pgm_Method,
+            p.pgm_Per,
+            p.pgm_Fee,
+            c.cate_Name,
+            r.room_Name,
+            pr.name AS prof_Name
+        FROM
+            Program p
+                JOIN Category c ON p.id_Cate = c.id_Cate
+                JOIN class_room r ON p.id_Room = r.id_Room
+                JOIN Professor pr ON p.id_Prof = pr.id_Prof
+        WHERE
+            p.id_Prof = #{idProf} AND p.id_Pgm = #{idPgm}
+    </select>
+
 
 </mapper>

@@ -33,39 +33,68 @@
             <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>강의 관리</h3>
 
             <!-- 본문 -->
-            <h4 class="subTit">개설강좌</h4>
+            <h4 class="subTit">프로그램 정보</h4>
             <div class="tblData mt10">
                 <table>
                     <colgroup>
-                        <col width="5%">
-                        <col width="15%">
+                        <col width="20%">
                         <col width="30%">
-                        <col width="25%">
-
+                        <col width="20%">
+                        <col width="30%">
                     </colgroup>
-                    <thead>
-                    <tr>
-                        <th scope="col">번호</th>
-                        <th scope="col">분류</th>
-                        <th scope="col">프로그램명</th>
-                        <th scope="col">교육 기간</th>
-                    </tr>
-                    </thead>
                     <tbody>
-                    <c:forEach var="program" items="${pgms}" varStatus="loop">
-                        <tr>
-                            <td>${loop.index + 1}</td>
-                            <td>${program.cateName}</td>
-                            <td><a href="/prof/programDetails?idPgm=${program.idPgm}">${program.pgmName}</a></td>
-                            <td>${program.stDt}~${program.endDt}</td>
-                        </tr>
-                    </c:forEach>
+                    <tr>
+                        <th scope="col">분류</th>
+                        <td colspan="3">
+                            ${ProgramDetail.cateName}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">프로그램명</th>
+                        <td colspan="3">
+                            ${ProgramDetail.pgmName}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">교육기간</th>
+                        <td>
+                            ${ProgramDetail.stDt} ~ ${ProgramDetail.endDt}
+                        </td>
+                        <th scope="col">강의 요일/시간</th>
+                        <td>
+                            토,일/09:00~18:00(수정해야함)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">수강 인원</th>
+                        <td>
+                            ${ProgramDetail.numOfStu}/${ProgramDetail.pgmPer} 명
+                        </td>
+                        <th scope="col">교육 장소</th>
+                        <td>
+                            ${ProgramDetail.roomName}
+                        </td>
+                    </tr>
+
+
                     </tbody>
                 </table>
             </div>
-
-
-
+            <div class="btnArea">
+                <button class="btns btnSt01" onclick="window.location.href='/prof/syllabus?idPgm=${ProgramDetail.idPgm}'">
+                    강의계획서
+                </button>
+                <button type="button" class="btns btnSt01" onclick="#">
+                    <span>휴·보강신청</span>
+                </button><button type="button" class="btns btnSt01" onclick="#">
+                <span>출결관리</span>
+            </button><button type="button" class="btns btnSt01" onclick="#">
+                <span>과제관리</span>
+            </button>
+                <button type="button" class="btns btnSt02" onclick="history.back();">
+                    <span>목록으로</span>
+                </button>
+            </div>
             <!-- 본문 끝 -->
         </div>
         <!-- //contents -->

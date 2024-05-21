@@ -65,7 +65,7 @@
                     </tbody>
                 </table>
                 <a href="/progInput">
-                    <button style="float: right;">추가</button>
+                    <button style="float: right;">추가예정</button>
                 </a>
             </div>
 

@@ -47,16 +47,42 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach var="sugang" items="${sugangList}">
-                        <tr>
-                            <td>${sugang.cateName}</td>
-                            <td>${sugang.pgmName}</td>
-                            <td>${sugang.stDt} ~ ${sugang.endDt}</td>
-                            <td>${sugang.sugangStDt}</td>
-                            <td>${sugang.pgmFee}</td>
-                            <td>${sugang.status}</td>
-                        </tr>
-                    </c:forEach>
+                    <c:choose>
+                        <c:when test="${empty sugangList}">
+                            <tr>
+                                <td colspan="7">수강 내역이 없습니다</td> <!-- 관리자만 보이는 상태 변경 칸 추가로 colspan=7 -->
+                            </tr>
+                        </c:when>
+                        <c:otherwise>
+                            <c:forEach var="sugang" items="${sugangList}">
+                                <tr>
+                                    <td>${sugang.cateName}</td>
+                                    <td>${sugang.pgmName}</td>
+                                    <td>${sugang.stDt} ~ ${sugang.endDt}</td>
+                                    <td>${sugang.sugangStDt}</td>
+                                    <td>${sugang.pgmFee} 원</td>
+                                    <td>${sugang.status}</td>
+                                        <%-- 신청상태버튼 - 관리자만 --%>
+                                    <td>
+                                        <c:choose>
+                                            <c:when test="${sessionScope.loginUser.role eq 'admin'}">
+                                                <form action="/enrollment/updateStatus" method="post">
+                                                    <input type="hidden" name="idEnrollment" value="${sugang.idEnrollment}">
+                                                    <select name="status">
+                                                        <option value="신청중" <c:if test="${sugang.status == '신청중'}">selected</c:if>>신청중</option>
+                                                        <option value="신청대기" <c:if test="${sugang.status == '신청대기'}">selected</c:if>>신청대기</option>
+                                                        <option value="신청완료" <c:if test="${sugang.status == '신청완료'}">selected</c:if>>신청완료</option>
+                                                        <option value="신청취소" <c:if test="${sugang.status == '신청취소'}">selected</c:if>>신청취소</option>
+                                                    </select>
+                                                    <button type="submit">변경</button>
+                                                </form>
+                                            </c:when>
+                                        </c:choose>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </c:otherwise>
+                    </c:choose>
                     </tbody>
                 </table>
             </div>

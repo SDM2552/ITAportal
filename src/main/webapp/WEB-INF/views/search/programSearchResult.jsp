@@ -2,14 +2,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <script src="https://kit.fontawesome.com/93205cc57d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="/css/common.css">
     <link rel="stylesheet" type="text/css" href="/css/table.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>프로그램 검색</title>
+    <title>프로그램 검색 결과</title>
 </head>
 <body>
 <div class="wrap">
@@ -33,18 +32,6 @@
             <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>수강 신청</h3>
 
             <!-- 본문 -->
-            <div class="boardSearch_g type">
-                <span class="tit">분류 </span>
-                <select title="선택" id="lecIdxSel" name="cateName">
-                    <option value="">전체</option>
-                    <c:forEach var="category" items="${categories}">
-                        <option value="${category.cateName}">${category.cateName}</option>
-                    </c:forEach>
-                </select>
-                <span class="tit">프로그램명</span>
-                <input type="text" title="키워드 입력" placeholder="프로그램명을 입력하세요" id="proTitleSel" name="pgmName" value=""/>
-                <button type="button" class="btn_search" onclick="searchPrograms()">검색</button>
-            </div>
             <div class="tblData mt10">
                 <table>
                     <colgroup>
@@ -90,12 +77,6 @@
     <c:import url="../layout/footer.jsp"/>
 </div>
 <script>
-    function searchPrograms() {
-        var cateName = $('#lecIdxSel').val();
-        var pgmName = $('#proTitleSel').val();
-        window.location.href = '/search/program?cateName=' + cateName + '&pgmName=' + pgmName;
-    }
-
     function applyProgram(programId) {
         window.location.href = '/program/applyForm?id=' + programId;
     }
