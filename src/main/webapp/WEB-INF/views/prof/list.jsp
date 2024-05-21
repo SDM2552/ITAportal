@@ -41,7 +41,6 @@
                         <col width="15%">
                         <col width="30%">
                         <col width="25%">
-
                     </colgroup>
                     <thead>
                     <tr>
@@ -63,8 +62,6 @@
                     </tbody>
                 </table>
             </div>
-
-
 
             <!-- 본문 끝 -->
         </div>

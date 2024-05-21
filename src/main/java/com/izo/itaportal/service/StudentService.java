@@ -22,10 +22,14 @@ public class StudentService {
     public List<SugangDto> GetSugangList(int idStudent){
         return studentRepository.findByIdStudent(idStudent);
     }
-
+    public List<SugangDto> GetCourceList(int idStudent){
+        return studentRepository.findByIdStudent(idStudent);
+    }
 
     //어드민-신청중-신청대기-신청취소
     public Student getStudentByIdUser(int idUser) {
         return studentRepository.findStudentByIdUser(idUser);
     }
+
+
 }

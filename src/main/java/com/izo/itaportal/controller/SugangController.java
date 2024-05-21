@@ -3,14 +3,19 @@ package com.izo.itaportal.controller;
 import com.izo.itaportal.dto.ProgramAllDto;
 import com.izo.itaportal.model.Category;
 import com.izo.itaportal.model.Enrollment;
+import com.izo.itaportal.model.LoginResponse;
 import com.izo.itaportal.model.Sugang;
 import com.izo.itaportal.service.CategoryService;
+import com.izo.itaportal.service.StudentService;
 import com.izo.itaportal.service.SugangService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -20,6 +25,8 @@ public class SugangController {
     SugangService sugangService;
     @Autowired
     CategoryService categoryService;
+    @Autowired
+    StudentService studentService;
 
     @GetMapping("/list") //수강신청 목록 페이지
     public String programList(Model model){
@@ -47,12 +54,23 @@ public class SugangController {
         int idCate = sugang.getIdCate();
         System.out.println("idcate값: "+idCate);
         sugangService.applyEnrollmentRequest(commonId, idPgm, idCate);
-
         return "sugang/sugangSuccess";
     }
     @GetMapping("/result") //수강신청 결과 페이지
     public String sugang2(){
         return "sugang/sugangSuccess";
     }
-
+    @PostMapping("/cancelSugang")
+    @ResponseBody
+    public ResponseEntity<String> cancelEnrollment(@RequestParam("idPgm") int idPgm, HttpSession session) {
+        LoginResponse loginUser = (LoginResponse) session.getAttribute("loginUser");
+        int idStudent = loginUser.getCommonId();
+        boolean isCancelled = sugangService.cancelSugang(idPgm, idStudent);
+        if (isCancelled) {
+            return ResponseEntity.ok("수강이 취소되었습니다.");
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("수강 취소에 실패했습니다.");
+        }
+    }
 }
+
