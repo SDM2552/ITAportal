@@ -12,6 +12,7 @@ public class SugangDto {
     private int idCate;    //  카테고리ID
     private String SugangStDt;    // 수강 신청 날짜
     private String status;    // 수강 신청 상태 (예: "확인중", "승인", "취소")
+    private boolean courceStatus;
 
     private String stDt;    //교육시작일자
     private String endDt;  //교육종료일자

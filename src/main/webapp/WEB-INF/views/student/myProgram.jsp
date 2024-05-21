@@ -33,7 +33,7 @@
             <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>수강 내역 조회</h3>
 
             <!-- 본문 -->
-            <h4 class="subTit">수강 내역 조회</h4>
+            <h4 class="subTit">나의 강의실</h4>
             <div class="tblData mt10">
                 <table>
                     <thead>
@@ -51,7 +51,7 @@
                     <c:choose>
                         <c:when test="${empty sugangList}">
                             <tr>
-                                <td colspan="7">수강 내역이 없습니다</td>
+                                <td colspan="7">수강 중인 강좌가 없습니다</td>
                             </tr>
                         </c:when>
                         <c:otherwise>

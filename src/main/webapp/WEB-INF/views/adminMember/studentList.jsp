@@ -7,6 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <script src="https://kit.fontawesome.com/93205cc57d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="/css/table.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>샘플 페이지</title>
 </head>
@@ -31,30 +32,41 @@
 
             <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>학생 명단 조회</h3>
             <!-- 본문 -->
-            <table border="1">
-                <thead>
-                <tr>
-                    <th>학생 번호</th>
-                    <th>이름</th>
-                    <th>생년월일</th>
-                    <th>성별</th>
-                    <th>주소</th>
-                    <th>전화번호</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${students}" var="student">
+            <h4 class="subTit">학생 명단</h4>
+            <div class="tblData mt10">
+                <table>
+                    <colgroup>
+                        <col width="15%">
+                        <col width="15%">
+                        <col width="30%">
+                        <col width="25%">
+                        <col width="25%">
+                        <col width="25%">
+                    </colgroup>
+                    <thead>
                     <tr>
-                        <td>${student.idStudent}</td>
-                        <td>${student.name}</td>
-                        <td>${student.birth}</td>
-                        <td>${student.gender}</td>
-                        <td>${student.address}</td>
-                        <td>${student.tel}</td>
+                        <th scope="col">학생번호</th>
+                        <th scope="col">이름</th>
+                        <th scope="col">생년월일</th>
+                        <th scope="col">성별</th>
+                        <th scope="col">주소</th>
+                        <th scope="col">전화번호</th>
                     </tr>
-                </c:forEach>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${students}" var="student">
+                        <tr>
+                            <td>${student.idStudent}</td>
+                            <td>${student.name}</td>
+                            <td>${student.birth}</td>
+                            <td>${student.gender}</td>
+                            <td>${student.address}</td>
+                            <td>${student.tel}</td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </div>
             <!-- 본문 끝 -->
         </div>
         <!-- //contents -->
