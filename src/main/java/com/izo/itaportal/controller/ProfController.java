@@ -84,6 +84,19 @@ public class ProfController {
 
     //과제 페이지
     @GetMapping("/examList")
+    public String examList(){
+        return "prof/examList";}
+    
+    //과제 상세 페이지
+    @GetMapping("/examDetail")
+    public String examDetail(){
+        return "prof/examDetail";
+    }
+    //과제 생성 페이지
+    @GetMapping("/new")
+    public String examNew(){
+        return "prof/examNew";
+    }
 
 
     @PostMapping("schedule/input")

@@ -422,3 +422,30 @@
 .noticeView .listDateR01 .badge {margin:0 0 5px;}
 .noticeView .listDateR01 > li.active .accView {display:block;}
 .accordion .viewBtn {font-size:0;}
+
+/* 테이블 추가설정 */
+.tblData tbody.mid th {
+    border-right: none;
+}
+.tblData tbody.mid td {
+    border-left: none;
+    text-align: left;
+}
+.tblData tbody.mid input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    min-height: 20px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+
+}
+.tblData tbody.mid textarea {
+    width: 100%;
+    height: 250px;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    resize: vertical;
+}

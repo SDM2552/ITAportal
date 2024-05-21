@@ -32,18 +32,49 @@
             <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>공지사항</h3>
 
             <!-- 본문 -->
-            <div class="innerContView mt10">
+            <h4 class="subTit">공지사항 작성</h4>
+
             <form action="/notice/save" method="post">
                 <input type="hidden" id="idNotice" name="idNotice" value="${notice.idNotice}"/>
-                <label for="title">제목:</label>
-                <input type="text" id="title" name="title" value="${notice.title}"/>
-                <br/>
-                <label for="content">내용:</label>
-                <textarea id="content" name="content">${notice.content}</textarea>
-                <button type="submit">저장</button>
-            </form>
-            <a href="/notice/noticeList">목록으로 돌아가기</a>
+            <div class="tblData mt10">
+                <table>
+                    <colgroup>
+                        <col width="20%">
+                        <col width="30%">
+                        <col width="20%">
+                        <col width="30%">
+                    </colgroup>
+                    <tbody class="mid">
+                    <tr>
+                        <th scope="col">제목</th>
+                        <td colspan="3">
+                            <input type="text" placeholder="제목을 입력하세요."id="title" name="title" value="${notice.title}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">내용</th>
+                        <td colspan="3">
+                            <textarea placeholder="내용을 입력하세요."id="content" name="content">${notice.content}</textarea>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
             </div>
+                <div class="btnArea">
+                    <button type="submit" class="btns btnSt01">
+                        <span>저장</span>
+                    </button>
+                    <button type="button" class="btns btnSt02" onclick="history.back();">
+                        <span>목록으로</span>
+                    </button>
+                </div>
+            </form>
+
+
+
+            <a href="/notice/noticeList">목록으로 돌아가기</a>
+
             <!-- 본문 끝 -->
         </div>
         <!-- //contents -->
