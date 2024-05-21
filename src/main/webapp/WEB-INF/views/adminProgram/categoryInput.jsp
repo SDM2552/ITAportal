@@ -39,9 +39,9 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary" >제출</button>
-
+            </form>>
             <!-- 본문 끝 -->
-        </div>
+
         <!-- //contents -->
     </div>
 
