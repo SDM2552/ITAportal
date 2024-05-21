@@ -64,19 +64,19 @@
     </div>
     <c:import url="../layout/footer.jsp" />
 
-    <!-- Modal -->
+    <!-- Confirmation Modal -->
     <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">정보 수정</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">비밀번호 변경 확인</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    정보를 변경하시겠습니까?
+                    비밀번호를 변경하시겠습니까?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
@@ -86,19 +86,19 @@
         </div>
     </div>
 
-    <!-- Success Modal -->
-    <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel"
+    <!-- Success/Error Modal -->
+    <div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="resultModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="successModalLabel">변경 완료</h5>
+                    <h5 class="modal-title" id="resultModalLabel">알림</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    정보가 변경되었습니다.
+                <div class="modal-body" id="resultModalBody">
+                    <!-- 메시지가 여기에 표시됩니다. -->
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">확인</button>
@@ -113,9 +113,16 @@
                 type: 'POST',
                 url: $('#updatePassword').attr('action'),
                 data: $('#updatePassword').serialize(),
-                success: function () {
+                success: function (response) {
                     $('#confirmationModal').modal('hide');
-                    $('#successModal').modal('show');
+                    $('#resultModalBody').text(response.success || '비밀번호가 성공적으로 변경되었습니다.');
+                    $('#resultModal').modal('show');
+                },
+                error: function (xhr) {
+                    $('#confirmationModal').modal('hide');
+                    var response = xhr.responseJSON;
+                    $('#resultModalBody').text(response.error || '비밀번호 변경에 실패했습니다.');
+                    $('#resultModal').modal('show');
                 }
             });
         });

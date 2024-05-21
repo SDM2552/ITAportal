@@ -6,15 +6,20 @@ import com.izo.itaportal.service.MyPageService;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
@@ -25,6 +30,7 @@ public class MyPageController {
 
     @Autowired
     private HttpSession httpSession;
+
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -51,6 +57,7 @@ public class MyPageController {
             return "/user/signIn";
         }
     }
+
     @GetMapping("/passwordUpdateInput")
     public String passwordUpdateInput(Model model) {
         LoginResponse user = (LoginResponse) httpSession.getAttribute("loginUser");
@@ -61,33 +68,66 @@ public class MyPageController {
     }
 
     @PostMapping("/passwordUpdate")
-    public String updatePassword(String currentPassword, String newPassword, String confirmPassword, String loginId, Model model) {
+    @ResponseBody
+    public ResponseEntity<Map<String, String>> updatePassword(String currentPassword, String newPassword, String confirmPassword) {
+        Map<String, String> response = new HashMap<>();
         LoginResponse user = (LoginResponse) httpSession.getAttribute("loginUser");
 
         if (user == null) {
-            return "redirect:/";
+            response.put("error", "로그인 상태가 아닙니다.");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
         }
 
         if (!newPassword.equals(confirmPassword)) {
-            model.addAttribute("error", "새 비밀번호와 새 비밀번호 확인이 일치하지 않습니다.");
-            return "redirect:/user/info";
+            response.put("error", "새 비밀번호와 새 비밀번호 확인이 일치하지 않습니다.");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
 
-        // 비밀번호를 암호화하여 비교합니다.
         String encodedCurrentPassword = user.getPassword();
         if (!passwordEncoder.matches(currentPassword, encodedCurrentPassword)) {
-            model.addAttribute("error", "현재 비밀번호가 일치하지 않습니다.");
-            return "redirect:/user/info";
+            response.put("error", "현재 비밀번호가 일치하지 않습니다.");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
-
+        System.out.println("!@#$!@#$"+user.getIdUser());
+        System.out.println("!@#$!@#$"+currentPassword);
+        System.out.println("!@#$!@#$"+newPassword);
         boolean isUpdated = myPageService.updatePassword(user.getIdUser(), currentPassword, newPassword);
         if (!isUpdated) {
-            model.addAttribute("error", "비밀번호 업데이트에 실패했습니다.");
-            return "redirect:/user/info";
+            response.put("error", "비밀번호 업데이트에 실패했습니다.");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
 
-        return "redirect:/user/info";
+        response.put("success", "비밀번호가 성공적으로 변경되었습니다.");
+        return ResponseEntity.ok(response);
     }
+//    @PostMapping("/passwordUpdate")
+//    public String updatePassword(String currentPassword, String newPassword, String confirmPassword, Model model) {
+//        LoginResponse user = (LoginResponse) httpSession.getAttribute("loginUser");
+//
+//        if (user == null) {
+//            return "redirect:/";
+//        }
+//
+//        if (!newPassword.equals(confirmPassword)) {
+//            model.addAttribute("error", "새 비밀번호와 새 비밀번호 확인이 일치하지 않습니다.");
+//            return "redirect:/user/passwordUpdateInput";
+//        }
+//
+//        // 비밀번호를 암호화하여 비교합니다.
+//        String encodedCurrentPassword = user.getPassword();
+//        if (!passwordEncoder.matches(currentPassword, encodedCurrentPassword)) {
+//            model.addAttribute("error", "현재 비밀번호가 일치하지 않습니다.");
+//            return "redirect:/user/passwordUpdateInput";
+//        }
+//
+//        boolean isUpdated = myPageService.updatePassword(user.getIdUser(), currentPassword, newPassword);
+//        if (!isUpdated) {
+//            model.addAttribute("error", "비밀번호 업데이트에 실패했습니다.");
+//            return "redirect:/user/passwordUpdateInput";
+//        }
+//
+//        return "redirect:/user/info";
+//    }
 
     @PostMapping("/updateInfo")
     public String updateInfo(Student student, Professor professor, Admin admin, User user1) {
