@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <script src="https://kit.fontawesome.com/93205cc57d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="css/common.css">
-    <link rel="stylesheet" type="text/css" href="../css/table.css">
+    <link rel="stylesheet" type="text/css" href="css/table.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>교육과정관리</title>
 </head>
@@ -61,6 +61,10 @@
                     </c:forEach>
                     </tbody>
                 </table>
+
+                <a href="/categoryInput">
+                    <button style="float: right;">추가</button>
+                </a>
             </div><br><br><br><br>
 
             <!-- 프로그램 목록 -->
@@ -106,7 +110,12 @@
                         </tr>
                     </c:forEach>
                     </tbody>
+
                 </table>
+
+                <a href="/progInput">
+                    <button style="float: right;">추가</button>
+                </a>
             </div>
             <!-- 본문 끝 -->
         </div>
