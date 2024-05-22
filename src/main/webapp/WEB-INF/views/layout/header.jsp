@@ -42,7 +42,7 @@
                             <a href="/user/info">MY(학생)</a>
                         </li>
                         <li>
-                            <a href="/stu/program">수업</a>
+                            <a href="/stu/myProgram">수업</a>
                         </li>
                         <li>
                             <a href="/program/list">수강 신청</a>

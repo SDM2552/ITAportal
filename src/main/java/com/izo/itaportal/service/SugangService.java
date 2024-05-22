@@ -1,6 +1,7 @@
 package com.izo.itaportal.service;
 
 import com.izo.itaportal.dto.ProgramAllDto;
+import com.izo.itaportal.dto.SugangDto;
 import com.izo.itaportal.repository.SugangRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,14 +23,25 @@ public class SugangService {
     public ProgramAllDto getProgramDetail(int programId) {
         return sugangRepository.findById(programId);
     }
-
     //수강 신청
     public void applyEnrollmentRequest(int commonId, int idPgm, int idCate){
        sugangRepository.saveSugang(commonId, idPgm, idCate);
     }
-
+    //수강 취소
     public boolean cancelSugang(int idPgm, int idStudent) {
         int rowsUpdated = sugangRepository.updateSugangStatus(idPgm, idStudent);
+        return rowsUpdated > 0;
+    }
+    public List<SugangDto>getAllSugang(){
+        return sugangRepository.findAllSugang();
+    }
+
+    public boolean sugangOk(int idPgm, int idStudent) {
+        int rowsUpdated = sugangRepository.updateToSugangOk(idPgm, idStudent);
+        return rowsUpdated > 0;
+    }
+    public boolean sugangNo(int idPgm, int idStudent) {
+        int rowsUpdated = sugangRepository.updateToSugangNo(idPgm, idStudent);
         return rowsUpdated > 0;
     }
 }

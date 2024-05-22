@@ -72,7 +72,16 @@
                                             </c:otherwise>
                                         </c:choose>
                                     </td>
-                                    <td></td>
+                                    <td>
+                                        <c:choose>
+                                            <c:when test="${sugang.status == '신청 완료'}">
+                                                수강중
+                                            </c:when>
+                                            <c:otherwise>
+                                                -
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </td>
                                 </tr>
                             </c:forEach>
                         </c:otherwise>
@@ -113,9 +122,6 @@
                 });
         }
     }
-
-
-
 </script>
 </body>
 </html>
