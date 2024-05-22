@@ -10,7 +10,7 @@ public class Sugang {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idSugang; // 수강 신청 ID
-    private int id_student;
+    private int idStudent;
     private int idCate;
 
     private int idPgm; // 프로그램 ID

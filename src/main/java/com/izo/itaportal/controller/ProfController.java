@@ -92,6 +92,15 @@ public class ProfController {
         return "prof/requestProg";
     }
 
+    //출결 페이지
+    @GetMapping("/attendance")
+    public String attendance(@RequestParam("idPgm") int idPgm, Model model, @ModelAttribute("idProf") int idProf) {
+        ProgramAllDto programAllDto = professorService.selectPgmDetail(idProf, idPgm);
+        System.out.println(programAllDto);
+        model.addAttribute("ProgramDetail", programAllDto);
+        return "prof/attendance";
+    }
+
     //과제 페이지
     @GetMapping("/examList")
     public String examList(){

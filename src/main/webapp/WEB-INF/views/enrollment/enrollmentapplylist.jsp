@@ -44,7 +44,7 @@
                         <th scope="col">신청일</th>
                         <th scope="col">수강료</th>
                         <th scope="col">신청 상태</th>
-                        <th scope="col">수강 상태</th>
+                        <th scope="col"></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -62,26 +62,18 @@
                                     <td>${sugang.stDt} ~ <br>${sugang.endDt}</td>
                                     <td>${sugang.sugangStDt}</td>
                                     <td>${sugang.pgmFee} 원</td>
+                                    <td>${sugang.status}</td>
                                     <td>
                                         <c:choose>
                                             <c:when test="${sugang.status == '신청중'}">
                                                 <button type="button" onclick="cancelEnrollment(${sugang.idPgm})">수강 취소</button>
                                             </c:when>
                                             <c:otherwise>
-                                                ${sugang.status}
-                                            </c:otherwise>
-                                        </c:choose>
-                                    </td>
-                                    <td>
-                                        <c:choose>
-                                            <c:when test="${sugang.status == '신청 완료'}">
-                                                수강중
-                                            </c:when>
-                                            <c:otherwise>
                                                 -
                                             </c:otherwise>
                                         </c:choose>
                                     </td>
+
                                 </tr>
                             </c:forEach>
                         </c:otherwise>

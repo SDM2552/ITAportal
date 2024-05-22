@@ -4,6 +4,7 @@ import com.izo.itaportal.model.Notice;
 import com.izo.itaportal.service.NoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -26,13 +27,10 @@ public class NoticeController {
     }
 
     @GetMapping("/noticeList")
-    public ModelAndView showNoticeList() {
+    public String showNoticeList(Model model) {
         List<Notice> notices = noticeService.getAllNotices();
-        Comparator<Notice> comparator = Comparator.comparing(Notice::getIdNotice).reversed();
-        notices.sort(comparator);
-        ModelAndView modelAndView = new ModelAndView("adminProgram/noticeList");
-        modelAndView.addObject("notices", notices);
-        return modelAndView;
+        model.addAttribute("notices", notices);
+        return "adminProgram/noticeList";
     }
 
     //공지사항작성 common_id=admin

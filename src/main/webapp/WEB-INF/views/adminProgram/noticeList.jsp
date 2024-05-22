@@ -44,22 +44,21 @@
             <!-- 본문 -->
             <div class="tblData mt10">
                 <table>
-                    <thead>
                     <colgroup>
                         <col width="10%">
                         <col width="70%">
                         <col width="20%">
                         <col width="10%">
                     </colgroup>
-                    </thead>
-                    <tbody>
+                    <thead>
                     <tr>
                         <th>글 번호</th>
                         <th>제목</th>
                         <th>등록일</th>
                         <th>조회수</th>
-
                     </tr>
+                    </thead>
+                    <tbody>
                     <c:forEach var="notice" items="${notices}">
                         <tr>
                             <td>${notice.idNotice}</td>

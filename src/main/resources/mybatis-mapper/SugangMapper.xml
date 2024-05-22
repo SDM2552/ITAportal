@@ -28,7 +28,9 @@
                 JOIN
             class_room r ON p.id_Room = r.id_Room
                 JOIN
-            Professor pr ON p.id_Prof = pr.id_Prof;
+            Professor pr ON p.id_Prof = pr.id_Prof
+        ORDER BY
+            p.id_pgm DESC
     </select>
     <select id="findById" parameterType="int" resultType="com.izo.itaportal.dto.ProgramAllDto">
         SELECT

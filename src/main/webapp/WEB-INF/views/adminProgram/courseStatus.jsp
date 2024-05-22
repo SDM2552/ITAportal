@@ -38,7 +38,6 @@
             <h4 class="subTit">신청자 목록</h4>
             <div class="tblData mt10">
                 <table>
-                    <thead>
                     <colgroup>
                         <col width="13%">
                         <col width="20%">
@@ -47,8 +46,7 @@
                         <col width="8%">
                         <col width="8%">
                     </colgroup>
-                    </thead>
-                    <tbody>
+                    <thead>
                     <tr>
                         <th scope="col">카테고리</th>
                         <th scope="col">강의명</th>
@@ -56,8 +54,9 @@
                         <th scope="col">수강신청일</th>
                         <th scope="col">신청 상태</th>
                         <th scope="col">승인</th>
-
                     </tr>
+                    </thead>
+                    <tbody>
                     <c:forEach var="sugang" items="${sugangList}">
                         <tr>
                             <td>${sugang.cateName}</td>

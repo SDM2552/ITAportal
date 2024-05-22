@@ -4,7 +4,7 @@
 
     <!-- 공지사항 목록 조회 -->
     <select id="findAllNotice" resultType="com.izo.itaportal.model.Notice">
-        SELECT id_notice, title, content, created_date, views FROM notice
+        SELECT id_notice, title, content, created_date, views FROM notice order by id_notice desc
     </select>
 
     <!-- 특정 공지사항 조회 -->
