@@ -30,24 +30,25 @@
             </div>
             <!-- //location -->
 
-            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>수강 내역 조회</h3>
+            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>나의 강의실</h3>
 
             <!-- 본문 -->
-            <h4 class="subTit">나의 강의실</h4>
+            <h4 class="subTit">나의 강의 목록</h4>
             <div class="tblData mt10">
                 <table>
                     <thead>
+
+                    </thead>
+                    <tbody>
                     <tr>
                         <th scope="col">분류</th>
                         <th scope="col">프로그램명</th>
                         <th scope="col">교육 기간</th>
-                        <th scope="col">신청일</th>
-                        <th scope="col">수강료</th>
-                        <th scope="col">신청 상태</th>
-                        <th scope="col">수강 상태</th>
+                        <th scope="col">담당 강사</th>
+                        <th scope="col">강의실</th>
+                        <th scope="col">강의 정보</th>
+
                     </tr>
-                    </thead>
-                    <tbody>
                     <c:choose>
                         <c:when test="${empty sugangList}">
                             <tr>
@@ -60,19 +61,13 @@
                                     <td>${sugang.cateName}</td>
                                     <td>${sugang.pgmName}</td>
                                     <td>${sugang.stDt} ~ <br>${sugang.endDt}</td>
-                                    <td>${sugang.sugangStDt}</td>
-                                    <td>${sugang.pgmFee} 원</td>
+                                    <td>${sugang.name}</td>
+                                    <td>${sugang.roomName}</td>
                                     <td>
-                                        <c:choose>
-                                            <c:when test="${sugang.status == '신청중'}">
-                                                <button type="button" onclick="cancelEnrollment(${sugang.idPgm})">수강 취소</button>
-                                            </c:when>
-                                            <c:otherwise>
-                                                ${sugang.status}
-                                            </c:otherwise>
-                                        </c:choose>
+                                        <button>보기</button>
+
                                     </td>
-                                    <td></td>
+
                                 </tr>
                             </c:forEach>
                         </c:otherwise>

@@ -61,11 +61,10 @@
                     </c:forEach>
                     </tbody>
                 </table>
-
                 <a href="/categoryInput">
                     <button style="float: right;">추가</button>
                 </a>
-            </div><br><br><br><br>
+            </div><br><br>
 
             <!-- 프로그램 목록 -->
             <h4 class="subTit">프로그램</h4>
@@ -110,7 +109,6 @@
                         </tr>
                     </c:forEach>
                     </tbody>
-
                 </table>
 
                 <a href="/progInput">

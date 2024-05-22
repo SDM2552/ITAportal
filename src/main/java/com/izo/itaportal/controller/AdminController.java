@@ -1,21 +1,15 @@
 package com.izo.itaportal.controller;
 
-import com.izo.itaportal.model.Admin;
-import com.izo.itaportal.model.Professor;
-import com.izo.itaportal.model.SignUpRequest;
-import com.izo.itaportal.model.Student;
-import com.izo.itaportal.service.AdminService;
-import com.izo.itaportal.service.ProfessorService;
-import com.izo.itaportal.service.RegistrationService;
-import com.izo.itaportal.service.StudentService;
+import com.izo.itaportal.model.*;
+import com.izo.itaportal.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -29,6 +23,10 @@ public class AdminController {
     private AdminService adminService;
     @Autowired
     private RegistrationService registrationService;
+    @Autowired
+    private SugangService sugangService;
+    @Autowired
+    private HttpSession session;
 
     @GetMapping("/studentList") //학생 리스트 출력 페이지
     public String studentList(Model model){
@@ -66,5 +64,28 @@ public class AdminController {
     public String registAdmin(@ModelAttribute SignUpRequest request){
         registrationService.registerUserAndAdmin(request);
         return "redirect:/admin/registAdmin";
+    }
+
+    //수강 승인
+    @PostMapping("/sugangOk")
+    @ResponseBody
+    public ResponseEntity<String> sugangOk(@RequestParam("idPgm") int idPgm, @RequestParam("idStudent") int idStudent) {
+        boolean isOkayd = sugangService.sugangOk(idPgm, idStudent);
+        if (isOkayd) {
+            return ResponseEntity.ok("수강이 승인됐습니다.");
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("수강 승인에 실패했습니다.");
+        }
+    }
+    //수강 거부
+    @PostMapping("/sugangNo")
+    @ResponseBody
+    public ResponseEntity<String> sugangNo(@RequestParam("idPgm") int idPgm, @RequestParam("idStudent") int idStudent) {
+        boolean isCancelled = sugangService.sugangNo(idPgm, idStudent);
+        if (isCancelled) {
+            return ResponseEntity.ok("수강이 거부됐습니다.");
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("수강 거부에 실패했습니다.");
+        }
     }
 }
