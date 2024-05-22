@@ -14,7 +14,7 @@
 <body>
 <div class="wrap">
     <!-- header -->
-    <c:import url="../layout/header_admin.jsp"/>
+    <c:import url="../layout/header.jsp"/>
 
     <!-- container -->
     <div id="container" class="container responCont">
@@ -36,19 +36,19 @@
             <h4 class="subTit">카테고리</h4>
             <div class="tblData mt10" style="width: 30%">
                 <table>
-                    <thead>
                     <colgroup>
                         <col width="15%">
                         <col width="55%">
                         <col width="30%">
                     </colgroup>
-                    </thead>
-                    <tbody>
+                    <thead>
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">카테고리명</th>
                         <th scope="col">변경</th>
                     </tr>
+                    </thead>
+                    <tbody>
                     <c:forEach var="category" items="${cate}">
                         <tr>
                             <td>${category.idCate}</td>
@@ -67,7 +67,6 @@
             <h4 class="subTit">프로그램</h4>
             <div class="tblData mt10">
                 <table>
-                    <thead>
                     <colgroup>
                         <col width="30%">
                         <col width="20%">
@@ -78,8 +77,7 @@
                         <col width="15%">
                         <col width="15%">
                     </colgroup>
-                    </thead>
-                    <tbody>
+                    <thead>
                     <tr>
                         <th scope="col">프로그램명</th>
                         <th scope="col">교육시작일자</th>
@@ -90,6 +88,8 @@
                         <th scope="col">교육 비용</th>
                         <th scope="col">변경</th>
                     </tr>
+                    </thead>
+                    <tbody>
                     <c:forEach var="program" items="${prog}">
                         <tr>
                             <td>${program.pgmName}</td>

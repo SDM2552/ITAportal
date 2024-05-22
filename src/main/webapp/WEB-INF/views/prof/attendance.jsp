@@ -15,12 +15,12 @@
 <body>
 <div class="wrap">
     <!-- header -->
-    <c:import url="/WEB-INF/views/layout/header.jsp" />
+    <c:import url="../layout/header.jsp" />
 
     <!-- container -->
     <div id="container" class="container responCont">
         <!-- 왼쪽 네비바 -->
-        <c:import url="/WEB-INF/views/layout/nav_prof_program.jsp"/>
+        <c:import url="../layout/nav_prof_program.jsp"/>
         <!-- contents -->
         <div id="contents" class="eduIntroCont">
             <!-- location -->
@@ -30,7 +30,7 @@
             </div>
             <!-- //location -->
 
-            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>강의 관리</h3>
+            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>출결 관리</h3>
 
             <!-- 본문 -->
             <h4 class="subTit">프로그램 정보</h4>
@@ -75,32 +75,57 @@
                             ${ProgramDetail.roomName}
                         </td>
                     </tr>
-
-
                     </tbody>
                 </table>
+            </div><br>
+            <h4 class="subTit">출결처리</h4>
+            <div class="boxCnt02">
+                <a href="#" class="boxInner">
+                    <dl>
+                        <dt>김학생</dt>
+                        <dd>이메일 <br/>출석 0회<br/>지각 0회<br/>결석 0회</dd>
+                    </dl>
+                </a>
+                <a href="#" class="boxInner">
+                    <dl>
+                        <dt>김학생2</dt>
+                        <dd>이메일 <br/>출석 0회<br/>지각 0회<br/>결석 0회</dd>
+                    </dl>
+                </a>
+                <a href="#" class="boxInner">
+                    <dl>
+                        <dt>김학생3</dt>
+                        <dd>이메일 <br/>출석 0회<br/>지각 0회<br/>결석 0회</dd>
+                    </dl>
+                </a>
+                <a href="#" class="boxInner">
+                    <dl>
+                        <dt>김학생4</dt>
+                        <dd>이메일 <br/>출석 0회<br/>지각 0회<br/>결석 0회</dd>
+                    </dl>
+                </a>
+                <a href="#" class="boxInner">
+                    <dl>
+                        <dt>김학생5</dt>
+                        <dd>이메일 <br/>출석 0회<br/>지각 0회<br/>결석 0회</dd>
+                    </dl>
+                </a>
+                <a href="#" class="boxInner">
+                    <dl>
+                        <dt>김학생6</dt>
+                        <dd>이메일 <br/>출석 0회<br/>지각 0회<br/>결석 0회</dd>
+                    </dl>
+                </a>
             </div>
-            <div class="btnArea">
-                <button class="btns btnSt01" onclick="window.location.href='/prof/syllabus?idPgm=${ProgramDetail.idPgm}'">
-                    강의계획서
-                </button><button type="button" class="btns btnSt01" onclick="#">
-                    <span>휴·보강신청</span>
-                </button><button type="button" class="btns btnSt01" onclick="window.location.href='/prof/attendance?idPgm=${ProgramDetail.idPgm}'">
-                <span>출결관리</span>
-            </button><button type="button" class="btns btnSt01" onclick="#">
-                <span>과제관리</span>
-            </button>
-                <button type="button" class="btns btnSt02" onclick="history.back();">
-                    <span>목록으로</span>
-                </button>
-            </div>
+
+
             <!-- 본문 끝 -->
         </div>
         <!-- //contents -->
     </div>
 
     <!-- footer -->
-    <c:import url="/WEB-INF/views/layout/footer.jsp" />
+    <c:import url="../layout/footer.jsp" />
 </div>
 
 

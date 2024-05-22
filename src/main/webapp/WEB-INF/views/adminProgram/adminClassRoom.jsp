@@ -36,19 +36,19 @@
             <h4 class="subTit">강의실</h4>
             <div class="tblData mt10" style="width: 30%">
                 <table>
-                    <thead>
                     <colgroup>
                         <col width="15%">
                         <col width="55%">
                         <col width="30%">
                     </colgroup>
-                    </thead>
-                    <tbody>
+                    <thead>
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">강의실명</th>
                         <th scope="col">변경</th>
                     </tr>
+                    </thead>
+                    <tbody>
                     <c:forEach var="cr" items="${classRoom}">
                         <tr>
                             <td>${cr.idRoom}</td>

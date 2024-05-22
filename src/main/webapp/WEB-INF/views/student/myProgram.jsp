@@ -36,10 +36,15 @@
             <h4 class="subTit">나의 강의 목록</h4>
             <div class="tblData mt10">
                 <table>
+                    <colgroup>
+                        <col width="15%">
+                        <col width="30%">
+                        <col width="15%">
+                        <col width="10%">
+                        <col width="15%">
+                        <col width="10%">
+                    </colgroup>
                     <thead>
-
-                    </thead>
-                    <tbody>
                     <tr>
                         <th scope="col">분류</th>
                         <th scope="col">프로그램명</th>
@@ -47,12 +52,14 @@
                         <th scope="col">담당 강사</th>
                         <th scope="col">강의실</th>
                         <th scope="col">강의 정보</th>
-
                     </tr>
+                    </thead>
+                    <tbody>
+
                     <c:choose>
                         <c:when test="${empty sugangList}">
                             <tr>
-                                <td colspan="7">수강 중인 강좌가 없습니다</td>
+                                <td colspan="6">수강 중인 강좌가 없습니다</td>
                             </tr>
                         </c:when>
                         <c:otherwise>
@@ -65,7 +72,6 @@
                                     <td>${sugang.roomName}</td>
                                     <td>
                                         <button>보기</button>
-
                                     </td>
 
                                 </tr>
