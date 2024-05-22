@@ -61,6 +61,11 @@
                     </c:forEach>
                     </tbody>
                 </table>
+
+                <a href="/classRoomInput">
+
+                    <button style="float: right;">추가</button>
+                </a>
             </div><br><br><br><br>
 
             <!-- 본문 끝 -->
