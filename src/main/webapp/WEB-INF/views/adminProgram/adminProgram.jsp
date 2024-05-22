@@ -61,7 +61,7 @@
                     </c:forEach>
                     </tbody>
                 </table>
-            </div><br><br><br><br>
+            </div><br><br><br>
 
             <!-- 프로그램 목록 -->
             <h4 class="subTit">프로그램</h4>
@@ -107,6 +107,9 @@
                     </c:forEach>
                     </tbody>
                 </table>
+                <a href="/progInput">
+                    <button style="float: right;">추가예정</button>
+                </a>
             </div>
             <!-- 본문 끝 -->
         </div>

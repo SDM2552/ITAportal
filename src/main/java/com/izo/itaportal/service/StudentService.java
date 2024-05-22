@@ -4,6 +4,7 @@ import com.izo.itaportal.dto.SugangDto;
 import com.izo.itaportal.model.Student;
 
 import com.izo.itaportal.repository.StudentRepository;
+import com.izo.itaportal.repository.SugangRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,8 @@ import java.util.List;
 public class StudentService {
     @Autowired
     private StudentRepository studentRepository;
+    @Autowired
+    private SugangRepository sugangRepository;
 
 
     public List<Student> getAllStudents(){
@@ -23,7 +26,7 @@ public class StudentService {
         return studentRepository.findByIdStudent(idStudent);
     }
     public List<SugangDto> GetCourceList(int idStudent){
-        return studentRepository.findByIdStudent(idStudent);
+        return sugangRepository.findByIdStudentAndCourseStatus(idStudent);
     }
 
     //어드민-신청중-신청대기-신청취소

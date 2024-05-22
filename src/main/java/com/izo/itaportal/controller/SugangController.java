@@ -27,6 +27,8 @@ public class SugangController {
     CategoryService categoryService;
     @Autowired
     StudentService studentService;
+    @Autowired
+    HttpSession session;
 
     @GetMapping("/list") //수강신청 목록 페이지
     public String programList(Model model){
@@ -62,7 +64,7 @@ public class SugangController {
     }
     @PostMapping("/cancelSugang")
     @ResponseBody
-    public ResponseEntity<String> cancelEnrollment(@RequestParam("idPgm") int idPgm, HttpSession session) {
+    public ResponseEntity<String> cancelEnrollment(@RequestParam("idPgm") int idPgm) {
         LoginResponse loginUser = (LoginResponse) session.getAttribute("loginUser");
         int idStudent = loginUser.getCommonId();
         boolean isCancelled = sugangService.cancelSugang(idPgm, idStudent);
