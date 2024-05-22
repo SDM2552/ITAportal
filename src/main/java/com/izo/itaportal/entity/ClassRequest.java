@@ -29,4 +29,6 @@ public class ClassRequest {
     private int idWeek;
     //프로그램코드 (FK)
     private int idProgram;
+    //보강 강의실 코드
+    private int idRoomd;
 }
