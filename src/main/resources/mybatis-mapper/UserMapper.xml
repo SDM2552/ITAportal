@@ -73,4 +73,11 @@
     </select>
 
 
+    <!-- 메신저용 코드 -->
+    <select id="getRoleByLoginId" parameterType="String" resultType="java.lang.String">
+        SELECT role FROM user WHERE login_id = #{loginId}
+    </select>
+    <select id="getLoginIdById" parameterType="int" resultType="java.lang.String">
+        SELECT login_id FROM user WHERE id_user = #{idUser}
+    </select>
 </mapper>

@@ -591,6 +591,94 @@ body {
     display: none;
 }
 
+/*메신저창*/
+/* 푸터 버튼 및 메뉴 */
+.footer-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: blue;
+    border: 2px solid black;
+    border-radius: 50%;
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    line-height: 60px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.footer-menu {
+    display: none;
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.footer-menu-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.footer-menu-btn:hover {
+    background-color: #f0f0f0;
+}
+
+/* 모달 창 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 450px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    padding: 20px;
+    overflow: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.modal-content {
+    height: calc(100% - 50px);
+    overflow-y: auto;
+}
+
+.modal-close {
+    cursor: pointer;
+    font-size: 20px;
+}
+
+@media (max-width: 768px) {
+    .modal {
+        width: 90%;
+        height: 90%;
+    }
+}
+
 /* 메인 레이어 제목 */
 .pgTit {
     font-size: 30px;

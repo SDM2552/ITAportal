@@ -1,0 +1,72 @@
+/* 메신저 페이지 스타일 */
+.btnArea {
+    text-align: right;
+    margin-top: 10px;
+}
+
+.btnArea button {
+    margin-left: 10px;
+}
+
+.tblForm {
+    width: 100%;
+}
+
+.tblForm input, .tblForm textarea {
+    width: calc(100% - 20px);
+    margin: 5px 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.tblForm th {
+    text-align: left;
+    padding: 10px;
+    background-color: #f2f2f2;
+}
+
+.tblForm th span {
+    color: red;
+}
+
+.tblForm td {
+    padding: 10px;
+}
+
+.btns {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.btns.btnSt01 {
+    background-color: #4CAF50;
+}
+
+.btns.btnSt02 {
+    background-color: #008CBA;
+}
+
+.btns.btnSt03 {
+    background-color: #f44336;
+}
+
+/* 모달 창 (중복되지 않는 부분) */
+.modal-header .create-btn, .modal-header .toggle-btn {
+    font-size: 14px;
+    padding: 5px 10px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

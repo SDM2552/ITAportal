@@ -84,6 +84,15 @@ public class UserService {
         return userRepository.getAdminId(idUser);
     }
 
+
+    // 메신저용 코드 추가
+    public String getRoleByLoginId(String loginId) {
+        return userRepository.getRoleByLoginId(loginId);
+    }
+    public String getLoginIdById(int idUser) {
+        return userRepository.getLoginIdById(idUser);
+    }
+
     //중복 가입 체크
 //    private void validateDuplicateUser(User user){
 //        User findUser = userRepository.findByLoginId(user.getLoginId());
