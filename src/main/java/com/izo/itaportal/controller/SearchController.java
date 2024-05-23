@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -27,6 +28,8 @@ public class SearchController {
         List<CategoryDto> categories = searchService.getAllCategories();
         model.addAttribute("programs", programs);
         model.addAttribute("categories", categories);
+        model.addAttribute("param.cateName", cateName);
+        model.addAttribute("param.pgmName", pgmName);
         return "search/programSearchResult";
     }
 
@@ -35,5 +38,12 @@ public class SearchController {
         List<CategoryDto> categories = searchService.getAllCategories();
         model.addAttribute("categories", categories);
         return "search/programList";
+    }
+
+    @GetMapping("/program/ajax")
+    @ResponseBody
+    public List<ProgramSearchDto> searchProgramsAjax(@RequestParam(value = "cateName", required = false) String cateName,
+                                                     @RequestParam(value = "pgmName", required = false) String pgmName) {
+        return searchService.searchProgramsByCategoryAndName(cateName, pgmName);
     }
 }
