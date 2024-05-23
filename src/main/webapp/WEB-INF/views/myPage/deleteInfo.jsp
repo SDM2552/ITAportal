@@ -4,7 +4,16 @@
 <html lang="ko">
 
 <head>
+
     <meta charset="UTF-8">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script src="https://kit.fontawesome.com/93205cc57d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
     <title>회원탈퇴</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
@@ -47,8 +56,10 @@
                     <li>서비스 중단: 탈퇴 시, 현재 이용 중인 서비스와 혜택이 모두 중단됩니다.</li>
                 </ul>
                 <p>위 주의사항 및 사전 안내를 확인하시고, 회원 탈퇴에 동의하시는 경우 아래 버튼을 클릭하여 진행해 주세요.</p><br>
+
 <%--                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmModal">회원 탈퇴하기</button>--%>
                 <a href="/user/delete2">탈퇴하기</a>
+
                 <br><br>
                 <p>탈퇴에 관한 자세한 내용은 고객센터로 문의해 주세요.</p>
                 <p>감사합니다.</p>
@@ -106,7 +117,7 @@
     </div>
 </div>
 
-<script>
+<!-- <script>
     $(document).ready(function() {
         $('#confirmBtn').on('click', function() {
             var password = $('#password').val();
@@ -124,9 +135,13 @@
                             alert(response.error);
                         }
                     },
+
                     error: function(jqXHR, textStatus, errorThrown) {
                         console.error('Error:', textStatus, errorThrown);
                         console.error('Response:', jqXHR.responseText);
+
+                    error: function() {
+
                         alert('서버와의 통신 중 오류가 발생했습니다.');
                     }
                 });
@@ -139,6 +154,7 @@
             window.location.href = '/';
         });
 
+
         $('#confirmModal').on('hidden.bs.modal', function () {
             $('#password').val('');
         });
@@ -146,7 +162,8 @@
         $('#successModal').on('hidden.bs.modal', function () {
             window.location.href = '/';
         });
+
     });
-</script>
+</script> -->
 </body>
 </html>

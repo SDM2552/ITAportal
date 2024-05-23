@@ -30,8 +30,10 @@ public class ProgController {
     @Autowired
     private ClassRoomService classRoomService;
     @Autowired
+
     private ProfessorService professorService;
     @Autowired
+
     private HttpSession httpSession;
 
     @GetMapping("/adminProgram")
@@ -150,6 +152,7 @@ public class ProgController {
         return "/adminProgram/progInfo";
     }
 
+
     //-------------------------------------------------------------------------------------------------------
 
     @GetMapping("/catePopUp")
@@ -169,6 +172,7 @@ public class ProgController {
         model.addAttribute("prof", professorService.getAllProfessors() );
         return "/adminProgramPopUp/profPopUp";
     }
+
 
 
 

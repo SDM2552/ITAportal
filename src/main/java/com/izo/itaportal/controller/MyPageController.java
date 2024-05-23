@@ -144,43 +144,41 @@ public class MyPageController {
         }
     }
 
-    @PostMapping("/delete")
-    @ResponseBody
-    public ResponseEntity<Map<String, String>> deleteUser(@RequestBody Map<String, String> request, HttpSession httpSession) {
-        Map<String, String> response = new HashMap<>();
-        User user = (User) httpSession.getAttribute("loginUser");
+//     @PostMapping("/delete")
+//     @ResponseBody
+//     public ResponseEntity<Map<String, String>> deleteUser(@RequestBody Map<String, String> request, HttpSession httpSession) {
+//         Map<String, String> response = new HashMap<>();
+//         User user = (User) httpSession.getAttribute("loginUser");
 
-        if (user == null) {
-            response.put("error", "로그인 상태가 아닙니다.");
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
-        }
 
-        String password = request.get("password");
-        if (!passwordEncoder.matches(password, user.getPassword())) {
-            response.put("error", "비밀번호가 일치하지 않습니다.");
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
-        }
+//         if (user == null) {
+//             response.put("error", "로그인 상태가 아닙니다.");
+//             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
+//         }
 
-        boolean isDeleted = myPageService.deleteUser1(user.getIdUser());
-        if (!isDeleted) {
-            response.put("error", "회원 탈퇴에 실패했습니다.");
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
-        }
+//         String password = request.get("password");
+//         if (!passwordEncoder.matches(password, user.getPassword())) {
+//             response.put("error", "비밀번호가 일치하지 않습니다.");
+//             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+//         }
 
-        httpSession.invalidate(); // 세션 무효화
-        response.put("success", "회원 탈퇴가 성공적으로 완료되었습니다.");
-        return ResponseEntity.ok(response);
-    }
+//         boolean isDeleted = myPageService.deleteUser1(user.getIdUser());
+//         if (!isDeleted) {
+//             response.put("error", "회원 탈퇴에 실패했습니다.");
+//             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+//         }
+
+//         httpSession.invalidate(); // 세션 무효화
+//         response.put("success", "회원 탈퇴가 성공적으로 완료되었습니다.");
+//         return ResponseEntity.ok(response);
+//     }
 
 
     @GetMapping("/delete2")
     public String delete() {
         LoginResponse user = (LoginResponse) httpSession.getAttribute("loginUser");
-        if (user == null) {
-            // 세션에 사용자가 없으면 로그인 페이지로 리다이렉트
-            return "redirect:/login";
-        }
-        Integer idUser = user.getIdUser();
+
+
 
         if (myPageService.isStudent(idUser)) {
             myPageService.deleteStudent(idUser);
@@ -199,6 +197,49 @@ public class MyPageController {
             return "redirect:/";
         } else {
             return "/";
-        }
-    }
+// =======
+//         String password = request.get("password");
+//         if (!passwordEncoder.matches(password, user.getPassword())) {
+//             response.put("error", "비밀번호가 일치하지 않습니다.");
+//             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+//         }
+
+//         boolean isDeleted = myPageService.deleteUser1(user.getIdUser());
+//         if (!isDeleted) {
+//             response.put("error", "회원 탈퇴에 실패했습니다.");
+//             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+// >>>>>>> master
+//         }
+
+//         httpSession.invalidate(); // 세션 무효화
+//         response.put("success", "회원 탈퇴가 성공적으로 완료되었습니다.");
+//         return ResponseEntity.ok(response);
+//     }
+
+
+//    @GetMapping("/delete")
+//    public String delete() {
+//        LoginResponse user = (LoginResponse) httpSession.getAttribute("loginUser");
+//        if (user == null) {
+//            // 세션에 사용자가 없으면 로그인 페이지로 리다이렉트
+//            return "redirect:/login";
+//        }
+//        Integer idUser = user.getIdUser();
+//
+//        if (myPageService.isStudent(idUser)) {
+//            myPageService.deleteStudent(idUser);
+//            myPageService.deleteUser(idUser);       //외래묶으면 삭제
+//            return "redirect:/";
+//        } else if (myPageService.isProfessor(idUser)) {
+//            myPageService.deleteProfessor(idUser);
+//            myPageService.deleteUser(idUser);
+//            return "redirect:/";
+//        } else if (myPageService.isAdmin(idUser)) {
+//            myPageService.deleteAdmin(idUser);
+//            myPageService.deleteUser(idUser);
+//            return "redirect:/";
+//        } else {
+//            return "/";
+//        }
+//    }
 }
