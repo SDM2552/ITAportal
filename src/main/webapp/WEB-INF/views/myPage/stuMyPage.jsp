@@ -40,6 +40,10 @@
                     <th>아이디</th>
                     <td><c:out value="${member.loginId}"/></td>
                 </tr>
+                <tr>
+                    <th>이메일</th>
+                    <td><c:out value="${member.email}"/> </td>
+                </tr>
 
 
 
@@ -88,6 +92,7 @@
                     <th>성별</th>
                     <td><c:out value="${user.gender == 'M' ? '남성' : '여성'}"/></td>
                 </tr>
+
             </table>
         </div>
     </div>
@@ -127,10 +132,10 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    정보가 변경되었습니다.
+                    정보가 변경되었습니다. 다시 로그인해 주세요.
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">확인</button>
+                    <button type="button" class="btn btn-primary" onclick="redirectToLogin()">확인</button>
                 </div>
             </div>
         </div>
@@ -147,13 +152,20 @@
                 type: 'POST',
                 url: $('#' + formId).attr('action'),
                 data: $('#' + formId).serialize(),
-                success: function () {
+                success: function (response) {
+                    if (response.success) {
+                        alert(response.success);
+                        window.location.href = '/'; // 로그인 페이지로 리다이렉트
+                    } else {
+                        alert(response.error);
+                    }
                     $('#confirmationModal').modal('hide');
-                    $('#successModal').modal('show');
                 }
             });
         }
     </script>
+
+
 </div>
 </body>
 </html>

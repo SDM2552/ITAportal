@@ -10,6 +10,36 @@
         select * from program where id_pgm=#{idPgm}
     </select>
 
+    <select id="selectProgramDetail" parameterType="integer" resultType="com.izo.itaportal.dto.ProgramAllDto">
+        SELECT
+            p.id_Pgm,
+            p.id_Cate,
+            p.id_Room,
+            p.id_Prof,
+            p.pgm_Name,
+            p.st_Dt,
+            p.end_Dt,
+            p.sugang_St_Dt,
+            p.sugang_End_Dt,
+            p.pgm_Target,
+            p.pgm_Method,
+            p.pgm_Per,
+            p.pgm_Fee,
+            c.cate_Name,
+            r.room_Name,
+            pr.name AS prof_Name
+        FROM
+            Program p
+                JOIN
+            Category c ON p.id_Cate = c.id_Cate
+                JOIN
+            class_room r ON p.id_Room = r.id_Room
+                JOIN
+            Professor pr ON p.id_Prof = pr.id_Prof
+        WHERE
+            p.id_pgm = #{idPgm};
+    </select>
+
     <insert id="insert">
         insert into program (id_pgm,
                              id_cate,
@@ -17,13 +47,15 @@
                              pgm_name,
                              st_dt,
                              end_dt,
+                             sugang_st_dt,
+                             sugang_end_dt,
                              pgm_target,
                              id_room,
                              pgm_method,
                              pgm_per,
                              num_of_stu,
                              pgm_fee)
-                    values (#{idPgm},#{idCate},#{idProf},#{pgmName},#{stDt},#{endDt},
+                    values (#{idPgm},#{idCate},#{idProf},#{pgmName},#{stDt},#{endDt},#{sugangStDt},#{sugangEndDt},
                                  #{pgmTarget},#{idRoom},#{pgmMethod},#{pgmPer},0,#{pgmFee})
 
     </insert>
@@ -34,6 +66,8 @@
             pgm_name = #{pgmName},
             st_dt=#{stDt},
             end_dt=#{endDt},
+            sugang_st_dt = #{sugangStDt},
+            sugang_end_dt = #{sugangEndDt},
             pgm_target=#{pgmTarget},
             id_room=#{idRoom},
             pgm_method=#{pgmMethod},

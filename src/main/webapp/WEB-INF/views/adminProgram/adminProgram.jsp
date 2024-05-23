@@ -85,8 +85,8 @@
                     <tbody>
                     <tr>
                         <th scope="col">프로그램명</th>
-                        <th scope="col">교육시작일자</th>
-                        <th scope="col">교육종료일자</th>
+                        <th scope="col">교육일정</th>
+                        <th scope="col">접수일정</th>
                         <th scope="col">교육 대상</th>
                         <th scope="col">교육 방법</th>
                         <th scope="col">교육 인원</th>
@@ -95,9 +95,9 @@
                     </tr>
                     <c:forEach var="program" items="${prog}">
                         <tr>
-                            <td>${program.pgmName}</td>
-                            <td>${program.stDt}</td>
-                            <td>${program.endDt}</td>
+                            <td><a href="progInfo?idPgm=${program.idPgm}"> ${program.pgmName}</a></td>
+                            <td>${program.stDt} ~ ${program.endDt}</td>
+                            <td>${program.sugangStDt} ~ ${program.sugangEndDt}</td>
                             <td>${program.pgmTarget}</td>
                             <td>${program.pgmMethod}</td>
                             <td>${program.pgmPer}</td>

@@ -19,7 +19,7 @@
         values (#{idCate},#{cateName})
 
     </insert>
-    <update id="update">
+    <update id="update" >
         update category
         set cate_name = #{cateName}
         where id_cate = #{idCate}

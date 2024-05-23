@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -8,6 +8,8 @@
     <script src="https://kit.fontawesome.com/93205cc57d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <title>회원탈퇴</title>
 </head>
 <body>
@@ -47,19 +49,95 @@
                     <li>서비스 중단: 탈퇴 시, 현재 이용 중인 서비스와 혜택이 모두 중단됩니다.</li>
                 </ul>
                 <p>위 주의사항 및 사전 안내를 확인하시고, 회원 탈퇴에 동의하시는 경우 아래 버튼을 클릭하여 진행해 주세요.</p><br>
-                <button type="button"><a href="/user/delete">회원 탈퇴하기</a></button><br><br>
+                <button type="button" data-toggle="modal" data-target="#confirmModal">회원 탈퇴하기</button>
+                <br><br>
                 <p>탈퇴에 관한 자세한 내용은 고객센터로 문의해 주세요.</p>
                 <p>감사합니다.</p>
                 <p>평생교육원 드림.</p>
             </div>
-
-
-
-            </div>
         </div>
     </div>
 
-<c:import url="../layout/footer.jsp" />
+    <c:import url="../layout/footer.jsp" />
 </div>
+
+<!-- Confirmation Modal -->
+<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmModalLabel">비밀번호 확인</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="confirmForm">
+                    <div class="form-group">
+                        <label for="password">현재 비밀번호</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+                <button type="button" class="btn btn-primary" id="confirmBtn">탈퇴</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Success Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="successModalLabel">탈퇴 완료</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                회원 탈퇴가 완료되었습니다. 메인 페이지로 이동합니다.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="redirectBtn">확인</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#confirmBtn').on('click', function() {
+            var password = $('#password').val();
+            if (password) {
+                $.ajax({
+                    type: 'POST',
+                    url: '/user/delete',
+                    data: JSON.stringify({ password: password }),
+                    contentType: 'application/json',
+                    success: function(response) {
+                        if (response.success) {
+                            $('#confirmModal').modal('hide');
+                            $('#successModal').modal('show');
+                        } else {
+                            alert(response.error);
+                        }
+                    },
+                    error: function() {
+                        alert('서버와의 통신 중 오류가 발생했습니다.');
+                    }
+                });
+            } else {
+                alert('비밀번호를 입력해 주세요.');
+            }
+        });
+
+        $('#redirectBtn').on('click', function() {
+            window.location.href = '/';
+        });
+    });
+</script>
 </body>
 </html>
