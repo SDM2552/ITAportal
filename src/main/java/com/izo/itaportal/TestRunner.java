@@ -41,12 +41,18 @@ public class TestRunner implements ApplicationRunner{
                 "VALUES ('김학생01', '20020202', '010-2222-3333', 'M', '강원도', '1')");
         jdbcTemplate.execute("INSERT INTO student(name, birth, tel, gender, address, id_user)" +
                 "VALUES ('복학생', '19000130', '010-3333-4444', 'M', '경기도', '5')");
+        jdbcTemplate.execute("INSERT INTO student(name, birth, tel, gender, address, id_user)" +
+                "VALUES ('홍길동', '196001231', '010-5555-6666', 'M', '경기도', '6')");
         jdbcTemplate.execute("INSERT INTO user(id_user, login_id, password, regist_date, role) " +
                 "VALUES(1, 'stu', '" + encryptedPassword + "', '2024-05-17', 'stu')");
         jdbcTemplate.execute("INSERT INTO user(id_user, login_id, password, regist_date, role) " +
                 "VALUES(2, 'prof', '" + encryptedPassword + "', '2024-05-19', 'prof')");
         jdbcTemplate.execute("INSERT INTO user(id_user, login_id, password, regist_date, role) " +
                 "VALUES(4, 'admin', '" + encryptedPassword + "', '2024-05-18', 'admin')");
+        jdbcTemplate.execute("INSERT INTO user(id_user, login_id, password, regist_date, role) " +
+                "VALUES(5, 'stu2', '" + encryptedPassword + "', '2024-05-22', 'stu')");
+        jdbcTemplate.execute("INSERT INTO user(id_user, login_id, password, regist_date, role) " +
+                "VALUES(6, 'stu3', '" + encryptedPassword + "', '2024-05-22', 'stu')");
 
 
         //강의리스트
@@ -84,9 +90,16 @@ public class TestRunner implements ApplicationRunner{
         jdbcTemplate.execute("INSERT INTO exam_submission(id_program, id_exam, id_student, id_file)" +
                 "VALUES ('100', '1', '2', '9999')");
 
-        //enrollment
-        jdbcTemplate.execute("INSERT INTO enrollment(id_enrollment, id_cate, id_pgm, id_student, pgm_name, st_dt, status)" +
-                "VALUES ('100','1','2','3','무역을합시다','2024-05-16','보류 중')");
+        //수강
+        jdbcTemplate.execute("INSERT INTO sugang(id_sugang, id_student, id_cate, id_pgm, st_dt, status,course_status)" +
+                "VALUES (1,1,3,3,'2024-05-22 12:47:53','신청중',0)");
+        jdbcTemplate.execute("INSERT INTO sugang(id_sugang, id_student, id_cate, id_pgm, st_dt, status,course_status)" +
+                "VALUES (2,1,1,2,'2024-05-22 12:47:53','신청 완료',1)");
+        jdbcTemplate.execute("INSERT INTO sugang(id_sugang, id_student, id_cate, id_pgm, st_dt, status,course_status)" +
+                "VALUES (3,2,3,3,'2024-05-22 12:47:53','신청 완료',1)");
+        jdbcTemplate.execute("INSERT INTO sugang(id_sugang, id_student, id_cate, id_pgm, st_dt, status,course_status)" +
+                "VALUES (4,3,3,3,'2024-05-22 12:47:53','신청 완료',1)");
+
 
         //공지사항 글
         jdbcTemplate.execute("INSERT INTO notice(title, content, created_date, views)" +

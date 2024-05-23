@@ -25,8 +25,8 @@
             <!-- location -->
             <div class="location">
                 <span class="home" title="홈">홈으로 이동</span>
-                <span>수강 내역 조회</span>
-                <span class="on">수강 내역</span>
+                <span>> 수강 내역 조회</span>
+                <span class="on">> 휴보강 신청</span>
             </div>
             <!-- //location -->
             <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>휴보강 신청</h3>
@@ -44,15 +44,15 @@
                 <tbody>
                 <tr>
                     <th><label for="category">카테고리<br>(Category)</label></th>
-                    <td><div id="category">카테고리ㅇㅇ</div></td>
+                    <td><div id="category">${programInfo.cateName}</div></td>
                     <th><label for="pgmName">교과목명<br>(Program Title)</label></th>
-                    <td><div id="pgmName">강의명ㅇㅇ</div></td>
+                    <td><div id="pgmName">${programInfo.pgmName}</div></td>
                 </tr>
                 <tr>
                     <th><label for="classRoom">수업시간/강의실<br>(Class Time/Class Room)</label></th>
-                    <td><div id="classRoom">수업시간ㅇㅇ</div></td>
+                    <td><div id="classRoom">${programInfo.roomName}</div></td>
                     <th><label for="programDuration">강의기간<br>(Program Duration)</label></th>
-                    <td><div id="programDuration">언제부터 ~ 언제까지</div></td>
+                    <td><div id="programDuration">${programInfo.stDt} ~ ${programInfo.endDt}</div></td>
                 </tr>
                 </tbody>
             </table><br>
@@ -67,23 +67,23 @@
                     </colgroup>
                     <tbody class="mid">
                     <tr>
-                        <th scope="col">휴강 일자</th>
+                        <th scope="col">기존 강의 일자</th>
                         <td>
-                            <input type="text" style="width: 100%;">
+                            <input type="date" name="classDate" style="width: 100%;">
                         </td>
-                        <th scope="col">휴강 강의실</th>
+                        <th scope="col">기존 강의실</th>
                         <td>
-                            <input type="text"  style="width: 100%;">
+                            <input type="text" value="${programInfo.roomName}" readonly style="width: 100%;">
                         </td>
                     </tr>
                     <tr>
                         <th scope="col">보강 일자</th>
                         <td>
-                            <input type="text" style="width: 100%;">
+                            <input type="date" name="makeUpDate" style="width: 100%;">
                         </td>
                         <th scope="col">보강 강의실</th>
                         <td>
-                            <input type="text"  style="width: 100%;">
+                            <input type="text" name="idRoom" style="width: 100%;">
                         </td>
                     </tr>
                     <tr>

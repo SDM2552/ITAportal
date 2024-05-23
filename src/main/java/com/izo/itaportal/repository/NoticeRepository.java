@@ -19,10 +19,14 @@ public interface NoticeRepository {
 
     void deleteNotice(int idNotice);
 
-    // 공지사항 검색 기능 추가
+    //공지사항 검색 공지사항이동
     List<Notice> searchNoticesByKeyword(@Param("keyword") String keyword);
 
-    // 공지사항 페이지 이동 기능 추가
     List<Notice> findNoticesByPage(@Param("offset") int offset, @Param("limit") int limit);
+
+    List<Notice> findNoticesByPageWithKeyword(@Param("offset") int offset, @Param("limit") int limit, @Param("keyword") String keyword);
+
     int countAllNotices();
+
+    int countNoticesByKeyword(@Param("keyword") String keyword);
 }

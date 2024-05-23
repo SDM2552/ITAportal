@@ -127,7 +127,11 @@
                     <c:forEach var="schedules" items="${schedules}" >
                     <tr>
                         <td>
-                            <span><select id="idSched"></select></span>
+                            <span><select id="idSched" name="idShced">
+                                    <c:forEach var="i" begin="1" end="${maxIdSched}">
+                                        <option value="${i}">${i}</option>
+                                    </c:forEach>
+                            </select></span>
                         </td>
                         <td>
                             <span><input type="date" id="daySched" value="${programInfo.stDt}" min="${programInfo.stDt}" max="${programInfo.endDt}"></span>
@@ -171,14 +175,6 @@
 </div>
 
 <script>
-    const selectElement = document.getElementById("idSched");
-    for (let i = 1; i <= 15; i++) {
-        const option = document.createElement("option");
-        option.value = i;
-        option.text = i;
-        selectElement.appendChild(option);
-    }
-
     function add(){
         const lastRow = document.querySelector("#schedule tbody tr:last-child");
         const lastDate = new Date(lastRow.querySelector("#daySched").value);
@@ -188,7 +184,11 @@
         const newRow = document.createElement("tr");
         const newRowHTML = `
     <td>
-        <span><select id="idSched"></select></span>
+        <span><select id="idSched" name="idShced">
+           <c:forEach var="i" begin="1" end="${weeks}">
+              <option value="${i}">${i}</option>
+           </c:forEach>
+        </select></span>
     </td>
     <td>
         <span><input type="date" id="daySched" value="${formattedDate}" min="${formattedDate}" max="${programInfo.endDt}"></span>

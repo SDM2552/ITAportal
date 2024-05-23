@@ -4,8 +4,10 @@ import com.izo.itaportal.model.Notice;
 import com.izo.itaportal.service.NoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
@@ -26,13 +28,24 @@ public class NoticeController {
     }
 
     @GetMapping("/noticeList")
-    public ModelAndView showNoticeList() {
-        List<Notice> notices = noticeService.getAllNotices();
-        Comparator<Notice> comparator = Comparator.comparing(Notice::getIdNotice).reversed();
-        notices.sort(comparator);
-        ModelAndView modelAndView = new ModelAndView("adminProgram/noticeList");
-        modelAndView.addObject("notices", notices);
-        return modelAndView;
+    public String showNoticeList(@RequestParam(value = "keyword", required = false) String keyword, @RequestParam(value = "page", defaultValue = "1") int pageNum, Model model) {
+        List<Notice> notices;
+        int totalPages;
+
+        if (keyword != null && !keyword.isEmpty()) {
+            notices = noticeService.getNoticesByPageWithKeyword(pageNum, keyword);
+            totalPages = (int) Math.ceil((double) noticeService.getTotalNoticesByKeyword(keyword) / 10);
+        } else {
+            notices = noticeService.getNoticesByPage(pageNum);
+            totalPages = (int) Math.ceil((double) noticeService.getTotalNotices() / 10);
+        }
+
+        model.addAttribute("notices", notices);
+        model.addAttribute("totalPages", totalPages);
+        model.addAttribute("currentPage", pageNum);
+        model.addAttribute("keyword", keyword);
+
+        return "adminProgram/noticeList";
     }
 
     //공지사항작성 common_id=admin
@@ -131,10 +144,16 @@ public class NoticeController {
 
     // 공지사항 검색 기능 추가
     @GetMapping("/search")
-    public ModelAndView searchNotices(@RequestParam("keyword") String keyword) {
-        List<Notice> notices = noticeService.searchNoticesByKeyword(keyword);
+    public ModelAndView searchNotices(@RequestParam("keyword") String keyword, @RequestParam(value = "page", defaultValue = "1") int pageNum) {
+        List<Notice> notices = noticeService.getNoticesByPageWithKeyword(pageNum, keyword);
+        int totalPages = (int) Math.ceil((double) noticeService.getTotalNoticesByKeyword(keyword) / 10);
+
         ModelAndView modelAndView = new ModelAndView("adminProgram/noticeList");
         modelAndView.addObject("notices", notices);
+        modelAndView.addObject("totalPages", totalPages);
+        modelAndView.addObject("currentPage", pageNum);
+        modelAndView.addObject("keyword", keyword);
+
         return modelAndView;
     }
 
@@ -146,17 +165,33 @@ public class NoticeController {
 //        modelAndView.addObject("notices", notices);
 //        return modelAndView;
 //    }
-    // 공지사항 페이지 이동 기능 추가
+    // 페이지네이션 기능
     @GetMapping("/page/{pageNum}")
-    public ModelAndView paginateNotices(@PathVariable int pageNum) {
-        List<Notice> notices = noticeService.getNoticesByPage(pageNum);
-        int totalNotices = noticeService.getTotalNotices(); // 총 공지사항 수를 가져오는 메서드
-        int totalPages = (int) Math.ceil(totalNotices / 10.0); // 총 페이지 수 계산
+    public ModelAndView paginateNotices(@PathVariable int pageNum, @RequestParam(value = "keyword", required = false) String keyword, RedirectAttributes redirectAttributes) {
+        int totalNotices;
+        int totalPages;
+        List<Notice> notices;
+
+        if (keyword != null && !keyword.isEmpty()) {
+            totalNotices = noticeService.getTotalNoticesByKeyword(keyword);
+            totalPages = (int) Math.ceil(totalNotices / 10.0);
+            notices = noticeService.getNoticesByPageWithKeyword(pageNum, keyword);
+        } else {
+            totalNotices = noticeService.getTotalNotices();
+            totalPages = (int) Math.ceil(totalNotices / 10.0);
+            notices = noticeService.getNoticesByPage(pageNum);
+        }
+
+        if (pageNum < 1 || pageNum > totalPages) {
+            redirectAttributes.addFlashAttribute("errorMessage", "잘못된 페이지 번호입니다.");
+            return new ModelAndView("redirect:/notice/page/1");
+        }
 
         ModelAndView modelAndView = new ModelAndView("adminProgram/noticeList");
         modelAndView.addObject("notices", notices);
         modelAndView.addObject("totalPages", totalPages);
         modelAndView.addObject("currentPage", pageNum);
+        modelAndView.addObject("keyword", keyword);
         return modelAndView;
     }
 

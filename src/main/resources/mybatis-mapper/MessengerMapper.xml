@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.izo.itaportal.repository.MessengerRepository">
+
+    <!-- 쪽지를 전송합니다 -->
+    <insert id="sendMessenger" parameterType="com.izo.itaportal.model.Messenger">
+        INSERT INTO messenger (sender_login_id, receiver_login_id, sender_role, receiver_role, subject, message_text, sent_at, is_read, deleted)
+        VALUES (#{senderLoginId}, #{receiverLoginId}, #{senderRole}, #{receiverRole}, #{subject}, #{messageText}, NOW(), FALSE, FALSE)
+    </insert>
+
+    <!-- 여러 쪽지를 일괄 전송합니다 -->
+    <insert id="sendBulkMessengers" parameterType="java.util.List">
+        INSERT INTO messenger (sender_login_id, receiver_login_id, sender_role, receiver_role, subject, message_text, sent_at, is_read, deleted)
+        VALUES
+        <foreach collection="list" item="messenger" separator=",">
+            (#{messenger.senderLoginId}, #{messenger.receiverLoginId}, #{messenger.senderRole}, #{messenger.receiverRole}, #{messenger.subject}, #{messenger.messageText}, NOW(), FALSE, FALSE)
+        </foreach>
+    </insert>
+
+    <!-- 특정 수신자가 받은 쪽지 목록을 조회합니다 -->
+    <select id="getReceivedMessengers" resultType="com.izo.itaportal.model.Messenger">
+        SELECT * FROM messenger WHERE receiver_login_id = #{receiverLoginId} AND deleted = FALSE ORDER BY sent_at DESC
+    </select>
+
+    <!-- 특정 발신자가 보낸 쪽지 목록을 조회합니다 -->
+    <select id="getSentMessengers" resultType="com.izo.itaportal.model.Messenger">
+        SELECT * FROM messenger WHERE sender_login_id = #{senderLoginId} AND deleted = FALSE ORDER BY sent_at DESC
+    </select>
+
+    <!-- 쪽지를 저장합니다 -->
+    <update id="saveMessenger" parameterType="com.izo.itaportal.model.Messenger">
+        INSERT INTO messenger (sender_login_id, receiver_login_id, sender_role, receiver_role, subject, message_text, sent_at, is_read, deleted)
+        VALUES (#{senderLoginId}, #{receiverLoginId}, #{senderRole}, #{receiverRole}, #{subject}, #{messageText}, NOW(), FALSE, TRUE)
+    </update>
+
+    <!-- 쪽지를 읽음으로 표시합니다 -->
+    <update id="markMessengerAsRead">
+        UPDATE messenger SET is_read = TRUE WHERE id_message = #{idMessenger}
+    </update>
+
+    <!-- 쪽지의 내용을 업데이트합니다 -->
+    <update id="updateMessenger" parameterType="com.izo.itaportal.model.Messenger">
+        UPDATE messenger SET message_text = #{messageText}, updated_at = NOW() WHERE id_message = #{idMessenger}
+    </update>
+
+    <!-- 쪽지를 삭제합니다 -->
+    <update id="deleteMessenger">
+        UPDATE messenger SET deleted = TRUE WHERE id_message = #{idMessenger}
+    </update>
+
+    <!-- 여러 쪽지를 일괄 삭제합니다 -->
+    <update id="deleteBulkMessengers">
+        UPDATE messenger SET deleted = TRUE WHERE id_message IN
+        <foreach item="id" collection="list" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </update>
+</mapper>
