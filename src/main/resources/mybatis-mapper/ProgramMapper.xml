@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.izo.itaportal.repository.ProgramRepository">
     <select id="selectProgram" resultType="com.izo.itaportal.model.Program">
-        select * from program
+        select * from program order by id_pgm desc
     </select>
 
     <select id="selectProgramById" resultType="com.izo.itaportal.model.Program">

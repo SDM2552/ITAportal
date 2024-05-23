@@ -41,7 +41,9 @@
 
             <!-- 본문 -->
             <h4 class="subTit">프로그램 추가</h4>
-            <form id="progInputForm" method="get" action="/progInsert">
+
+            <form id="progInputForm" method="post" action="/progInsert" >
+
                 <div class="tblForm inputForm mt10">
                     <table>
                         <colgroup>
@@ -54,19 +56,31 @@
                         <tr>
                             <th scope="col">주제분류코드</th>
                             <td colspan="3">
-                                <input type="text" class="form-control" id="idCate" placeholder="주제분류코드" name="idCate">
+
+                                <input type="text" class="form-control" id="cateName" placeholder="주제분류명" name="cateName" readonly>
+                                <button type="button" onclick="openPopup1()">검색</button>
+                                <input type="hidden" id="idCate" name="idCate">
+
                             </td>
                         </tr>
                         <tr>
                             <th scope="col">강의실코드</th>
                             <td colspan="3">
-                                <input type="text" class="form-control" id="idRoom" placeholder="강의실코드" name="idRoom">
+
+                                <input type="text" class="form-control" id="roomName" placeholder="강의실명" name="roomName" readonly>
+                                <button type="button" onclick="openPopup2()">검색</button>
+                                <input type="hidden" id="idRoom" name="idRoom">
+
                             </td>
                         </tr>
                         <tr>
                             <th scope="col">강사코드</th>
                             <td colspan="3">
-                                <input type="text" class="form-control" id="idProf" placeholder="강사코드" name="idProf">
+
+                                <input type="text" class="form-control" id="name" placeholder="강사명" name="name" readonly>
+                                <button type="button" onclick="openPopup3()">검색</button>
+                                <input type="hidden" id="idProf" name="idProf">
+
                             </td>
                         </tr>
                         <tr>
@@ -125,20 +139,50 @@
                         </tr>
                         </tbody>
                     </table>
+
                 </div>
                 <div class="btnArea">
                     <button type="submit" class="btns btnSt01">
-                        <span>수정</span>
+                        <span>추가</span>
                     </button>
                     <button type="button" class="btns btnSt02" onclick="history.back();">
                         <span>목록</span>
                     </button>
                 </div>
+
             </form>
             <!-- 본문 끝 -->
         </div>
         <!-- //contents -->
     </div>
+    <script>
+        function openPopup1() {
+
+            window.open(
+                "/catePopUp", // 팝업창에 표시할 페이지 경로
+                "popupWindow", // 팝업창의 이름
+                "width=600,height=600,scrollbars=yes,resizable=yes" // 팝업창의 특성 (너비, 높이, 스크롤바, 크기 조정 가능 여부)
+            );
+        }
+    </script>
+    <script>
+        function openPopup2() {
+            window.open(
+                "/classRoomPopUp", // 팝업창에 표시할 페이지 경로
+                "popupWindow", // 팝업창의 이름
+                "width=600,height=600,scrollbars=yes,resizable=yes" // 팝업창의 특성 (너비, 높이, 스크롤바, 크기 조정 가능 여부)
+            );
+        }
+    </script>
+    <script>
+        function openPopup3() {
+            window.open(
+                "/profPopUp", // 팝업창에 표시할 페이지 경로
+                "popupWindow", // 팝업창의 이름
+                "width=600,height=600,scrollbars=yes,resizable=yes" // 팝업창의 특성 (너비, 높이, 스크롤바, 크기 조정 가능 여부)
+            );
+        }
+    </script>
 
     <!-- footer -->
     <c:import url="../layout/footer.jsp" />

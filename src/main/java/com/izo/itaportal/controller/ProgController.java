@@ -6,6 +6,7 @@ import com.izo.itaportal.model.ClassRoom;
 import com.izo.itaportal.model.Program;
 import com.izo.itaportal.service.CategoryService;
 import com.izo.itaportal.service.ClassRoomService;
+import com.izo.itaportal.service.ProfessorService;
 import com.izo.itaportal.service.ProgramService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,10 @@ public class ProgController {
     @Autowired
     private ClassRoomService classRoomService;
     @Autowired
+
+    private ProfessorService professorService;
+    @Autowired
+
     private HttpSession httpSession;
 
     @GetMapping("/adminProgram")
@@ -85,8 +90,7 @@ public class ProgController {
     }
 
     @PostMapping("/progInsert")
-    public String progInputInsert(Program program) {
-
+    public String progInputInsert(@ModelAttribute Program program) {
         programService.insertProgram(program);
         return "redirect:/adminProgram";
     }
@@ -146,6 +150,27 @@ public class ProgController {
     public String programInfo(Model model,Integer idPgm) {
         model.addAttribute("pr", programService.selectProgramDetail(idPgm));
         return "/adminProgram/progInfo";
+    }
+
+
+    //-------------------------------------------------------------------------------------------------------
+
+    @GetMapping("/catePopUp")
+    public String progPopUp(Model model) {
+        model.addAttribute("cate", categoryService.getAllCategory());
+        return "/adminProgramPopUp/catePopUp";
+    }
+
+    @GetMapping("/classRoomPopUp")
+    public String classRoomPopUp(Model model) {
+        model.addAttribute("classRoom", classRoomService.getAllClassRoom());
+        return "/adminProgramPopUp/classRoomPopUp";
+    }
+
+    @GetMapping("/profPopUp")
+    public String profPopUp(Model model) {
+        model.addAttribute("prof", professorService.getAllProfessors() );
+        return "/adminProgramPopUp/profPopUp";
     }
 
 
