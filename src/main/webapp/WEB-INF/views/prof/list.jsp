@@ -33,7 +33,7 @@
             <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>강의 관리</h3>
 
             <!-- 본문 -->
-            <h4 class="subTit">개설강좌</h4>
+            <h4 class="subTit">내 강의 목록</h4>
             <div class="tblData mt10">
                 <table>
                     <colgroup>

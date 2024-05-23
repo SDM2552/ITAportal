@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -69,9 +70,12 @@ public class AdminController {
     //수강 승인
     @PostMapping("/sugangOk")
     @ResponseBody
+    @Transactional
     public ResponseEntity<String> sugangOk(@RequestParam("idPgm") int idPgm, @RequestParam("idStudent") int idStudent) {
         boolean isOkayd = sugangService.sugangOk(idPgm, idStudent);
         if (isOkayd) {
+            sugangService.addAttendance(idPgm,idStudent);
+            sugangService.addNumOfStu(idPgm);
             return ResponseEntity.ok("수강이 승인됐습니다.");
         } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("수강 승인에 실패했습니다.");

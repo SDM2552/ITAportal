@@ -150,4 +150,15 @@
             id_pgm = #{idPgm}
           AND id_student = #{idStudent}
     </update>
+    <insert id="createAttendance">
+        INSERT INTO attendance (id_pgm, id_student, att_stat, late_stat, abs_stat)
+        VALUES (#{idPgm}, #{idStudent}, 0, 0, 0)
+    </insert>
+    <update id="updateNumOfStu">
+        UPDATE program
+        SET
+            num_of_stu = num_of_stu+1
+        WHERE
+            id_pgm = #{idPgm}
+    </update>
 </mapper>
