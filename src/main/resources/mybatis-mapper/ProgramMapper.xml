@@ -25,6 +25,7 @@
             p.pgm_Method,
             p.pgm_Per,
             p.pgm_Fee,
+            p.num_of_stu,
             c.cate_Name,
             r.room_Name,
             pr.name AS prof_Name
@@ -132,6 +133,7 @@
             p.pgm_Target,
             p.pgm_Method,
             p.pgm_Per,
+            p.num_of_stu,
             p.pgm_Fee,
             c.cate_Name,
             r.room_Name,

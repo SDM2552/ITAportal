@@ -10,6 +10,7 @@ public class AttendanceDto {
     private int idPgm; // 프로그램 ID
     private boolean courseStatus; // 수강 상태
     private String studentName; // 학생 이름
+    private String userEmail;
     private String studentBirth; // 학생 생일
     private String studentTel; // 학생 전화번호
     private String studentAddress; // 학생 주소

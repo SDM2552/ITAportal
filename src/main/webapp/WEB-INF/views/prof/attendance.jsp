@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -80,76 +81,27 @@
             </div><br>
 
             <div class="boxCnt02">
+                <c:forEach var="attendance" items="${attendanceList}">
                 <div class="boxInner">
                     <div class="wrap-info">
                         <div class="stu-port">
                             <img src="/image/port.png" alt="">
                         </div>
                         <div class="textinfo">
-                            <p style="font-size: 17px;font-weight: bold">김학생</p>
-                            <p>asd@email.com</p>
+                            <p style="font-size: 17px;font-weight: bold">${attendance.studentName}</p>
+                            <p>${attendance.userEmail}</p>
                             <div style="margin: 5px 0">
-                            <button class="button_blkline">출석</button>
-                            <button class="button_blkline">지각 </button>
-                            <button  class="button_blkline">결석</button>
+                            <button class="button_blkline" onclick="attendance(${attendance.idPgm}, ${attendance.idStudent})">출석</button>
+                            <button class="button_blkline" onclick="lateStatus(${attendance.idPgm}, ${attendance.idStudent})">지각 </button>
+                            <button  class="button_blkline" onclick="absenceStatus(${attendance.idPgm}, ${attendance.idStudent})">결석</button>
                             </div>
-                            <p>지각횟수 : 0 회</p>
-                            <p>결석횟수 : 0 회</p>
+                            <p>지각횟수 : ${attendance.lateStatus} 회</p>
+                            <p>결석횟수 : ${attendance.absenceStatus} 회</p>
                         </div>
                     </div>
                 </div>
-                <div class="boxInner">
-                    <div class="wrap-info">
-                        <div class="stu-port">
-                            <img src="/image/port.png" alt="">
-                        </div>
-                        <div class="textinfo">
-                            <p style="font-size: 17px;font-weight: bold">김학생</p>
-                            <p>asd@email.com</p>
-                            <div style="margin: 5px 0">
-                                <button class="button_blkline">출석</button>
-                                <button class="button_blkline">지각 </button>
-                                <button  class="button_blkline">결석</button>
-                            </div>
-                            <p>지각횟수 : 0 회</p>
-                            <p>결석횟수 : 0 회</p>
-                        </div>
-                    </div>
-                </div><div class="boxInner">
-                <div class="wrap-info">
-                    <div class="stu-port">
-                        <img src="/image/port.png" alt="">
-                    </div>
-                    <div class="textinfo">
-                        <p style="font-size: 17px;font-weight: bold">김학생</p>
-                        <p class="email">asasdasdd@email.com</p>
-                        <div style="margin: 5px 0">
-                            <button class="button_blkline">출석</button>
-                            <button class="button_blkline">지각 </button>
-                            <button  class="button_blkline">결석</button>
-                        </div>
-                        <p>지각횟수 : 0 회</p>
-                        <p>결석횟수 : 0 회</p>
-                    </div>
-                </div>
-            </div><div class="boxInner">
-                <div class="wrap-info">
-                    <div class="stu-port">
-                        <img src="/image/port.png" alt="">
-                    </div>
-                    <div class="textinfo">
-                        <p style="font-size: 17px;font-weight: bold">김학생</p>
-                        <p>asd@email.com</p>
-                        <div style="margin: 5px 0">
-                            <button class="button_blkline">출석</button>
-                            <button class="button_blkline">지각 </button>
-                            <button  class="button_blkline">결석</button>
-                        </div>
-                        <p>지각횟수 : 0 회</p>
-                        <p>결석횟수 : 0 회</p>
-                    </div>
-                </div>
-            </div>
+                </c:forEach>
+
             </div><br>
 
             <h4 class="subTit">전체 출결 현황</h4>
@@ -170,19 +122,31 @@
                         <th scope="col">출석</th>
                         <th scope="col">지각</th>
                         <th scope="col">결석</th>
-                        <th scope="col">출석률%</th>
+                        <th scope="col">출석률(%)</th>
                     </tr>
                     </thead>
                     <tbody>
-
+                    <c:forEach var="attendance" items="${attendanceList}">
                         <tr>
-                            <td>김학생</td>
-                            <td>asd@email.com</td>
-                            <td>3</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>100%</td>
+                            <td>${attendance.studentName}</td>
+                            <td>${attendance.userEmail}</td>
+                            <td>${attendance.attendanceStatus}</td>
+                            <td>${attendance.lateStatus}</td>
+                            <td>${attendance.absenceStatus}</td>
+                            <td>
+                                <c:choose>
+                                    <c:when test="${attendance.attendanceStatus + attendance.lateStatus + attendance.absenceStatus == 0}">
+                                        -
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:set var="total" value="${attendance.attendanceStatus + attendance.lateStatus + attendance.absenceStatus}" />
+                                        <c:set var="rate" value="${attendance.attendanceStatus * 100.0 / total}" />
+                                        <fmt:formatNumber value="${rate}" type="number" maxFractionDigits="1" minFractionDigits="1" />%
+                                    </c:otherwise>
+                                </c:choose>
+                            </td>
                         </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
             </div>
@@ -220,5 +184,76 @@
 
 </script>
 </body>
+<script>
+    function attendance(idPgm, idStudent) {
+        if (confirm('출석 처리 하시겠습니까?')) {
+            fetch('/prof/attendance', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({
+                    idPgm: idPgm,
+                    idStudent: idStudent
+                })
+            })
+                .then(response => response.text())
+                .then(data => {
+                    alert(data);
+                    location.reload();
+                })
+                .catch(error => {
+                    alert('출석 처리에 실패했습니다.');
+                    console.error('Error:', error);
+                });
+        }
+    }
+    function lateStatus(idPgm, idStudent) {
+        if (confirm('지각 처리 하시겠습니까?')) {
+            fetch('/prof/lateStatus', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({
+                    idPgm: idPgm,
+                    idStudent: idStudent
+                })
+            })
+                .then(response => response.text())
+                .then(data => {
+                    alert(data);
+                    location.reload();
+                })
+                .catch(error => {
+                    alert('지각 처리에 실패했습니다.');
+                    console.error('Error:', error);
+                });
+        }
+    }
+    function absenceStatus(idPgm, idStudent) {
+        if (confirm('결석 처리 하시겠습니까?')) {
+            fetch('/prof/absenceStatus', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({
+                    idPgm: idPgm,
+                    idStudent: idStudent
+                })
+            })
+                .then(response => response.text())
+                .then(data => {
+                    alert(data);
+                    location.reload();
+                })
+                .catch(error => {
+                    alert('결석 처리에 실패했습니다.');
+                    console.error('Error:', error);
+                });
+        }
+    }
+</script>
 
 </html>

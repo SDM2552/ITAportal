@@ -14,5 +14,5 @@ public class User {
     private String password;
     private String role;
     private String registDate;
-    private String email;
+    private String email;//유저 이메일
 }

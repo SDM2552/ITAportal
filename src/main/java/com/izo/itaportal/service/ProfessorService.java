@@ -1,5 +1,6 @@
 package com.izo.itaportal.service;
 
+import com.izo.itaportal.dto.AttendanceDto;
 import com.izo.itaportal.dto.ProgramAllDto;
 import com.izo.itaportal.model.Professor;
 import com.izo.itaportal.model.Program;
@@ -30,5 +31,20 @@ public class ProfessorService {
     }
     public ProgramAllDto selectPgmDetail(int idProf, int idPgm) {
         return programRepository.selectPgmDetail(idProf, idPgm);
+    }
+    public List<AttendanceDto> AttendanceStuList(int idPgm){
+     return professorRepository.findByIdPgmAndCourseStatus(idPgm);
+    }
+    public boolean attendance(int idPgm, int idStudent) {
+        int rowsUpdated = professorRepository.attendance(idPgm, idStudent);
+        return rowsUpdated > 0;
+    }
+    public boolean lateStatus(int idPgm, int idStudent) {
+        int rowsUpdated = professorRepository.lateStatus(idPgm, idStudent);
+        return rowsUpdated > 0;
+    }
+    public boolean absenceStatus(int idPgm, int idStudent) {
+        int rowsUpdated = professorRepository.absenceStatus(idPgm, idStudent);
+        return rowsUpdated > 0;
     }
 }

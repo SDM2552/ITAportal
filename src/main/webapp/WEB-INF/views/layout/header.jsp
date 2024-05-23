@@ -19,10 +19,8 @@
                 <a href="#">로그인</a>
                 </c:otherwise>
                 </c:choose>
-                <a href="/sample3">❗비회원</a>
-                <a href="/stu/exam">❗학생</a>
-                <a href="/prof/list">❗강사</a>
-                <a href="/adminProgram">❗관리자</a>
+                <a href="#">사이트맵</a>
+
                 <!-- util -->
             </div>
         </div>
