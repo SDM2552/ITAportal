@@ -83,6 +83,10 @@
             <div class="btnArea">
                 <button class="btns btnSt01" onclick="window.location.href='/prof/syllabus?idPgm=${ProgramDetail.idPgm}'">
                     강의계획서
+                </button>
+                <button type="button" class="btns btnSt01" onclick="window.location.href='/prof/request?idPgm=${ProgramDetail.idPgm}'">
+                    <span>휴·보강신청</span>
+
                 </button><button type="button" class="btns btnSt01" onclick="#">
                     <span>휴·보강신청</span>
                 </button><button type="button" class="btns btnSt01" onclick="window.location.href='/prof/attendance?idPgm=${ProgramDetail.idPgm}'">
@@ -105,25 +109,7 @@
 
 
 <script>
-    //체크박스 중복되지 않도록함 (하나의 강의만 선택하도록)
-    function limitSelection(checkbox) {
-        var checkboxes = document.getElementsByName('selectedProgram');
-        checkboxes.forEach(function (cb) {
-            if (cb !== checkbox) {
-                cb.checked = false;
-            }
-        });
-    }
-    //강의계획서 입력 페이지 이동 @김봄이
-    function syllabus(){
-        var selectedProgram = document.querySelector('input[name="selectedProgram"]:checked');
-        if (selectedProgram) {
-            var idPgm = selectedProgram.parentNode.nextElementSibling.textContent; // 수업 ID를 가져옴
-            window.location.href = '/prof/syllabus?idPgm=' + idPgm; // 프로그램 ID를 가지고 페이지 이동
-        } else {
-            alert('수업을 선택하세요.');
-        }
-    }
+
 
 </script>
 </body>
