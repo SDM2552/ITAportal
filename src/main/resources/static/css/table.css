@@ -423,19 +423,54 @@
 .noticeView .listDateR01 > li.active .accView {display:block;}
 .accordion .viewBtn {font-size:0;}
 
-.boxCnt02 {width:100%;overflow:hidden;margin-top:20px; max-width: 900px}
-.boxCnt02 .boxInner {display:block;float:left;width:265px;height:204px;margin-bottom:10px;background:#edf2f7;text-align:center;}
-.boxCnt02 .boxInner:hover,
-.boxCnt02 .boxInner:focus  {background:#edf2f7;border:2px solid #007dc3;width:261px;height:200px;}
-.boxCnt02 .boxInner dl {position:relative;padding:30px 25px}
+/*출석부 보드*/
+/* 출석 */
+.boxCnt02 {width:100%;overflow:hidden;margin-top:20px; max-width: 950px; box-sizing: border-box;}
+.boxCnt02 .boxInner {display: flex;
+    justify-content: center;
+    align-items: center; float:left; width:290px;height:150px;margin:5px; background:#edf2f7;text-align:center; box-sizing: border-box;}
+.boxCnt02 .boxInner dl {position:relative;padding:30px 25px;}
 .boxCnt02 .boxInner dl dt {position:relative;margin-bottom:17px;color:#000000;font-family: 'NotoKrM';font-size:15px;}
-.boxCnt02 .boxInner dl dt:after {display:inline-block;content:'';width:10px;height:10px;background:url('/nrsc/images/common/btn_arrow1.png') no-repeat right top;}
 .boxCnt02 .boxInner dl dd {text-align:center;}
-.boxCnt02 .boxInner:nth-child(2) {margin:0 10px;}
-.boxCnt02 .boxInner:nth-child(5) {margin:0 10px;}
-.boxCnt02 .boxInner:nth-child(4), .boxCnt02 .boxInner:nth-child(5), .boxCnt02 .boxInner:nth-child(6) {margin-bottom:0;}
-.boxCnt02 .boxInner:focus dl,
-.boxCnt02 .boxInner:hover dl {position:relative;padding:28px 23px}
+
+.wrap-info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.wrap-info .stu-port {
+    margin-right: 20px;
+    margin-left: -20px;
+}
+
+.wrap-info .stu-port,
+.wrap-info .stu-port img {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    flex: none;
+    /* height: 120px; */
+}
+
+.wrap-info .textinfo {
+    text-align: left;
+}
+.wrap-info .textinfo .email {
+    width: 150px;
+    height: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.button_blkline {
+    width: 35px;
+    height: 25px;
+    background-color: #FFF;
+    color: #000;
+    border: 1px solid #000;
+}
+
 
 /* 테이블 추가설정 */
 .tblData tbody.mid th {

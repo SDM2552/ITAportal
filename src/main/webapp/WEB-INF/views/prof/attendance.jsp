@@ -78,46 +78,114 @@
                     </tbody>
                 </table>
             </div><br>
-            <h4 class="subTit">출결처리</h4>
-            <div class="boxCnt02">
-                <a href="#" class="boxInner">
-                    <dl>
-                        <dt>김학생</dt>
-                        <dd>이메일 <br/>출석 0회<br/>지각 0회<br/>결석 0회</dd>
-                    </dl>
-                </a>
-                <a href="#" class="boxInner">
-                    <dl>
-                        <dt>김학생2</dt>
-                        <dd>이메일 <br/>출석 0회<br/>지각 0회<br/>결석 0회</dd>
-                    </dl>
-                </a>
-                <a href="#" class="boxInner">
-                    <dl>
-                        <dt>김학생3</dt>
-                        <dd>이메일 <br/>출석 0회<br/>지각 0회<br/>결석 0회</dd>
-                    </dl>
-                </a>
-                <a href="#" class="boxInner">
-                    <dl>
-                        <dt>김학생4</dt>
-                        <dd>이메일 <br/>출석 0회<br/>지각 0회<br/>결석 0회</dd>
-                    </dl>
-                </a>
-                <a href="#" class="boxInner">
-                    <dl>
-                        <dt>김학생5</dt>
-                        <dd>이메일 <br/>출석 0회<br/>지각 0회<br/>결석 0회</dd>
-                    </dl>
-                </a>
-                <a href="#" class="boxInner">
-                    <dl>
-                        <dt>김학생6</dt>
-                        <dd>이메일 <br/>출석 0회<br/>지각 0회<br/>결석 0회</dd>
-                    </dl>
-                </a>
-            </div>
 
+            <div class="boxCnt02">
+                <div class="boxInner">
+                    <div class="wrap-info">
+                        <div class="stu-port">
+                            <img src="/image/port.png" alt="">
+                        </div>
+                        <div class="textinfo">
+                            <p style="font-size: 17px;font-weight: bold">김학생</p>
+                            <p>asd@email.com</p>
+                            <div style="margin: 5px 0">
+                            <button class="button_blkline">출석</button>
+                            <button class="button_blkline">지각 </button>
+                            <button  class="button_blkline">결석</button>
+                            </div>
+                            <p>지각횟수 : 0 회</p>
+                            <p>결석횟수 : 0 회</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="boxInner">
+                    <div class="wrap-info">
+                        <div class="stu-port">
+                            <img src="/image/port.png" alt="">
+                        </div>
+                        <div class="textinfo">
+                            <p style="font-size: 17px;font-weight: bold">김학생</p>
+                            <p>asd@email.com</p>
+                            <div style="margin: 5px 0">
+                                <button class="button_blkline">출석</button>
+                                <button class="button_blkline">지각 </button>
+                                <button  class="button_blkline">결석</button>
+                            </div>
+                            <p>지각횟수 : 0 회</p>
+                            <p>결석횟수 : 0 회</p>
+                        </div>
+                    </div>
+                </div><div class="boxInner">
+                <div class="wrap-info">
+                    <div class="stu-port">
+                        <img src="/image/port.png" alt="">
+                    </div>
+                    <div class="textinfo">
+                        <p style="font-size: 17px;font-weight: bold">김학생</p>
+                        <p class="email">asasdasdd@email.com</p>
+                        <div style="margin: 5px 0">
+                            <button class="button_blkline">출석</button>
+                            <button class="button_blkline">지각 </button>
+                            <button  class="button_blkline">결석</button>
+                        </div>
+                        <p>지각횟수 : 0 회</p>
+                        <p>결석횟수 : 0 회</p>
+                    </div>
+                </div>
+            </div><div class="boxInner">
+                <div class="wrap-info">
+                    <div class="stu-port">
+                        <img src="/image/port.png" alt="">
+                    </div>
+                    <div class="textinfo">
+                        <p style="font-size: 17px;font-weight: bold">김학생</p>
+                        <p>asd@email.com</p>
+                        <div style="margin: 5px 0">
+                            <button class="button_blkline">출석</button>
+                            <button class="button_blkline">지각 </button>
+                            <button  class="button_blkline">결석</button>
+                        </div>
+                        <p>지각횟수 : 0 회</p>
+                        <p>결석횟수 : 0 회</p>
+                    </div>
+                </div>
+            </div>
+            </div><br>
+
+            <h4 class="subTit">전체 출결 현황</h4>
+            <div class="tblData mt10">
+                <table>
+                    <colgroup>
+                        <col width="15%">
+                        <col width="15%">
+                        <col width="10%">
+                        <col width="10%">
+                        <col width="10%">
+                        <col width="10%">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th scope="col">성명</th>
+                        <th scope="col">이메일</th>
+                        <th scope="col">출석</th>
+                        <th scope="col">지각</th>
+                        <th scope="col">결석</th>
+                        <th scope="col">출석률%</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td>김학생</td>
+                            <td>asd@email.com</td>
+                            <td>3</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>100%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
             <!-- 본문 끝 -->
         </div>
