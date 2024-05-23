@@ -37,7 +37,6 @@ public class ProfController {
     }
 
     // 교수별 강의리스트 조회
-    // 로그인 구현 후 @RequestParam("idProf") int idProf 넣어야함
     @GetMapping("/list")
     public String getPrograms(Model model) {
         LoginResponse loginUser = (LoginResponse) session.getAttribute("loginUser");
@@ -87,9 +86,10 @@ public class ProfController {
     }
 
     //휴보강 페이지
-    @GetMapping("/etc")
+    @GetMapping("/request")
     public String classRequest(){
-        return "prof/leaveProgram";
+
+        return "prof/requestProg";
     }
 
     //과제 페이지

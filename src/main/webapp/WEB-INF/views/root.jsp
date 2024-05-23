@@ -72,7 +72,7 @@
                         </a>
                     </div>
                     <div class="profileButton">
-                        <a href="#">회원 가입</a>
+                        <a href="/user/signUp">회원 가입</a>
                         <span>|</span>
                         <a href="#">아이디 / 비밀번호 찾기</a>
                     </div>
