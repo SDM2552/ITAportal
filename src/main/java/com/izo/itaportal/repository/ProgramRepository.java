@@ -16,6 +16,8 @@ public interface ProgramRepository {
 
     public Program selectProgramById(int idPgm);
 
+    public ProgramAllDto selectProgramDetail(int idPgm);
+
     public int insert(Program program);
 
     public int update(Program program);

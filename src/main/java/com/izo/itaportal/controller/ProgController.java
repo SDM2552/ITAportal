@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
+
 
 @Controller
 public class ProgController {
@@ -26,6 +28,8 @@ public class ProgController {
     private CategoryService categoryService;
     @Autowired
     private ClassRoomService classRoomService;
+    @Autowired
+    private HttpSession httpSession;
 
     @GetMapping("/adminProgram")
     public String adminProgram(Model model) {
@@ -136,6 +140,12 @@ public class ProgController {
     public String classRoomDelete(int idRoom) {
         classRoomService.deleteClassRoom(idRoom);
         return "redirect:/adminClassRoom";
+    }
+
+    @GetMapping("progInfo")
+    public String programInfo(Model model,Integer idPgm) {
+        model.addAttribute("pr", programService.selectProgramDetail(idPgm));
+        return "/adminProgram/progInfo";
     }
 
 

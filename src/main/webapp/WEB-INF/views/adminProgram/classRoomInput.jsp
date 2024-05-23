@@ -2,13 +2,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <script src="https://kit.fontawesome.com/93205cc57d.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="../css/common.css">
+    <link rel="stylesheet" type="text/css" href="../css/table.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>강의실추가</title>
+    <style>
+        th, td {
+            white-space: nowrap;
+        }
+        th {
+            width: 120px; /* 제목 칸의 너비를 고정 */
+        }
+    </style>
 </head>
 <body>
 <div class="wrap">
@@ -23,8 +31,8 @@
         <div id="contents" class="eduIntroCont">
             <!-- location -->
             <div class="location">
-                <span class="home" title="홈">홈으로 이동></span>
-                <span>강의관리></span>
+                <span class="home" title="홈">홈으로 이동</span>
+                <span>강의관리</span>
                 <span class="on">강의실관리</span>
             </div>
             <!-- //location -->
@@ -32,15 +40,36 @@
             <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>강의실관리</h3>
 
             <!-- 본문 -->
+            <h4 class="subTit">강의실 추가</h4>
             <form id="progInputForm" method="post" action="/classRoomInsert">
-                <div class="form-group">
-                    <label for="roomName">강의실명 :</label>
-                    <input type="text" class="form-control" id="roomName" placeholder="강의실명 입력" name="roomName">
+                <div class="tblForm inputForm mt10">
+                    <table>
+                        <colgroup>
+                            <col style="width:160px">
+                            <col style="width:280px">
+                            <col style="width:100px">
+                            <col class="sm-wd">
+                        </colgroup>
+                        <tbody>
+                        <tr>
+                            <th scope="col">강의실명</th>
+                            <td colspan="3">
+                                <input type="text" class="form-control" id="roomName" placeholder="강의실명 입력" name="roomName">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
-
-                <button type="submit" class="btn btn-primary" >제출</button>
+                <div class="btnArea">
+                    <button type="submit" class="btns btnSt01">
+                        <span>등록</span>
+                    </button>
+                    <button type="button" class="btns btnSt02" onclick="history.back();">
+                        <span>취소</span>
+                    </button>
+                </div>
             </form>
-                <!-- 본문 끝 -->
+            <!-- 본문 끝 -->
         </div>
         <!-- //contents -->
     </div>
@@ -49,5 +78,4 @@
     <c:import url="../layout/footer.jsp" />
 </div>
 </body>
-
 </html>
