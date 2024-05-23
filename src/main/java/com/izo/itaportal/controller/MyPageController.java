@@ -173,29 +173,32 @@ public class MyPageController {
     }
 
 
-//    @GetMapping("/delete")
-//    public String delete() {
-//        LoginResponse user = (LoginResponse) httpSession.getAttribute("loginUser");
-//        if (user == null) {
-//            // 세션에 사용자가 없으면 로그인 페이지로 리다이렉트
-//            return "redirect:/login";
-//        }
-//        Integer idUser = user.getIdUser();
-//
-//        if (myPageService.isStudent(idUser)) {
-//            myPageService.deleteStudent(idUser);
-//            myPageService.deleteUser(idUser);       //외래묶으면 삭제
-//            return "redirect:/";
-//        } else if (myPageService.isProfessor(idUser)) {
-//            myPageService.deleteProfessor(idUser);
-//            myPageService.deleteUser(idUser);
-//            return "redirect:/";
-//        } else if (myPageService.isAdmin(idUser)) {
-//            myPageService.deleteAdmin(idUser);
-//            myPageService.deleteUser(idUser);
-//            return "redirect:/";
-//        } else {
-//            return "/";
-//        }
-//    }
+    @GetMapping("/delete2")
+    public String delete() {
+        LoginResponse user = (LoginResponse) httpSession.getAttribute("loginUser");
+        if (user == null) {
+            // 세션에 사용자가 없으면 로그인 페이지로 리다이렉트
+            return "redirect:/login";
+        }
+        Integer idUser = user.getIdUser();
+
+        if (myPageService.isStudent(idUser)) {
+            myPageService.deleteStudent(idUser);
+            myPageService.deleteUser(idUser);       //외래묶으면 삭제
+            httpSession.invalidate();
+            return "redirect:/";
+        } else if (myPageService.isProfessor(idUser)) {
+            myPageService.deleteProfessor(idUser);
+            myPageService.deleteUser(idUser);
+            httpSession.invalidate();
+            return "redirect:/";
+        } else if (myPageService.isAdmin(idUser)) {
+            myPageService.deleteAdmin(idUser);
+            myPageService.deleteUser(idUser);
+            httpSession.invalidate();
+            return "redirect:/";
+        } else {
+            return "/";
+        }
+    }
 }
