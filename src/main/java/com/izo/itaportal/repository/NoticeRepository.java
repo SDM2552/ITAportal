@@ -3,6 +3,7 @@ package com.izo.itaportal.repository;
 import com.izo.itaportal.model.Notice;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -29,4 +30,8 @@ public interface NoticeRepository {
     int countAllNotices();
 
     int countNoticesByKeyword(@Param("keyword") String keyword);
+
+    //최신공지사항을 메인으로
+    @Select("SELECT id_notice, title, created_date FROM notice ORDER BY created_date DESC LIMIT 5")
+    List<Notice> findLatestNotices();
 }

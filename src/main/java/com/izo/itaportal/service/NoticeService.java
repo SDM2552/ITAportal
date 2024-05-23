@@ -61,4 +61,8 @@ public class NoticeService {
         return noticeRepository.countNoticesByKeyword(keyword);
     }
 
+    //최신공지사항을 메인으로
+    public List<Notice> getLatestNotices() {
+        return noticeRepository.findLatestNotices();
+    }
 }
