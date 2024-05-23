@@ -178,7 +178,7 @@ public class MyPageController {
     public String delete() {
         LoginResponse user = (LoginResponse) httpSession.getAttribute("loginUser");
 
-
+        Integer idUser = user.getIdUser();
 
         if (myPageService.isStudent(idUser)) {
             myPageService.deleteStudent(idUser);
@@ -197,6 +197,7 @@ public class MyPageController {
             return "redirect:/";
         } else {
             return "/";
+        }
 // =======
 //         String password = request.get("password");
 //         if (!passwordEncoder.matches(password, user.getPassword())) {
@@ -242,4 +243,5 @@ public class MyPageController {
 //            return "/";
 //        }
 //    }
+    }
 }
