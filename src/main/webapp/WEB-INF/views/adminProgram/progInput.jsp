@@ -41,7 +41,9 @@
 
             <!-- 본문 -->
             <h4 class="subTit">프로그램 추가</h4>
+
             <form id="progInputForm" method="post" action="/progInsert" >
+
                 <div class="tblForm inputForm mt10">
                     <table>
                         <colgroup>
@@ -54,25 +56,31 @@
                         <tr>
                             <th scope="col">주제분류코드</th>
                             <td colspan="3">
+
                                 <input type="text" class="form-control" id="cateName" placeholder="주제분류명" name="cateName" readonly>
                                 <button type="button" onclick="openPopup1()">검색</button>
                                 <input type="hidden" id="idCate" name="idCate">
+
                             </td>
                         </tr>
                         <tr>
                             <th scope="col">강의실코드</th>
                             <td colspan="3">
+
                                 <input type="text" class="form-control" id="roomName" placeholder="강의실명" name="roomName" readonly>
                                 <button type="button" onclick="openPopup2()">검색</button>
                                 <input type="hidden" id="idRoom" name="idRoom">
+
                             </td>
                         </tr>
                         <tr>
                             <th scope="col">강사코드</th>
                             <td colspan="3">
+
                                 <input type="text" class="form-control" id="name" placeholder="강사명" name="name" readonly>
                                 <button type="button" onclick="openPopup3()">검색</button>
                                 <input type="hidden" id="idProf" name="idProf">
+
                             </td>
                         </tr>
                         <tr>
@@ -131,6 +139,7 @@
                         </tr>
                         </tbody>
                     </table>
+
                 </div>
                 <div class="btnArea">
                     <button type="submit" class="btns btnSt01">
@@ -140,6 +149,7 @@
                         <span>목록</span>
                     </button>
                 </div>
+
             </form>
             <!-- 본문 끝 -->
         </div>
