@@ -62,7 +62,7 @@
 </head>
 <body>
 <div class="container">
-    <h4 class="subTit">카테고리<br> 클릭해서 선택</h4>
+    <div><h4 class="subTit">카테고리<br>클릭해서 선택</h4></div>
 
     <div class="tblData">
         <table>
