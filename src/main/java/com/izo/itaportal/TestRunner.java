@@ -111,7 +111,7 @@ public class TestRunner implements ApplicationRunner{
                 "\n" +
                 "- 교육일정: 5월25일(토) ~ 7월 14일(일)\n" +
                 "\n" +
-                "- 접수일정: 4월22일(월) ~ 5월 3일(금)',now(),0)");
+                "- 접수일정: 4월22일(월) ~ 5월 3일(금)','2024-05-02 15:30:00',0)");
         jdbcTemplate.execute("INSERT INTO notice(title, content, created_date, views)" +
                 "VALUES ('공지사항 제목2','공지사항 내용2',now(),0)");
     }

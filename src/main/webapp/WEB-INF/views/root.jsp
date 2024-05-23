@@ -81,31 +81,11 @@
             </div>
             <div id="noticeBoard">
                 <h2>
-                    <a href="#">공지사항</a>
+                    <a href="/notice/noticeList">공지사항</a>
                 </h2>
                 <div class="main--page--split"></div>
-                <table>
-                    <tr>
-                        <td><a href="#">[장학]&nbsp;2023학년도 교외장학재단 신규장학생 선발 결과 안내</a></td>
-                        <td>2024-05-10
-                    </tr>
-                    <tr>
-                        <td><a href="#">[일반]&nbsp;2023학년도 1학기 코로나 19 특별휴학 시행 안내</a></td>
-                        <td>2024-05-10
-                    </tr>
-                    <tr>
-                        <td><a href="#">[일반]&nbsp;2023학년도 장애 인식개선 교육(법정의무교육) 안내</a></td>
-                        <td>2024-05-10
-                    </tr>
-                    <tr>
-                        <td><a href="#">[일반]&nbsp;Gartner Research(IT 분야 시장분석) 서비스 지원 안내</a></td>
-                        <td>2024-05-10
-                    </tr>
-                    <tr>
-                        <td><a href="#">[장학]&nbsp;2023학년도 보건장학회 연구지원장학생 선발 안내</a></td>
-                        <td>2024-05-10
-                    </tr>
-
+                <table id="latestNotices">
+                    <!-- 최신 공지사항이 여기 로드됩니다 -->
                 </table>
             </div>
         </div>
@@ -159,7 +139,23 @@
             }
         })
     }
-
+    $(document).ready(function() {
+        $.ajax({
+            url: '/notice/latest',
+            method: 'GET',
+            success: function(data) {
+                var table = $('#latestNotices');
+                table.empty();
+                data.forEach(function(notice) {
+                    var row = $('<tr></tr>');
+                    var title = $('<td></td>').append($('<a></a>').attr('href', '/notice/view/' + notice.idNotice).text(notice.title));
+                    var date = $('<td></td>').text(notice.createdDate);
+                    row.append(title).append(date);
+                    table.append(row);
+                });
+            }
+        });
+    });
 
 </script>
 

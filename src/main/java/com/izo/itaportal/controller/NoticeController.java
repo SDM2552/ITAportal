@@ -195,6 +195,15 @@ public class NoticeController {
         return modelAndView;
     }
 
+    //최신공지사항을 메인화면으로
+    @GetMapping("/latest")
+    @ResponseBody
+    public List<Notice> getLatestNotices() {
+        // 최신 공지사항 5개 가져오기 (필요에 따라 개수 조정 가능)
+        return noticeService.getLatestNotices();
+    }
+    
+    
 //
     private boolean isAdmin(HttpSession session) {
 //        if (session.getAttribute("loginUser") == null) {
