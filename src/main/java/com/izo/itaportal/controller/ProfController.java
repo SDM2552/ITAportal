@@ -1,5 +1,6 @@
 package com.izo.itaportal.controller;
 
+import com.izo.itaportal.dto.AttendanceDto;
 import com.izo.itaportal.dto.ProgramAllDto;
 import com.izo.itaportal.model.*;
 import com.izo.itaportal.service.ProfessorService;
@@ -7,7 +8,10 @@ import com.izo.itaportal.service.ScheduleService;
 import com.izo.itaportal.service.SyllabusService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -100,11 +104,50 @@ public class ProfController {
 
     //출결 페이지
     @GetMapping("/attendance")
-    public String attendance(@RequestParam("idPgm") int idPgm, Model model, @ModelAttribute("idProf") int idProf) {
+    public String attendanceForm(@RequestParam("idPgm") int idPgm, Model model, @ModelAttribute("idProf") int idProf) {
         ProgramAllDto programAllDto = professorService.selectPgmDetail(idProf, idPgm);
+        List<AttendanceDto> attendanceDto = professorService.AttendanceStuList(idPgm);
         System.out.println(programAllDto);
+        System.out.println(attendanceDto);
         model.addAttribute("ProgramDetail", programAllDto);
+        model.addAttribute("attendanceList", attendanceDto);
         return "prof/attendance";
+    }
+    //출석 처리
+    @PostMapping("/attendance")
+    @ResponseBody
+    @Transactional
+    public ResponseEntity<String> attendance(@RequestParam("idPgm") int idPgm, @RequestParam("idStudent") int idStudent) {
+        boolean isOkayd = professorService.attendance(idPgm, idStudent);
+        if (isOkayd) {
+            return ResponseEntity.ok("출석이 승인됐습니다.");
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("출석 승인에 실패했습니다.");
+        }
+    }
+    //지각 처리
+    @PostMapping("/lateStatus")
+    @ResponseBody
+    @Transactional
+    public ResponseEntity<String> lateStatus(@RequestParam("idPgm") int idPgm, @RequestParam("idStudent") int idStudent) {
+        boolean isOkayd = professorService.lateStatus(idPgm, idStudent);
+        if (isOkayd) {
+            return ResponseEntity.ok("지각이 승인됐습니다.");
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("지각 승인에 실패했습니다.");
+        }
+    }
+    //결석 처리
+    @PostMapping("/absenceStatus")
+    @ResponseBody
+    @Transactional
+    public ResponseEntity<String> absenceStatus(@RequestParam("idPgm") int idPgm, @RequestParam("idStudent") int idStudent) {
+        boolean isOkayd = professorService.absenceStatus(idPgm, idStudent);
+        if (isOkayd) {
+            return ResponseEntity.ok("결석이 승인됐습니다.");
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("결석 승인에 실패했습니다.");
+        }
     }
 
     //과제 페이지

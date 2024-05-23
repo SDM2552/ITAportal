@@ -17,7 +17,7 @@
 <body>
 <div class="wrap">
     <!-- header -->
-    <c:import url="../layout/header_prof.jsp"/>
+    <c:import url="../layout/header.jsp"/>
 
     <!-- container -->
     <div id="container" class="container responCont">

@@ -22,4 +22,9 @@ public interface SugangRepository {
     public int updateToSugangOk(int idPgm, int idStudent);
     public int updateToSugangNo(int idPgm, int idStudent);
 
+    public void createAttendance(int idPgm, int idStudent);
+    public void updateNumOfStu(int idPgm);
+
+
+
 }

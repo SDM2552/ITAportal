@@ -23,7 +23,7 @@
 <div id="footer">
     <hr>
     <div class="footerArea">
-        <p>이것은 Footer입니다. 여기에 추가적인 정보나 링크를 넣을 수 있습니다.</p>
+
 
 <%--        메신저기능 일단 비활성화--%>
 <%--        <div class="footer-btn" onclick="toggleFooterMenu()">+</div>--%>

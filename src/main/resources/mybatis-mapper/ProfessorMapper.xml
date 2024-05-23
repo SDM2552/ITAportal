@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.izo.itaportal.repository.ProfessorRepository">
+
+    <select id="findByIdPgmAndCourseStatus" parameterType="int" resultType="com.izo.itaportal.dto.AttendanceDto">
+        SELECT
+            sugang.id_Sugang AS idEnrollment,
+            sugang.id_Student AS idStudent,
+            sugang.id_Cate AS idCate,
+            sugang.id_Pgm AS idPgm,
+            sugang.st_Dt AS stDt,
+            sugang.status AS status,
+            sugang.course_Status AS courseStatus,
+            student.name AS studentName,
+            student.birth AS studentBirth,
+            student.tel AS studentTel,
+            student.address AS studentAddress,
+            student.gender AS studentGender,
+            student.id_User AS studentIdUser,
+            attendance.att_stat AS attendanceStatus,
+            attendance.late_stat AS lateStatus,
+            attendance.abs_stat AS absenceStatus,
+            `user`.email AS userEmail
+        FROM
+            Sugang sugang
+                JOIN Student student ON sugang.id_Student = student.id_Student
+                JOIN Attendance attendance ON sugang.id_Student = attendance.id_Student AND sugang.id_Pgm = attendance.id_pgm
+                JOIN `user` ON student.id_User = `user`.id_User
+        WHERE
+            sugang.id_Pgm = #{idPgm}
+          AND sugang.course_Status = true;
+    </select>
+    <update id="attendance">
+        UPDATE attendance
+        SET
+            att_stat = att_stat+1
+        WHERE
+            id_pgm = #{idPgm}
+          AND id_student = #{idStudent}
+    </update>
+    <update id="lateStatus">
+        UPDATE attendance
+        SET
+            late_stat = late_stat+1
+        WHERE
+            id_pgm = #{idPgm}
+          AND id_student = #{idStudent}
+    </update>
+    <update id="absenceStatus">
+        UPDATE attendance
+        SET
+            abs_stat = abs_stat+1
+        WHERE
+            id_pgm = #{idPgm}
+          AND id_student = #{idStudent}
+    </update>
+
+</mapper>

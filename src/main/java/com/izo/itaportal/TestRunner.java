@@ -43,26 +43,27 @@ public class TestRunner implements ApplicationRunner{
                 "VALUES ('복학생', '19000130', '010-3333-4444', 'M', '경기도', '5')");
         jdbcTemplate.execute("INSERT INTO student(name, birth, tel, gender, address, id_user)" +
                 "VALUES ('홍길동', '196001231', '010-5555-6666', 'M', '경기도', '6')");
-        jdbcTemplate.execute("INSERT INTO user(id_user, login_id, password, regist_date, role) " +
-                "VALUES(1, 'stu', '" + encryptedPassword + "', '2024-05-17', 'stu')");
+        jdbcTemplate.execute("INSERT INTO user(id_user, login_id, password, regist_date, email, role) " +
+                "VALUES(1, 'stu', '" + encryptedPassword + "', '2024-05-17', 'kim@email.com', 'stu')");
         jdbcTemplate.execute("INSERT INTO user(id_user, login_id, password, regist_date, role) " +
                 "VALUES(2, 'prof', '" + encryptedPassword + "', '2024-05-19', 'prof')");
         jdbcTemplate.execute("INSERT INTO user(id_user, login_id, password, regist_date, role) " +
+                "VALUES(3, 'prof2', '" + encryptedPassword + "', '2024-05-23', 'prof')");
+        jdbcTemplate.execute("INSERT INTO user(id_user, login_id, password, regist_date, role) " +
                 "VALUES(4, 'admin', '" + encryptedPassword + "', '2024-05-18', 'admin')");
-        jdbcTemplate.execute("INSERT INTO user(id_user, login_id, password, regist_date, role) " +
-                "VALUES(5, 'stu2', '" + encryptedPassword + "', '2024-05-22', 'stu')");
-        jdbcTemplate.execute("INSERT INTO user(id_user, login_id, password, regist_date, role) " +
-                "VALUES(6, 'stu3', '" + encryptedPassword + "', '2024-05-22', 'stu')");
+        jdbcTemplate.execute("INSERT INTO user(id_user, login_id, password, regist_date, email, role) " +
+                "VALUES(5, 'stu2', '" + encryptedPassword + "', '2024-05-22', 'bok@email.com', 'stu')");
+        jdbcTemplate.execute("INSERT INTO user(id_user, login_id, password, regist_date, email, role) " +
+                "VALUES(6, 'stu3', '" + encryptedPassword + "', '2024-05-22', 'hong@email.com', 'stu')");
 
 
         //강의리스트
-
         jdbcTemplate.execute("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,sugang_st_dt,sugang_end_dt,pgm_target,id_room,pgm_method,pgm_per, num_of_stu, pgm_fee,id_prof) "+
                 "VALUES (2,'통관 및 관세 실무 이해','2024-11-09','2024-11-10','2024-10-15','2024-10-30','통관 및 관세에 관심이 있는 재직자',1,'오프라인',10,0,55000,1)");
         jdbcTemplate.execute("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,sugang_st_dt,sugang_end_dt,pgm_target,id_room,pgm_method,pgm_per, num_of_stu, pgm_fee,id_prof) "+
-                "VALUES (1,'자유무역협정(FTA) 실무','2024-06-01','2024-08-31','2024-10-15','2024-10-30','자유무역에 관심이 있는 성인',99,'온라인',30,0,75000,2)");
+                "VALUES (1,'자유무역협정(FTA) 실무','2024-06-01','2024-08-31','2024-10-15','2024-10-30','자유무역에 관심이 있는 성인',99,'온라인',30,1,75000,2)");
         jdbcTemplate.execute("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,sugang_st_dt,sugang_end_dt,pgm_target,id_room,pgm_method,pgm_per, num_of_stu, pgm_fee,id_prof) "+
-                "VALUES (3,'검색 엔진 최적화(SEO) 원리','2024-06-01','2024-08-31','2024-10-15','2024-10-30','SEO를 통한 마케팅에 관심있는 전공자',1,'오프라인',30,0,35000,1)");
+                "VALUES (3,'검색 엔진 최적화(SEO) 원리','2024-06-01','2024-08-31','2024-10-15','2024-10-30','SEO를 통한 마케팅에 관심있는 전공자',1,'오프라인',30,2,35000,1)");
 
 
 
@@ -99,6 +100,13 @@ public class TestRunner implements ApplicationRunner{
                 "VALUES (3,2,3,3,'2024-05-22 12:47:53','신청 완료',1)");
         jdbcTemplate.execute("INSERT INTO sugang(id_sugang, id_student, id_cate, id_pgm, st_dt, status,course_status)" +
                 "VALUES (4,3,3,3,'2024-05-22 12:47:53','신청 완료',1)");
+        // id_pgm 1에 대한 출석 데이터 추가
+        jdbcTemplate.execute("INSERT INTO attendance (id_pgm, id_student, att_stat, late_stat, abs_stat) " +
+                "VALUES (2, 1, 0,0,0)");
+        jdbcTemplate.execute("INSERT INTO attendance (id_pgm, id_student, att_stat, late_stat, abs_stat) " +
+                "VALUES (3, 2, 0,0,0)");
+        jdbcTemplate.execute("INSERT INTO attendance (id_pgm, id_student, att_stat, late_stat, abs_stat) " +
+                "VALUES (3, 3, 0,0,0)");
 
 
         //공지사항 글
