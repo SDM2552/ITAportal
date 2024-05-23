@@ -22,4 +22,7 @@ public class SugangDto {
     private String roomName;   //강의실명
     private String name; //강사 이름
     private String stuName;
+
+    // 새로운 필드 추가
+    private int idProf; // 강사 ID
 }

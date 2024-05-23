@@ -1,5 +1,6 @@
 package com.izo.itaportal.service;
 
+import com.izo.itaportal.dto.ProgramAllDto;
 import com.izo.itaportal.dto.SugangDto;
 import com.izo.itaportal.model.Student;
 
@@ -35,4 +36,19 @@ public class StudentService {
     }
 
 
+    //수업디테일,강사디테일
+    // 프로그램 상세 조회
+    public ProgramAllDto getProgramById(int id) {
+        return studentRepository.findProgramById(id);
+    }
+
+    // 강사 상세 조회
+    public ProgramAllDto getProfessorById(int id) {
+        return studentRepository.findProfessorById(id);
+    }
+
+    // 학생의 모든 프로그램 조회
+    public List<ProgramAllDto> getStudentPrograms(int idStudent) {
+        return studentRepository.findProgramsByStudentId(idStudent);
+    }
 }
