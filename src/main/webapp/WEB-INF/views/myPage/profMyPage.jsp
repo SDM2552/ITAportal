@@ -6,11 +6,10 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <script src="https://kit.fontawesome.com/93205cc57d.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="/css/common.css">
     <link rel="stylesheet" type="text/css" href="/css/table.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>마이페이지</title>
 </head>
@@ -60,7 +59,7 @@
                             <input type="hidden" name="idUser" value="${user.idUser}"/>
                             <input type="hidden" name="tel" value="${user.tel}"/>
                             <input type="hidden" name="address" value="${user.address}"/>
-                            <button type="button" class="btn btn-primary" onclick="showModal('updateForm1')">수정</button>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" onclick="showModal('updateForm1')">수정</button>
                         </form>
                     </td>
                 </tr>

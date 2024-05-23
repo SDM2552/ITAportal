@@ -6,7 +6,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <script src="https://kit.fontawesome.com/93205cc57d.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="../css/common.css">
+    <link rel="stylesheet" type="text/css" href="../css/table.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -33,7 +34,7 @@
             <!-- //location -->
 
             <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>비밀번호 변경</h3>
-            <form id="updatePassword" action="/user/passwordUpdate" method="post">
+            <form id="passwordUpdate" action="/user/passwordUpdate" method="post">
                 <table class="table table-bordered">
                     <tr>
                         <th>현재 비밀번호</th>
@@ -111,8 +112,8 @@
         $('#confirmBtn').click(function () {
             $.ajax({
                 type: 'POST',
-                url: $('#updatePassword').attr('action'),
-                data: $('#updatePassword').serialize(),
+                url: $('#passwordUpdate').attr('action'),
+                data: $('#passwordUpdate').serialize(),
                 success: function (response) {
                     $('#confirmationModal').modal('hide');
                     $('#resultModalBody').text(response.success || '비밀번호가 성공적으로 변경되었습니다.');
