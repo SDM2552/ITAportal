@@ -157,17 +157,7 @@
             </div>
             <!-- btn -->
             <div class="btnArea">
-<%--                어드민 수강신청취소를 어떤방식으로 할지... 따로 추가는 지금 안함--%>
-<%--                <form id="applyForm" action="/enrollment/apply" method="post">--%>
-<%--                    <input type="hidden" name="idStudent" value="${student.idStudent}">--%>
-<%--                    <input type="hidden" name="pgmName" value="${program.pgmName}">--%>
-<%--                    <input type="hidden" name="idPgm" value="${program.idPgm}">--%>
-<%--                    <input type="hidden" name="stDt" value="${program.stDt}">--%>
-<%--                    <input type="hidden" name="status" value="신청중">--%>
-<%--                    <button type="submit" class="btns btnSt01">--%>
-<%--                        <span>수강 신청</span>--%>
-<%--                    </button>--%>
-<%--                </form>--%>
+
                 <button type="button" class="btns btnSt01" onclick="applyEnrollment(${loginUser.commonId}, ${program.idPgm}, ${program.idCate});">
 
                     <span>수강신청</span>

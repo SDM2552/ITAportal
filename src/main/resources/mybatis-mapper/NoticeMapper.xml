@@ -40,7 +40,21 @@
         ORDER BY created_date DESC
             LIMIT #{offset}, #{limit}
     </select>
+
+    <!-- 공지사항 페이지 이동 및 검색 기능 -->
+    <select id="findNoticesByPageWithKeyword" resultType="com.izo.itaportal.model.Notice">
+        SELECT id_notice, title, content, created_date, views FROM notice
+        WHERE title LIKE CONCAT('%', #{keyword}, '%') OR content LIKE CONCAT('%', #{keyword}, '%')
+        ORDER BY created_date DESC
+            LIMIT #{offset}, #{limit}
+    </select>
+
     <select id="countAllNotices" resultType="int">
         SELECT COUNT(*) FROM notice
+    </select>
+
+    <!-- 공지사항 검색어에 따른 총 개수 -->
+    <select id="countNoticesByKeyword" parameterType="String" resultType="int">
+        SELECT COUNT(*) FROM notice WHERE title LIKE CONCAT('%', #{keyword}, '%') OR content LIKE CONCAT('%', #{keyword}, '%')
     </select>
 </mapper>

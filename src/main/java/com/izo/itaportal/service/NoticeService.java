@@ -34,6 +34,9 @@ public class NoticeService {
         noticeRepository.deleteNotice(idNotice);
     }
 
+
+
+//    페이징
     public List<Notice> searchNoticesByKeyword(String keyword) {
         return noticeRepository.searchNoticesByKeyword(keyword);
     }
@@ -43,7 +46,19 @@ public class NoticeService {
         int offset = (pageNum - 1) * limit;
         return noticeRepository.findNoticesByPage(offset, limit);
     }
-    public int getTotalNotices() {
-        return noticeRepository.countAllNotices(); // 총 공지사항 수를 가져오는 메서드
+
+    public List<Notice> getNoticesByPageWithKeyword(int pageNum, String keyword) {
+        int limit = 10;
+        int offset = (pageNum - 1) * limit;
+        return noticeRepository.findNoticesByPageWithKeyword(offset, limit, keyword);
     }
+
+    public int getTotalNotices() {
+        return noticeRepository.countAllNotices();
+    }
+
+    public int getTotalNoticesByKeyword(String keyword) {
+        return noticeRepository.countNoticesByKeyword(keyword);
+    }
+
 }
