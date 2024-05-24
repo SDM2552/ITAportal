@@ -22,14 +22,11 @@
         <!-- contents -->
         <div id="contents" class="noticesListCont">
             <!-- location -->
-            <div class="location">
-                <span class="home" title="홈">홈으로 이동></span>
-                <span>관리자 페이지></span>
-                <span class="on">공지사항</span>
-            </div>
+            <span class="home" title="홈"><i class="fa-solid fa-house"></i> <i class="fa-solid fa-angle-right"></i></span>
+            <span>공지사항 <i class="fa-solid fa-angle-right"></i></span><span class="on"> 공지사항 작성</span>
             <!-- //location -->
 
-            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>공지사항</h3>
+            <h3 class="pgTit">공지사항</h3>
 
             <!-- 본문 -->
             <h4 class="subTit">공지사항 작성</h4>
@@ -71,9 +68,6 @@
                 </div>
             </form>
 
-
-
-            <a href="/notice/noticeList">목록으로 돌아가기</a>
 
             <!-- 본문 끝 -->
         </div>

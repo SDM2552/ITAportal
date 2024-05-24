@@ -1,9 +1,6 @@
 package com.izo.itaportal.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 //공지사항
 //김봄이
@@ -16,6 +13,7 @@ public class Notice {
     //글제목
     private String title;
     //글내용
+    @Lob
     private String content;
     //작성일
     private String createdDate;

@@ -7,7 +7,6 @@
     <script src="https://kit.fontawesome.com/93205cc57d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <link rel="stylesheet" type="text/css" href="/css/table.css">
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>교육과정관리</title>
 </head>
@@ -23,14 +22,11 @@
         <!-- contents -->
         <div id="contents" class="eduIntroCont">
             <!-- location -->
-            <div class="location">
-                <span class="home" title="홈">홈으로 이동></span>
-                <span>강의관리></span>
-                <span class="on">수강현황조회</span>
-            </div>
+            <span class="home" title="홈"><i class="fa-solid fa-house"></i> <i class="fa-solid fa-angle-right"></i></span>
+            <span>강의 관리 <i class="fa-solid fa-angle-right"></i></span><span class="on"> 수강현황조회</span>
             <!-- //location -->
 
-            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>수강현황조회</h3>
+            <h3 class="pgTit">수강현황조회</h3>
 
             <!-- 본문 -->
 

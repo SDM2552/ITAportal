@@ -30,19 +30,16 @@
         <!-- contents -->
         <div id="contents" class="eduIntroCont">
             <!-- location -->
-            <div class="location">
-                <span class="home" title="홈">홈으로 이동</span>
-                <span>강의관리</span>
-                <span class="on">강의실관리</span>
-            </div>
+            <span class="home" title="홈"><i class="fa-solid fa-house"></i> <i class="fa-solid fa-angle-right"></i></span>
+            <span>강의 관리 <i class="fa-solid fa-angle-right"></i></span><span class="on"> 강의실 수정</span>
             <!-- //location -->
 
-            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>강의실관리</h3>
+            <h3 class="pgTit">강의실 관리</h3>
 
             <!-- 본문 -->
             <h4 class="subTit">강의실 수정</h4>
             <form id="progInputForm" method="post" action="/classRoomUpdate">
-                <div class="tblForm inputForm mt10">
+                <div class="tblForm inputForm mt10" style="width: 50%">
                     <table>
                         <colgroup>
                             <col style="width:160px">
@@ -61,7 +58,7 @@
                     </table>
                 </div>
                 <input type="hidden" name="idRoom" value="${cr.idRoom}">
-                <div class="btnArea">
+                <div class="btnArea"style="width: 50%">
                     <button type="submit" class="btns btnSt01">
                         <span>제출</span>
                     </button>

@@ -24,13 +24,12 @@
         <div id="contents" class="eduIntroCont">
             <!-- location -->
             <div class="location">
-                <span class="home" title="홈">홈으로 이동></span>
-                <span>수업></span>
-                <span class="on">수강 내역 조회</span>
+                <span class="home" title="홈"><i class="fa-solid fa-house"></i> <i class="fa-solid fa-angle-right"></i></span>
+                <span>수업 <i class="fa-solid fa-angle-right"></i> </span><span class="on">나의 강의실 </span>
             </div>
             <!-- //location -->
 
-            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>나의 강의실</h3>
+            <h3 class="pgTit">나의 강의실</h3>
 
             <!-- 본문 -->
             <h4 class="subTit">나의 강의 목록</h4>

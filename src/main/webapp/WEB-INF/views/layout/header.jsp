@@ -11,7 +11,7 @@
                 <!-- util -->
                 <c:choose>
                 <c:when test="${not empty sessionScope.loginUser}">
-                    ${loginUser.name}님 환영합니다.
+                    ${loginUser.name} 님 환영합니다.
                     <a href="/user/logout">로그아웃</a>
                 </c:when>
                 <c:otherwise>

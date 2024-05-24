@@ -23,13 +23,11 @@
         <!-- contents -->
         <div id="contents" class="eduIntroCont">
             <!-- location -->
-            <div class="location">
-                <span class="home" title="홈">홈으로 이동</span>
-                <span>> 수강 내역 조회</span>
-                <span class="on">> 휴보강 신청</span>
-            </div>
+            <span class="home" title="홈"><i class="fa-solid fa-house"></i> <i class="fa-solid fa-angle-right"></i></span>
+            <span>강의 관리 <i class="fa-solid fa-angle-right"></i> </span><span>내 강의 목록 <i class="fa-solid fa-angle-right"></i> </span>
+            <span>${programInfo.pgmName} <i class="fa-solid fa-angle-right"></i></span><span class="on"> 휴보강 신청</span>
             <!-- //location -->
-            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>휴보강 신청</h3>
+            <h3 class="pgTit">휴보강 신청</h3>
             <!-- 본문 -->
             <h4 class="subTit">프로그램 정보</h4>
             <!-- 강의 정보 테이블 -->

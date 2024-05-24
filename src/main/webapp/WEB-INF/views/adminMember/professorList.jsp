@@ -23,14 +23,10 @@
         <!-- contents -->
         <div id="contents" class="eduIntroCont">
             <!-- location -->
-            <div class="location">
-                <span class="home" title="홈">홈으로 이동</span>
-                <span>수강 내역 조회</span>
-                <span class="on">수강 내역</span>
-            </div>
+            <span class="home" title="홈"><i class="fa-solid fa-house"></i> <i class="fa-solid fa-angle-right"></i></span>
+            <span class="on">회원 관리 <i class="fa-solid fa-angle-right"></i></span><span class="on"> 강사 명단 조회</span>
             <!-- //location -->
-
-            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>강사 명단 조회</h3>
+            <h3 class="pgTit">강사 명단 조회</h3>
             <!-- 본문 -->
             <h4 class="subTit">강사 명단</h4>
             <div class="tblData mt10">
