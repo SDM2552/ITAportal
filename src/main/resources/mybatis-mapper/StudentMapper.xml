@@ -32,6 +32,23 @@
             s.id_Student = #{idStudent}
     </select>
 
+    <select id="findStudentInfoByIdUser" resultType="com.izo.itaportal.dto.StudentInfoDto">
+        SELECT
+            s.id_student AS idStudent,
+            s.name,
+            s.birth,
+            s.tel,
+            s.address,
+            s.gender,
+            u.email,
+            u.id_user AS idUser
+        FROM
+            student s
+                JOIN
+            user u ON s.id_user = u.id_user
+        WHERE
+            u.id_user = #{idUser}
+    </select>
 
 <!--    수강디테일,강사디테일-->
     <select id="findByIdStudentWithProf" resultType="com.izo.itaportal.dto.SugangDto">

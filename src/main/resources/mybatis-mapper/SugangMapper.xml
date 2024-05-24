@@ -18,6 +18,8 @@
             p.pgm_Method,
             p.pgm_Per,
             p.pgm_Fee,
+            p.pgm_day,
+            p.pgm_time,
             c.cate_Name,
             r.room_Name,
             pr.name AS prof_Name
@@ -47,6 +49,8 @@
             p.pgm_Method,
             p.pgm_Per,
             p.pgm_Fee,
+            p.pgm_day,
+            p.pgm_time,
             c.cate_Name,
             r.room_Name,
             pr.name AS prof_Name
@@ -74,6 +78,8 @@
             program.st_Dt AS stDt,
             program.end_Dt AS endDt,
             program.pgm_Fee AS pgmFee,
+            program.pgm_day AS pgmDay,
+            program.pgm_time AS pgmTime,
             category.cate_Name AS cateName,
             student.name AS stuName,
             class_room.room_Name AS roomName,
@@ -107,6 +113,8 @@
             program.st_Dt AS stDt,
             program.end_Dt AS endDt,
             program.pgm_Fee AS pgmFee,
+            program.pgm_day AS pgmDay,
+            program.pgm_time AS pgmTime,
             category.cate_Name AS cateName,
             student.name AS stuName,
             class_room.room_Name AS roomName,
@@ -123,6 +131,7 @@
             Student student ON sugang.id_student = student.id_student
                 JOIN
             Professor professor ON program.id_Prof = professor.id_Prof
+                ORDER BY sugang.id_sugang DESC
     </select>
     <insert id="saveSugang" parameterType="com.izo.itaportal.model.Sugang">
         INSERT INTO Sugang (id_student, id_Pgm, id_Cate, st_Dt, status, course_status)

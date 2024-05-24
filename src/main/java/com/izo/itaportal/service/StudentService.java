@@ -1,6 +1,7 @@
 package com.izo.itaportal.service;
 
 import com.izo.itaportal.dto.ProgramAllDto;
+import com.izo.itaportal.dto.StudentInfoDto;
 import com.izo.itaportal.dto.SugangDto;
 import com.izo.itaportal.model.Student;
 
@@ -28,6 +29,11 @@ public class StudentService {
     }
     public List<SugangDto> GetCourceList(int idStudent){
         return sugangRepository.findByIdStudentAndCourseStatus(idStudent);
+    }
+
+    //로그인한 학생의 신상정보 가져오기
+    public StudentInfoDto getStudentInfo(int idUser){
+        return studentRepository.findStudentInfoByIdUser(idUser);
     }
 
     //어드민-신청중-신청대기-신청취소
