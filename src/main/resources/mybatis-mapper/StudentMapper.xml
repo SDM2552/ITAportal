@@ -210,5 +210,31 @@
         WHERE
             p.id_Pgm IN (SELECT id_Pgm FROM Sugang WHERE id_student = #{idStudent});
     </select>
-
+    <select id="findProfessorsByProgramId" parameterType="int" resultType="com.izo.itaportal.dto.ProgramAllDto">
+        SELECT
+            p.id_Pgm,
+            p.id_Cate,
+            p.id_Room,
+            p.id_Prof,
+            p.pgm_Name,
+            p.st_Dt,
+            p.end_Dt,
+            p.sugang_St_Dt,
+            p.sugang_End_Dt,
+            p.pgm_Target,
+            p.pgm_Method,
+            p.pgm_Per,
+            p.pgm_Fee,
+            c.cate_Name,
+            r.room_Name,
+            pr.name AS prof_Name,
+            pr.id_Prof
+        FROM
+            Program p
+                JOIN Category c ON p.id_Cate = c.id_Cate
+                JOIN class_room r ON p.id_Room = r.id_Room
+                JOIN Professor pr ON p.id_Prof = pr.id_Prof
+        WHERE
+            p.id_Pgm = #{id};
+    </select>
 </mapper>

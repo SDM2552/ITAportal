@@ -48,12 +48,11 @@ public class StudentService {
         return studentRepository.findProgramById(id);
     }
 
-    // 강사 상세 조회
-    public ProgramAllDto getProfessorById(int id) {
-        return studentRepository.findProfessorById(id);
+    // 학생의 모든 프로그램 조회
+    public List<ProgramAllDto> getProfessorsByProgramId(int id) {
+        return studentRepository.findProfessorsByProgramId(id);
     }
 
-    // 학생의 모든 프로그램 조회
     public List<ProgramAllDto> getStudentPrograms(int idStudent) {
         return studentRepository.findProgramsByStudentId(idStudent);
     }

@@ -74,6 +74,16 @@
 <%--                                    </td>--%>
 
 <%--                                </tr>--%>
+<%--                                <tr>--%>
+<%--                                    <td>${sugang.cateName}</td>--%>
+<%--                                    <td><a href="/stu/programView/${sugang.idPgm}">${sugang.pgmName}</a></td>--%>
+<%--                                    <td>${sugang.stDt} ~ <br>${sugang.endDt}</td>--%>
+<%--                                    <td><a href="/stu/professorView/${sugang.idProf}">${sugang.name}</a></td>--%>
+<%--                                    <td>${sugang.roomName}</td>--%>
+<%--                                    <td>--%>
+<%--                                        <button>보기</button>--%>
+<%--                                    </td>--%>
+<%--                                </tr>--%>
                                 <tr>
                                     <td>${sugang.cateName}</td>
                                     <td><a href="/stu/programView/${sugang.idPgm}">${sugang.pgmName}</a></td>
@@ -84,7 +94,6 @@
                                         <button>보기</button>
                                     </td>
                                 </tr>
-
                             </c:forEach>
                         </c:otherwise>
                     </c:choose>
