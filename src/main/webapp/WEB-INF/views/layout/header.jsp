@@ -79,7 +79,7 @@
                     <c:otherwise>
                     <!-- 비회원 -->
                         <li>
-                            <a href="/user/info">MY(비회원)</a>
+                            <a href="#">MY(비회원)</a>
                         </li>
                         <li>
                             <a href="#">수업</a>

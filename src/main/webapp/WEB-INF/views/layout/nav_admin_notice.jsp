@@ -12,6 +12,7 @@
                 <c:otherwise>
                 </c:otherwise>
             </c:choose>
+            <li><a href="/courseStatus/request">강좌개설의뢰</a></li>
             <li><a href="#">Q&A</a></li>
         </ul>
     </div>

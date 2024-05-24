@@ -120,7 +120,7 @@ public class ProfController {
     public ResponseEntity<String> attendance(@RequestParam("idPgm") int idPgm, @RequestParam("idStudent") int idStudent) {
         boolean isOkayd = professorService.attendance(idPgm, idStudent);
         if (isOkayd) {
-            return ResponseEntity.ok("출석이 승인됐습니다.");
+            return ResponseEntity.ok("출석 처리 됐습니다.");
         } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("출석 승인에 실패했습니다.");
         }
@@ -132,7 +132,7 @@ public class ProfController {
     public ResponseEntity<String> lateStatus(@RequestParam("idPgm") int idPgm, @RequestParam("idStudent") int idStudent) {
         boolean isOkayd = professorService.lateStatus(idPgm, idStudent);
         if (isOkayd) {
-            return ResponseEntity.ok("지각이 승인됐습니다.");
+            return ResponseEntity.ok("지각 처리 됐습니다.");
         } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("지각 승인에 실패했습니다.");
         }
@@ -144,7 +144,7 @@ public class ProfController {
     public ResponseEntity<String> absenceStatus(@RequestParam("idPgm") int idPgm, @RequestParam("idStudent") int idStudent) {
         boolean isOkayd = professorService.absenceStatus(idPgm, idStudent);
         if (isOkayd) {
-            return ResponseEntity.ok("결석이 승인됐습니다.");
+            return ResponseEntity.ok("결석 처리 됐습니다.");
         } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("결석 승인에 실패했습니다.");
         }

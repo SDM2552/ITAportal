@@ -59,29 +59,21 @@
                         <td>
                             ${program.stDt} ~ ${program.endDt}
                         </td>
-                        <th scope="col">강의 요일/시간</th>
+                        <th scope="col">교육 장소</th>
                         <td>
-                            토,일/09:00~18:00(수정해야함)
+                            ${program.roomName}
                         </td>
+
                     </tr>
-                    <tr>
-                        <th scope="col">총시수</th>
-                        <td>
-                            15시간(수정해야함)
-                        </td>
-                        <th scope="col">교육일수</th>
-                        <td>
-                            2일(수정해야함)
-                        </td>
-                    </tr>
+
                     <tr>
                         <th scope="col">모집 정원</th>
                         <td>
                             ${program.pgmPer}명
                         </td>
-                        <th scope="col">일일시수</th>
+                        <th scope="col">강의 요일/시간</th>
                         <td>
-                            8시간(수정해야함)
+                            ${program.pgmDay} / ${program.pgmTime}
                         </td>
                     </tr>
                     <tr>
@@ -89,9 +81,9 @@
                         <td>
                             ${program.pgmMethod}
                         </td>
-                        <th scope="col">교육 장소</th>
+                        <th scope="col">수강료</th>
                         <td>
-                            ${program.roomName}
+                            ${program.pgmFee}원
                         </td>
                     </tr>
                     <tr>
@@ -100,19 +92,11 @@
                             ${program.pgmTarget}
                         </td>
                     </tr>
-                    <tr>
-                    <tr>
-                        <th scope="col">수강료</th>
-                        <td colspan="3">
-                            ${program.pgmFee}원
-                        </td>
-                    </tr>
-
                     </tbody>
                 </table>
             </div>
             <br><br><br><br><br>
-            <h4 class="subTit">신청자 정보(수정해야함)</h4>
+            <h4 class="subTit">신청자 정보</h4>
             <div class="coment_form mt10">
                 <p>* 주소, 휴대폰번호, 이메일 정보를 변경하시려면 <strong>마이페이지 > 회원정보변경</strong>에서 변경하시면 됩니다</p>
                 <a href="/user/info">회원정보변경</a>
@@ -129,25 +113,25 @@
                     <tr>
                         <th scope="col">신청자명</th>
                         <td colspan="3">
-                            김학생
+                            ${studentInfo.name}
                         </td>
                     </tr>
                     <tr>
                         <th scope="col">주소</th>
                         <td colspan="3">
-                            서울시 성남구
+                            ${studentInfo.address}
                         </td>
                     </tr>
                     <tr>
                         <th scope="col">휴대폰번호</th>
                         <td colspan="3">
-                            010-1234-1234
+                            ${studentInfo.tel}
                         </td>
                     </tr>
                     <tr>
                         <th scope="col">이메일</th>
                         <td colspan="3">
-                            asd@naver.com
+                            ${studentInfo.email}
                         </td>
                     </tr>
 

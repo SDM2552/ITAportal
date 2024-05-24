@@ -4,6 +4,7 @@
     <div class="lnbArea">
         <ul>
             <li><a href="/notice/noticeList">공지사항</a></li>
+            <li><a href="#">강좌개설의뢰</a></li>
             <li><a href="#">Q&A</a></li>
 
         </ul>

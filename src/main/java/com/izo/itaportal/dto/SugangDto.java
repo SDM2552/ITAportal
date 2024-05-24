@@ -17,6 +17,8 @@ public class SugangDto {
     private String stDt;    //교육시작일자
     private String endDt;  //교육종료일자
     private String pgmFee;     //교육비
+    private String PgmDay; //강의 요일
+    private String PgmTime; //강의 시간
 
     private String cateName;   //주제분류명
     private String roomName;   //강의실명

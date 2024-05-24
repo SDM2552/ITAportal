@@ -55,9 +55,11 @@
                              pgm_method,
                              pgm_per,
                              num_of_stu,
+                             pgm_day,
+                             pgm_time,
                              pgm_fee)
                     values (#{idPgm},#{idCate},#{idProf},#{pgmName},#{stDt},#{endDt},#{sugangStDt},#{sugangEndDt},
-                                 #{pgmTarget},#{idRoom},#{pgmMethod},#{pgmPer},0,#{pgmFee})
+                                 #{pgmTarget},#{idRoom},#{pgmMethod},#{pgmPer},0,#{pgmDay},#{pgmTime},#{pgmFee})
 
     </insert>
     <update id="update">
@@ -74,6 +76,8 @@
             pgm_method=#{pgmMethod},
             pgm_per=#{pgmPer},
             pgm_fee=#{pgmFee},
+            pgm_day=#{pgmDay},
+            pgm_time=#{pgmTime},
             id_prof=#{idProf}
 
         where id_pgm = #{idPgm}
@@ -105,6 +109,8 @@
             p.pgm_Method,
             p.pgm_Per,
             p.pgm_Fee,
+            p.pgm_day,
+            p.pgm_time,
             c.cate_Name,
             r.room_Name,
             pr.name AS prof_Name
@@ -134,7 +140,10 @@
             p.pgm_Method,
             p.pgm_Per,
             p.num_of_stu,
+            p.pgm_day,
+            p.pgm_time,
             p.pgm_Fee,
+
             c.cate_Name,
             r.room_Name,
             pr.name AS prof_Name

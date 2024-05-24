@@ -1,6 +1,7 @@
 package com.izo.itaportal.repository;
 
 import com.izo.itaportal.dto.ProgramAllDto;
+import com.izo.itaportal.dto.StudentInfoDto;
 import com.izo.itaportal.dto.SugangDto;
 import com.izo.itaportal.model.Student;
 import org.apache.ibatis.annotations.Mapper;
@@ -23,6 +24,7 @@ public interface StudentRepository {
     @Select("SELECT * FROM student WHERE id_user = #{idUser}")
     Student findStudentByIdUser(int idUser);
 
+    StudentInfoDto findStudentInfoByIdUser(int idUser);
 
     // 수강디테일, 강사디테일
     List<SugangDto> findCoursesByStudentId(@Param("idStudent") int idStudent);

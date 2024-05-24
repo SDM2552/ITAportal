@@ -107,6 +107,16 @@
                             </td>
                         </tr>
                         <tr>
+                            <th scope="col">강의 요일</th>
+                            <td>
+                                <input type="text" class="form-control" id="pgmDay" placeholder="강의 요일" name="pgmDay">
+                            </td>
+                            <th scope="col">강의 시간</th>
+                            <td>
+                                <input type="text" class="form-control" id="pgmTime" placeholder="강의 시간" name="pgmTime">
+                            </td>
+                        </tr>
+                        <tr>
                             <th scope="col">교육대상</th>
                             <td colspan="3">
                                 <input type="text" class="form-control" id="pgmTarget" placeholder="교육대상" name="pgmTarget">

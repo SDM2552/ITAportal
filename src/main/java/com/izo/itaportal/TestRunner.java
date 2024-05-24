@@ -58,12 +58,12 @@ public class TestRunner implements ApplicationRunner{
 
 
         //강의리스트
-        jdbcTemplate.execute("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,sugang_st_dt,sugang_end_dt,pgm_target,id_room,pgm_method,pgm_per, num_of_stu, pgm_fee,id_prof) "+
-                "VALUES (2,'통관 및 관세 실무 이해','2024-11-09','2024-11-10','2024-10-15','2024-10-30','통관 및 관세에 관심이 있는 재직자',1,'오프라인',10,0,55000,1)");
-        jdbcTemplate.execute("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,sugang_st_dt,sugang_end_dt,pgm_target,id_room,pgm_method,pgm_per, num_of_stu, pgm_fee,id_prof) "+
-                "VALUES (1,'자유무역협정(FTA) 실무','2024-06-01','2024-08-31','2024-10-15','2024-10-30','자유무역에 관심이 있는 성인',99,'온라인',30,1,75000,2)");
-        jdbcTemplate.execute("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,sugang_st_dt,sugang_end_dt,pgm_target,id_room,pgm_method,pgm_per, num_of_stu, pgm_fee,id_prof) "+
-                "VALUES (3,'검색 엔진 최적화(SEO) 원리','2024-06-01','2024-08-31','2024-10-15','2024-10-30','SEO를 통한 마케팅에 관심있는 전공자',1,'오프라인',30,2,35000,1)");
+        jdbcTemplate.execute("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,sugang_st_dt,sugang_end_dt,pgm_target,id_room,pgm_method,pgm_per, num_of_stu, pgm_fee, pgm_day, pgm_time, id_prof) "+
+                "VALUES (2,'통관 및 관세 실무 이해','2024-11-09','2024-11-10','2024-10-15','2024-10-30','통관 및 관세에 관심이 있는 재직자',1,'오프라인',10,0,'55000','월,화,수','09:00~11:00',1)");
+        jdbcTemplate.execute("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,sugang_st_dt,sugang_end_dt,pgm_target,id_room,pgm_method,pgm_per, num_of_stu, pgm_fee, pgm_day, pgm_time, id_prof) "+
+                "VALUES (1,'자유무역협정(FTA) 실무','2024-06-01','2024-08-31','2024-10-15','2024-10-30','자유무역에 관심이 있는 성인',99,'온라인',30,1,'75000','수,목,금','13:00~18:00',2)");
+        jdbcTemplate.execute("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,sugang_st_dt,sugang_end_dt,pgm_target,id_room,pgm_method,pgm_per, num_of_stu, pgm_fee, pgm_day, pgm_time, id_prof) "+
+                "VALUES (3,'검색 엔진 최적화(SEO) 원리','2024-06-01','2024-08-31','2024-10-15','2024-10-30','SEO를 통한 마케팅에 관심있는 전공자',1,'오프라인',30,2,'35000','월,화,수,목,금','09:00~18:00',1)");
 
 
 
@@ -111,6 +111,16 @@ public class TestRunner implements ApplicationRunner{
 
         //공지사항 글
         jdbcTemplate.execute("INSERT INTO notice(title, content, created_date, views)" +
+                "VALUES ('[마감]4050을 위한 빅데이터 전문가 양성과정','●과정명 : 4050을 위한 빅데이터 전문가 양성과정\n" +
+                "●교육기간 : 2024.04.01.(화)~2024.04.26.(화)\n" +
+                "*4/9(수), 4/15(화)은 휴강예정*\n" +
+                "●교육일시 : 매주 화,수 9:00~12:00(주2회 3시간 수업, 총 45시간)\n" +
+                "●수강료 : 50,000원(출석 80% 이상 이수시, 수강료 60% 환급)\n" +
+                "●교육장소 : 국제무역아카데미 1층 평생교육실습실\n" +
+                "●접수방법 \n" +
+                "-온라인접수 : 국제무역아카데미 홈페이지 > 수강신청 \n" +
+                "-방문접수 : 국제무역아카데미 1층 교육센터(9시부터 16시까지 방문 가능하십니다.)','2024-03-26 16:42:26',0)");
+        jdbcTemplate.execute("INSERT INTO notice(title, content, created_date, views)" +
                 "VALUES ('[통관 및 관세 실무 이해] 개강일자 변경 안내','통관 및 관세 실무 이해 1차 강의가 본교 사정으로 인하여 개강일자가 변경 됩니다.\n" +
                 "\n" +
                 "일정에 참고하시기 바랍니다\n" +
@@ -145,7 +155,7 @@ public class TestRunner implements ApplicationRunner{
                 "\n" +
                 "3. 문의사항\n" +
                 "\n" +
-                " - 안양시HiVE센터 T.000-123-1234~5,5678\n" +
+                " - 국제무역아카데미 T.000-123-1234~5,5678\n" +
                 "\n" +
                 " - 최박사 교수 T.010-7777-0000', '2024-05-03 09:32:33', 0)");
 
@@ -169,8 +179,7 @@ public class TestRunner implements ApplicationRunner{
                 "★ 우수 교육생 및 우수 교육팀 시상품 제공\n" +
                 "5. 관련문의 : ☎ 02-111-2222', '2024-05-05 12:23:07', 0)");
         jdbcTemplate.execute("INSERT INTO notice(title, content, created_date, views) " +
-                "VALUES ('디지털 마케팅 혁신 특강 모집 안내', '행복진흥사회서비스원에서 『디지털 마케팅 혁신이 가져오는 시대 선도』 특강을 진행하오니 많은 참여 바랍니다.\n" +
-                "\n" +
+                "VALUES ('디지털 마케팅 혁신 특강 모집 안내', '평생교육사업팀에서 『디지털 마케팅 혁신이 가져오는 시대 선도』 특강을 진행하오니 많은 참여 바랍니다.\n" +
                 "\n" +
                 "\n" +
                 "\n" +
