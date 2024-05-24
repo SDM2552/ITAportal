@@ -17,10 +17,11 @@
         <c:import url="../layout/nav_student.jsp"/>
         <div id="contents" class="eduIntroCont">
             <div class="location">
-                <span class="home" title="홈">홈으로 이동</span>
-                <span>프로그램 정보</span>
+                <span class="home" title="홈"><i class="fa-solid fa-house"></i> <i class="fa-solid fa-angle-right"></i></span>
+                <span>수업 <i class="fa-solid fa-angle-right"></i> </span><span>나의 강의실 <i class="fa-solid fa-angle-right"></i> </span>
+                <span>${program.pgmName} </span>
             </div>
-            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>프로그램 정보</h3>
+            <h3 class="pgTit">프로그램 정보</h3>
             <div class="tblData mt10">
                 <table>
                     <colgroup>

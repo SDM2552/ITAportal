@@ -26,14 +26,10 @@
         <!-- contents -->
         <div id="contents" class="eduIntroCont">
             <!-- location -->
-            <div class="location">
-                <span class="home" title="홈">홈으로 이동></span>
-                <span>마이페이지></span>
-                <span class="on">회원정보</span>
-            </div>
+            <span class="home" title="홈"><i class="fa-solid fa-house"></i> <i class="fa-solid fa-angle-right"></i></span>
+            <span>MY <i class="fa-solid fa-angle-right"></i></span><span class="on"> 회원 정보</span>
             <!-- //location -->
-
-            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>회원정보</h3>
+            <h3 class="pgTit">회원정보</h3>
             <table class="tblData mt10">
                 <!-- Other fields -->
                 <tr>
@@ -44,10 +40,6 @@
                     <th>이메일</th>
                     <td><c:out value="${member.email}"/> </td>
                 </tr>
-
-
-
-
                 <tr>
                     <th>이름</th>
                     <td><c:out value="${user.name}"/></td>

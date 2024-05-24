@@ -23,20 +23,17 @@
         <!-- contents -->
         <div id="contents" class="eduIntroCont">
             <!-- location -->
-            <div class="location">
-                <span class="home" title="홈">홈으로 이동></span>
-                <span>강의관리></span>
-                <span class="on">교육과정관리</span>
-            </div>
+            <span class="home" title="홈"><i class="fa-solid fa-house"></i> <i class="fa-solid fa-angle-right"></i></span>
+            <span>강의 관리 <i class="fa-solid fa-angle-right"></i></span><span> 교육과정관리</span><span class="on"><i class="fa-solid fa-angle-right"></i> 카테고리 수정</span>
             <!-- //location -->
 
-            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>교육과정관리</h3>
+            <h3 class="pgTit">교육과정관리</h3>
 
             <!-- 본문 -->
-            <h4 class="subTit">카테고리 추가</h4>
+            <h4 class="subTit">카테고리 수정</h4>
             <form id="progInputForm" method="post" action="/categoryUpdate">
                 <input type="hidden" id="idCate" name="idCate" value="${cate.idCate}"/>
-                <div class="tblData mt10">
+                <div class="tblData mt10" style="width: 50%">
                     <table>
                         <colgroup>
                             <col width="20%">
@@ -55,7 +52,7 @@
                     </table>
 
                 </div>
-                <div class="btnArea">
+                <div class="btnArea" style="width: 50%">
                     <button type="submit" class="btns btnSt01">
                         <span>저장</span>
                     </button>

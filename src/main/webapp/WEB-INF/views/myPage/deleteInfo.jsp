@@ -15,9 +15,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
     <title>회원탈퇴</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 <div class="wrap">
@@ -31,17 +29,14 @@
         <!-- contents -->
         <div id="contents" class="eduIntroCont">
             <!-- location -->
-            <div class="location">
-                <span class="home" title="홈">홈으로 이동></span>
-                <span>마이페이지></span>
-                <span class="on">회원탈퇴</span>
-            </div>
+            <span class="home" title="홈"><i class="fa-solid fa-house"></i> <i class="fa-solid fa-angle-right"></i></span>
+            <span>MY <i class="fa-solid fa-angle-right"></i></span><span class="on"> 회원 탈퇴</span>
             <!-- //location -->
-            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>회원탈퇴</h3>
+            <h3 class="pgTit">회원탈퇴</h3>
             <div>
                 <p>안녕하세요,</p>
-                <p>평생교육원 회원님께,</p>
-                <p>회원 탈퇴는 곧 모든 서비스와 혜택의 손실로 이어집니다. 회원님의 평생교육원 회원 탈퇴에 대해 안내드립니다.</p><br>
+                <p>국제무역아카데미 회원님께,</p>
+                <p>회원 탈퇴는 곧 모든 서비스와 혜택의 손실로 이어집니다. 회원님의 국제무역아카데미 회원 탈퇴에 대해 안내드립니다.</p><br>
                 <p><strong>주의사항:</strong></p>
                 <ul>
                     <li>회원 탈퇴는 돌이킬 수 없습니다: 한 번 탈퇴하면, 모든 회원 정보와 이력이 삭제되며, 복구가 불가능합니다.</li>
@@ -63,7 +58,7 @@
                 <br><br>
                 <p>탈퇴에 관한 자세한 내용은 고객센터로 문의해 주세요.</p>
                 <p>감사합니다.</p>
-                <p>평생교육원 드림.</p>
+                <p>국제무역아카데미 드림.</p>
             </div>
         </div>
     </div>

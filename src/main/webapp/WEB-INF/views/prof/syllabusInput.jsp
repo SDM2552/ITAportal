@@ -45,9 +45,9 @@
         <div id="contents" class="eduIntroCont">
             <!-- location -->
             <div class="location">
-                <span class="home" title="홈">홈으로 이동</span>
-                <span>수강 내역 조회</span>
-                <span class="on">강의계획서 입력</span>
+                <span class="home" title="홈"><i class="fa-solid fa-house"></i> <i class="fa-solid fa-angle-right"></i></span>
+                <span>강의 관리 <i class="fa-solid fa-angle-right"></i> </span><span>내 강의 목록 <i class="fa-solid fa-angle-right"></i> </span>
+                <span>${programInfo.pgmName}  <i class="fa-solid fa-angle-right"></i> </span><span class="on">강의계획서 </span>
             </div>
             <!-- //location -->
 

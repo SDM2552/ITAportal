@@ -29,7 +29,7 @@
             </div>
             <!-- //location -->
 
-            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>마이페이지</h3>
+            <h3 class="pgTit">마이페이지</h3>
 
             <!-- 본문 -->
             <c:forEach items="${enrollments}" var="enrollment">

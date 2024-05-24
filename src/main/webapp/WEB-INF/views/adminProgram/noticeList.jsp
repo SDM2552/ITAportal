@@ -60,20 +60,18 @@
         <div id="contents" class="noticesListCont">
             <!-- location -->
             <div class="location">
-                <span class="home" title="홈">홈으로 이동></span>
-                <span>관리자 페이지></span>
+                <span class="home" title="홈"><i class="fa-solid fa-house"></i> <i class="fa-solid fa-angle-right"></i></span>
                 <span class="on">공지사항</span>
             </div>
             <!-- //location -->
 
-            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>공지사항</h3>
+            <h3 class="pgTit">공지사항</h3>
 
             <!-- 본문 -->
             <div class="btnArea">
                 <form action="/notice/noticeList" method="get">
                     <input type="text" name="keyword" placeholder="검색어 입력" value="${keyword}">
                     <button type="submit">검색</button>
-                    <a href="/notice/create"><button type="button">공지사항 작성</button></a>
                 </form>
             </div>
             <div class="tblData mt10">
