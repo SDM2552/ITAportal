@@ -33,7 +33,7 @@ public interface StudentRepository {
 
     ProgramAllDto findProgramById(@Param("id") int id);
 
-    ProgramAllDto findProfessorById(@Param("id") int id);
-
     List<ProgramAllDto> findProgramsByStudentId(@Param("idStudent") int idStudent);
+
+    List<ProgramAllDto> findProfessorsByProgramId(@Param("id") int id);
 }
