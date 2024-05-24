@@ -7,6 +7,7 @@ import com.izo.itaportal.service.ProfessorService;
 import com.izo.itaportal.service.ScheduleService;
 import com.izo.itaportal.service.SyllabusService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/prof")
 @RequiredArgsConstructor
+@Slf4j
 public class ProfController {
 
     private final SyllabusService syllabusService;

@@ -6,7 +6,8 @@
         <ul>
             <li><a href="/prof/list">내 강의 목록</a></li>
             <li><a href="/prof/examList">과제관리</a></li>
-
+            <li><a href="#">강의계획서</a></li>
+            <li><a href="#">휴보강신청</a></li>
         </ul>
     </div>
 </div>
