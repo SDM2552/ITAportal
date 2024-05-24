@@ -227,7 +227,7 @@
             p.pgm_Fee,
             c.cate_Name,
             r.room_Name,
-            pr.name AS prof_Name,
+            pr.name AS profName,
             pr.id_Prof
         FROM
             Program p

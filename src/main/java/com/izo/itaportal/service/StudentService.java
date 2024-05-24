@@ -24,11 +24,30 @@ public class StudentService {
         return studentRepository.findAll();
     }
 
-    public List<SugangDto> GetSugangList(int idStudent){
-        return studentRepository.findByIdStudent(idStudent);
+//    public List<SugangDto> GetSugangList(int idStudent){
+//
+//        return studentRepository.findByIdStudent(idStudent);
+//    }
+//    public List<SugangDto> GetCourceList(int idStudent){
+//        return sugangRepository.findByIdStudentAndCourseStatus(idStudent);
+//    }
+    //강사중복오류
+public List<SugangDto> GetSugangList(int idStudent) {
+    List<SugangDto> sugangList = studentRepository.findByIdStudent(idStudent);
+    for (SugangDto sugang : sugangList) {
+        List<ProgramAllDto> professors = studentRepository.findProfessorsByProgramId(sugang.getIdPgm());
+        sugang.setProfessors(professors);
     }
-    public List<SugangDto> GetCourceList(int idStudent){
-        return sugangRepository.findByIdStudentAndCourseStatus(idStudent);
+    return sugangList;
+}
+
+    public List<SugangDto> GetCourceList(int idStudent) {
+        List<SugangDto> sugangList = sugangRepository.findByIdStudentAndCourseStatus(idStudent);
+        for (SugangDto sugang : sugangList) {
+            List<ProgramAllDto> professors = studentRepository.findProfessorsByProgramId(sugang.getIdPgm());
+            sugang.setProfessors(professors);
+        }
+        return sugangList;
     }
 
     //로그인한 학생의 신상정보 가져오기
