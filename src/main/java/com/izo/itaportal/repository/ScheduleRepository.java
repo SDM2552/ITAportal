@@ -20,4 +20,6 @@ public interface ScheduleRepository {
     public int selectMaxIdSchedByIdPgm(int idPgm);
     //입력 및 수정
     public void upsertSchedule(Schedule schedule);
+    //주차별 강의계획 단건 조회(By idSched)
+    public String selectScheduleByIdSched(int idPgm, int idSched);
 }

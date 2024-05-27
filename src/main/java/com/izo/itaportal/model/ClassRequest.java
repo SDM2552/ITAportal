@@ -29,4 +29,8 @@ public class ClassRequest {
     private int idWeek;
     //프로그램코드 (FK)
     private int idProgram;
+
+    private String pgmName;
+    private String roomName;
+    private String daySched;
 }

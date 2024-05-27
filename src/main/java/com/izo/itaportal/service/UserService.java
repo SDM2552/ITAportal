@@ -50,6 +50,10 @@ public class UserService {
         return user;
     }
 
+    // 유저 중복 확인
+    public boolean isLoginIdDuplicate(String loginId) {
+        return userRepository.countByLoginId(loginId) != 0;
+    }
 
     //학생정보 가져오기
     public Student getStudentInfo(int idUser) {

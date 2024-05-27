@@ -56,6 +56,7 @@
             </table><br>
             <h4 class="subTit">휴보강 신청</h4>
             <div class="tblData mt10">
+                <form method="post" action="/submitClassRequest">
                 <table>
                     <colgroup>
                         <col width="20%">
@@ -65,10 +66,16 @@
                     </colgroup>
                     <tbody class="mid">
                     <tr>
+                        <th scope="col">강의 주차</th>
+                        <td><select id="idSched" name="idShced" onchange="idshcedChange(this.value, ${programInfo.idPgm})">
+                            <c:forEach var="i" begin="1" end="${maxIdSched}">
+                                <option value="${i}">${i}</option>
+                            </c:forEach>
+                        </select></td>
+                    </tr>
+                    <tr>
                         <th scope="col">기존 강의 일자</th>
-                        <td>
-                            <input type="date" name="classDate" style="width: 100%;">
-                        </td>
+                        <td><div id="classDate" name="classDate"></div></td>
                         <th scope="col">기존 강의실</th>
                         <td>
                             <input type="text" value="${programInfo.roomName}" readonly style="width: 100%;">
@@ -87,7 +94,7 @@
                     <tr>
                         <th scope="col">휴강 사유</th>
                         <td colspan="3">
-                            <textarea placeholder="내용을 입력하세요."></textarea>
+                            <textarea name="remarks" placeholder="내용을 입력하세요."></textarea>
                         </td>
                     </tr>
                     <tr>
@@ -98,11 +105,13 @@
                         <td>
                         </td>
                     </tr>
-
-
+                    <input type="hidden" name="idProf" value="">
+                    <input type="hidden" name="idSched" value="">
+                    <input type="hidden" name="idPgm" value="${programInfo.idPgm}">
 
                     </tbody>
                 </table>
+                </form>
             </div>
             <!-- btn -->
             <div class="btnArea">
@@ -115,6 +124,7 @@
             </div>
             <!-- btn -->
             <br>
+
 
             <h4 class="subTit">휴보강 이력</h4>
             <div class="tblData mt10">
@@ -141,17 +151,17 @@
                     </tr>
                     </thead>
                     <tbody>
-
+                        <c:forEach var="classReq" items="${classRequest}">
                         <tr>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
+                            <td>${classReq.pgmName}</td>
+                            <td>${classReq.classDate}</td>
+                            <td>${classReq.makeUpDate}</td>
+                            <td>${classReq.roomName}</td>
+                            <td>${classReq.remarks}</td>
                             <td>1</td>
                             <td>1</td>
                         </tr>
-
+                        </c:forEach>
                     </tbody>
                 </table>
             </div>
@@ -165,6 +175,28 @@
     <!-- footer -->
     <c:import url="../layout/footer.jsp" />
 </div>
+<script>
+    function idshcedChange(idSched, idPgm) {
+        console.log({ idSched: idSched, idPgm: idPgm });
+        $.ajax({
+            url : `/prof/getDaySched`,
+            type : 'post',
+            contentType : 'application/json; charset=utf-8',
+            dataType : 'json',
+            data : JSON.stringify({idSched: idSched, idPgm: idPgm}),
+            async : false,
+            success : function (daySched) {
+                console.log(daySched);
+                $('#classDate').text(daySched); // response 값을 classDate 요소의 내용으로 설정
+            },
+            error : function (request, status, error) {
+
+            }
+        });
+    }
+</script>
+
+
 </body>
 
 </html>

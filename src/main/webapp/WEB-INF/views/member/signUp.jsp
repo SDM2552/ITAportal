@@ -30,7 +30,7 @@
             <h3 class="pgTit">회원 가입</h3>
 
             <!-- 본문 -->
-            <form action="signUpCheck" method="post">
+            <form action="signUpCheck" method="post" onsubmit="return validateForm();">
                 <div class="tblForm inputForm mt10">
                     <table>
                         <colgroup>
@@ -248,6 +248,50 @@
 
 
             </script>
+
+            <script>
+                // 중복 확인 버튼 클릭 시 실행되는 함수
+                function DupWebIdCheck() {
+                    var loginId = document.getElementById("m_szId").value; // 입력된 아이디 가져오기
+                    if (loginId.trim() === "") {
+                        alert("아이디를 입력해주세요.");
+                        return;
+                    }
+                    // AJAX를 통해 서버로 중복 확인 요청 보내기
+                    $.ajax({
+                        type: "GET", // 요청 방식을 GET으로 설정
+                        url: "checkDuplicateId?loginId=" + loginId, // 쿼리 문자열을 사용하여 loginId 전달
+                        success: function (response) {
+                            if (response === "duplicate") {
+                                alert("이미 사용 중인 아이디입니다.");
+                            } else {
+                                alert("사용 가능한 아이디입니다.");
+                            }
+                        },
+                        error: function () {
+                            alert("서버 오류가 발생했습니다.");
+                        }
+                    });
+                }
+            </script>
+
+
+                <script>
+                    // 폼 제출 전에 비밀번호 확인
+                    function validateForm() {
+                        var password = document.getElementById("m_szPwd").value;
+                        var confirmPassword = document.getElementById("m_szPwdChk").value;
+
+                        // 비밀번호와 비밀번호 확인이 다를 경우
+                        if (password !== confirmPassword) {
+                            alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+                            return false; // 폼 제출을 막음
+                        }
+                        return true; // 폼 제출 허용
+                    }
+                </script>
+
+
 
 <%--            <form action="signUpCheck" method="post" onsubmit="submitForm(event)">--%>
 <%--                <div>--%>

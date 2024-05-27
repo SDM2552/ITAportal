@@ -74,7 +74,14 @@
                             <td>${program.sugangStDt} 09:00 ~<br>
                                     ${program.sugangEndDt} 18:00</td>
                             <td>
-                                <button type="button" onclick="applyProgram(${program.idPgm});">수강신청</button>
+                                <c:choose>
+                                    <c:when test="${program.sugangClosed}">
+                                        <button type="button" disabled>마감</button>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <button type="button" onclick="applyProgram(${program.idPgm});">수강신청</button>
+                                    </c:otherwise>
+                                </c:choose>
                             </td>
                         </tr>
                     </c:forEach>

@@ -19,7 +19,7 @@
     <!-- container -->
     <div id="container" class="container responCont">
         <!-- 왼쪽 네비바 -->
-        <c:import url="../layout/nav_notice.jsp" />
+        <c:import url="../layout/nav_admin_notice.jsp" />
         <!-- contents -->
         <div id="contents" class="eduIntroCont">
             <!-- location -->
