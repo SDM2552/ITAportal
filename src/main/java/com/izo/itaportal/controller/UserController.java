@@ -38,13 +38,27 @@ public class UserController {
            String email = email01+"@"+email2;
         email = email.replace(",", "");
         signUpRequest.setEmail(email);
-//        if(signUpRequest.getRole().equals("stu")) {
+        // 회원가입 요청 처리
+        try {
             userService.insertStu(signUpRequest);
+        } catch (IllegalArgumentException e) {
+            // 중복된 로그인 아이디가 있을 경우 처리 로직
+            return "redirect:/user/signUp?error=duplicate";
+        }
+//        if(signUpRequest.getRole().equals("stu")) {
+//            userService.insertStu(signUpRequest);
 //        } else if (signUpRequest.getRole().equals("prof")) {
 //            //교수일경우
 //            userService.insertProf(signUpRequest);
 //        }
         return "member/signUpSuccess";
+    }
+
+    @GetMapping("/checkDuplicateId")
+    @ResponseBody
+    public String checkDuplicateId(@RequestParam("loginId") String loginId) {
+        boolean isDuplicate = userService.isLoginIdDuplicate(loginId);
+        return isDuplicate ? "duplicate" : "available";
     }
 
     //로그인
