@@ -30,7 +30,7 @@
             <h3 class="pgTit">회원 가입</h3>
 
             <!-- 본문 -->
-            <form action="signUpCheck" method="post">
+            <form action="signUpCheck" method="post" onsubmit="return validateForm();">
                 <div class="tblForm inputForm mt10">
                     <table>
                         <colgroup>
@@ -274,6 +274,24 @@
                     });
                 }
             </script>
+
+
+                <script>
+                    // 폼 제출 전에 비밀번호 확인
+                    function validateForm() {
+                        var password = document.getElementById("m_szPwd").value;
+                        var confirmPassword = document.getElementById("m_szPwdChk").value;
+
+                        // 비밀번호와 비밀번호 확인이 다를 경우
+                        if (password !== confirmPassword) {
+                            alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+                            return false; // 폼 제출을 막음
+                        }
+                        return true; // 폼 제출 허용
+                    }
+                </script>
+
+
 
 <%--            <form action="signUpCheck" method="post" onsubmit="submitForm(event)">--%>
 <%--                <div>--%>
