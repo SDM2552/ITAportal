@@ -2,6 +2,8 @@ package com.izo.itaportal.dto;
 
 import lombok.Data;
 
+import java.util.List;
+
 //수강 내역 조회에 필요한 DTO
 @Data
 public class SugangDto {
@@ -27,4 +29,7 @@ public class SugangDto {
 
     // 새로운 필드 추가
     private int idProf; // 강사 ID
+    private String profName;
+    // 프로그램에 속한 교수 목록
+    private List<ProgramAllDto> professors;
 }

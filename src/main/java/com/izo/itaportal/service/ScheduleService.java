@@ -23,6 +23,7 @@ public class ScheduleService {
         LocalDate stDt = LocalDate.parse(stDtStr, DATE_FORMATTER);
         LocalDate endDt = LocalDate.parse(endDtStr, DATE_FORMATTER);
         long daysBetween = ChronoUnit.DAYS.between(stDt, endDt);
+        System.out.println(daysBetween);
         long weeksBetween = daysBetween / 7;
         if (daysBetween % 7 != 0){
             weeksBetween++;
@@ -48,6 +49,11 @@ public class ScheduleService {
     public List<Schedule> selectAllSchedule(int idPgm){
         List<Schedule> schedules = scheduleRepository.selectAllSchedule(idPgm);
         return schedules;
+    }
+
+    //주차별 강의계획서상 강의날짜 조회(By idSched)
+    public String selectScheduleByIdSched(int idPgm, int idSched){
+        return scheduleRepository.selectScheduleByIdSched(idPgm, idSched);
     }
 
 

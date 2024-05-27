@@ -7,6 +7,7 @@ import com.izo.itaportal.service.ProfessorService;
 import com.izo.itaportal.service.ScheduleService;
 import com.izo.itaportal.service.SyllabusService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,10 +18,12 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/prof")
 @RequiredArgsConstructor
+@Slf4j
 public class ProfController {
 
     private final SyllabusService syllabusService;
@@ -97,9 +100,34 @@ public class ProfController {
 
     //휴보강신청 폼
     @GetMapping("/request")
-    public String classRequest(@RequestParam("idPgm") int idPgm, Model model){
-        model.addAttribute("programInfo", syllabusService.selectJoinPgmByidPgm(idPgm));
+    public String classRequestForm(@RequestParam("idPgm") int idPgm, Model model){
+        ProgramView programInfo = syllabusService.selectJoinPgmByidPgm(idPgm);
+        long maxIdSched = scheduleService.calculateWeekBetween(programInfo.getStDt(),programInfo.getEndDt());
+        model.addAttribute("programInfo",programInfo);
+        model.addAttribute("maxIdSched",maxIdSched);
+        model.addAttribute("classRequest", professorService.selectClassRequest(idPgm));
         return "prof/requestProg";
+    }
+
+    //주차별 강의계획서상 강의 날짜 조회
+    @PostMapping("/getDaySched")
+    @ResponseBody
+    public String getDayShced(@RequestBody Map<String, Integer> params){
+        int idPgm = params.get("idPgm");
+        int idSched = params.get("idSched");
+        System.out.println("====================================");
+        System.out.println(idPgm);
+        System.out.println(idSched);
+        System.out.println(scheduleService.selectScheduleByIdSched(idPgm, idSched));
+        System.out.println("====================================");
+        return scheduleService.selectScheduleByIdSched(idPgm, idSched);
+    }
+
+    //휴보강신청 등록
+    @PostMapping("/123")
+    public String classRequest(Model model){
+
+        return "redirect:/prof/requestProg";
     }
 
     //출결 페이지

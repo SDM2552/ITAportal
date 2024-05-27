@@ -101,28 +101,39 @@ public class MyPageController {
 
 
     @PostMapping("/updateInfo")
-    public String updateInfo(Student student, Professor professor, Admin admin, User user1) {
+    public ResponseEntity<Map<String, Object>> updateInfo(Student student, Professor professor, Admin admin, User user1) {
+        Map<String, Object> response = new HashMap<>();
         LoginResponse user = (LoginResponse) httpSession.getAttribute("loginUser");
         if (user == null) {
-            // 세션에 사용자가 없으면 로그인 페이지로 리다이렉트
-            return "redirect:/login";
+            response.put("success", false);
+            response.put("error", "로그인이 필요합니다.");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
         }
+
         Integer idUser = user.getIdUser();
 
-
-        if (myPageService.isStudent(idUser)) {
-            myPageService.updateStudent(student);
-            return "redirect:/user/info";
-        } else if (myPageService.isProfessor(idUser)) {
-            myPageService.updateProfessor(professor);
-            return "redirect:/user/info";
-        } else if (myPageService.isAdmin(idUser)) {
-            myPageService.updateAdmin(admin);
-            return "redirect:/user/info";
-        } else {
-            return "/";
+        try {
+            if (myPageService.isStudent(idUser)) {
+                myPageService.updateStudent(student);
+            } else if (myPageService.isProfessor(idUser)) {
+                myPageService.updateProfessor(professor);
+            } else if (myPageService.isAdmin(idUser)) {
+                myPageService.updateAdmin(admin);
+            } else {
+                response.put("success", false);
+                response.put("error", "유효하지 않은 사용자입니다.");
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+            }
+            response.put("success", true);
+            response.put("message", "정보가 성공적으로 업데이트되었습니다.");
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            response.put("success", false);
+            response.put("error", "업데이트 중 오류가 발생했습니다.");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
+
 
     @GetMapping("/deleteInfo")
     public String deleteInfo() {

@@ -6,17 +6,17 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <script src="https://kit.fontawesome.com/93205cc57d.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="/css/common.css">
-    <link rel="stylesheet" type="text/css" href="/css/table.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/common.css">
+    <link rel="stylesheet" type="text/css" href="../css/table.css">
     <title>마이페이지</title>
 </head>
 <body>
 <div class="wrap">
     <!-- header -->
-    <c:import url="../layout/header.jsp"/>
+    <c:import url="../layout/header_prof.jsp"/>
 
     <!-- container -->
     <div id="container" class="container responCont">
@@ -25,10 +25,10 @@
         <!-- contents -->
         <div id="contents" class="eduIntroCont">
             <!-- location -->
-            <span class="home" title="홈"><i class="fa-solid fa-house"></i> <i class="fa-solid fa-angle-right"></i></span>
+            <span class="home" title="홈"><i class="fa-solid fa-house"></i> <i
+                    class="fa-solid fa-angle-right"></i></span>
             <span>MY <i class="fa-solid fa-angle-right"></i></span><span class="on"> 회원 정보</span>
             <!-- //location -->
-
             <h3 class="pgTit">회원정보</h3>
             <table class="tblData mt10">
                 <!-- Other fields -->
@@ -38,12 +38,8 @@
                 </tr>
                 <tr>
                     <th>이메일</th>
-                    <td><c:out value="${member.email}"/> </td>
+                    <td><c:out value="${member.email}"/></td>
                 </tr>
-
-
-
-
                 <tr>
                     <th>이름</th>
                     <td><c:out value="${user.name}"/></td>
@@ -56,7 +52,7 @@
                             <input type="hidden" name="idUser" value="${user.idUser}"/>
                             <input type="hidden" name="tel" value="${user.tel}"/>
                             <input type="hidden" name="address" value="${user.address}"/>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" onclick="showModal('updateForm1')">수정</button>
+                            <button type="button"  onclick="showModal('updateForm1')">수정</button>
                         </form>
                     </td>
                 </tr>
@@ -68,7 +64,7 @@
                             <input type="hidden" name="idUser" value="${user.idUser}"/>
                             <input type="hidden" name="address" value="${user.address}"/>
                             <input type="hidden" name="birth" value="${user.birth}"/>
-                            <button type="button" class="btn btn-primary" onclick="showModal('updateForm2')">수정</button>
+                            <button type="button"  onclick="showModal('updateForm2')">수정</button>
                         </form>
                     </td>
                 </tr>
@@ -80,7 +76,7 @@
                             <input type="hidden" name="idUser" value="${user.idUser}"/>
                             <input type="hidden" name="birth" value="${user.birth}"/>
                             <input type="hidden" name="tel" value="${user.tel}"/>
-                            <button type="button" class="btn btn-primary" onclick="showModal('updateForm3')">수정</button>
+                            <button type="button"  onclick="showModal('updateForm3')">수정</button>
                         </form>
                     </td>
                 </tr>
@@ -128,7 +124,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    정보가 변경되었습니다. 다시 로그인해 주세요.
+                    정보가 변경되었습니다.
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" onclick="redirectToLogin()">확인</button>
@@ -149,17 +145,27 @@
                 url: $('#' + formId).attr('action'),
                 data: $('#' + formId).serialize(),
                 success: function (response) {
+                    $('#confirmationModal').modal('hide');
                     if (response.success) {
-                        alert(response.success);
-                        window.location.href = '/'; // 로그인 페이지로 리다이렉트
+
+                        $('#successModal').modal('show');
                     } else {
-                        alert(response.error);
+                        alert(response.error || '업데이트 중 오류가 발생했습니다.');
                     }
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error:', error);
+                    alert('서버와의 통신 중 오류가 발생했습니다. 다시 시도해 주세요.');
                     $('#confirmationModal').modal('hide');
                 }
             });
         }
+
+        function redirectToLogin() {
+            window.location.href = '/user/info';
+        }
     </script>
+
 
 
 </div>

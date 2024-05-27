@@ -40,6 +40,8 @@ public interface UserRepository {
     public int getProfId(int idUser);
     public int getAdminId(int idUser);
 
+    // 유저 중복 체크
+    public int countByLoginId(String loginId);
 
     // 메신저용 추가 코드 시작
     String getLoginIdById(int idUser);

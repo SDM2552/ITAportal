@@ -25,5 +25,8 @@ public class ProgramAllDto {
     private String cateName;   //주제분류명
     private String roomName;   //강의실명
     private String name; //강사 이름
+
     private boolean sugangClosed;
+    private String profName; // 강사 이름 (새로 추가된 속성-디테일뷰 중복속성처리)
+
 }

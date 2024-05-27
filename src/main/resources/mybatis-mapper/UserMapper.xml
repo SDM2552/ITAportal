@@ -61,6 +61,7 @@
     <select id="getAdminName" resultType="java.lang.String">
         SELECT name FROM admin WHERE id_User = #{idUser}
     </select>
+
     <!--id 가져오기-->
     <select id="getStuId" resultType="java.lang.Integer">
         SELECT id_Student FROM student WHERE id_User = #{idUser}
@@ -72,7 +73,6 @@
         SELECT id_admin FROM admin WHERE id_User = #{idUser}
     </select>
 
-
     <!-- 메신저용 코드 -->
     <select id="getRoleByLoginId" parameterType="String" resultType="java.lang.String">
         SELECT role FROM user WHERE login_id = #{loginId}
@@ -80,4 +80,10 @@
     <select id="getLoginIdById" parameterType="int" resultType="java.lang.String">
         SELECT login_id FROM user WHERE id_user = #{idUser}
     </select>
+
+    <!-- 유저 중복 체크 -->
+    <select id="countByLoginId" parameterType="String" resultType="int">
+        SELECT COUNT(*) FROM user WHERE login_id = #{loginId}
+    </select>
+
 </mapper>

@@ -115,6 +115,7 @@
                     $('#confirmationModal').modal('hide');
                     $('#resultModalBody').text(response.success || '비밀번호가 성공적으로 변경되었습니다.');
                     $('#resultModal').modal('show');
+
                 },
                 error: function (xhr) {
                     $('#confirmationModal').modal('hide');

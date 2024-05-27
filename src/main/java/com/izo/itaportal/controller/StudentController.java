@@ -60,8 +60,8 @@ public class StudentController {
 
     @GetMapping("/professorView/{id}")
     public String professorView(@PathVariable int id, Model model) {
-        ProgramAllDto professor = studentService.getProfessorById(id);
-        model.addAttribute("professor", professor);
+        List<ProgramAllDto> professors = studentService.getProfessorsByProgramId(id);
+        model.addAttribute("professors", professors);
         return "student/professorView";
     }
 }

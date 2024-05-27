@@ -249,6 +249,32 @@
 
             </script>
 
+            <script>
+                // 중복 확인 버튼 클릭 시 실행되는 함수
+                function DupWebIdCheck() {
+                    var loginId = document.getElementById("m_szId").value; // 입력된 아이디 가져오기
+                    if (loginId.trim() === "") {
+                        alert("아이디를 입력해주세요.");
+                        return;
+                    }
+                    // AJAX를 통해 서버로 중복 확인 요청 보내기
+                    $.ajax({
+                        type: "GET", // 요청 방식을 GET으로 설정
+                        url: "checkDuplicateId?loginId=" + loginId, // 쿼리 문자열을 사용하여 loginId 전달
+                        success: function (response) {
+                            if (response === "duplicate") {
+                                alert("이미 사용 중인 아이디입니다.");
+                            } else {
+                                alert("사용 가능한 아이디입니다.");
+                            }
+                        },
+                        error: function () {
+                            alert("서버 오류가 발생했습니다.");
+                        }
+                    });
+                }
+            </script>
+
 <%--            <form action="signUpCheck" method="post" onsubmit="submitForm(event)">--%>
 <%--                <div>--%>
 <%--                    <label for="loginId">아이디</label>--%>
