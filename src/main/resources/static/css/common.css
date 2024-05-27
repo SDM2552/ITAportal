@@ -593,7 +593,7 @@ body {
 
 /*메신저창*/
 /* 푸터 버튼 및 메뉴 */
-.footer-btn {
+.floating-btn {
     position: fixed;
     bottom: 30px;
     right: 30px;
@@ -610,7 +610,7 @@ body {
     z-index: 1000;
 }
 
-.footer-menu {
+.floating-menu {
     display: none;
     position: fixed;
     bottom: 100px;
@@ -678,7 +678,6 @@ body {
         height: 90%;
     }
 }
-
 /* 메인 레이어 제목 */
 .pgTit {
     font-size: 30px;

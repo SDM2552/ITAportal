@@ -109,11 +109,6 @@
 
         function closeModal() {
             $('#modal').hide();
-
-            var footerMenu = document.getElementById('footerMenu');
-            if (footerMenu.style.display === 'block') {
-                footerMenu.style.display = 'none';
-            }
         }
 
         function replyMessage(id) {

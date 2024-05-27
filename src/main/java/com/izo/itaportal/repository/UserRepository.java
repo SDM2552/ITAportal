@@ -47,5 +47,5 @@ public interface UserRepository {
     String getLoginIdById(int idUser);
     String getRoleById(int idUser);
     String getRoleByLoginId(String loginId);
-
+    // 메신저용 추가 코드 끝
 }

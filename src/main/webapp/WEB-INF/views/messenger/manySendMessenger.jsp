@@ -20,30 +20,32 @@
             </colgroup>
             <tbody>
             <tr>
-                <th scope="row">받는 사람 IDs<span class="essR">필수</span></th>
+                <th scope="row">받는 사람 IDs (콤마로 구분)<span class="essR">필수</span></th>
                 <td>
-                    <input type="text" name="receiverLoginIds" required>
+                    <input type="text" id="receiverLoginIds" name="receiverLoginIds" value="" maxlength="50" title="받는 사람 IDs 입력">
                 </td>
             </tr>
             <tr>
                 <th scope="row">제목<span class="essR">필수</span></th>
                 <td>
-                    <input type="text" name="subject" required>
+                    <input type="text" id="subject" name="subject" value="" maxlength="50" title="제목 입력">
                 </td>
             </tr>
             <tr>
                 <th scope="row">내용<span class="essR">필수</span></th>
                 <td>
-                    <textarea name="messageText" rows="10" cols="30" required></textarea>
+                    <textarea id="messageText" name="messageText" rows="10" title="내용 입력"></textarea>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
+    <!-- //tblForm 정보입력 -->
+
     <!-- btn -->
     <div class="btnArea">
         <button type="button" class="btns btnSt01" onclick="sendBulkMessages()">전송</button>
-        <button type="button" class="btns btnSt03" onclick="parent.closeModal()">취소</button>
+        <button type="button" class="btns btnSt03" onclick="cancelBulkSend()">취소</button>
     </div>
     <!-- btn -->
 </form>
@@ -63,10 +65,25 @@
             contentType: 'application/json',
             data: JSON.stringify(data),
             success: function() {
-                parent.closeModal();
-                parent.loadSentMessages();
+                alert('쪽지가 전송되었습니다.');
+                closeModal();
+                loadSentMessages();
             }
         });
+    }
+
+    function cancelBulkSend() {
+        closeModal();
+    }
+
+    function closeModal() {
+        var modal = parent.document.getElementById('modal');
+        modal.style.display = 'none';
+    }
+
+    function loadSentMessages() {
+        var modalContent = parent.document.getElementById('modalContent');
+        modalContent.innerHTML = '<iframe src="/messenger/sent" width="100%" height="100%" frameborder="0"></iframe>';
     }
 </script>
 </body>
