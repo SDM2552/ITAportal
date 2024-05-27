@@ -23,16 +23,16 @@
         <div id="contents" class="noticesListCont">
             <!-- location -->
             <span class="home" title="홈"><i class="fa-solid fa-house"></i> <i class="fa-solid fa-angle-right"></i></span>
-            <span>공지사항 <i class="fa-solid fa-angle-right"></i></span><span class="on"> 공지사항 작성</span>
+            <span>공지사항 <i class="fa-solid fa-angle-right"></i></span><span class="on"> 강좌개설의뢰</span>
             <!-- //location -->
 
-            <h3 class="pgTit">공지사항</h3>
+            <h3 class="pgTit">강좌개설의뢰</h3>
 
             <!-- 본문 -->
-            <h4 class="subTit">공지사항 작성</h4>
+            <h4 class="subTit">강좌개설의뢰</h4>
 
-            <form action="/notice/save" method="post">
-                <input type="hidden" id="idNotice" name="idNotice" value="${notice.idNotice}"/>
+
+                <input type="hidden" id="idNotice" name="idNotice" value=""/>
             <div class="tblData mt10">
                 <table>
                     <colgroup>
@@ -45,28 +45,38 @@
                     <tr>
                         <th scope="col">제목</th>
                         <td colspan="3">
-                            <input type="text" placeholder="제목을 입력하세요."id="title" name="title" value="${notice.title}"/>
+                            <input type="text" placeholder="제목을 입력하세요."id="title" name="title" value=""/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">신청자</th>
+                        <td>
+                            <input type="text" placeholder="이름"id="name" name="name" value=""/>
+                        </td>
+                        <th scope="col">이메일</th>
+                        <td>
+                            <input type="text" placeholder="연락받을 이메일을 입력하세요."id="email" name="email" value=""/>
                         </td>
                     </tr>
                     <tr>
                         <th scope="col">내용</th>
                         <td colspan="3">
-                            <textarea placeholder="내용을 입력하세요."id="content" name="content">${notice.content}</textarea>
+                            <textarea placeholder="내용을 입력하세요."id="content" name="content"></textarea>
                         </td>
                     </tr>
                     </tbody>
                 </table>
-
             </div>
+                ※ 강좌개설의뢰는 피드백 없습니다.
                 <div class="btnArea">
-                    <button type="submit" class="btns btnSt01">
-                        <span>저장</span>
+                    <button type="button" class="btns btnSt01" onclick="location.href='/notice/noticeList'">
+                        <span>보내기</span>
                     </button>
                     <button type="button" class="btns btnSt02" onclick="history.back();">
                         <span>목록으로</span>
                     </button>
                 </div>
-            </form>
+
 
 
             <!-- 본문 끝 -->

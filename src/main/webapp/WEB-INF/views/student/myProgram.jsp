@@ -24,13 +24,12 @@
         <div id="contents" class="eduIntroCont">
             <!-- location -->
             <div class="location">
-                <span class="home" title="홈">홈으로 이동></span>
-                <span>수업></span>
-                <span class="on">수강 내역 조회</span>
+                <span class="home" title="홈"><i class="fa-solid fa-house"></i> <i class="fa-solid fa-angle-right"></i></span>
+                <span>수업 <i class="fa-solid fa-angle-right"></i> </span><span class="on">나의 강의실 </span>
             </div>
             <!-- //location -->
 
-            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>나의 강의실</h3>
+            <h3 class="pgTit">나의 강의실</h3>
 
             <!-- 본문 -->
             <h4 class="subTit">나의 강의 목록</h4>
@@ -47,9 +46,9 @@
                     <thead>
                     <tr>
                         <th scope="col">분류</th>
-                        <th scope="col">프로그램명</th>
+                        <th scope="col">프로그램명(클릭가능)</th>
                         <th scope="col">교육 기간</th>
-                        <th scope="col">담당 강사</th>
+                        <th scope="col">담당 강사(클릭가능)</th>
                         <th scope="col">강의실</th>
                         <th scope="col">강의 정보</th>
                     </tr>
@@ -64,16 +63,40 @@
                         </c:when>
                         <c:otherwise>
                             <c:forEach var="sugang" items="${sugangList}">
+<%--                                <tr>--%>
+<%--                                    <td>${sugang.cateName}</td>--%>
+<%--                                    <td>${sugang.pgmName}</td>--%>
+<%--                                    <td>${sugang.stDt} ~ <br>${sugang.endDt}</td>--%>
+<%--                                    <td>${sugang.name}</td>--%>
+<%--                                    <td>${sugang.roomName}</td>--%>
+<%--                                    <td>--%>
+<%--                                        <button>보기</button>--%>
+<%--                                    </td>--%>
+
+<%--                                </tr>--%>
+<%--                                <tr>--%>
+<%--                                    <td>${sugang.cateName}</td>--%>
+<%--                                    <td><a href="/stu/programView/${sugang.idPgm}">${sugang.pgmName}</a></td>--%>
+<%--                                    <td>${sugang.stDt} ~ <br>${sugang.endDt}</td>--%>
+<%--                                    <td><a href="/stu/professorView/${sugang.idProf}">${sugang.name}</a></td>--%>
+<%--                                    <td>${sugang.roomName}</td>--%>
+<%--                                    <td>--%>
+<%--                                        <button>보기</button>--%>
+<%--                                    </td>--%>
+<%--                                </tr>--%>
                                 <tr>
                                     <td>${sugang.cateName}</td>
-                                    <td>${sugang.pgmName}</td>
+                                    <td><a href="/stu/programView/${sugang.idPgm}">${sugang.pgmName}</a></td>
                                     <td>${sugang.stDt} ~ <br>${sugang.endDt}</td>
-                                    <td>${sugang.name}</td>
+                                    <td>
+                                        <c:forEach var="professor" items="${sugang.professors}">
+                                            <a href="/stu/professorView/${professor.idProf}">${professor.profName}</a><br/>
+                                        </c:forEach>
+                                    </td>
                                     <td>${sugang.roomName}</td>
                                     <td>
                                         <button>보기</button>
                                     </td>
-
                                 </tr>
                             </c:forEach>
                         </c:otherwise>

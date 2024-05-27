@@ -58,12 +58,12 @@ public class TestRunner implements ApplicationRunner{
 
 
         //강의리스트
-        jdbcTemplate.execute("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,sugang_st_dt,sugang_end_dt,pgm_target,id_room,pgm_method,pgm_per, num_of_stu, pgm_fee,id_prof) "+
-                "VALUES (2,'통관 및 관세 실무 이해','2024-11-09','2024-11-10','2024-10-15','2024-10-30','통관 및 관세에 관심이 있는 재직자',1,'오프라인',10,0,55000,1)");
-        jdbcTemplate.execute("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,sugang_st_dt,sugang_end_dt,pgm_target,id_room,pgm_method,pgm_per, num_of_stu, pgm_fee,id_prof) "+
-                "VALUES (1,'자유무역협정(FTA) 실무','2024-06-01','2024-08-31','2024-10-15','2024-10-30','자유무역에 관심이 있는 성인',99,'온라인',30,1,75000,2)");
-        jdbcTemplate.execute("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,sugang_st_dt,sugang_end_dt,pgm_target,id_room,pgm_method,pgm_per, num_of_stu, pgm_fee,id_prof) "+
-                "VALUES (3,'검색 엔진 최적화(SEO) 원리','2024-06-01','2024-08-31','2024-10-15','2024-10-30','SEO를 통한 마케팅에 관심있는 전공자',1,'오프라인',30,2,35000,1)");
+        jdbcTemplate.execute("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,sugang_st_dt,sugang_end_dt,pgm_target,id_room,pgm_method,pgm_per, num_of_stu, pgm_fee, pgm_day, pgm_time, id_prof) "+
+                "VALUES (2,'통관 및 관세 실무 이해','2024-11-09','2024-11-10','2024-10-15','2024-10-30','통관 및 관세에 관심이 있는 재직자',1,'오프라인',10,0,'55000','월,화,수','09:00~11:00',1)");
+        jdbcTemplate.execute("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,sugang_st_dt,sugang_end_dt,pgm_target,id_room,pgm_method,pgm_per, num_of_stu, pgm_fee, pgm_day, pgm_time, id_prof) "+
+                "VALUES (1,'자유무역협정(FTA) 실무','2024-06-01','2024-08-31','2024-10-15','2024-10-30','자유무역에 관심이 있는 성인',99,'온라인',30,1,'75000','수,목,금','13:00~18:00',2)");
+        jdbcTemplate.execute("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,sugang_st_dt,sugang_end_dt,pgm_target,id_room,pgm_method,pgm_per, num_of_stu, pgm_fee, pgm_day, pgm_time, id_prof) "+
+                "VALUES (3,'검색 엔진 최적화(SEO) 원리','2024-06-01','2024-08-31','2024-10-15','2024-10-30','SEO를 통한 마케팅에 관심있는 전공자',1,'오프라인',30,2,'35000','월,화,수,목,금','09:00~18:00',1)");
 
 
 
@@ -111,7 +111,17 @@ public class TestRunner implements ApplicationRunner{
 
         //공지사항 글
         jdbcTemplate.execute("INSERT INTO notice(title, content, created_date, views)" +
-                "VALUES ('[무역실무기초] 개강일자 변경 안내','무역실무기초 1차 강의가 본교 사정으로 인하여 개강일자가 변경 됩니다.\n" +
+                "VALUES ('[마감]4050을 위한 빅데이터 전문가 양성과정','●과정명 : 4050을 위한 빅데이터 전문가 양성과정\n" +
+                "●교육기간 : 2024.04.01.(화)~2024.04.26.(화)\n" +
+                "*4/9(수), 4/15(화)은 휴강예정*\n" +
+                "●교육일시 : 매주 화,수 9:00~12:00(주2회 3시간 수업, 총 45시간)\n" +
+                "●수강료 : 50,000원(출석 80% 이상 이수시, 수강료 60% 환급)\n" +
+                "●교육장소 : 국제무역아카데미 1층 평생교육실습실\n" +
+                "●접수방법 \n" +
+                "-온라인접수 : 국제무역아카데미 홈페이지 > 수강신청 \n" +
+                "-방문접수 : 국제무역아카데미 1층 교육센터(9시부터 16시까지 방문 가능하십니다.)','2024-03-26 16:42:26',0)");
+        jdbcTemplate.execute("INSERT INTO notice(title, content, created_date, views)" +
+                "VALUES ('[통관 및 관세 실무 이해] 개강일자 변경 안내','통관 및 관세 실무 이해 1차 강의가 본교 사정으로 인하여 개강일자가 변경 됩니다.\n" +
                 "\n" +
                 "일정에 참고하시기 바랍니다\n" +
                 "\n" +
@@ -120,8 +130,80 @@ public class TestRunner implements ApplicationRunner{
                 "- 교육일정: 5월25일(토) ~ 7월 14일(일)\n" +
                 "\n" +
                 "- 접수일정: 4월22일(월) ~ 5월 3일(금)','2024-05-02 15:30:00',0)");
-        jdbcTemplate.execute("INSERT INTO notice(title, content, created_date, views)" +
-                "VALUES ('공지사항 제목2','공지사항 내용2',now(),0)");
+        jdbcTemplate.execute("INSERT INTO notice(title, content, created_date, views) " +
+                "VALUES ('[검색 엔진 최적화(SEO) 원리] 프로그램 개설 안내', '[디지털마케팅] 검색 엔진 최적화(SEO) 원리 프로그램 안내\n" +
+                "\n" +
+                "1. 교육일정\n" +
+                "\n" +
+                " - 개강일자 : 2024. 06. 03(토) ~ 2024. 08. 27(일)\n" +
+                "\n" +
+                " - 교육시수 : 26회 (총130시간)\n" +
+                "\n" +
+                " - 강의요일 : 매주 토,일 13:00~ 18:00\n" +
+                "\n" +
+                " - 강의장소 : 이대캠퍼스 302호\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "2. 신청방법 및 선별방법\n" +
+                "\n" +
+                " - 신청방법 : 개별전화 신청 (T. 000-123-1234~5,5678)\n" +
+                "\n" +
+                " - 선별방법 : 개별 면접 진행\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "3. 문의사항\n" +
+                "\n" +
+                " - 국제무역아카데미 T.000-123-1234~5,5678\n" +
+                "\n" +
+                " - 최박사 교수 T.010-7777-0000', '2024-05-03 09:32:33', 0)");
+
+        jdbcTemplate.execute("INSERT INTO notice(title, content, created_date, views) " +
+                "VALUES ('[자유무역협정(FTA) 실무] 교육생 모집', '2024 자유무역협정(FTA) 실무 교육생 모집\n" +
+                "□교육개요\n" +
+                "1. 교육대상 : 무역 관련 재직자 및 재직희망자\n" +
+                "2. 교육기간 : 2024. 5. 8.(수) ~ 11. 1(금)\n" +
+                "3. 교육내용 : FTA 및 실무에 효율을 높이는 28개 과정\n" +
+                "    *교육과정은 붙임 참조, 과정별 세부내용은 홈페이지 참조\n" +
+                "4. 교육방법 : 실시간 온라인 및 오프라인 교육\n" +
+                "5. 교육비용 : 75000 원\n" +
+                "\n" +
+                "□ 모집안내\n" +
+                "1. 모집대상 : 무역 전공자, 관련 재직자, 업계 취업 희망자 등\n" +
+                "2. 모집기간 : 2024. 5. 29(월) ~ 10. 31(목)\n" +
+                "3. 모집방법 : 홈페이지(localhost.kr) 온라인 접수\n" +
+                "    *매월 세번째 월요일부터 다음달 교육과정 선착순 접수 진행\n" +
+                "4. 교육수료생 지원‧혜택\n" +
+                "★ 교육 수료증 발급 및 중식 제공(온라인 교육 시 바우처 제공)\n" +
+                "★ 우수 교육생 및 우수 교육팀 시상품 제공\n" +
+                "5. 관련문의 : ☎ 02-111-2222', '2024-05-05 12:23:07', 0)");
+        jdbcTemplate.execute("INSERT INTO notice(title, content, created_date, views) " +
+                "VALUES ('디지털 마케팅 혁신 특강 모집 안내', '평생교육사업팀에서 『디지털 마케팅 혁신이 가져오는 시대 선도』 특강을 진행하오니 많은 참여 바랍니다.\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "1. 특강명: 디지털 마케팅 혁신이 가져오는 시대 선도\n" +
+                "\n" +
+                "2. 특강일시: 2024. 05. 28.(화) 19:00\n" +
+                "\n" +
+                "3. 특강장소: 무역센터 2층 시청각실\n" +
+                "\n" +
+                "4. 강연자: 이성계(디지털 마케팅 연구센터 센터장)\n" +
+                "\n" +
+                "5. 참여대상: 청년 대상 200명(만19세~39세)\n" +
+                "\n" +
+                "6. 신청기간: 2023. 05. 20.(월) ~ 06. 03.(화) 13:00\n" +
+                "\n" +
+                "7. 신청방법(2중 택1)\n" +
+                "  - 구글 폼 신청: https://forms.gle/1234\n" +
+                "  - 홈페이지 회원가입 후 오프라인 강좌 신청\n" +
+                "\n" +
+                "8. 문의사항: 국제무역아카데미 평생교육사업팀 \n" +
+                "\n" +
+                "    000-111-5555, 000-222-5555', '2024-05-06 17:01:54', 0)");
     }
+
 
 }

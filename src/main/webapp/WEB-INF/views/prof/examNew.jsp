@@ -23,11 +23,9 @@
         <!-- contents -->
         <div id="contents" class="eduIntroCont">
             <!-- location -->
-            <div class="location">
-                <span class="home" title="홈">홈으로 이동</span>
-                <span>수강 내역 조회</span>
-                <span class="on">수강 내역</span>
-            </div>
+            <span class="home" title="홈"><i class="fa-solid fa-house"></i> <i class="fa-solid fa-angle-right"></i></span>
+            <span>강의 관리 <i class="fa-solid fa-angle-right"></i> </span><span>과제 관리 <i class="fa-solid fa-angle-right"></i> </span>
+            <span class="on"> 과제 생성</span>
             <!-- //location -->
             <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>과제 관리</h3>
             <!-- 본문 -->

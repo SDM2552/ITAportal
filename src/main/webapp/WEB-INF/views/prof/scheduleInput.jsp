@@ -63,13 +63,13 @@
         <div id="contents" class="eduIntroCont">
             <!-- location -->
             <div class="location">
-                <span class="home" title="홈">홈으로 이동</span>
-                <span>수강 내역 조회</span>
-                <span class="on">강의계획서 입력</span>
+                <span class="home" title="홈"><i class="fa-solid fa-house"></i> <i class="fa-solid fa-angle-right"></i></span>
+                <span>강의 관리 <i class="fa-solid fa-angle-right"></i> </span><span>${programInfo.pgmName} <i class="fa-solid fa-angle-right"></i> </span>
+                <span class="on"> 주차별 계획 입력</span>
             </div>
             <!-- //location -->
 
-            <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>주차별 계획 입력</h3>
+            <h3 class="pgTit">주차별 계획 입력</h3>
 
             <!-- 본문 -->
                 <!-- 강의 정보 테이블 -->

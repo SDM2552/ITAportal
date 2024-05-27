@@ -18,10 +18,13 @@ public class ProgramAllDto {
     private int pgmPer;     //교육인원
     private int numOfStu; //수강 인원
 
-    private int pgmFee;     //교육비
+    private String pgmFee;     //교육비
+    private String PgmDay; //강의 요일
+    private String PgmTime; //강의 시간
 
     private String cateName;   //주제분류명
     private String roomName;   //강의실명
     private String name; //강사 이름
+    private String profName; // 강사 이름 (새로 추가된 속성-디테일뷰 중복속성처리)
 
 }

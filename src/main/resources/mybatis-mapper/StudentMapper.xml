@@ -32,4 +32,209 @@
             s.id_Student = #{idStudent}
     </select>
 
+    <select id="findStudentInfoByIdUser" resultType="com.izo.itaportal.dto.StudentInfoDto">
+        SELECT
+            s.id_student AS idStudent,
+            s.name,
+            s.birth,
+            s.tel,
+            s.address,
+            s.gender,
+            u.email,
+            u.id_user AS idUser
+        FROM
+            student s
+                JOIN
+            user u ON s.id_user = u.id_user
+        WHERE
+            u.id_user = #{idUser}
+    </select>
+
+<!--    수강디테일,강사디테일-->
+    <select id="findByIdStudentWithProf" resultType="com.izo.itaportal.dto.SugangDto">
+        SELECT
+            s.id_Sugang AS idEnrollment,
+            s.id_Student,
+            p.pgm_Name,
+            s.id_Pgm,
+            p.id_Cate,
+            s.st_Dt AS SugangStDt,
+            s.status,
+            p.st_Dt,
+            p.end_Dt,
+            p.pgm_Fee,
+            c.cate_Name,
+            cr.room_Name,
+            prof.name,
+            prof.id_Prof
+        FROM
+            Sugang s
+                JOIN Program p ON s.id_Pgm = p.id_Pgm
+                JOIN Category c ON p.id_Cate = c.id_Cate
+                JOIN Class_Room cr ON p.id_Room = cr.id_Room
+                JOIN Professor prof ON p.id_Prof = prof.id_Prof
+        WHERE
+            s.id_Student = #{idStudent}
+    </select>
+
+    <!-- 나머지 쿼리들 -->
+    <select id="findCoursesByStudentId" resultType="com.izo.itaportal.dto.SugangDto">
+        SELECT
+            sugang.id_sugang AS idEnrollment,
+            sugang.id_student AS idStudent,
+            sugang.id_Pgm AS idPgm,
+            sugang.id_Cate AS idCate,
+            sugang.status AS status,
+            sugang.course_Status AS courseStatus,
+            program.pgm_Name AS pgmName,
+            program.st_Dt AS stDt,
+            program.end_Dt AS endDt,
+            program.pgm_Fee AS pgmFee,
+            category.cate_Name AS cateName,
+            class_room.room_Name AS roomName,
+            professor.name AS name,
+            professor.id_Prof AS idProf
+        FROM
+            Sugang sugang
+                JOIN Program program ON sugang.id_Pgm = program.id_Pgm
+                JOIN Category category ON program.id_Cate = category.id_Cate
+                JOIN Class_Room class_room ON program.id_Room = class_room.id_Room
+                JOIN Professor professor ON program.id_Prof = professor.id_Prof
+        WHERE
+            sugang.id_student = #{idStudent}
+    </select>
+
+    <select id="findEnrollmentsByStudentId" resultType="com.izo.itaportal.dto.SugangDto">
+        SELECT
+            sugang.id_sugang AS idEnrollment,
+            sugang.id_student AS idStudent,
+            sugang.id_Pgm AS idPgm,
+            sugang.id_Cate AS idCate,
+            sugang.status AS status,
+            sugang.course_Status AS courseStatus,
+            program.pgm_Name AS pgmName,
+            program.st_Dt AS stDt,
+            program.end_Dt AS endDt,
+            program.pgm_Fee AS pgmFee,
+            category.cate_Name AS cateName,
+            class_room.room_Name AS roomName,
+            professor.name AS name,
+            professor.id_Prof AS idProf
+        FROM
+            Sugang sugang
+                JOIN Program program ON sugang.id_Pgm = program.id_Pgm
+                JOIN Category category ON program.id_Cate = category.id_Cate
+                JOIN Class_Room class_room ON program.id_Room = class_room.id_Room
+                JOIN Professor professor ON program.id_Prof = professor.id_Prof
+        WHERE
+            sugang.id_student = #{idStudent}
+    </select>
+
+    <select id="findProgramById" parameterType="int" resultType="com.izo.itaportal.dto.ProgramAllDto">
+        SELECT
+            p.id_Pgm,
+            p.id_Cate,
+            p.id_Room,
+            p.id_Prof,
+            p.pgm_Name,
+            p.st_Dt,
+            p.end_Dt,
+            p.sugang_St_Dt,
+            p.sugang_End_Dt,
+            p.pgm_Target,
+            p.pgm_Method,
+            p.pgm_Per,
+            p.pgm_Fee,
+            c.cate_Name,
+            r.room_Name,
+            pr.name AS prof_Name
+        FROM
+            Program p
+                JOIN Category c ON p.id_Cate = c.id_Cate
+                JOIN class_room r ON p.id_Room = r.id_Room
+                JOIN Professor pr ON p.id_Prof = pr.id_Prof
+        WHERE
+            p.id_Pgm = #{id};
+    </select>
+
+    <select id="findProfessorById" parameterType="int" resultType="com.izo.itaportal.dto.ProgramAllDto">
+        SELECT
+            p.id_Pgm,
+            p.id_Cate,
+            p.id_Room,
+            p.id_Prof,
+            p.pgm_Name,
+            p.st_Dt,
+            p.end_Dt,
+            p.sugang_St_Dt,
+            p.sugang_End_Dt,
+            p.pgm_Target,
+            p.pgm_Method,
+            p.pgm_Per,
+            p.pgm_Fee,
+            c.cate_Name,
+            r.room_Name,
+            pr.name AS prof_Name
+        FROM
+            Program p
+                JOIN Category c ON p.id_Cate = c.id_Cate
+                JOIN class_room r ON p.id_Room = r.id_Room
+                JOIN Professor pr ON p.id_Prof = pr.id_Prof
+        WHERE
+            pr.id_Prof = #{id};
+    </select>
+
+    <select id="findProgramsByStudentId" parameterType="int" resultType="com.izo.itaportal.dto.ProgramAllDto">
+        SELECT
+            p.id_Pgm,
+            p.id_Cate,
+            p.id_Room,
+            p.id_Prof,
+            p.pgm_Name,
+            p.st_Dt,
+            p.end_Dt,
+            p.sugang_St_Dt,
+            p.sugang_End_Dt,
+            p.pgm_Target,
+            p.pgm_Method,
+            p.pgm_Per,
+            p.pgm_Fee,
+            c.cate_Name,
+            r.room_Name,
+            pr.name AS prof_Name
+        FROM
+            Program p
+                JOIN Category c ON p.id_Cate = c.id_Cate
+                JOIN class_room r ON p.id_Room = r.id_Room
+                JOIN Professor pr ON p.id_Prof = pr.id_Prof
+        WHERE
+            p.id_Pgm IN (SELECT id_Pgm FROM Sugang WHERE id_student = #{idStudent});
+    </select>
+    <select id="findProfessorsByProgramId" parameterType="int" resultType="com.izo.itaportal.dto.ProgramAllDto">
+        SELECT
+            p.id_Pgm,
+            p.id_Cate,
+            p.id_Room,
+            p.id_Prof,
+            p.pgm_Name,
+            p.st_Dt,
+            p.end_Dt,
+            p.sugang_St_Dt,
+            p.sugang_End_Dt,
+            p.pgm_Target,
+            p.pgm_Method,
+            p.pgm_Per,
+            p.pgm_Fee,
+            c.cate_Name,
+            r.room_Name,
+            pr.name AS profName,
+            pr.id_Prof
+        FROM
+            Program p
+                JOIN Category c ON p.id_Cate = c.id_Cate
+                JOIN class_room r ON p.id_Room = r.id_Room
+                JOIN Professor pr ON p.id_Prof = pr.id_Prof
+        WHERE
+            p.id_Pgm = #{id};
+    </select>
 </mapper>

@@ -18,7 +18,9 @@ public class Program {
     private String pgmMethod;  //교육방법
     private int pgmPer;     //교육 정원
     private int num_of_stu; //수강 인원
-    private int pgmFee;     //교육비
+    private String PgmDay; //강의 요일
+    private String PgmTime; //강의 시간
+    private String pgmFee;     //교육비
 
 
 }

@@ -23,12 +23,20 @@ public class CourseStatusController {
     @Autowired
     SugangService sugangService;
 
+    //관리자가 보는 수강 리스트
     @GetMapping("/list")
     public String CourseList(Model model) {
 //        model.addAttribute("prog", programService.getAllPrograms());
         model.addAttribute("sugangList",sugangService.getAllSugang());
         return "/adminProgram/courseStatus";
     }
+
+    //강좌개설의뢰 게시판
+    @GetMapping("/request")
+        public String courseRequest(){
+        return "/adminProgram/courseRequest";
+    }
+
 
     @GetMapping("/{idPgm}")
     public ResponseEntity<Program> getStartDateById(@PathVariable int idPgm) {
