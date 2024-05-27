@@ -6,7 +6,10 @@ import com.izo.itaportal.repository.SugangRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SugangService {
@@ -15,17 +18,39 @@ public class SugangService {
     SugangRepository sugangRepository;
 
     //수강 목록 출력
-    public List<ProgramAllDto> getAllProgram(){
-        return sugangRepository.findAll();
+    public List<ProgramAllDto> getAllProgram() {
+        List<ProgramAllDto> programs = sugangRepository.findAll();
+        programs.forEach(this::checkSugangClosed);
+        return programs;
     }
-
+private void checkSugangClosed(ProgramAllDto program) {
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    LocalDate endDate = LocalDate.parse(program.getSugangEndDt(), formatter);
+    boolean isClosed = LocalDate.now().isAfter(endDate);
+    program.setSugangClosed(isClosed);
+}
+    //수강신청 기간 지나면 신청 못하게 막는 기능
+    public boolean isSugangClosed(int idProgram) {
+        Optional<ProgramAllDto> programOptional = findProgramById(idProgram);
+        if (programOptional.isPresent()) {
+            ProgramAllDto programAllDto = programOptional.get();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate endDate = LocalDate.parse(programAllDto.getSugangEndDt(), formatter);
+            return LocalDate.now().isAfter(endDate);
+        }
+        return false;
+    }
+    public Optional<ProgramAllDto> findProgramById(int idProgram) {
+        ProgramAllDto program = sugangRepository.findById(idProgram);
+        return Optional.ofNullable(program);
+    }
     //프로그램 상세정보
     public ProgramAllDto getProgramDetail(int programId) {
         return sugangRepository.findById(programId);
     }
     //수강 신청
     public void applyEnrollmentRequest(int commonId, int idPgm, int idCate){
-       sugangRepository.saveSugang(commonId, idPgm, idCate);
+        sugangRepository.saveSugang(commonId, idPgm, idCate);
     }
     //수강 취소
     public boolean cancelSugang(int idPgm, int idStudent) {
