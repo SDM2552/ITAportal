@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="../css/common.css">
     <link rel="stylesheet" type="text/css" href="../css/table.css">
     <link rel="stylesheet" type="text/css" href="../css/messenger.css">
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -22,7 +23,7 @@
             <tr>
                 <th scope="row">받는 사람 ID<span class="essR">필수</span></th>
                 <td>
-                    <input type="text" id="idReceiver" name="idReceiver" value="" maxlength="50" title="받는 사람 ID 입력">
+                    <input type="text" id="receiverLoginId" name="receiverLoginId" value="" maxlength="50" title="받는 사람 ID 입력">
                 </td>
             </tr>
             <tr>
@@ -83,7 +84,8 @@
     }
 
     function loadMessengerList() {
-        parent.closeModal();
+        var modalContent = parent.document.getElementById('modalContent');
+        modalContent.innerHTML = '<iframe src="/messenger/list" width="100%" height="100%" frameborder="0"></iframe>';
     }
 </script>
 </body>

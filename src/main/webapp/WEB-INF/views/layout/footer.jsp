@@ -8,6 +8,21 @@
 <%--    <!-- //footer -->--%>
 <%--</div>--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<div id="footer">
+    <hr>
+    <!-- footerArea -->
+    <div class="footerArea">
+        <!-- Floating Button and Menu -->
+        <div class="floating-btn" onclick="toggleMenu()">
+            <span>+</span>
+        </div>
+        <div class="floating-menu" id="floatingMenu">
+            <button class="footer-menu-btn" onclick="showModal('쪽지')">쪽지</button>
+        </div>
+    </div>
+    <!-- //footerArea -->
+</div>
+
 <!-- 모달 창 -->
 <div class="modal" id="modal">
     <div class="modal-header">
@@ -19,31 +34,16 @@
     </div>
 </div>
 
-<!-- 푸터 -->
-<div id="footer">
-    <hr>
-    <div class="footerArea">
-
-
-<%--        메신저기능 일단 비활성화--%>
-<%--        <div class="footer-btn" onclick="toggleFooterMenu()">+</div>--%>
-<%--        <div id="footerMenu" class="footer-menu">--%>
-<%--            <button class="footer-menu-btn" onclick="showMessengerListModal()">메신저</button>--%>
-<%--&lt;%&ndash;            <button class="footer-menu-btn" onclick="promptAndSendSMS()">문자</button>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <button class="footer-menu-btn" onclick="promptAndSendKakaoTalk()">카카오톡</button>&ndash;%&gt;--%>
-<%--        </div>--%>
-    </div>
-</div>
-
-<!-- 모달 스크립트와 푸터 스크립트 -->
 <script>
+    var isShowingReceivedMessages = true;
+
     document.addEventListener("DOMContentLoaded", function() {
-        var menu = document.getElementById('footerMenu');
-        menu.style.display = 'none'; // 페이지 로드 시 메뉴를 닫힌 상태로 시작
+        var menu = document.getElementById('floatingMenu');
+        menu.style.display = 'none'; // 페이지 로드 시 메뉴를 닫힌 상태로 유지
     });
 
-    function toggleFooterMenu() {
-        var menu = document.getElementById('footerMenu');
+    function toggleMenu() {
+        var menu = document.getElementById('floatingMenu');
         if (menu.style.display === 'block') {
             menu.style.display = 'none';
         } else {
@@ -51,51 +51,25 @@
         }
     }
 
-    function showMessengerListModal() {
-        showModal('메신저 리스트', '/messenger/list');
-    }
-
-    function promptAndSendSMS() {
-        var phoneNumber = prompt("받는 사람의 전화번호를 입력하세요:");
-        if (phoneNumber) {
-            var message = prompt("문자 메시지를 입력하세요:");
-            if (message) {
-                alert("문자 메시지가 전송되었습니다.");
-            }
-        }
-    }
-
-    function promptAndSendKakaoTalk() {
-        var kakaoId = prompt("카카오톡 ID를 입력하세요:");
-        if (kakaoId) {
-            var message = prompt("카카오톡 메시지를 입력하세요:");
-            if (message) {
-                alert("카카오톡 메시지가 전송되었습니다.");
-            }
-        }
-    }
-
-    function showModal(title, url) {
+    function showModal(title) {
         var modal = document.getElementById('modal');
         var modalTitle = document.getElementById('modalTitle');
         var modalContent = document.getElementById('modalContent');
         modalTitle.innerText = title;
 
+        // 데스크탑일 때 모달 창을 띄우고, 모바일일 때는 페이지 이동
         if (window.innerWidth > 768) {
-            modalContent.innerHTML = '<iframe src="' + url + '" width="100%" height="100%" frameborder="0"></iframe>';
+            modalContent.innerHTML = '<iframe src="/messenger/list" width="100%" height="100%" frameborder="0"></iframe>';
             modal.style.display = 'block';
         } else {
-            window.location.href = url;
+            window.location.href = '/messenger/list';
         }
     }
 
     function closeModal() {
         var modal = document.getElementById('modal');
         modal.style.display = 'none';
-
-        var footerMenu = document.getElementById('footerMenu');
-        if (footerMenu.style.display === 'block') {
-            footerMenu.style.display = 'none';
-        }
     }
 </script>
+
+
