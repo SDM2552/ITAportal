@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    김봄이
+    강의계획서 CRUD
+
+    PK와 FK를 제외한 나머지는 Nullable 조건으로, 주차별 강의계획에서 기술 가능하도록함
+    (매주 달라질 수 있으므로)
+    -->
+
+<mapper namespace="com.izo.itaportal.repository.ClassRequestRepository">
+
+
+    <!-- 휴보강신청 입력 -->
+    <insert id="insertClassRequest" parameterType="com.izo.itaportal.model.ClassRequest">
+        INSERT INTO class_request (id_class_request, class_date, make_up_date, remarks, app_date, proc_date, id_prof, id_sched, id_pgm, id_room)
+        VALUES (#{idClassRequest}, #{classDate}, #{makeUpDate}, #{remarks}, #{app_date}, #{procDate}, #{idProf}, #{idSched}, #{idPgm}, #{idRoom})
+    </insert>
+
+    <!-- 휴보강신청 수정 -->
+    <update id="updateClassRequest" parameterType="com.izo.itaportal.model.ClassRequest">
+        UPDATE class_request
+        SET
+            class_date = #{classDate},
+            make_up_date = #{makeUpDate},
+            remarks = #{remarks},
+            app_date = #{appDate},
+            proc_date = #{procDate}
+        WHERE id_class_request = #{idClassRequest}
+    </update>
+
+    <!-- 휴보강신청 내역 불러오기 -->
+    <select id="selectClassRequest" parameterType="integer" resultType="com.izo.itaportal.model.ClassRequest">
+        SELECT
+            cr.id_class_request,
+            cr.class_date,
+            cr.make_up_date,
+            cr.remarks,
+            cr.app_date,
+            cr.proc_date,
+            s.day_sched,
+            pg.pgm_name,
+            c.room_name
+        FROM class_request cr
+                 JOIN schedule s ON cr.id_sched = s.id_sched
+                 JOIN program pg ON cr.id_pgm = pg.id_pgm
+                 JOIN class_room c ON cr.id_room = c.id_room
+        WHERE cr.id_pgm = #{idPgm}
+    </select>
+
+
+</mapper>

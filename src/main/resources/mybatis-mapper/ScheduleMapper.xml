@@ -49,6 +49,11 @@
         SELECT * FROM schedule WHERE id_pgm=#{idPgm}
     </select>
 
+    <!-- 주차별 강의계획서 조회(by idSched) -->
+    <select id="selectScheduleByIdSched" parameterType="integer" resultType="String">
+        SELECT day_sched FROM schedule WHERE id_pgm=#{idPgm} and id_sched=#{idSched}
+    </select>
+
 
 
 </mapper>
