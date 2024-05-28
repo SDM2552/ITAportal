@@ -46,6 +46,7 @@ public class ProgramService {
     }
 
 
+
     //어드민-신청대기신청취소신청완료
     // 추가된 메서드
     public Program getProgramById(int idPgm) {
