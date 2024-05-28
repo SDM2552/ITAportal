@@ -108,6 +108,19 @@
                     </tbody>
                 </table>
 
+                <!-- 페이징 네비게이션 -->
+                <div class="pagination">
+                    <c:if test="${currentPage > 1}">
+                        <a href="?page=${currentPage - 1}">&laquo; 이전</a>
+                    </c:if>
+                    <c:forEach var="i" begin="1" end="${totalPages}">
+                        <a href="?page=${i}" class="${i == currentPage ? 'active' : ''}">${i}</a>
+                    </c:forEach>
+                    <c:if test="${currentPage < totalPages}">
+                        <a href="?page=${currentPage + 1}">다음 &raquo;</a>
+                    </c:if>
+                </div>
+
                 <a href="/progInput">
                     <button style="float: right;">추가</button>
                 </a>

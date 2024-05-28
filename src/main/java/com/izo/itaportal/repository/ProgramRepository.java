@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Select;
 import java.util.List;
 
 @Mapper
-public interface ProgramRepository {
+public interface ProgramRepository  {
     public List<Program> selectProgram();
 
     public Program selectProgramById(int idPgm);
