@@ -16,7 +16,7 @@
                 </c:when>
                 <c:otherwise>
                 <a href="/user/signUp">회원가입</a>
-                <a href="#">로그인</a>
+                <a href="/user/loginPage">로그인</a>
                 </c:otherwise>
                 </c:choose>
                 <a href="#">사이트맵</a>
