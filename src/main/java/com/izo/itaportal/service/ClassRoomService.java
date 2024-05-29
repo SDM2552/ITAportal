@@ -23,7 +23,15 @@ public class ClassRoomService {
 
     public ClassRoom getClassRoomById(int idRoom) {
         return classRoomRepository.selectClassRoomById(idRoom);
+    }
 
+    public int countAllClassRooms(){
+        return classRoomRepository.countAllClassRooms();
+    }
+
+    public List<ClassRoom> getClassRoomsPerPage(int page, int pageSize) {
+        int offset = (page - 1) * pageSize;
+        return classRoomRepository.getClassRoomsPerPage(offset, pageSize);
     }
 
     public int insertClassRoom(ClassRoom classRoom) {

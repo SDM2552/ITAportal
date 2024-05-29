@@ -3,66 +3,76 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.izo.itaportal.repository.ProgramRepository">
     <select id="selectProgram" resultType="com.izo.itaportal.model.Program">
-        select * from program order by id_pgm desc
+        select *
+        from program
+        order by id_pgm desc
+    </select>
+
+    <select id="countAllPrograms" resultType="int">
+        SELECT COUNT(*)
+        FROM program
+    </select>
+
+    <select id="getProgramsPerPage" parameterType="map" resultType="com.izo.itaportal.model.Program">
+        SELECT *
+        FROM program
+        ORDER BY id_pgm
+            LIMIT #{offset}, #{pageSize}
     </select>
 
     <select id="selectProgramById" resultType="com.izo.itaportal.dto.ProgramAllDto">
-        SELECT
-            p.id_Pgm,
-            p.id_Cate,
-            p.id_Room,
-            p.id_Prof,
-            p.pgm_Name,
-            p.st_Dt,
-            p.end_Dt,
-            p.sugang_St_Dt,
-            p.sugang_End_Dt,
-            p.pgm_Target,
-            p.pgm_Method,
-            p.pgm_Per,
-            p.pgm_Fee,
-            p.num_of_stu,
-            c.cate_Name,
-            r.room_Name,
-            pr.name AS prof_Name
-        FROM
-            Program p
-                JOIN Category c ON p.id_Cate = c.id_Cate
-                JOIN class_room r ON p.id_Room = r.id_Room
-                JOIN Professor pr ON p.id_Prof = pr.id_Prof
-        WHERE
-            p.id_pgm = #{idPgm}
+        SELECT p.id_Pgm,
+               p.id_Cate,
+               p.id_Room,
+               p.id_Prof,
+               p.pgm_Name,
+               p.st_Dt,
+               p.end_Dt,
+               p.sugang_St_Dt,
+               p.sugang_End_Dt,
+               p.pgm_Target,
+               p.pgm_Method,
+               p.pgm_Per,
+               p.pgm_Fee,
+               p.num_of_stu,
+               c.cate_Name,
+               r.room_Name,
+               pr.name AS prof_Name,
+               p.pgm_day,
+               p.pgm_time
+        FROM Program p
+                 JOIN Category c ON p.id_Cate = c.id_Cate
+                 JOIN class_room r ON p.id_Room = r.id_Room
+                 JOIN Professor pr ON p.id_Prof = pr.id_Prof
+        WHERE p.id_pgm = #{idPgm}
     </select>
 
     <select id="selectProgramDetail" parameterType="integer" resultType="com.izo.itaportal.dto.ProgramAllDto">
-        SELECT
-            p.id_Pgm,
-            p.id_Cate,
-            p.id_Room,
-            p.id_Prof,
-            p.pgm_Name,
-            p.st_Dt,
-            p.end_Dt,
-            p.sugang_St_Dt,
-            p.sugang_End_Dt,
-            p.pgm_Target,
-            p.pgm_Method,
-            p.pgm_Per,
-            p.pgm_Fee,
-            p.num_of_stu,
-            c.cate_Name,
-            r.room_Name,
-            pr.name AS prof_Name
-        FROM
-            Program p
-                JOIN
-            Category c ON p.id_Cate = c.id_Cate
-                JOIN
-            class_room r ON p.id_Room = r.id_Room
-                JOIN
-            Professor pr ON p.id_Prof = pr.id_Prof
-        WHERE
-            p.id_pgm = #{idPgm};
+        SELECT p.id_Pgm,
+               p.id_Cate,
+               p.id_Room,
+               p.id_Prof,
+               p.pgm_Name,
+               p.st_Dt,
+               p.end_Dt,
+               p.sugang_St_Dt,
+               p.sugang_End_Dt,
+               p.pgm_Target,
+               p.pgm_Method,
+               p.pgm_Per,
+               p.pgm_Fee,
+               p.num_of_stu,
+               c.cate_Name,
+               r.room_Name,
+               pr.name AS prof_Name
+        FROM Program p
+                 JOIN
+             Category c ON p.id_Cate = c.id_Cate
+                 JOIN
+             class_room r ON p.id_Room = r.id_Room
+                 JOIN
+             Professor pr ON p.id_Prof = pr.id_Prof
+        WHERE p.id_pgm = #{idPgm};
     </select>
 
     <insert id="insert">
@@ -82,102 +92,100 @@
                              pgm_day,
                              pgm_time,
                              pgm_fee)
-                    values (#{idPgm},#{idCate},#{idProf},#{pgmName},#{stDt},#{endDt},#{sugangStDt},#{sugangEndDt},
-                                 #{pgmTarget},#{idRoom},#{pgmMethod},#{pgmPer},0,#{pgmDay},#{pgmTime},#{pgmFee})
+        values (#{idPgm}, #{idCate}, #{idProf}, #{pgmName}, #{stDt}, #{endDt}, #{sugangStDt}, #{sugangEndDt},
+                #{pgmTarget}, #{idRoom}, #{pgmMethod}, #{pgmPer}, 0, #{pgmDay}, #{pgmTime}, #{pgmFee})
 
     </insert>
     <update id="update">
         update program
-            set id_cate = #{idCate},
+        set id_cate       = #{idCate},
 
-            pgm_name = #{pgmName},
-            st_dt = #{stDt},
-            end_dt = #{endDt},
-            sugang_st_dt = #{sugangStDt},
+            pgm_name      = #{pgmName},
+            st_dt         = #{stDt},
+            end_dt        = #{endDt},
+            sugang_st_dt  = #{sugangStDt},
             sugang_end_dt = #{sugangEndDt},
-            pgm_target = #{pgmTarget},
-            id_room = #{idRoom},
-            pgm_method = #{pgmMethod},
-            pgm_per = #{pgmPer},
-            pgm_fee = #{pgmFee},
-            pgm_day = #{pgmDay},
-            pgm_time = #{pgmTime},
-            id_prof = #{idProf},
-                num_of_stu = 0
+            pgm_target    = #{pgmTarget},
+            id_room       = #{idRoom},
+            pgm_method    = #{pgmMethod},
+            pgm_per       = #{pgmPer},
+            pgm_fee       = #{pgmFee},
+            pgm_day       = #{pgmDay},
+            pgm_time      = #{pgmTime},
+            id_prof       = #{idProf},
+            num_of_stu    = 0
         where id_pgm = #{idPgm}
     </update>
 
     <delete id="delete">
-        delete from program
+        delete
+        from program
         where id_pgm = #{idPgm}
     </delete>
 
 
     <!-- 강사용 강의리스트 조회 쿼리 @김봄이 -->
     <select id="selectPgmForProf" parameterType="integer" resultType="com.izo.itaportal.model.Program">
-        SELECT * FROM program WHERE id_prof=#{idProf}
+        SELECT *
+        FROM program
+        WHERE id_prof = #{idProf}
     </select>
 
     <select id="selectAllPgm" parameterType="integer" resultType="com.izo.itaportal.dto.ProgramAllDto">
-        SELECT
-            p.id_Pgm,
-            p.id_Cate,
-            p.id_Room,
-            p.id_Prof,
-            p.pgm_Name,
-            p.st_Dt,
-            p.end_Dt,
-            p.sugang_St_Dt,
-            p.sugang_End_Dt,
-            p.pgm_Target,
-            p.pgm_Method,
-            p.pgm_Per,
-            p.pgm_Fee,
-            p.pgm_day,
-            p.pgm_time,
-            c.cate_Name,
-            r.room_Name,
-            pr.name AS prof_Name
-        FROM
-            Program p
-                JOIN
-            Category c ON p.id_Cate = c.id_Cate
-                JOIN
-            class_room r ON p.id_Room = r.id_Room
-                JOIN
-            Professor pr ON p.id_Prof = pr.id_Prof
-        WHERE
-            p.id_Prof = #{idProf};
+        SELECT p.id_Pgm,
+               p.id_Cate,
+               p.id_Room,
+               p.id_Prof,
+               p.pgm_Name,
+               p.st_Dt,
+               p.end_Dt,
+               p.sugang_St_Dt,
+               p.sugang_End_Dt,
+               p.pgm_Target,
+               p.pgm_Method,
+               p.pgm_Per,
+               p.pgm_Fee,
+               p.pgm_day,
+               p.pgm_time,
+               c.cate_Name,
+               r.room_Name,
+               pr.name AS prof_Name
+        FROM Program p
+                 JOIN
+             Category c ON p.id_Cate = c.id_Cate
+                 JOIN
+             class_room r ON p.id_Room = r.id_Room
+                 JOIN
+             Professor pr ON p.id_Prof = pr.id_Prof
+        WHERE p.id_Prof = #{idProf};
     </select>
     <select id="selectPgmDetail" resultType="com.izo.itaportal.dto.ProgramAllDto">
-        SELECT
-            p.id_Pgm,
-            p.id_Cate,
-            p.id_Room,
-            p.id_Prof,
-            p.pgm_Name,
-            p.st_Dt,
-            p.end_Dt,
-            p.sugang_St_Dt,
-            p.sugang_End_Dt,
-            p.pgm_Target,
-            p.pgm_Method,
-            p.pgm_Per,
-            p.num_of_stu,
-            p.pgm_day,
-            p.pgm_time,
-            p.pgm_Fee,
+        SELECT p.id_Pgm,
+               p.id_Cate,
+               p.id_Room,
+               p.id_Prof,
+               p.pgm_Name,
+               p.st_Dt,
+               p.end_Dt,
+               p.sugang_St_Dt,
+               p.sugang_End_Dt,
+               p.pgm_Target,
+               p.pgm_Method,
+               p.pgm_Per,
+               p.num_of_stu,
+               p.pgm_day,
+               p.pgm_time,
+               p.pgm_Fee,
 
-            c.cate_Name,
-            r.room_Name,
-            pr.name AS prof_Name
-        FROM
-            Program p
-                JOIN Category c ON p.id_Cate = c.id_Cate
-                JOIN class_room r ON p.id_Room = r.id_Room
-                JOIN Professor pr ON p.id_Prof = pr.id_Prof
-        WHERE
-            p.id_Prof = #{idProf} AND p.id_Pgm = #{idPgm}
+               c.cate_Name,
+               r.room_Name,
+               pr.name AS prof_Name
+        FROM Program p
+                 JOIN Category c ON p.id_Cate = c.id_Cate
+                 JOIN class_room r ON p.id_Room = r.id_Room
+                 JOIN Professor pr ON p.id_Prof = pr.id_Prof
+        WHERE p.id_Prof = #{idProf}
+          AND p.id_Pgm = #{idPgm}
     </select>
 
 

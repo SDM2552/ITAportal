@@ -75,7 +75,7 @@
                             <th scope="col">강사코드</th>
                             <td colspan="3">
 
-                                <input type="text" class="form-control" id="name" placeholder="강사명" name="name" value="${pr.name}" readonly>
+                                <input type="text" class="form-control" id="name" placeholder="강사명" name="name" value="${pr.profName}" readonly>
                                 <button type="button" onclick="openPopup3()">검색</button>
                                 <input type="hidden" id="idProf" name="idProf" value="${pr.idProf}">
 
@@ -129,7 +129,7 @@
                             <th scope="col">교육방법</th>
                             <td colspan="3">
                                 <select class="form-control" id="pgmMethod" name="pgmMethod">
-                                    <option value="">선택하세요</option>
+                                    <option value="${pr.pgmMethod}">${pr.pgmMethod}</option>
                                     <option value="온라인">온라인</option>
                                     <option value="오프라인">오프라인</option>
                                 </select>

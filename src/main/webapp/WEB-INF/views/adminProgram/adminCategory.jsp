@@ -63,7 +63,7 @@
                 alert('잘못된 페이지 번호입니다.');
                 return;
             }
-            window.location.href = '/adminProgram?page=' + page + '&keyword=' + keyword;
+            window.location.href = '/adminCategory?page=' + page + '&keyword=' + keyword;
         }
     </script>
     <title>교육과정관리</title>
@@ -85,11 +85,11 @@
             <span class="on">강의 관리 <i class="fa-solid fa-angle-right"></i></span><span class="on"> 교육과정관리</span>
             <!-- //location -->
 
-            <h3 class="pgTit">강의실관리</h3>
+            <h3 class="pgTit">카테고리관리</h3>
 
             <!-- 본문 -->
-            <h4 class="subTit">강의실</h4>
-            <div class="tblData mt10" >
+            <h4 class="subTit">카테고리</h4>
+            <div class="tblData mt10">
                 <table>
                     <colgroup>
                         <col width="15%">
@@ -99,18 +99,18 @@
                     <thead>
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">강의실명</th>
+                        <th scope="col">카테고리명</th>
                         <th scope="col">변경</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach var="cr" items="${classRoom}">
+                    <c:forEach var="category" items="${cate}">
                         <tr>
-                            <td>${cr.idRoom}</td>
-                            <td>${cr.roomName}</td>
+                            <td>${category.idCate}</td>
+                            <td>${category.cateName}</td>
                             <td class="actions">
-                                <a href="classRoomUpdateInput?idRoom=${cr.idRoom}">수정</a>
-                                <a href="classRoomDelete?idRoom=${cr.idRoom}">삭제</a>
+                                <a href="categoryUpdateInput?idCate=${category.idCate}">수정</a>
+                                <a href="categoryDelete?idCate=${category.idCate}">삭제</a>
                             </td>
                         </tr>
                     </c:forEach>
@@ -121,7 +121,7 @@
             <!-- 페이징 네비게이션 -->
             <div class="pagination-wrapper">
                 <div class="pagination">
-                    <a href="/adminClassRoom?page=1&keyword=${keyword}">처음</a>
+                    <a href="/adminCategory?page=1&keyword=${keyword}">처음</a>
                     <c:if test="${currentPage > 1}">
                         <a href="?page=${currentPage - 1}">&laquo; 이전</a>
                     </c:if>
@@ -132,12 +132,12 @@
                         <a href="?page=${currentPage + 1}">다음 &raquo;</a>
                     </c:if>
 
-                    <a href="/adminClassRoom?page=${totalPages}&keyword=${keyword}">끝</a>
+                    <a href="/adminCategory?page=${totalPages}&keyword=${keyword}">끝</a>
                     <input type="number" id="pageInput" style="width: 50px;" min="1" max="${totalPages}" value="${currentPage}">
                     <button onclick="goToPage()">이동</button>
                 </div>
 
-                <a href="/classRoomInput" class="add-button">
+                <a href="/categoryInput" class="add-button">
                     <button>추가</button>
                 </a>
             </div>

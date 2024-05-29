@@ -10,6 +10,17 @@
         select id_cate,cate_name from category where id_cate=#{idCate}
     </select>
 
+    <select id="countAllCategories" resultType="int">
+        SELECT COUNT(*)
+        FROM category
+    </select>
+
+    <select id="getCategoriesPerPage" parameterType="map" resultType="com.izo.itaportal.model.Category">
+        SELECT *
+        FROM category
+        ORDER BY id_cate
+            LIMIT #{offset}, #{pageSize}
+    </select>
 
     <insert id="insert">
         insert into category (id_cate,

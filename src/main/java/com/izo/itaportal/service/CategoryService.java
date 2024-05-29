@@ -4,6 +4,7 @@ package com.izo.itaportal.service;
 
 import com.izo.itaportal.model.Category;
 import com.izo.itaportal.model.ClassRoom;
+import com.izo.itaportal.model.Program;
 import com.izo.itaportal.repository.CategoryRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,15 @@ public class CategoryService {
     public Category getCategoryById(int idCate) {
         return categoryRepository.selectCategoryById(idCate);
 
+    }
+
+    public int countAllCategories(){
+        return categoryRepository.countAllCategories();
+    }
+
+    public List<Category> getCategoriesPerPage(int page, int pageSize) {
+        int offset = (page - 1) * pageSize;
+        return categoryRepository.getCategoriesPerPage(offset, pageSize);
     }
 
     public int insertCategory(Category category) {

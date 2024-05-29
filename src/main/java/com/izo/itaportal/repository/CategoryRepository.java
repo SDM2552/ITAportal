@@ -3,6 +3,7 @@ package com.izo.itaportal.repository;
 
 import com.izo.itaportal.model.Category;
 
+import com.izo.itaportal.model.Program;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -14,5 +15,8 @@ public interface CategoryRepository {
     public int insert(Category category);
     public int update(Category category);
     public int delete(int idCate);
+    public int countAllCategories();
+
+    public List<Category> getCategoriesPerPage(int offset, int pageSize);
 
 }
