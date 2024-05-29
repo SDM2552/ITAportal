@@ -54,21 +54,34 @@
                         <tr>
                             <th scope="col">주제분류코드</th>
                             <td colspan="3">
-                                <input type="text" class="form-control" id="idCate" placeholder="주제분류코드" value="${pr.idCate}" name="idCate">
+
+                                <input type="text" class="form-control" id="cateName" placeholder="주제분류명" name="cateName" value="${pr.cateName}" readonly>
+                                <button type="button" onclick="openPopup1()">검색</button>
+                                <input type="hidden" id="idCate" name="idCate" value="${pr.idCate}">
+
                             </td>
                         </tr>
                         <tr>
                             <th scope="col">강의실코드</th>
                             <td colspan="3">
-                                <input type="text" class="form-control" id="idRoom" placeholder="강의실코드" value="${pr.idRoom}" name="idRoom">
+
+                                <input type="text" class="form-control" id="roomName" placeholder="강의실명" name="roomName" value="${pr.roomName}" readonly>
+                                <button type="button" onclick="openPopup2()">검색</button>
+                                <input type="hidden" id="idRoom" name="idRoom" value="${pr.idRoom}">
+
                             </td>
                         </tr>
                         <tr>
                             <th scope="col">강사코드</th>
                             <td colspan="3">
-                                <input type="text" class="form-control" id="idProf" placeholder="강사코드" value="${pr.idProf}" name="idProf">
+
+                                <input type="text" class="form-control" id="name" placeholder="강사명" name="name" value="${pr.name}" readonly>
+                                <button type="button" onclick="openPopup3()">검색</button>
+                                <input type="hidden" id="idProf" name="idProf" value="${pr.idProf}">
+
                             </td>
                         </tr>
+
                         <tr>
                             <th scope="col">프로그램명</th>
                             <td colspan="3">
@@ -95,6 +108,17 @@
                                 <input type="date" class="form-control" id="sugangEndDt" placeholder="접수종료일자" value="${pr.sugangEndDt}" name="sugangEndDt">
                             </td>
                         </tr>
+                        <tr>
+                            <th scope="col">강의 요일</th>
+                            <td>
+                                <input type="text" class="form-control" id="pgmDay" placeholder="강의 요일" value="${pr.pgmDay}" name="pgmDay">
+                            </td>
+                            <th scope="col">강의시간</th>
+                            <td>
+                                <input type="text" class="form-control" id="pgmTime" placeholder="강의 시간" value="${pr.pgmTime}" name="pgmTime">
+                            </td>
+                        </tr>
+
                         <tr>
                             <th scope="col">교육대상</th>
                             <td colspan="3">
@@ -138,7 +162,34 @@
             <!-- 본문 끝 -->
         </div>
         <!-- //contents -->
-    </div>
+    </div><script>
+    function openPopup1() {
+
+        window.open(
+            "/catePopUp", // 팝업창에 표시할 페이지 경로
+            "popupWindow", // 팝업창의 이름
+            "width=600,height=600,scrollbars=yes,resizable=yes" // 팝업창의 특성 (너비, 높이, 스크롤바, 크기 조정 가능 여부)
+        );
+    }
+</script>
+    <script>
+        function openPopup2() {
+            window.open(
+                "/classRoomPopUp", // 팝업창에 표시할 페이지 경로
+                "popupWindow", // 팝업창의 이름
+                "width=600,height=600,scrollbars=yes,resizable=yes" // 팝업창의 특성 (너비, 높이, 스크롤바, 크기 조정 가능 여부)
+            );
+        }
+    </script>
+    <script>
+        function openPopup3() {
+            window.open(
+                "/profPopUp", // 팝업창에 표시할 페이지 경로
+                "popupWindow", // 팝업창의 이름
+                "width=600,height=600,scrollbars=yes,resizable=yes" // 팝업창의 특성 (너비, 높이, 스크롤바, 크기 조정 가능 여부)
+            );
+        }
+    </script>
 
     <!-- footer -->
     <c:import url="../layout/footer.jsp" />

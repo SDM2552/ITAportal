@@ -96,8 +96,8 @@ public class ProgController {
     }
 
     @GetMapping("/progUpdateInput")
-    public String progUpdateInput(int idPgm,Model model) {
-        model.addAttribute("pr",programService.selectCategoryById(idPgm));
+    public String progUpdateInput(Integer idPgm,Model model) {
+        model.addAttribute("pr",programService.selectProgramById(idPgm));
         return "adminProgram/progUpdateInput";
     }
 
