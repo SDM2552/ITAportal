@@ -47,6 +47,14 @@ public class ProgramService {
         return deleteProgram;
     }
 
+    public int countAllPrograms() {
+        return programRepository.countAllPrograms();
+    }
+    public List<Program> getProgramsPerPage(int page, int pageSize) {
+        int offset = (page - 1) * pageSize;
+        return programRepository.getProgramsPerPage(offset, pageSize);
+    }
+
 
 
     //어드민-신청대기신청취소신청완료

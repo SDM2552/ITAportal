@@ -18,6 +18,10 @@ public interface ProgramRepository  {
 
     public ProgramAllDto selectProgramDetail(int idPgm);
 
+    public int countAllPrograms();
+
+    public List<Program> getProgramsPerPage(int offset, int pageSize);
+
     public int insert(Program program);
 
     public int update(Program program);

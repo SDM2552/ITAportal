@@ -10,6 +10,18 @@
         select * from class_room where id_room=#{idRoom}
     </select>
 
+    <select id="countAllClassRooms" resultType="int">
+        SELECT COUNT(*)
+        FROM class_room
+    </select>
+
+    <select id="getClassRoomsPerPage" parameterType="map" resultType="com.izo.itaportal.model.ClassRoom">
+        SELECT *
+        FROM class_room
+        ORDER BY id_room
+            LIMIT #{offset}, #{pageSize}
+    </select>
+
     <insert id="insert">
         insert into class_room (id_room,
                              room_name)
