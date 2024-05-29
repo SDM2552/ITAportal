@@ -52,9 +52,7 @@
     </style>
     <script>
         function selectCategory(idCate, cateName) {
-            window.opener.document.getElementById('idCate').value = cateName;
             window.opener.document.getElementById('idCate').value = idCate;
-            window.opener.document.getElementById('cateName').value = idCate;
             window.opener.document.getElementById('cateName').value = cateName;
             window.close();
         }

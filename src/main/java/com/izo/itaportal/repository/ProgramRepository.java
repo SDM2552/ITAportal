@@ -14,7 +14,7 @@ import java.util.List;
 public interface ProgramRepository  {
     public List<Program> selectProgram();
 
-    public Program selectProgramById(int idPgm);
+    public ProgramAllDto selectProgramById(int idPgm);
 
     public ProgramAllDto selectProgramDetail(int idPgm);
 

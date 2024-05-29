@@ -6,8 +6,32 @@
         select * from program order by id_pgm desc
     </select>
 
-    <select id="selectProgramById" resultType="com.izo.itaportal.model.Program">
-        select * from program where id_pgm=#{idPgm}
+    <select id="selectProgramById" resultType="com.izo.itaportal.dto.ProgramAllDto">
+        SELECT
+            p.id_Pgm,
+            p.id_Cate,
+            p.id_Room,
+            p.id_Prof,
+            p.pgm_Name,
+            p.st_Dt,
+            p.end_Dt,
+            p.sugang_St_Dt,
+            p.sugang_End_Dt,
+            p.pgm_Target,
+            p.pgm_Method,
+            p.pgm_Per,
+            p.pgm_Fee,
+            p.num_of_stu,
+            c.cate_Name,
+            r.room_Name,
+            pr.name AS prof_Name
+        FROM
+            Program p
+                JOIN Category c ON p.id_Cate = c.id_Cate
+                JOIN class_room r ON p.id_Room = r.id_Room
+                JOIN Professor pr ON p.id_Prof = pr.id_Prof
+        WHERE
+            p.id_pgm = #{idPgm}
     </select>
 
     <select id="selectProgramDetail" parameterType="integer" resultType="com.izo.itaportal.dto.ProgramAllDto">
@@ -64,22 +88,22 @@
     </insert>
     <update id="update">
         update program
-        set pgm_name = #{pgmName},
-            id_cate = #{idCate},
+            set id_cate = #{idCate},
+
             pgm_name = #{pgmName},
-            st_dt=#{stDt},
-            end_dt=#{endDt},
+            st_dt = #{stDt},
+            end_dt = #{endDt},
             sugang_st_dt = #{sugangStDt},
             sugang_end_dt = #{sugangEndDt},
-            pgm_target=#{pgmTarget},
-            id_room=#{idRoom},
-            pgm_method=#{pgmMethod},
-            pgm_per=#{pgmPer},
-            pgm_fee=#{pgmFee},
-            pgm_day=#{pgmDay},
-            pgm_time=#{pgmTime},
-            id_prof=#{idProf}
-
+            pgm_target = #{pgmTarget},
+            id_room = #{idRoom},
+            pgm_method = #{pgmMethod},
+            pgm_per = #{pgmPer},
+            pgm_fee = #{pgmFee},
+            pgm_day = #{pgmDay},
+            pgm_time = #{pgmTime},
+            id_prof = #{idProf},
+                num_of_stu = 0
         where id_pgm = #{idPgm}
     </update>
 

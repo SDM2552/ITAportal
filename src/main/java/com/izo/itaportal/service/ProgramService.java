@@ -21,12 +21,14 @@ public class ProgramService {
         return programs;
     }
 
-    public Program selectCategoryById(int idPgm) {
+
+
+    public ProgramAllDto selectProgramById(Integer idPgm) {
         return programRepository.selectProgramById(idPgm);
 
     }
 
-    public ProgramAllDto selectProgramDetail(int idPgm) {
+    public ProgramAllDto selectProgramDetail(Integer idPgm) {
         return programRepository.selectProgramDetail(idPgm);
     }
 
@@ -40,7 +42,7 @@ public class ProgramService {
         return updateProgram;
     }
 
-    public int deleteProgram(int idPgm) {
+    public int deleteProgram(Integer idPgm) {
         int deleteProgram = programRepository.delete(idPgm);
         return deleteProgram;
     }
