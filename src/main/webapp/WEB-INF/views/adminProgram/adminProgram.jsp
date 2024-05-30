@@ -49,7 +49,7 @@
             margin-left: 180px;
             color: white; /* 글자 색상 흰색으로 설정 */
             background-color: #005e93; /* 버튼 배경 색상 (예시) */
-            border: none;
+            border: 1px solid black; /* 검정색 테두리 추가 */
             padding: 8px;
             cursor: pointer;
             font-size: 13px;
@@ -102,8 +102,8 @@
                         <col width="20%">
                         <col width="30%">
                         <col width="16%">
-                        <col width="10%">
-                        <col width="15%">
+                        <col width="12.5%">
+                        <col width="12.5%">
                         <col width="15%">
                     </colgroup>
                     <thead>

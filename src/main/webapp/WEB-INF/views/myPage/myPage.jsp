@@ -48,7 +48,7 @@
                     <th>생년월일</th>
                     <td>
                         <form id="updateForm1" action="/user/updateInfo" method="post">
-                            <input type="date" name="birth" value="${user.birth}"/>
+                            <input type="date" name="birth" id="birth" value="${user.birth}"/>
                             <input type="hidden" name="idUser" value="${user.idUser}"/>
                             <input type="hidden" name="tel" value="${user.tel}"/>
                             <input type="hidden" name="address" value="${user.address}"/>
@@ -125,6 +125,7 @@
                 </div>
                 <div class="modal-body">
                     정보가 변경되었습니다.
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" onclick="redirectToLogin()">확인</button>
@@ -135,6 +136,7 @@
 
     <script>
         function showModal(formId) {
+
             $('#confirmBtn').attr('onclick', 'submitForm("' + formId + '")');
             $('#confirmationModal').modal('show');
         }

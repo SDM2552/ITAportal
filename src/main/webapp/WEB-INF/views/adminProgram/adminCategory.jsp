@@ -58,7 +58,7 @@
             margin-left: 160px;
             color: white; /* 글자 색상 흰색으로 설정 */
             background-color: #005e93; /* 버튼 배경 색상 (예시) */
-            border: none;
+            border: 1px solid black; /* 검정색 테두리 추가 */
             padding: 8px;
             cursor: pointer;
             font-size: 13px;
