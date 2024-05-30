@@ -56,7 +56,7 @@
             </table><br>
             <h4 class="subTit">휴보강 신청</h4>
             <div class="tblData mt10">
-                <form method="post" action="/submitClassRequest">
+                <form id="classRequestForm" method="post" action="/prof/classRequest">
                 <table>
                     <colgroup>
                         <col width="20%">
@@ -68,6 +68,7 @@
                     <tr>
                         <th scope="col">강의 주차</th>
                         <td><select id="idSched" name="idShced" onchange="idshcedChange(this.value, ${programInfo.idPgm})">
+                            <option value="" selected disabled hidden>선택</option>
                             <c:forEach var="i" begin="1" end="${maxIdSched}">
                                 <option value="${i}">${i}</option>
                             </c:forEach>
@@ -75,7 +76,8 @@
                     </tr>
                     <tr>
                         <th scope="col">기존 강의 일자</th>
-                        <td><div id="classDate" name="classDate"></div></td>
+                        <td><div id="classDateForm" name="classDateForm"></div>
+                            <input type="hidden" id="classDate" name="classDate" value=""></td>
                         <th scope="col">기존 강의실</th>
                         <td>
                             <input type="text" value="${programInfo.roomName}" readonly style="width: 100%;">
@@ -87,8 +89,10 @@
                             <input type="date" name="makeUpDate" style="width: 100%;">
                         </td>
                         <th scope="col">보강 강의실</th>
-                        <td>
-                            <input type="text" name="idRoom" style="width: 100%;">
+                        <td><select id="idRoom" name="idRoom" style="width: 100%;">
+                            <option value="" selected disabled hidden>선택</option>
+                            <c:forEach var="room" items="${classRoom}">
+                            <option value="${room.idRoom}">${room.roomName}</option></c:forEach>
                         </td>
                     </tr>
                     <tr>
@@ -105,8 +109,7 @@
                         <td>
                         </td>
                     </tr>
-                    <input type="hidden" name="idProf" value="">
-                    <input type="hidden" name="idSched" value="">
+                    <input type="hidden" name="idProf" value="${programInfo.idProf}">
                     <input type="hidden" name="idPgm" value="${programInfo.idPgm}">
 
                     </tbody>
@@ -115,7 +118,7 @@
             </div>
             <!-- btn -->
             <div class="btnArea">
-                <button type="submit" class="btns btnSt01">
+                <button type="submit" class="btns btnSt01" onclick="submitForm()">
                     <span>생성</span>
                 </button>
                 <button type="button" class="btns btnSt02" onclick="history.back();">
@@ -177,22 +180,28 @@
 </div>
 <script>
     function idshcedChange(idSched, idPgm) {
-        console.log({ idSched: idSched, idPgm: idPgm });
         $.ajax({
-            url : `/prof/getDaySched`,
-            type : 'post',
-            contentType : 'application/json; charset=utf-8',
-            dataType : 'json',
-            data : JSON.stringify({idSched: idSched, idPgm: idPgm}),
-            async : false,
-            success : function (daySched) {
-                console.log(daySched);
-                $('#classDate').text(daySched); // response 값을 classDate 요소의 내용으로 설정
+            url: '/prof/getDaySched',
+            type: 'POST',
+            data: {
+                idSched: idSched,
+                idPgm: idPgm
             },
-            error : function (request, status, error) {
-
+            success: function(daySched) {
+                if(!daySched){
+                    alert('강의 날짜가 입력되지 않았습니다. 주차별 강의계획을 먼저 입력해주세요.')
+                }
+                $('#classDateForm').text(daySched);
+                $('#classDate').val(daySched);
+            },
+            error: function(request, status, error) {
+                console.error("Error: ", error);
             }
         });
+    }
+
+    function submitForm(){
+        document.getElementById('classRequestForm').submit();
     }
 </script>
 

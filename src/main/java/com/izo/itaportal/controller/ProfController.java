@@ -5,6 +5,7 @@ import com.izo.itaportal.dto.ExamListDto;
 import com.izo.itaportal.dto.ProgramAllDto;
 import com.izo.itaportal.model.*;
 import com.izo.itaportal.service.ExamService;
+import com.izo.itaportal.service.ClassRoomService;
 import com.izo.itaportal.service.ProfessorService;
 import com.izo.itaportal.service.ScheduleService;
 import com.izo.itaportal.service.SyllabusService;
@@ -31,6 +32,7 @@ public class ProfController {
     private final SyllabusService syllabusService;
     private final ProfessorService professorService;
     private final ScheduleService scheduleService;
+    private final ClassRoomService classRoomService;
 
     @Autowired
     HttpSession session;
@@ -107,31 +109,27 @@ public class ProfController {
     public String classRequestForm(@RequestParam("idPgm") int idPgm, Model model){
         ProgramView programInfo = syllabusService.selectJoinPgmByidPgm(idPgm);
         long maxIdSched = scheduleService.calculateWeekBetween(programInfo.getStDt(),programInfo.getEndDt());
+        List<ClassRoom> classRooms = classRoomService.getAllClassRoom();
         model.addAttribute("programInfo",programInfo);
         model.addAttribute("maxIdSched",maxIdSched);
         model.addAttribute("classRequest", professorService.selectClassRequest(idPgm));
+        model.addAttribute("classRoom", classRooms);
         return "prof/requestProg";
     }
 
     //주차별 강의계획서상 강의 날짜 조회
     @PostMapping("/getDaySched")
-    @ResponseBody
-    public String getDayShced(@RequestBody Map<String, Integer> params){
-        int idPgm = params.get("idPgm");
-        int idSched = params.get("idSched");
-        System.out.println("====================================");
-        System.out.println(idPgm);
-        System.out.println(idSched);
-        System.out.println(scheduleService.selectScheduleByIdSched(idPgm, idSched));
-        System.out.println("====================================");
-        return scheduleService.selectScheduleByIdSched(idPgm, idSched);
+    public ResponseEntity<String> getDayShced(@RequestParam int idSched, @RequestParam int idPgm){
+        String daySched = scheduleService.selectScheduleByIdSched(idPgm, idSched);
+        return ResponseEntity.ok(daySched);
     }
 
     //휴보강신청 등록
-    @PostMapping("/123")
-    public String classRequest(Model model){
-
-        return "redirect:/prof/requestProg";
+    @PostMapping("/classRequest")
+    public String classRequest(ClassRequest classRequest, Model model){
+        professorService.insertClassRequest(classRequest);
+        model.addAttribute("idPgm", classRequest.getIdPgm());
+        return "prof/list";
     }
 
     //출결 페이지

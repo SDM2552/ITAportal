@@ -29,6 +29,6 @@ public class ClassRequest {
     private int idSched;
     //프로그램코드 (FK)
     private int idPgm;
-    //보강 강의실 코드
+    //보강 강의실 코드(FK)
     private int idRoom;
 }
