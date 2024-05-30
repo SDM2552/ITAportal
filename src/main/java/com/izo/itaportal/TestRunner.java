@@ -127,7 +127,7 @@ public class TestRunner implements ApplicationRunner{
                 "VALUES (1, '임시데이터', '임시데이터', '온라인', '임시데이터', '임시데이터', '임시데이터', 1)");
         //주차별 강의계획서
         jdbcTemplate.execute("INSERT INTO schedule (id_pgm, day_sched, start_sched, end_sched, learning_contents, learning_detail, note)" +
-                "VALUES (1, '2024-05-20', '09:00:00', '12:00:00', '관세선의 개념에 대해 이해한다.', '대면수업', '오티랑 함께 진행합니다~~!')");
+                "VALUES (1, '2024-04-01', '09:00:00', '12:00:00', '관세선의 개념에 대해 이해한다.', '대면수업', '오티랑 함께 진행합니다~~!')");
         //강의실
         jdbcTemplate.execute("INSERT INTO class_room VALUES (1,'이대캠퍼스 301호')");
         jdbcTemplate.execute("INSERT INTO class_room VALUES (2,'이대캠퍼스 302호')");
