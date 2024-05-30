@@ -38,13 +38,13 @@ public class TestRunner implements ApplicationRunner{
         jdbcTemplate.execute("INSERT INTO professor(name, birth, tel, gender, address, id_user)" +
                 "VALUES ('최교수07', '931231', '010-9876-5432', 'M', '인천광역시', '7')");
         jdbcTemplate.execute("INSERT INTO admin(name, birth, tel, gender, address, id_user)" +
-                "VALUES ('관리자01', '990101', '010-1000-2000', 'M', '서울시', '4')");
+                "VALUES ('관리자01', '990101', '010-1000-2000', 'M', '서울시 동작구', '4')");
         jdbcTemplate.execute("INSERT INTO student(name, birth, tel, gender, address, id_user)" +
-                "VALUES ('김학생', '20020202', '010-2222-3333', 'M', '강릉시', '1')");
+                "VALUES ('김학생', '20020202', '010-2222-3333', 'M', '서울시 마포구', '1')");
         jdbcTemplate.execute("INSERT INTO student(name, birth, tel, gender, address, id_user)" +
-                "VALUES ('홍지현', '19000130', '010-9685-6060', 'F', '안산시', '5')");
+                "VALUES ('홍지현', '19000130', '010-9685-6060', 'F', '서울시 송파구', '5')");
         jdbcTemplate.execute("INSERT INTO student(name, birth, tel, gender, address, id_user)" +
-                "VALUES ('손재웅', '196001231', '010-7410-3539', 'M', '평택시', '6')");
+                "VALUES ('손재웅', '196001231', '010-7410-3539', 'M', '서울시 서초구', '6')");
         jdbcTemplate.execute("INSERT INTO student(name, birth, tel, gender, address, id_user)" +
                 "VALUES ('설한길', '19960706', '010-1212-2323', 'M', '화성시', '8')");
         jdbcTemplate.execute("INSERT INTO student(name, birth, tel, gender, address, id_user)" +
@@ -99,13 +99,13 @@ public class TestRunner implements ApplicationRunner{
         jdbcTemplate.execute("INSERT INTO program (id_cate, pgm_name, st_dt, end_dt, sugang_st_dt, sugang_end_dt, pgm_target, id_room, pgm_method, pgm_per, num_of_stu, pgm_fee, pgm_day, pgm_time, id_prof)" +
                 "VALUES (4, '공급망 관리의 기본 원리', '2024-06-01','2024-08-31','2024-04-15', '2024-04-30', '무역 전문가', 3, '오프라인', 1, 0, '50000', '월,수,금', '10:00~12:00', 1)");
         jdbcTemplate.execute("INSERT INTO program (id_cate, pgm_name, st_dt, end_dt, sugang_st_dt, sugang_end_dt, pgm_target, id_room, pgm_method, pgm_per, num_of_stu, pgm_fee, pgm_day, pgm_time, id_prof)" +
-                "VALUES (5, '노사 관계와 협상 기술', '2024-06-02','2024-08-31','2024-05-15', '2024-05-30', '무역 전문가', 4, '오프라인', 20, 0, '45000', '화,목', '14:00~16:00', 2)");
+                "VALUES (5, '노사 관계와 협상 기술', '2024-06-02','2024-08-31','2024-04-15', '2024-04-30', '무역 전문가', 4, '오프라인', 20, 0, '45000', '화,목', '14:00~16:00', 2)");
         jdbcTemplate.execute("INSERT INTO program (id_cate, pgm_name, st_dt, end_dt, sugang_st_dt, sugang_end_dt, pgm_target, id_room, pgm_method, pgm_per, num_of_stu, pgm_fee, pgm_day, pgm_time, id_prof)" +
-                "VALUES (6, '환경과 생태학', '2024-06-03', '2024-06-08', '2024-05-15', '2024-06-30', '무역 전문가', 5, '오프라인', 10, 0, '60000', '월,수,금', '09:00~11:00', 3)");
+                "VALUES (6, '환경과 생태학', '2024-06-03', '2024-06-08', '2024-04-15', '2024-04-30', '무역 전문가', 5, '오프라인', 10, 0, '60000', '월,수,금', '09:00~11:00', 3)");
         jdbcTemplate.execute("INSERT INTO program (id_cate, pgm_name, st_dt, end_dt, sugang_st_dt, sugang_end_dt, pgm_target, id_room, pgm_method, pgm_per, num_of_stu, pgm_fee, pgm_day, pgm_time, id_prof)" +
-                "VALUES (1, '무역장벽과 비관세장벽', '2024-06-04', '2024-06-10', '2024-05-15', '2024-06-30', '무역 전문가', 6, '오프라인', 25, 0, '55000', '화,목', '13:00~15:00', 1)");
+                "VALUES (1, '무역장벽과 비관세장벽', '2024-06-04', '2024-06-10', '2024-04-15', '2024-04-30', '무역 전문가', 6, '오프라인', 25, 0, '55000', '화,목', '13:00~15:00', 1)");
         jdbcTemplate.execute("INSERT INTO program (id_cate, pgm_name, st_dt, end_dt, sugang_st_dt, sugang_end_dt, pgm_target, id_room, pgm_method, pgm_per, num_of_stu, pgm_fee, pgm_day, pgm_time, id_prof)" +
-                "VALUES (2, '수출입 절차와 문서 작성', '2024-06-05', '2024-06-11', '2024-05-15', '2024-06-30', '무역 실무자', 99, '오프라인', 20, 0, '65000', '월,수,금', '10:00~12:00', 2)");
+                "VALUES (2, '수출입 절차와 문서 작성', '2024-06-05', '2024-06-11', '2024-04-15', '2024-04-30', '무역 실무자', 99, '오프라인', 20, 0, '65000', '월,수,금', '10:00~12:00', 2)");
         jdbcTemplate.execute("INSERT INTO program (id_cate, pgm_name, st_dt, end_dt, sugang_st_dt, sugang_end_dt, pgm_target, id_room, pgm_method, pgm_per, num_of_stu, pgm_fee, pgm_day, pgm_time, id_prof)" +
                 "VALUES (3, '데이터 분석과 마케팅', '2024-06-06', '2024-06-08', '2024-05-15', '2024-06-30', '무역 실무자', 1, '오프라인', 30, 0, '70000', '화,목', '14:00~16:00', 3)");
         jdbcTemplate.execute("INSERT INTO program (id_cate, pgm_name, st_dt, end_dt, sugang_st_dt, sugang_end_dt, pgm_target, id_room, pgm_method, pgm_per, num_of_stu, pgm_fee, pgm_day, pgm_time, id_prof)" +
@@ -153,7 +153,7 @@ public class TestRunner implements ApplicationRunner{
 
         //수강
         jdbcTemplate.execute("INSERT INTO sugang(id_sugang, id_student, id_cate, id_pgm, st_dt, status,course_status)" +
-                "VALUES (1,1,3,3,'2024-05-22 12:47:53','신청중',0)");
+                "VALUES (1,1,3,3,'2024-05-22 12:47:53','신청 완료',1)");
         jdbcTemplate.execute("INSERT INTO sugang(id_sugang, id_student, id_cate, id_pgm, st_dt, status,course_status)" +
                 "VALUES (2,1,1,2,'2024-05-22 12:47:53','신청 완료',1)");
         jdbcTemplate.execute("INSERT INTO sugang(id_sugang, id_student, id_cate, id_pgm, st_dt, status,course_status)" +
@@ -161,6 +161,8 @@ public class TestRunner implements ApplicationRunner{
         jdbcTemplate.execute("INSERT INTO sugang(id_sugang, id_student, id_cate, id_pgm, st_dt, status,course_status)" +
                 "VALUES (4,3,3,3,'2024-05-22 12:47:53','신청 완료',1)");
         // id_pgm 1에 대한 출석 데이터 추가
+        jdbcTemplate.execute("INSERT INTO attendance (id_pgm, id_student, att_stat, late_stat, abs_stat) " +
+                "VALUES (3, 1, 0,0,0)");
         jdbcTemplate.execute("INSERT INTO attendance (id_pgm, id_student, att_stat, late_stat, abs_stat) " +
                 "VALUES (2, 1, 0,0,0)");
         jdbcTemplate.execute("INSERT INTO attendance (id_pgm, id_student, att_stat, late_stat, abs_stat) " +
