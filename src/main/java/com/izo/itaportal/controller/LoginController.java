@@ -45,6 +45,10 @@ public class LoginController {
     public String showLoginPage() {
         return "member/loginPage";
     }
+    @GetMapping("/loginPage2")
+    public String showLoginPage2() {
+        return "loginPage2";
+    }
 
     @PostMapping("/loginPage-login")
     @Transactional
@@ -59,7 +63,7 @@ public class LoginController {
             return "redirect:/";
         } else {
             model.addAttribute("error", "아이디 또는 비밀번호가 잘못되었습니다.");
-            return "member/loginPage";
+            return "loginPage3";
         }
     }
 
