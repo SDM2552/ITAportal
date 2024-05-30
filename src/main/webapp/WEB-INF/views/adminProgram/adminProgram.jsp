@@ -9,6 +9,53 @@
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <link rel="stylesheet" type="text/css" href="css/table.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .pagination-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .pagination {
+            display: flex;
+            align-items: center;
+            margin: 0 20px; /* Center the pagination */
+        }
+
+        .pagination a {
+            display: inline-block;
+            margin: 0 5px;
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .pagination a.active {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .add-button {
+            margin-left: 20px; /* Adjust the margin as needed */
+            font-family: 'NotoKrD', dotum, '돋움', gulim, '굴림', Arial, AppleGothic, verdana, sans-serif, helvetica;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script>
+        function goToPage() {
+            var page = document.getElementById('pageInput').value;
+            var totalPages = ${totalPages};
+            var keyword = '${keyword}';
+            if (page < 1 || page > totalPages) {
+                alert('잘못된 페이지 번호입니다.');
+                return;
+            }
+            window.location.href = '/adminProgram?page=' + page + '&keyword=' + keyword;
+        }
+    </script>
     <title>교육과정관리</title>
 </head>
 <body>
@@ -23,45 +70,15 @@
         <!-- contents -->
         <div id="contents" class="eduIntroCont">
             <!-- location -->
-            <span class="home" title="홈"><i class="fa-solid fa-house"></i> <i class="fa-solid fa-angle-right"></i></span>
+            <span class="home" title="홈"><i class="fa-solid fa-house"></i> <i
+                    class="fa-solid fa-angle-right"></i></span>
             <span class="on">강의 관리 <i class="fa-solid fa-angle-right"></i></span><span class="on"> 교육과정관리</span>
             <!-- //location -->
 
-            <h3 class="pgTit">교육과정관리</h3>
+            <h3 class="pgTit">프로그램관리</h3>
 
             <!-- 본문 -->
-            <h4 class="subTit">카테고리</h4>
-            <div class="tblData mt10" style="width: 30%">
-                <table>
-                    <colgroup>
-                        <col width="15%">
-                        <col width="55%">
-                        <col width="30%">
-                    </colgroup>
-                    <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">카테고리명</th>
-                        <th scope="col">변경</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach var="category" items="${cate}">
-                        <tr>
-                            <td>${category.idCate}</td>
-                            <td>${category.cateName}</td>
-                            <td class="actions">
-                                <a href="categoryUpdateInput?idCate=${category.idCate}">수정</a>
-                                <a href="categoryDelete?idCate=${category.idCate}">삭제</a>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                    </tbody>
-                </table>
-                <a href="/categoryInput">
-                    <button style="float: right;">추가</button>
-                </a>
-            </div><br><br>
+
 
             <!-- 프로그램 목록 -->
             <h4 class="subTit">프로그램</h4>
@@ -107,9 +124,12 @@
                     </c:forEach>
                     </tbody>
                 </table>
+            </div>
 
-                <!-- 페이징 네비게이션 -->
+            <!-- 페이징 네비게이션 -->
+            <div class="pagination-wrapper">
                 <div class="pagination">
+                    <a href="/adminProgram?page=1&keyword=${keyword}">처음</a>
                     <c:if test="${currentPage > 1}">
                         <a href="?page=${currentPage - 1}">&laquo; 이전</a>
                     </c:if>
@@ -119,12 +139,16 @@
                     <c:if test="${currentPage < totalPages}">
                         <a href="?page=${currentPage + 1}">다음 &raquo;</a>
                     </c:if>
+                    <a href="/adminProgram?page=${totalPages}&keyword=${keyword}">끝</a>
+                    <input type="number" id="pageInput" style="width: 50px;" min="1" max="${totalPages}" value="${currentPage}">
+                    <button onclick="goToPage()">이동</button>
                 </div>
 
-                <a href="/progInput">
-                    <button style="float: right;">추가</button>
+                <a href="/progInput" class="add-button" >
+                    <button>추가</button>
                 </a>
             </div>
+
             <!-- 본문 끝 -->
         </div>
         <!-- //contents -->
@@ -136,3 +160,7 @@
 </body>
 
 </html>
+
+
+
+

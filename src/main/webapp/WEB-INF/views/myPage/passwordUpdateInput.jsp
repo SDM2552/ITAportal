@@ -51,11 +51,11 @@
                             <input type="password" name="confirmPassword" placeholder="새 비밀번호 확인" required>
                         </td>
                     </tr>
-                    <tr>
+
                         <td colspan="2">
                             <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#confirmationModal">수정</button>
                         </td>
-                    </tr>
+
                 </table>
             </form>
         </div>

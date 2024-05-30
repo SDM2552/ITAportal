@@ -12,12 +12,10 @@ import com.izo.itaportal.service.ProgramService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 
 @Controller
@@ -36,16 +34,54 @@ public class ProgController {
 
     private HttpSession httpSession;
 
+    private static final int PAGE_SIZE = 7;
+
+
     @GetMapping("/adminProgram")
-    public String adminProgram(Model model) {
-        model.addAttribute("cate", categoryService.getAllCategory());
-        model.addAttribute("prog", programService.getAllPrograms());
+    public String adminProgram(@RequestParam(name = "page", defaultValue = "1") int page, Model model) {
+        // 전체 프로그램 수를 가져옵니다.
+        int totalPrograms = programService.countAllPrograms();
+
+        // 전체 페이지 수를 계산합니다.
+        int totalPages = (int) Math.ceil((double) totalPrograms / PAGE_SIZE);
+
+        // 현재 페이지의 프로그램 목록을 가져옵니다.
+        List<Program> programs = programService.getProgramsPerPage(page, PAGE_SIZE);
+
+
+        model.addAttribute("prog", programs);
+        model.addAttribute("totalPages", totalPages);
+        model.addAttribute("currentPage", page);
+
         return "adminProgram/adminProgram";
     }
 
+    @GetMapping("/adminCategory")
+    public String adminCategory(@RequestParam(name = "page", defaultValue = "1") int page, Model model) {
+        int totalCategories = categoryService.countAllCategories();
+
+        int totalPages = (int) Math.ceil((double) totalCategories / PAGE_SIZE);
+
+        List<Category> categories = categoryService.getCategoriesPerPage(page, PAGE_SIZE);
+
+
+        model.addAttribute("cate", categories);
+        model.addAttribute("totalPages", totalPages);
+        model.addAttribute("currentPage", page);
+        return "adminProgram/adminCategory";
+    }
+
     @GetMapping("/adminClassRoom")
-    public String classRoom(Model model) {
-        model.addAttribute("classRoom",classRoomService.getAllClassRoom());
+    public String classRoom(@RequestParam(name = "page", defaultValue = "1") int page, Model model) {
+        int totalClassRooms = classRoomService.countAllClassRooms();
+
+        int totalPages = (int) Math.ceil((double) totalClassRooms / PAGE_SIZE);
+
+        List<ClassRoom> classRooms = classRoomService.getClassRoomsPerPage(page, PAGE_SIZE);
+
+        model.addAttribute("classRoom", classRooms);
+        model.addAttribute("totalPages", totalPages);
+        model.addAttribute("currentPage", page);
         return "/adminProgram/adminClassRoom";
     }
 
@@ -60,11 +96,11 @@ public class ProgController {
     @PostMapping("/categoryInsert")
     public String categoryInsert(@ModelAttribute Category category) {
         categoryService.insertCategory(category);
-        return "redirect:/adminProgram";
+        return "redirect:/adminCategory";
     }
 
     @GetMapping("/categoryUpdateInput")
-    public String categoryUpdate(@ModelAttribute Category category,Model model,int idCate) {
+    public String categoryUpdate(@ModelAttribute Category category, Model model, int idCate) {
         model.addAttribute("cate", categoryService.getCategoryById(category.getIdCate()));
         return "adminProgram/categoryUpdateInput";
     }
@@ -96,8 +132,8 @@ public class ProgController {
     }
 
     @GetMapping("/progUpdateInput")
-    public String progUpdateInput(int idPgm,Model model) {
-        model.addAttribute("pr",programService.selectCategoryById(idPgm));
+    public String progUpdateInput(Integer idPgm, Model model) {
+        model.addAttribute("pr", programService.selectProgramById(idPgm));
         return "adminProgram/progUpdateInput";
     }
 
@@ -116,7 +152,6 @@ public class ProgController {
     //-------------------------------------------------------------------
 
 
-
     @GetMapping("/classRoomInput")
     public String classRoomInput() {
         return "/adminProgram/classRoomInput";
@@ -129,8 +164,8 @@ public class ProgController {
     }
 
     @GetMapping("/classRoomUpdateInput")
-    public String classRoomUpdateInput(int idRoom,Model model) {
-        model.addAttribute("cr",classRoomService.getClassRoomById(idRoom));
+    public String classRoomUpdateInput(int idRoom, Model model) {
+        model.addAttribute("cr", classRoomService.getClassRoomById(idRoom));
         return "adminProgram/classRoomUpdateInput";
     }
 
@@ -147,7 +182,7 @@ public class ProgController {
     }
 
     @GetMapping("progInfo")
-    public String programInfo(Model model,Integer idPgm) {
+    public String programInfo(Model model, Integer idPgm) {
         model.addAttribute("pr", programService.selectProgramDetail(idPgm));
         return "/adminProgram/progInfo";
     }
@@ -169,11 +204,9 @@ public class ProgController {
 
     @GetMapping("/profPopUp")
     public String profPopUp(Model model) {
-        model.addAttribute("prof", professorService.getAllProfessors() );
+        model.addAttribute("prof", professorService.getAllProfessors());
         return "/adminProgramPopUp/profPopUp";
     }
-
-
 
 
 }

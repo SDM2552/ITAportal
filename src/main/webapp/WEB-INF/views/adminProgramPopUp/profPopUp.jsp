@@ -52,9 +52,9 @@
     </style>
     <script>
         function selectCategory(idProf, name) {
-            window.opener.document.getElementById('idProf').value = name;
+
             window.opener.document.getElementById('idProf').value = idProf;
-            window.opener.document.getElementById('name').value = idProf;
+
             window.opener.document.getElementById('name').value = name;
             window.close();
         }

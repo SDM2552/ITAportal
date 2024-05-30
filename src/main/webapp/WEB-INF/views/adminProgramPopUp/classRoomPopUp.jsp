@@ -52,9 +52,9 @@
     </style>
     <script>
         function selectCategory(idRoom, roomName) {
-            window.opener.document.getElementById('idRoom').value = roomName;
+
             window.opener.document.getElementById('idRoom').value = idRoom;
-            window.opener.document.getElementById('roomName').value = idRoom;
+
             window.opener.document.getElementById('roomName').value = roomName;
             window.close();
         }

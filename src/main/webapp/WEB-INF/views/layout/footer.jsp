@@ -9,15 +9,16 @@
 <%--</div>--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div id="footer">
-    <hr>
     <!-- footerArea -->
     <div class="footerArea">
         <!-- Floating Button and Menu -->
         <div class="floating-btn" onclick="toggleMenu()">
-            <span>+</span>
+            <span id="toggleIcon" class="toggle-icon">+</span>
         </div>
         <div class="floating-menu" id="floatingMenu">
-            <button class="footer-menu-btn" onclick="showModal('쪽지')">쪽지</button>
+            <button class="footer-menu-btn" id="messageButton" onclick="showMessages()">
+                <img src="/image/message_icon_closed.png" alt="쪽지" id="messageIcon" class="menu-icon closed">
+            </button>
         </div>
     </div>
     <!-- //footerArea -->
@@ -35,8 +36,6 @@
 </div>
 
 <script>
-    var isShowingReceivedMessages = true;
-
     document.addEventListener("DOMContentLoaded", function() {
         var menu = document.getElementById('floatingMenu');
         menu.style.display = 'none'; // 페이지 로드 시 메뉴를 닫힌 상태로 유지
@@ -44,11 +43,23 @@
 
     function toggleMenu() {
         var menu = document.getElementById('floatingMenu');
+        var toggleIcon = document.getElementById('toggleIcon');
         if (menu.style.display === 'block') {
             menu.style.display = 'none';
+            toggleIcon.innerText = '+';
         } else {
             menu.style.display = 'block';
+            toggleIcon.innerText = '-';
         }
+    }
+
+    function showMessages() {
+        var modal = document.getElementById('modal');
+        var modalTitle = document.getElementById('modalTitle');
+        var modalContent = document.getElementById('modalContent');
+        modalTitle.innerText = '메신저';
+        modalContent.innerHTML = '<iframe src="/messenger/list" width="100%" height="100%" frameborder="0"></iframe>';
+        modal.style.display = 'block';
     }
 
     function showModal(title) {
@@ -70,6 +81,13 @@
         var modal = document.getElementById('modal');
         modal.style.display = 'none';
     }
-</script>
 
+    document.getElementById('messageButton').addEventListener('mouseover', function() {
+        document.getElementById('messageIcon').src = '/image/message_icon_open.png';
+    });
+
+    document.getElementById('messageButton').addEventListener('mouseout', function() {
+        document.getElementById('messageIcon').src = '/image/message_icon_closed.png';
+    });
+</script>
 

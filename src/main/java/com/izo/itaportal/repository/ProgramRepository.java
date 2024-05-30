@@ -14,9 +14,13 @@ import java.util.List;
 public interface ProgramRepository  {
     public List<Program> selectProgram();
 
-    public Program selectProgramById(int idPgm);
+    public ProgramAllDto selectProgramById(int idPgm);
 
     public ProgramAllDto selectProgramDetail(int idPgm);
+
+    public int countAllPrograms();
+
+    public List<Program> getProgramsPerPage(int offset, int pageSize);
 
     public int insert(Program program);
 
