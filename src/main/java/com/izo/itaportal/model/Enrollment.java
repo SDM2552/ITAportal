@@ -2,8 +2,6 @@ package com.izo.itaportal.model;
 
 import lombok.Data;
 
-import javax.persistence.Id;
-
 //조인테이블
 @Data
 public class Enrollment {
