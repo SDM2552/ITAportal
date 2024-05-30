@@ -26,9 +26,11 @@ public class ClassRequest {
     //강사번호 (FK)
     private int idProf;
     //주차코드 (FK)
-    private int idWeek;
+    private int idSched;
     //프로그램코드 (FK)
-    private int idProgram;
+    private int idPgm;
+    //강의실코드 (FK)
+    private int idRoom;
 
     private String pgmName;
     private String roomName;
