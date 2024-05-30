@@ -9,14 +9,7 @@
     <link rel="stylesheet" type="text/css" href="../css/table.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>강의실추가</title>
-    <style>
-        th, td {
-            white-space: nowrap;
-        }
-        th {
-            width: 120px; /* 제목 칸의 너비를 고정 */
-        }
-    </style>
+
 </head>
 <body>
 <div class="wrap">
@@ -39,25 +32,25 @@
             <!-- 본문 -->
             <h4 class="subTit">강의실 추가</h4>
             <form id="progInputForm" method="post" action="/classRoomInsert">
-                <div class="tblForm inputForm mt10" style="width: 50%">
+                <div class="tblData mt10" style="width: 80%">
                     <table>
                         <colgroup>
-                            <col style="width:160px">
-                            <col style="width:280px">
-                            <col style="width:100px">
-                            <col class="sm-wd">
+                            <col width="20%">
+                            <col width="30%">
+                            <col width="20%">
+                            <col width="30%">
                         </colgroup>
-                        <tbody>
+                        <tbody class="mid">
                         <tr>
                             <th scope="col">강의실명</th>
                             <td colspan="3">
-                                <input type="text" class="form-control" id="roomName" placeholder="강의실명 입력" name="roomName">
+                                <input type="text" id="roomName" placeholder="강의실명 입력" name="roomName">
                             </td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
-                <div class="btnArea" style="width: 50%">
+                <div class="btnArea" style="width: 80%">
                     <button type="submit" class="btns btnSt01">
                         <span>등록</span>
                     </button>

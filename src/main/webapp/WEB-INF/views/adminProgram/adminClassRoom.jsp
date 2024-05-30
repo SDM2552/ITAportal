@@ -53,6 +53,16 @@
         .tblData {
             width: 80%; /* Ensure the container div is also full width */
         }
+
+        .btns.btnSt01 {
+            margin-left: 160px;
+            color: white; /* 글자 색상 흰색으로 설정 */
+            background-color: #005e93; /* 버튼 배경 색상 (예시) */
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+            font-size: 13px;
+        }
     </style>
     <script>
         function goToPage() {
@@ -109,8 +119,8 @@
                             <td>${cr.idRoom}</td>
                             <td>${cr.roomName}</td>
                             <td class="actions">
-                                <a href="classRoomUpdateInput?idRoom=${cr.idRoom}">수정</a>
-                                <a href="classRoomDelete?idRoom=${cr.idRoom}">삭제</a>
+                                <a href="classRoomUpdateInput?idRoom=${cr.idRoom}"><button type="button">수정</button></a>
+                                <a href="classRoomDelete?idRoom=${cr.idRoom}"><button type="button">삭제</button></a>
                             </td>
                         </tr>
                     </c:forEach>
@@ -138,7 +148,7 @@
                 </div>
 
                 <a href="/classRoomInput" class="add-button">
-                    <button>추가</button>
+                    <button class="btns btnSt01">추가</button>
                 </a>
             </div>
 

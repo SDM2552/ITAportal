@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="../css/table.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>카테고리추가</title>
+
 </head>
 <body>
 <div class="wrap">
@@ -32,7 +33,7 @@
             <!-- 본문 -->
             <h4 class="subTit">카테고리 추가</h4>
             <form id="progInputForm" method="post" action="/categoryInsert">
-                <div class="tblData mt10" style="width: 50%">
+                <div class="tblData mt10" style="width: 80%">
                     <table>
                         <colgroup>
                             <col width="20%">
@@ -51,7 +52,7 @@
                     </table>
 
                 </div>
-                <div class="btnArea" style="width: 50%">
+                <div class="btnArea" style="width: 80%">
                     <button type="submit" class="btns btnSt01">
                         <span>저장</span>
                     </button>

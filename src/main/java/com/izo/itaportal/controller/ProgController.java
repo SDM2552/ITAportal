@@ -108,13 +108,13 @@ public class ProgController {
     @PostMapping("/categoryUpdate")
     public String categoryUpdate(@ModelAttribute Category category) {
         categoryService.updateCategory(category);
-        return "redirect:/adminProgram";
+        return "redirect:/adminCategory";
     }
 
     @GetMapping("/categoryDelete")
     public String categoryDelete(int idCate) {
         categoryService.deleteCategory(idCate);
-        return "redirect:/adminProgram";
+        return "redirect:/adminCategory";
     }
 
 
