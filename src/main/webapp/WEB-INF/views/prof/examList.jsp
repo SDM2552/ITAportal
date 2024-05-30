@@ -46,15 +46,17 @@
                     </tr>
                     </thead>
                     <tbody>
+                    <c:forEach var="exam" items="${ExamList}">
                     <tr>
-                        <td>무역</td>
-                        <td>무슨무슨과제</td>
-                        <td>오늘부터</td>
-                        <td>내일까지</td>
-                        <td>0/10 명</td>
-                        <td>진행중</td>
+                        <td>${exam.programName}</td>
+                        <td>${exam.name}</td>
+                        <td>${exam.startDate}</td>
+                        <td>${exam.endDate}</td>
+                        <td>${exam.count}/10 명</td>
+                        <td>${exam.status}</td>
                         <td><button onclick="location.href='/prof/examDetail'">상세정보</button></td>
                     </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
             </div>

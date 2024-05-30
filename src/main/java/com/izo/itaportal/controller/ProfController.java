@@ -1,8 +1,10 @@
 package com.izo.itaportal.controller;
 
 import com.izo.itaportal.dto.AttendanceDto;
+import com.izo.itaportal.dto.ExamListDto;
 import com.izo.itaportal.dto.ProgramAllDto;
 import com.izo.itaportal.model.*;
+import com.izo.itaportal.service.ExamService;
 import com.izo.itaportal.service.ClassRoomService;
 import com.izo.itaportal.service.ProfessorService;
 import com.izo.itaportal.service.ScheduleService;
@@ -34,6 +36,8 @@ public class ProfController {
 
     @Autowired
     HttpSession session;
+    @Autowired
+    ExamService examService;
 
     //idProf 값을 저장함. 이후 매개변수에 @RequestParam("idProf") int idProf를 넣으면 세션 생성 없이 idProf를 쓸수있음
     @ModelAttribute("idProf")
@@ -176,10 +180,18 @@ public class ProfController {
         }
     }
 
-    //과제 페이지
+    //전체 과제 리스트 페이지
     @GetMapping("/examList")
-    public String examList(){
-        return "prof/examList";}
+    public String examList(Model model){
+        LoginResponse loginUser = (LoginResponse) session.getAttribute("loginUser");
+        if (loginUser == null) {
+            return "redirect:/user/login";
+        }
+        int idProf = loginUser.getCommonId();
+        List<ExamListDto> examListDtos = examService.getExamListByProfessor(idProf);
+        model.addAttribute("ExamList", examListDtos);
+        return "prof/examList";
+    }
     
     //과제 상세 페이지
     @GetMapping("/examDetail")

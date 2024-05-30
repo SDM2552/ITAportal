@@ -632,7 +632,7 @@ body {
     right: 30px;
     width: 60px;
     height: 60px;
-    background-color: #1ec800;
+    background-color: RGB(1,125,195);
     border: none;
     border-radius: 50%;
     color: white;
@@ -661,7 +661,7 @@ body {
     height: 60px;
     margin: 5px 0;
     padding: 10px;
-    background-color: #1ec800;
+    background-color: RGB(1,125,195);
     border: none;
     border-radius: 50%;
     text-align: center;
@@ -674,7 +674,7 @@ body {
 }
 
 .footer-menu-btn:hover {
-    background-color: #16a500;
+    background-color: rgb(1,100,156);
 }
 
 /* Modal */

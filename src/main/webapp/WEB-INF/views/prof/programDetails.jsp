@@ -61,7 +61,7 @@
                         </td>
                         <th scope="col">강의 요일/시간</th>
                         <td>
-                            토,일/09:00~18:00(수정해야함)
+                            ${ProgramDetail.pgmDay} / ${ProgramDetail.pgmTime}
                         </td>
                     </tr>
                     <tr>
@@ -87,7 +87,7 @@
                     <span>휴·보강신청</span>
                 </button><button type="button" class="btns btnSt01" onclick="window.location.href='/prof/attendance?idPgm=${ProgramDetail.idPgm}'">
                 <span>출결관리</span>
-            </button><button type="button" class="btns btnSt01" onclick="#">
+            </button><button type="button" class="btns btnSt01" onclick="window.location.href='/prof/examList'">
                 <span>과제관리</span>
             </button>
                 <button type="button" class="btns btnSt02" onclick="history.back();">

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.izo.itaportal.repository.ExamRepository">
+
+    <select id="getExamListByProfessor" parameterType="int" resultType="com.izo.itaportal.dto.ExamListDto">
+        SELECT
+            p.pgm_Name AS ProgramName,
+            e.name AS name,
+            e.description AS description,
+            e.start_Date AS startDate,
+            e.end_Date AS endDate,
+            e.status AS status,
+            e.count AS count
+        FROM
+            Exam e
+            JOIN Program p ON e.id_Program = p.id_Pgm
+            JOIN Professor pr ON e.id_Prof = pr.id_Prof
+        WHERE
+            e.id_Prof = #{idProf}
+    </select>
+
+</mapper>
