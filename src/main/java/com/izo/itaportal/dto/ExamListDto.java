@@ -12,5 +12,7 @@ public class ExamListDto {
     private String endDate; //시험마감일
     private String status; //진행상태
     private String count; //제출인원
+    private int idProf;
+    private int idPgm;
 
 }

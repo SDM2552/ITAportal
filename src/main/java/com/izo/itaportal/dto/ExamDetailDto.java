@@ -3,7 +3,7 @@ package com.izo.itaportal.dto;
 import lombok.Data;
 
 @Data
-public class ExamDetail {
+public class ExamDetailDto {
 
     private String ProgramName; //강의명
     private String name; //시험명
@@ -12,4 +12,6 @@ public class ExamDetail {
     private String endDate; //시험마감일
     private String status; //진행상태
     private String count; //제출인원
+    private int idProf;
+    private int idPgm;
 }
