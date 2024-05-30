@@ -40,9 +40,21 @@
         .add-button {
             margin-left: 20px; /* Adjust the margin as needed */
             font-family: 'NotoKrD', dotum, '돋움', gulim, '굴림', Arial, AppleGothic, verdana, sans-serif, helvetica;
+
             margin: 0;
             padding: 0;
         }
+
+        .btns.btnSt01 {
+            margin-left: 180px;
+            color: white; /* 글자 색상 흰색으로 설정 */
+            background-color: #005e93; /* 버튼 배경 색상 (예시) */
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
     </style>
     <script>
         function goToPage() {
@@ -117,8 +129,8 @@
                             <td>${program.pgmPer}</td>
                             <td>${program.pgmFee}</td>
                             <td class="actions">
-                                <a href="progUpdateInput?idPgm=${program.idPgm}">수정</a>
-                                <a href="progDelete?idPgm=${program.idPgm}">삭제</a>
+                                <a href="progUpdateInput?idPgm=${program.idPgm}"><button type="button">수정</button></a>
+                                <a href="progDelete?idPgm=${program.idPgm}"><button type="button">삭제</button> </a>
                             </td>
                         </tr>
                     </c:forEach>
@@ -145,7 +157,7 @@
                 </div>
 
                 <a href="/progInput" class="add-button" >
-                    <button>추가</button>
+                    <button class="btns btnSt01">추가</button>
                 </a>
             </div>
 

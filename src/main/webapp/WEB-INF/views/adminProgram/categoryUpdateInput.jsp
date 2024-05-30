@@ -33,7 +33,7 @@
             <h4 class="subTit">카테고리 수정</h4>
             <form id="progInputForm" method="post" action="/categoryUpdate">
                 <input type="hidden" id="idCate" name="idCate" value="${cate.idCate}"/>
-                <div class="tblData mt10" style="width: 50%">
+                <div class="tblData mt10" style="width: 80%">
                     <table>
                         <colgroup>
                             <col width="20%">
@@ -52,7 +52,7 @@
                     </table>
 
                 </div>
-                <div class="btnArea" style="width: 50%">
+                <div class="btnArea" style="width: 80%">
                     <button type="submit" class="btns btnSt01">
                         <span>저장</span>
                     </button>

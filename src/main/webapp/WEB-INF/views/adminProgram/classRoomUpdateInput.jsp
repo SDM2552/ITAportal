@@ -39,26 +39,26 @@
             <!-- 본문 -->
             <h4 class="subTit">강의실 수정</h4>
             <form id="progInputForm" method="post" action="/classRoomUpdate">
-                <div class="tblForm inputForm mt10" style="width: 50%">
+                <div class="tblData mt10" style="width: 80%">
                     <table>
                         <colgroup>
-                            <col style="width:160px">
-                            <col style="width:280px">
-                            <col style="width:100px">
-                            <col class="sm-wd">
+                            <col width="20%">
+                            <col width="30%">
+                            <col width="20%">
+                            <col width="30%">
                         </colgroup>
-                        <tbody>
+                        <tbody class="mid">
                         <tr>
                             <th scope="col">강의실명</th>
                             <td colspan="3">
-                                <input type="text" class="form-control" id="roomName" placeholder="강의실명 입력" value="${cr.roomName}" name="roomName">
+                                <input type="text"  id="roomName" placeholder="강의실명 입력" value="${cr.roomName}" name="roomName">
                             </td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
                 <input type="hidden" name="idRoom" value="${cr.idRoom}">
-                <div class="btnArea"style="width: 50%">
+                <div class="btnArea"style="width: 80%">
                     <button type="submit" class="btns btnSt01">
                         <span>제출</span>
                     </button>
