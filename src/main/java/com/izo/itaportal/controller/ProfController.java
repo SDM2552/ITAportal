@@ -1,8 +1,6 @@
 package com.izo.itaportal.controller;
 
-import com.izo.itaportal.dto.AttendanceDto;
-import com.izo.itaportal.dto.ExamListDto;
-import com.izo.itaportal.dto.ProgramAllDto;
+import com.izo.itaportal.dto.*;
 import com.izo.itaportal.model.*;
 import com.izo.itaportal.service.ExamService;
 import com.izo.itaportal.service.ClassRoomService;
@@ -195,12 +193,19 @@ public class ProfController {
     
     //과제 상세 페이지
     @GetMapping("/examDetail")
-    public String examDetail(){
+    public String examDetail(@RequestParam("idPgm") int idPgm, @RequestParam("idProf") int idProf, Model model){
+        ExamDetailDto examDetail = examService.getExamDetail(idPgm, idProf);
+        model.addAttribute("examDetail", examDetail);
         return "prof/examDetail";
     }
     //과제 생성 페이지
     @GetMapping("/new")
-    public String examNew(){
+    public String examNew(Model model){
+        LoginResponse loginUser = (LoginResponse) session.getAttribute("loginUser");
+        int idProf = loginUser.getCommonId();
+        List<GetProgNameDto> getProgNameDtos = examService.getProgNameDtos(idProf);
+        model.addAttribute("programs", getProgNameDtos);
+        model.addAttribute("idProf",idProf);
         return "prof/examNew";
     }
 

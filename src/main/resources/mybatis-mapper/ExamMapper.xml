@@ -7,6 +7,28 @@
     <select id="getExamListByProfessor" parameterType="int" resultType="com.izo.itaportal.dto.ExamListDto">
         SELECT
             p.pgm_Name AS ProgramName,
+            p.id_prof AS idProf,
+            p.id_pgm AS idPgm,
+            e.name AS name,
+            e.description AS description,
+            e.start_Date AS startDate,
+            e.end_Date AS endDate,
+            e.status AS status,
+            e.count AS count
+
+        FROM
+            Exam e
+            JOIN Program p ON e.id_Program = p.id_Pgm
+            JOIN Professor pr ON e.id_Prof = pr.id_Prof
+        WHERE
+            e.id_Prof = #{idProf}
+    </select>
+
+    <select id="getExamDetail" parameterType="map" resultType="com.izo.itaportal.dto.ExamDetailDto">
+        SELECT
+            p.pgm_Name AS ProgramName,
+            p.id_prof AS idProf,
+            p.id_pgm AS idPgm,
             e.name AS name,
             e.description AS description,
             e.start_Date AS startDate,
@@ -18,7 +40,18 @@
             JOIN Program p ON e.id_Program = p.id_Pgm
             JOIN Professor pr ON e.id_Prof = pr.id_Prof
         WHERE
+            e.id_Program = #{idPgm} AND
             e.id_Prof = #{idProf}
+    </select>
+
+    <select id="GetProgNameById" parameterType="int" resultType="com.izo.itaportal.dto.GetProgNameDto">
+        SELECT
+            id_Pgm,
+            pgm_name AS pgmName
+        FROM
+            Program
+        WHERE
+            id_Prof = #{idProf}
     </select>
 
 </mapper>

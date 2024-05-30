@@ -54,14 +54,14 @@
                         <td>${exam.endDate}</td>
                         <td>${exam.count}/10 명</td>
                         <td>${exam.status}</td>
-                        <td><button onclick="location.href='/prof/examDetail'">상세정보</button></td>
+                        <td><button onclick="location.href='/prof/examDetail?idPgm=${exam.idPgm}&idProf=${exam.idProf}'">상세정보</button></td>
                     </tr>
                     </c:forEach>
                     </tbody>
                 </table>
             </div>
             <div class="btnArea">
-                <button type="button" class="btns btnSt01" onclick="window.location.href='/prof/new';">
+                <button type="button" class="btns btnSt01" onclick='window.location.href="/prof/new?idPgm=${exam.idPgm}&idProf=${exam.idProf}"'>
                     <span>과제 생성</span>
                 </button>
             </div>

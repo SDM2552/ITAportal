@@ -42,29 +42,33 @@
                     <tr>
                         <th scope="col">강좌명</th>
                         <td colspan="3">
-                            자유무역의 이해
+                            <select name="pgmName">
+                                <c:forEach var="program" items="${programs}">
+                                    <option value="${program.idPgm}">${program.pgmName}</option>
+                                </c:forEach>
+                            </select>
                         </td>
                     </tr>
                     <tr>
                         <th scope="col">과제명</th>
                         <td colspan="3">
-                            <input type="text" placeholder="과제명을 입력하세요.">
+                            <input type="text" name="name" placeholder="과제명을 입력하세요.">
                         </td>
                     </tr>
                     <tr>
                         <th scope="col">과제 내용</th>
                         <td colspan="3">
-                            <textarea placeholder="과제 내용을 입력하세요."></textarea>
+                            <textarea name="description" placeholder="과제 내용을 입력하세요."></textarea>
                         </td>
                     </tr>
                     <tr>
                         <th scope="col">과제 시작일</th>
                         <td>
-                                <input type="date" name="Examtart" value="#" id="examStartDate"/>
+                                <input type="date" name="startDate" value="#" id="examStartDate"/>
                         </td>
                         <th scope="col">과제 마감일</th>
                         <td>
-                            <input type="date" name="ExamEnd" value="#"/>
+                            <input type="date" name="endDate" value="#"/>
                         </td>
                     </tr>
 
