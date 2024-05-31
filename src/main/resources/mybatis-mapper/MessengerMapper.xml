@@ -21,41 +21,56 @@
     </insert>
 
     <!-- 특정 수신자가 받은 메신저 목록을 조회합니다 -->
-    <select id="getReceivedMessengers" resultType="com.izo.itaportal.dto.MessengerDto">
+    <select id="getReceivedMessengers" resultMap="MessengerResultMap">
         SELECT * FROM messenger WHERE receiver_login_id = #{receiverLoginId} AND deleted = FALSE ORDER BY sent_at DESC
     </select>
 
     <!-- 특정 발신자가 보낸 메신저 목록을 조회합니다 -->
-    <select id="getSentMessengers" resultType="com.izo.itaportal.dto.MessengerDto">
+    <select id="getSentMessengers" resultMap="MessengerResultMap">
         SELECT * FROM messenger WHERE sender_login_id = #{senderLoginId} AND deleted = FALSE ORDER BY sent_at DESC
     </select>
 
     <!-- 메신저를 저장합니다 -->
-    <update id="saveMessenger" parameterType="com.izo.itaportal.dto.MessengerDto">
+    <insert id="saveMessenger" parameterType="com.izo.itaportal.dto.MessengerDto">
         INSERT INTO messenger (sender_login_id, receiver_login_id, sender_role, receiver_role, subject, message_text, sent_at, is_read, deleted)
         VALUES (#{senderLoginId}, #{receiverLoginId}, #{senderRole}, #{receiverRole}, #{subject}, #{messageText}, NOW(), FALSE, TRUE)
-    </update>
+    </insert>
 
     <!-- 메신저를 읽음으로 표시합니다 -->
     <update id="markMessengerAsRead">
-        UPDATE messenger SET is_read = TRUE WHERE id_message = #{idMessenger}
+        UPDATE messenger SET is_read = TRUE WHERE id_messenger = #{idMessenger}
     </update>
 
     <!-- 메신저의 내용을 업데이트합니다 -->
     <update id="updateMessenger" parameterType="com.izo.itaportal.dto.MessengerDto">
-        UPDATE messenger SET message_text = #{messageText}, updated_at = NOW() WHERE id_message = #{idMessenger}
+        UPDATE messenger SET message_text = #{messageText}, updated_at = NOW() WHERE id_messenger = #{idMessenger}
     </update>
 
     <!-- 메신저를 삭제합니다 -->
     <update id="deleteMessenger">
-        UPDATE messenger SET deleted = TRUE WHERE id_message = #{idMessenger}
+        UPDATE messenger SET deleted = TRUE WHERE id_messenger = #{idMessenger}
     </update>
 
     <!-- 여러 메신저를 일괄 삭제합니다 -->
     <update id="deleteBulkMessengers">
-        UPDATE messenger SET deleted = TRUE WHERE id_message IN
+        UPDATE messenger SET deleted = TRUE WHERE id_messenger IN
         <foreach item="id" collection="list" open="(" separator="," close=")">
             #{id}
         </foreach>
     </update>
+
+    <resultMap id="MessengerResultMap" type="com.izo.itaportal.dto.MessengerDto">
+        <result property="idMessenger" column="id_messenger"/>
+        <result property="senderLoginId" column="sender_login_id"/>
+        <result property="receiverLoginId" column="receiver_login_id"/>
+        <result property="senderRole" column="sender_role"/>
+        <result property="receiverRole" column="receiver_role"/>
+        <result property="subject" column="subject"/>
+        <result property="messageText" column="message_text"/>
+        <result property="sentAt" column="sent_at" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP" typeHandler="com.izo.itaportal.handler.LocalDateTimeTypeHandler"/>
+        <result property="updatedAt" column="updated_at" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP" typeHandler="com.izo.itaportal.handler.LocalDateTimeTypeHandler"/>
+        <result property="isRead" column="is_read"/>
+        <result property="deleted" column="deleted"/>
+    </resultMap>
+
 </mapper>

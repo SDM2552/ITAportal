@@ -164,6 +164,56 @@
                 alert("삭제할 메시지를 선택하세요.");
             }
         }
+
+        function sendMessenger() {
+            var form = $('#createMessengerForm');
+            $.ajax({
+                url: '/messenger/send',
+                method: 'POST',
+                data: form.serialize(),
+                success: function(response) {
+                    alert('쪽지가 전송되었습니다.');
+                    $('#modal').hide();
+                    loadMessengerList();
+                },
+                error: function(xhr, status, error) {
+                    alert('쪽지 전송에 실패했습니다: ' + xhr.responseText);
+                }
+            });
+        }
+        function saveMessenger() {
+            var form = $('#createMessengerForm');
+            $.ajax({
+                url: '/messenger/save',
+                method: 'POST',
+                data: form.serialize(),
+                success: function(response) {
+                    alert('쪽지가 저장되었습니다.');
+                    $('#modal').hide();
+                    loadMessengerList();
+                },
+                error: function(xhr, status, error) {
+                    alert('쪽지 저장에 실패했습니다: ' + xhr.responseText);
+                }
+            });
+        }
+        function cancelCreateMessenger() {
+            $('#modal').hide();
+            loadMessengerList();
+        }
+
+        function loadMessengerList() {
+            $.ajax({
+                url: '/messenger/list',
+                method: 'GET',
+                success: function(response) {
+                    $('#modalContent').html(response);
+                },
+                error: function(xhr, status, error) {
+                    alert('메신저 리스트를 불러오는 데 실패했습니다: ' + xhr.responseText);
+                }
+            });
+        }
     </script>
 </head>
 <body>

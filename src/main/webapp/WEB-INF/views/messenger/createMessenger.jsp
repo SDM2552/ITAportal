@@ -59,9 +59,13 @@
             url: '/messenger/send',
             method: 'POST',
             data: form.serialize(),
-            success: function() {
+            success: function(response) {
                 alert('쪽지가 전송되었습니다.');
-                loadMessengerList();
+                $('#modal').hide();
+                loadReceivedMessages();
+            },
+            error: function(xhr, status, error) {
+                alert('쪽지 전송에 실패했습니다: ' + xhr.responseText);
             }
         });
     }
@@ -72,20 +76,46 @@
             url: '/messenger/save',
             method: 'POST',
             data: form.serialize(),
-            success: function() {
+            success: function(response) {
                 alert('쪽지가 저장되었습니다.');
-                loadMessengerList();
+                $('#modal').hide();
+                loadReceivedMessages();
+            },
+            error: function(xhr, status, error) {
+                alert('쪽지 저장에 실패했습니다: ' + xhr.responseText);
             }
         });
     }
 
     function cancelCreateMessenger() {
-        loadMessengerList();
+        $('#modal').hide();
+        loadReceivedMessages();
+    }
+    function loadReceivedMessages() {
+        $.ajax({
+            url: '/messenger/received',
+            method: 'GET',
+            success: function(data) {
+                $('#messageListTitle').text('받은 메신저함');
+                renderMessages(data);
+            },
+            error: function(xhr, status, error) {
+                alert('메시지를 불러오는 데 실패했습니다: ' + xhr.responseText);
+            }
+        });
     }
 
     function loadMessengerList() {
-        var modalContent = parent.document.getElementById('modalContent');
-        modalContent.innerHTML = '<iframe src="/messenger/list" width="100%" height="100%" frameborder="0"></iframe>';
+        $.ajax({
+            url: '/messenger/list',
+            method: 'GET',
+            success: function(response) {
+                $('#modalContent').html(response);
+            },
+            error: function(xhr, status, error) {
+                alert('메신저 리스트를 불러오는 데 실패했습니다: ' + xhr.responseText);
+            }
+        });
     }
 </script>
 </body>
