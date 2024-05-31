@@ -12,10 +12,10 @@
 <mapper namespace="com.izo.itaportal.repository.ClassRequestRepository">
 
 
-    <!-- 휴보강신청 입력 -->
+    <!-- 휴보강신청 입력 (처리일자 null) -->
     <insert id="insertClassRequest" parameterType="com.izo.itaportal.model.ClassRequest">
-        INSERT INTO class_request (id_class_request, class_date, make_up_date, remarks, app_date, proc_date, id_prof, id_sched, id_pgm, id_room)
-        VALUES (#{idClassRequest}, #{classDate}, #{makeUpDate}, #{remarks}, #{app_date}, #{procDate}, #{idProf}, #{idSched}, #{idPgm}, #{idRoom})
+        INSERT INTO class_request (id_class_request, class_date, make_up_date, remarks, app_date, id_prof, id_sched, id_pgm, id_room)
+        VALUES (#{idClassRequest}, #{classDate}, #{makeUpDate}, #{remarks}, now(), #{idProf}, #{idSched}, #{idPgm}, #{idRoom})
     </insert>
 
     <!-- 휴보강신청 수정 -->

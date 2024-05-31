@@ -1,8 +1,9 @@
 package com.izo.itaportal.controller;
 
-import com.izo.itaportal.dto.AttendanceDto;
-import com.izo.itaportal.dto.ProgramAllDto;
+import com.izo.itaportal.dto.*;
 import com.izo.itaportal.model.*;
+import com.izo.itaportal.service.ExamService;
+import com.izo.itaportal.service.ClassRoomService;
 import com.izo.itaportal.service.ProfessorService;
 import com.izo.itaportal.service.ScheduleService;
 import com.izo.itaportal.service.SyllabusService;
@@ -29,9 +30,12 @@ public class ProfController {
     private final SyllabusService syllabusService;
     private final ProfessorService professorService;
     private final ScheduleService scheduleService;
+    private final ClassRoomService classRoomService;
 
     @Autowired
     HttpSession session;
+    @Autowired
+    ExamService examService;
 
     //idProf 값을 저장함. 이후 매개변수에 @RequestParam("idProf") int idProf를 넣으면 세션 생성 없이 idProf를 쓸수있음
     @ModelAttribute("idProf")
@@ -103,31 +107,27 @@ public class ProfController {
     public String classRequestForm(@RequestParam("idPgm") int idPgm, Model model){
         ProgramView programInfo = syllabusService.selectJoinPgmByidPgm(idPgm);
         long maxIdSched = scheduleService.calculateWeekBetween(programInfo.getStDt(),programInfo.getEndDt());
+        List<ClassRoom> classRooms = classRoomService.getAllClassRoom();
         model.addAttribute("programInfo",programInfo);
         model.addAttribute("maxIdSched",maxIdSched);
         model.addAttribute("classRequest", professorService.selectClassRequest(idPgm));
+        model.addAttribute("classRoom", classRooms);
         return "prof/requestProg";
     }
 
     //주차별 강의계획서상 강의 날짜 조회
     @PostMapping("/getDaySched")
-    @ResponseBody
-    public String getDayShced(@RequestBody Map<String, Integer> params){
-        int idPgm = params.get("idPgm");
-        int idSched = params.get("idSched");
-        System.out.println("====================================");
-        System.out.println(idPgm);
-        System.out.println(idSched);
-        System.out.println(scheduleService.selectScheduleByIdSched(idPgm, idSched));
-        System.out.println("====================================");
-        return scheduleService.selectScheduleByIdSched(idPgm, idSched);
+    public ResponseEntity<String> getDayShced(@RequestParam int idSched, @RequestParam int idPgm){
+        String daySched = scheduleService.selectScheduleByIdSched(idPgm, idSched);
+        return ResponseEntity.ok(daySched);
     }
 
     //휴보강신청 등록
-    @PostMapping("/123")
-    public String classRequest(Model model){
-
-        return "redirect:/prof/requestProg";
+    @PostMapping("/classRequest")
+    public String classRequest(ClassRequest classRequest, Model model){
+        professorService.insertClassRequest(classRequest);
+        model.addAttribute("idPgm", classRequest.getIdPgm());
+        return "prof/list";
     }
 
     //출결 페이지
@@ -178,19 +178,34 @@ public class ProfController {
         }
     }
 
-    //과제 페이지
+    //전체 과제 리스트 페이지
     @GetMapping("/examList")
-    public String examList(){
-        return "prof/examList";}
+    public String examList(Model model){
+        LoginResponse loginUser = (LoginResponse) session.getAttribute("loginUser");
+        if (loginUser == null) {
+            return "redirect:/user/login";
+        }
+        int idProf = loginUser.getCommonId();
+        List<ExamListDto> examListDtos = examService.getExamListByProfessor(idProf);
+        model.addAttribute("ExamList", examListDtos);
+        return "prof/examList";
+    }
     
     //과제 상세 페이지
     @GetMapping("/examDetail")
-    public String examDetail(){
+    public String examDetail(@RequestParam("idPgm") int idPgm, @RequestParam("idProf") int idProf, Model model){
+        ExamDetailDto examDetail = examService.getExamDetail(idPgm, idProf);
+        model.addAttribute("examDetail", examDetail);
         return "prof/examDetail";
     }
     //과제 생성 페이지
     @GetMapping("/new")
-    public String examNew(){
+    public String examNew(Model model){
+        LoginResponse loginUser = (LoginResponse) session.getAttribute("loginUser");
+        int idProf = loginUser.getCommonId();
+        List<GetProgNameDto> getProgNameDtos = examService.getProgNameDtos(idProf);
+        model.addAttribute("programs", getProgNameDtos);
+        model.addAttribute("idProf",idProf);
         return "prof/examNew";
     }
 

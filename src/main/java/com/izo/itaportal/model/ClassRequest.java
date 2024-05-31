@@ -1,12 +1,6 @@
 package com.izo.itaportal.model;
 
 import lombok.Data;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 //김봄이
 
 @Data
@@ -26,9 +20,11 @@ public class ClassRequest {
     //강사번호 (FK)
     private int idProf;
     //주차코드 (FK)
-    private int idWeek;
+    private int idSched;
     //프로그램코드 (FK)
-    private int idProgram;
+    private int idPgm;
+    //강의실코드 (FK)
+    private int idRoom;
 
     private String pgmName;
     private String roomName;
