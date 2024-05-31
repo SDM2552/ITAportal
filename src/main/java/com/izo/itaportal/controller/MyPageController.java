@@ -93,6 +93,7 @@ public class MyPageController {
         try {
             if (myPageService.isStudent(idUser)) {
                 myPageService.updateStudent(student);
+                System.out.println("!@#!@#!@#!@#!@#"+student);
             } else if (myPageService.isProfessor(idUser)) {
                 myPageService.updateProfessor(professor);
             } else if (myPageService.isAdmin(idUser)) {

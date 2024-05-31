@@ -48,6 +48,7 @@
                     <th>생년월일</th>
                     <td>
                         <form id="updateForm1" action="/user/updateInfo" method="post">
+
                             <select class="select selectBg" id="birthyy" name="birthyy" title="년도 선택">
                                 <option value="">년도</option>
                                 <c:forEach var="year" begin="1900" end="2100">
@@ -62,13 +63,16 @@
                                 </c:forEach>
                             </select>
 
+
                             <select class="select selectBg" id="birthdd" name="birthdd" title="일 선택">
                                 <option value="">일</option>
                                 <c:forEach var="day" begin="1" end="31">
                                     <option value="${day}" <c:if test="${birthDay == (day < 10 ? '0' + day : day)}">selected</c:if>>${day}일</option>
                                 </c:forEach>
                             </select>
-                            <input type="hidden" name="birth" value="${birthYear}+${birthMonth}+${birthDay}"/>
+
+                            <c:set var="birth" value="${param.birthyy}${param.birthmm}${param.birthdd}"/>
+                            <input type="hidden" name="birth" value="${birth}"/>
                             <input type="hidden" name="idUser" value="${user.idUser}"/>
                             <input type="hidden" name="tel" value="${user.tel}"/>
                             <input type="hidden" name="address" value="${user.address}"/>
@@ -155,8 +159,8 @@
     </div>
 
     <script>
-        function showModal(formId) {
 
+        function showModal(formId) {
             $('#confirmBtn').attr('onclick', 'submitForm("' + formId + '")');
             $('#confirmationModal').modal('show');
         }
