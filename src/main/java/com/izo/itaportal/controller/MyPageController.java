@@ -41,22 +41,38 @@ public class MyPageController {
         Integer idUser = user.getIdUser();
         model.addAttribute("member", myPageService.getUserById(idUser));
 
+        User userTb = myPageService.getUserById(idUser);
+
+        String email = userTb.getEmail();
+        if (email != null && email.contains("@")) {
+            String[] emailParts = email.split("@");
+            model.addAttribute("email1", emailParts[0]);
+            model.addAttribute("email2", emailParts[1]);
+        } else {
+            model.addAttribute("email1", "");
+            model.addAttribute("email2", "");
+        }
         String birthDate = null;
+        String phone = null;
+
 
 
 
         if (myPageService.isStudent(idUser)) {
-            Student student = myPageService.getStudentById(idUser);
+            Student student= myPageService.getStudentById(idUser);
             model.addAttribute("user", student);
             birthDate = student.getBirth();
+            phone = student.getTel();
         } else if (myPageService.isProfessor(idUser)) {
             Professor professor = myPageService.getProfessorById(idUser);
             model.addAttribute("user", professor);
             birthDate = professor.getBirth();
+            phone = professor.getTel();
         } else if (myPageService.isAdmin(idUser)) {
             Admin admin = myPageService.getAdminById(idUser);
             model.addAttribute("user", admin);
             birthDate = admin.getBirth();
+            phone = admin.getTel();
         } else {
             return "/user/signIn";
         }
@@ -74,12 +90,27 @@ public class MyPageController {
             model.addAttribute("birthDay", "");
         }
 
+        if (phone != null && phone.length() == 13) {
+            String phone1 = phone.substring(0, 3);
+            String phone2 = phone.substring(4, 8);
+            String phone3 = phone.substring(9, 13);
+
+            model.addAttribute("phone1", phone1);
+            model.addAttribute("phone2", phone2);
+            model.addAttribute("phone3", phone3);
+
+        } else {
+            model.addAttribute("phone1", "");
+            model.addAttribute("phone2", "");
+            model.addAttribute("phone3", "");
+        }
+
 
         return "/myPage/myPage";
     }
 
     @PostMapping("/updateInfo")
-    public ResponseEntity<Map<String, Object>> updateInfo(Student student, Professor professor, Admin admin, User user1) {
+    public ResponseEntity<Map<String, Object>> updateInfo(SignUpRequest signUpRequest) {
         Map<String, Object> response = new HashMap<>();
         LoginResponse user = (LoginResponse) httpSession.getAttribute("loginUser");
         if (user == null) {
@@ -92,12 +123,11 @@ public class MyPageController {
 
         try {
             if (myPageService.isStudent(idUser)) {
-                myPageService.updateStudent(student);
-                System.out.println("!@#!@#!@#!@#!@#"+student);
+                myPageService.updateStudent(signUpRequest);
             } else if (myPageService.isProfessor(idUser)) {
-                myPageService.updateProfessor(professor);
+                myPageService.updateProfessor(signUpRequest);
             } else if (myPageService.isAdmin(idUser)) {
-                myPageService.updateAdmin(admin);
+                myPageService.updateAdmin(signUpRequest);
             } else {
                 response.put("success", false);
                 response.put("error", "유효하지 않은 사용자입니다.");

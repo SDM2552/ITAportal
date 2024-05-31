@@ -37,8 +37,38 @@
                     <td><c:out value="${member.loginId}"/></td>
                 </tr>
                 <tr>
-                    <th>이메일</th>
-                    <td><c:out value="${member.email}"/></td>
+                    <th scope="row">
+                        <label for="email_01">이메일</label>
+                    </th>
+                    <form id="updateForm0" action="/user/updateInfo" method="post">
+                        <td colspan="3" class="email">
+                            <input type="hidden" name="m_szEmail"/>
+                            <input type="text" class="inTxt rs-w40" id="email_01" name="email1" value="${email1}"
+                                   onFocus="checkLen(this.value);" onBlur="checkMail(this.value);"
+                                   style="width:120px;ime-mode:disabled;" title="이메일 아이디 입력"/>
+                            <span class="dash"> @ </span>
+                            <label for="email_02" class="disn">이메일 입력</label>
+                            <input type="text" class="inTxt rs-w45" id="email_02" name="email2" value="${email2}"
+                                   onFocus="checkLen(this.value);" onBlur="checkMail(this.value);"
+                                   style="width:120px;ime-mode:disabled;" title="이메일 입력"/>
+                            <span class="selectboxWrap" style="width:180px">
+            <label for="email_03" class="disn">이메일 선택</label>
+            <select class="select selectBg" id="email_03" name="emailDomain"
+                    onchange="chgEmail(this.value, this.selectedIndex);" title="이메일 선택">
+                <option value="">직접입력</option>
+                <option value="gmail.com" <c:if test="${email2 == 'gmail.com'}">selected</c:if>>gmail.com</option>
+                <option value="kakao.com" <c:if test="${email2 == 'kakao.com'}">selected</c:if>>kakao.com</option>
+                <option value="naver.com" <c:if test="${email2 == 'naver.com'}">selected</c:if>>naver.com</option>
+                <option value="nate.com" <c:if test="${email2 == 'nate.com'}">selected</c:if>>nate.com</option>
+                <option value="yahoo.co.kr" <c:if test="${email2 == 'yahoo.co.kr'}">selected</c:if>>yahoo.co.kr</option>
+            </select>
+        </span>
+                            <button type="button" onclick="showModal('updateForm1')">수정</button>
+                        </td>
+                    </form>
+
+
+                    </td>
                 </tr>
                 <tr>
                     <th>이름</th>
@@ -49,17 +79,21 @@
                     <td>
                         <form id="updateForm1" action="/user/updateInfo" method="post">
 
+
                             <select class="select selectBg" id="birthyy" name="birthyy" title="년도 선택">
                                 <option value="">년도</option>
                                 <c:forEach var="year" begin="1900" end="2100">
-                                    <option value="${year}" <c:if test="${birthYear == year}">selected</c:if>>${year}년</option>
+                                    <option value="${year}" <c:if test="${birthYear == year}">selected</c:if>>${year}년
+                                    </option>
                                 </c:forEach>
                             </select>
 
                             <select class="select selectBg" id="birthmm" name="birthmm" title="월 선택">
                                 <option value="">월</option>
                                 <c:forEach var="month" begin="1" end="12">
-                                    <option value="${month}" <c:if test="${birthMonth == (month < 10 ? '0' + month : month)}">selected</c:if>>${month}월</option>
+                                    <option value="${month}"
+                                            <c:if test="${birthMonth == (month < 10 ? '0' + month : month)}">selected</c:if>>${month}월
+                                    </option>
                                 </c:forEach>
                             </select>
 
@@ -67,29 +101,59 @@
                             <select class="select selectBg" id="birthdd" name="birthdd" title="일 선택">
                                 <option value="">일</option>
                                 <c:forEach var="day" begin="1" end="31">
-                                    <option value="${day}" <c:if test="${birthDay == (day < 10 ? '0' + day : day)}">selected</c:if>>${day}일</option>
+                                    <option value="${day}"
+                                            <c:if test="${birthDay == (day < 10 ? '0' + day : day)}">selected</c:if>>${day}일
+                                    </option>
                                 </c:forEach>
                             </select>
 
-                            <c:set var="birth" value="${param.birthyy}${param.birthmm}${param.birthdd}"/>
-                            <input type="hidden" name="birth" value="${birth}"/>
                             <input type="hidden" name="idUser" value="${user.idUser}"/>
-                            <input type="hidden" name="tel" value="${user.tel}"/>
+                            <input type="hidden" name="phone1" value="${phone1}">
+                            <input type="hidden" name="phone2" value="${phone2}">
+                            <input type="hidden" name="phone3" value="${phone3}">
                             <input type="hidden" name="address" value="${user.address}"/>
-                            <button type="button"  onclick="showModal('updateForm1')">수정</button>
+                            <button type="button" onclick="showModal('updateForm1')">수정</button>
                         </form>
                     </td>
                 </tr>
                 <tr>
                     <th>휴대전화</th>
+
                     <td>
                         <form id="updateForm2" action="/user/updateInfo" method="post">
-                            <input type="text" name="tel" value="${user.tel}"/>
+                            <span class="selectboxWrap" style="width:80px">
+                                <select class="select selectBg" id="phone1" name="phone1" title="휴대폰 번호 선택">
+                                    <option value="010"
+                                            <c:if test="${phone1 == '010'}">selected</c:if>>010</option>
+                                    <option value="011"
+                                            <c:if test="${phone1 == '011'}">selected</c:if>>011</option>
+                                    <option value="016"
+                                            <c:if test="${phone1 == '016'}">selected</c:if>>016</option>
+                                    <option value="017"
+                                            <c:if test="${phone1 == '017'}">selected</c:if>>017</option>
+                                    <option value="018"
+                                            <c:if test="${phone1 == '018'}">selected</c:if>>018</option>
+                                    <option value="019"
+                                            <c:if test="${phone1 == '019'}">selected</c:if>>019</option>
+                                </select>
+                            </span>
+                            <span class="dash">-</span>
+                            <input type="text" class="inTxt" id="phone2" name="phone2" maxlength="4" style="width:80px"
+                                   title="휴대폰 두번째 자리 입력" value="${phone2}"/>
+                            <span class="dash">-</span>
+                            <input type="text" class="inTxt" id="phone3" name="phone3" maxlength="4" style="width:80px"
+                                   title="휴대폰 세번째 자리 입력" value="${phone3}"/>
+
+
+                            <input type="hidden" name="birthyy" value="${birthYear}">
+                            <input type="hidden" name="birthmm" value="${birthMonth}">
+                            <input type="hidden" name="birthdd" value="${birthDay}">
                             <input type="hidden" name="idUser" value="${user.idUser}"/>
                             <input type="hidden" name="address" value="${user.address}"/>
                             <input type="hidden" name="birth" value="${user.birth}"/>
-                            <button type="button"  onclick="showModal('updateForm2')">수정</button>
+                            <button type="button" onclick="showModal('updateForm2')">수정</button>
                         </form>
+                    </td>
                     </td>
                 </tr>
                 <tr>
@@ -97,10 +161,15 @@
                     <td>
                         <form id="updateForm3" action="/user/updateInfo" method="post">
                             <input type="text" name="address" value="${user.address}"/>
+                            <input type="hidden" name="phone1" value="${phone1}">
+                            <input type="hidden" name="phone2" value="${phone2}">
+                            <input type="hidden" name="phone3" value="${phone3}">
                             <input type="hidden" name="idUser" value="${user.idUser}"/>
-                            <input type="hidden" name="birth" value="${user.birth}"/>
+                            <input type="hidden" name="birthyy" value="${birthYear}">
+                            <input type="hidden" name="birthmm" value="${birthMonth}">
+                            <input type="hidden" name="birthdd" value="${birthDay}">
                             <input type="hidden" name="tel" value="${user.tel}"/>
-                            <button type="button"  onclick="showModal('updateForm3')">수정</button>
+                            <button type="button" onclick="showModal('updateForm3')">수정</button>
                         </form>
                     </td>
                 </tr>
@@ -191,7 +260,6 @@
             window.location.href = '/user/info';
         }
     </script>
-
 
 
 </div>
