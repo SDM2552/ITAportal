@@ -498,3 +498,20 @@
     border: 1px solid #ccc;
     resize: vertical;
 }
+/*버튼*/
+.miniBtn {
+    color: #e0e0e0;
+    width: 32px;
+    height: 25px;
+    margin: -3px;
+    border: none;
+    cursor: pointer;
+}
+.blueC {
+    background-color: #007bff;
+    margin-right: -3px;
+}
+.redC {
+    background-color: #e65151;
+    margin-left: -3px;
+}

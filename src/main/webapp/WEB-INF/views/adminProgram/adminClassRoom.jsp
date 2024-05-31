@@ -119,8 +119,8 @@
                             <td>${cr.idRoom}</td>
                             <td>${cr.roomName}</td>
                             <td class="actions">
-                                <a href="classRoomUpdateInput?idRoom=${cr.idRoom}"><button type="button">수정</button></a>
-                                <a href="classRoomDelete?idRoom=${cr.idRoom}"><button type="button">삭제</button></a>
+                                <a href="classRoomUpdateInput?idRoom=${cr.idRoom}"><button type="button" class="miniBtn blueC">수정</button></a>
+                                <a href="classRoomDelete?idRoom=${cr.idRoom}"><button type="button" class="miniBtn redC">삭제</button></a>
                             </td>
                         </tr>
                     </c:forEach>

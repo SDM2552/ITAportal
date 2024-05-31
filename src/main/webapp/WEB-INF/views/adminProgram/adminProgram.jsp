@@ -129,8 +129,8 @@
                             <td>${program.pgmPer}</td>
                             <td>${program.pgmFee}</td>
                             <td class="actions">
-                                <a href="progUpdateInput?idPgm=${program.idPgm}"><button type="button">수정</button></a>
-                                <a href="progDelete?idPgm=${program.idPgm}"><button type="button">삭제</button> </a>
+                                <a href="progUpdateInput?idPgm=${program.idPgm}"><button type="button" class="miniBtn blueC" >수정</button></a>
+                                <a href="progDelete?idPgm=${program.idPgm}"><button type="button" class="miniBtn redC" >삭제</button> </a>
                             </td>
                         </tr>
                     </c:forEach>
