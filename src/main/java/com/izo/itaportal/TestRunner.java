@@ -147,12 +147,12 @@ public class TestRunner implements ApplicationRunner{
         jdbcTemplate.execute("INSERT INTO category VALUES (6,'일반교양')");
 
         //exam
-        jdbcTemplate.execute("INSERT INTO exam(name, start_date, end_date, status, count, description, id_program, id_prof, id_file)" +
-                "VALUES ('통관관세 시험', '2024-05-10', '2024-05-24', '진행중', '0', '수업 내용을 요약해서 레포트로 제출할 것.','1','2','9999')");
-        jdbcTemplate.execute("INSERT INTO exam(name, start_date, end_date, status, count, description, id_program, id_prof, id_file)" +
-                "VALUES ('자유무역협정 시험', '2024-05-10', '2024-05-24', '진행중', '0', '수업 시간에 배운걸 다 써서 내세요.','2','1','9999')");
-        jdbcTemplate.execute("INSERT INTO exam(name, start_date, end_date, status, count, description, id_program, id_prof, id_file)" +
-                "VALUES ('SEO 시험', '2024-05-10', '2024-05-24', '진행중', '0', 'SEO란 무엇인가? 500자 이내로 레포트 제출.','3','3','9999')");
+        jdbcTemplate.execute("INSERT INTO exam(name, start_date, end_date, status, count, description, id_program, id_prof)" +
+                "VALUES ('통관관세 시험', '2024-05-10', '2024-05-24', '진행중', '0', '수업 내용을 요약해서 레포트로 제출할 것.','1','2')");
+        jdbcTemplate.execute("INSERT INTO exam(name, start_date, end_date, status, count, description, id_program, id_prof)" +
+                "VALUES ('자유무역협정 시험', '2024-05-10', '2024-05-24', '진행중', '0', '수업 시간에 배운걸 다 써서 내세요.','2','1')");
+        jdbcTemplate.execute("INSERT INTO exam(name, start_date, end_date, status, count, description, id_program, id_prof)" +
+                "VALUES ('SEO 시험', '2024-05-10', '2024-05-24', '진행중', '0', 'SEO란 무엇인가? 500자 이내로 레포트 제출.','3','3')");
 
         jdbcTemplate.execute("INSERT INTO exam_submission(id_program, id_exam, id_student, id_file)" +
                 "VALUES ('100', '1', '2', '9999')");

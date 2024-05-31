@@ -3,8 +3,10 @@ package com.izo.itaportal.repository;
 import com.izo.itaportal.dto.ExamDetailDto;
 import com.izo.itaportal.dto.ExamListDto;
 import com.izo.itaportal.dto.GetProgNameDto;
+import com.izo.itaportal.model.Exam;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -15,7 +17,11 @@ public interface ExamRepository {
     List<ExamListDto> getExamListByProfessor(@Param("idProf") int idProf);
 
     //과제 상세
-    ExamDetailDto getExamDetail(@Param("idPgm") int idPgm, @Param("idProf") int idProf);
+    ExamDetailDto getExamDetail(@Param("idExam") int idExam, @Param("idPgm") int idPgm, @Param("idProf") int idProf);
 
     List<GetProgNameDto> GetProgNameById(int idProf);
+
+    void insertExam(Exam exam);
+
+    List<ExamListDto> getExamsByStudentId(int idStudent);
 }

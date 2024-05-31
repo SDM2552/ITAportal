@@ -76,7 +76,7 @@
                         </td>
                         <th scope="col">제출 인원</th>
                         <td>
-                            ${examDetail.count}/10명
+                            ${examDetail.count}/${examDetail.numOfStu}명
                         </td>
                     </tr>
                     </tbody>

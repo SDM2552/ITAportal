@@ -3,6 +3,7 @@ package com.izo.itaportal.service;
 import com.izo.itaportal.dto.ExamDetailDto;
 import com.izo.itaportal.dto.ExamListDto;
 import com.izo.itaportal.dto.GetProgNameDto;
+import com.izo.itaportal.model.Exam;
 import com.izo.itaportal.repository.ExamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,10 +19,17 @@ public class ExamService {
     public List<ExamListDto> getExamListByProfessor(int idProf) {
         return examRepository.getExamListByProfessor(idProf);
     }
-    public ExamDetailDto getExamDetail(int idPgm, int idProf) {
-        return examRepository.getExamDetail(idPgm, idProf);
+    public ExamDetailDto getExamDetail(int idExam, int idPgm, int idProf) {
+        return examRepository.getExamDetail(idExam, idPgm, idProf);
     }
     public List<GetProgNameDto> getProgNameDtos(int idProf){
         return examRepository.GetProgNameById(idProf);
     }
+    public void insertExam(Exam exam){
+        examRepository.insertExam(exam);
+    }
+    public List<ExamListDto> getExamsByStudentId(int idStudent){
+        return examRepository.getExamsByStudentId(idStudent);
+    }
+
 }

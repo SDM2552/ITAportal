@@ -67,9 +67,9 @@
                     </tr>
 
                     <tr>
-                        <th scope="col">모집 정원</th>
+                        <th scope="col">강사</th>
                         <td>
-                            ${program.pgmPer}명
+                            ${program.profName}
                         </td>
                         <th scope="col">강의 요일/시간</th>
                         <td>
@@ -77,19 +77,25 @@
                         </td>
                     </tr>
                     <tr>
+                        <th scope="col">모집 정원</th>
+                        <td>
+                            ${program.pgmPer}명
+                        </td>
                         <th scope="col">강좌 구분</th>
                         <td>
                             ${program.pgmMethod}
-                        </td>
-                        <th scope="col">수강료</th>
-                        <td>
-                            ${program.pgmFee}원
                         </td>
                     </tr>
                     <tr>
                         <th scope="col">신청 대상</th>
                         <td colspan="3">
                             ${program.pgmTarget}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">수강료</th>
+                        <td colspan="3">
+                            ${program.pgmFee}원
                         </td>
                     </tr>
                     </tbody>

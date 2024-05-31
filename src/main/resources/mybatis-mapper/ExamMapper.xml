@@ -9,6 +9,8 @@
             p.pgm_Name AS ProgramName,
             p.id_prof AS idProf,
             p.id_pgm AS idPgm,
+            p.num_of_stu AS numOfStu,
+            e.id_exam AS idExam,
             e.name AS name,
             e.description AS description,
             e.start_Date AS startDate,
@@ -29,6 +31,7 @@
             p.pgm_Name AS ProgramName,
             p.id_prof AS idProf,
             p.id_pgm AS idPgm,
+            p.num_of_stu AS numOfStu,
             e.name AS name,
             e.description AS description,
             e.start_Date AS startDate,
@@ -41,7 +44,8 @@
             JOIN Professor pr ON e.id_Prof = pr.id_Prof
         WHERE
             e.id_Program = #{idPgm} AND
-            e.id_Prof = #{idProf}
+            e.id_Prof = #{idProf} AND
+            e.id_Exam = #{idExam}
     </select>
 
     <select id="GetProgNameById" parameterType="int" resultType="com.izo.itaportal.dto.GetProgNameDto">
@@ -52,6 +56,32 @@
             Program
         WHERE
             id_Prof = #{idProf}
+    </select>
+    <insert id="insertExam" parameterType="com.izo.itaportal.model.Exam">
+        INSERT INTO Exam (name, start_Date, end_Date, description, status, count, id_Program, id_Prof)
+        VALUES (#{name}, #{startDate}, #{endDate}, #{description}, '진행중',0, #{idProgram}, #{idProf})
+    </insert>
+
+    <select id="getExamsByStudentId" parameterType="int" resultType="com.izo.itaportal.dto.ExamListDto">
+        SELECT
+            e.id_Exam,
+            e.name,
+            e.start_Date,
+            e.end_Date,
+            e.status,
+            e.count,
+            e.description,
+            e.id_Program,
+            e.id_Prof,
+            p.pgm_Name
+        FROM
+            Exam e
+                JOIN
+            Attendance a ON e.id_Program = a.id_pgm
+                JOIN
+            Program p ON e.id_Program = p.id_Pgm
+        WHERE
+            a.id_Student = #{idStudent}
     </select>
 
 </mapper>
