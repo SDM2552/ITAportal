@@ -25,25 +25,37 @@
                 <c:choose>
                     <c:when test="${not empty sessionScope.loginUser}">
                         <li style="font-weight: 600; font-size: 18px; width: 100%;">
-                            &nbsp;<i class="fa-solid fa-user"></i>&nbsp; ${loginUser.loginId}님 환영합니다.
+                            &nbsp;<i class="fa-solid fa-user"></i>&nbsp; ${loginUser.name} 님 환영합니다.
                             <hr style="margin-top: 3px;">
                             <table>
                                 <tr>
-                                    <td>이름</td>
-                                    <td>${loginUser.name}</td>
+                                    <td>이메일</td>
+                                    <td>${loginUser.email}</td>
                                 </tr>
                                 <tr>
                                     <td>직업</td>
-                                    <td>${loginUser.role}</td>
+                                    <td>
+                                        <c:choose>
+                                            <c:when test="${loginUser.role == 'stu'}">
+                                                학생
+                                            </c:when>
+                                            <c:when test="${loginUser.role == 'prof'}">
+                                                강사
+                                            </c:when>
+                                            <c:when test="${loginUser.role == 'admin'}">
+                                                관리자
+                                            </c:when>
+                                            <c:otherwise>
+                                                역할 없음
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>가입일</td>
-                                    <td>${registDate}</td>
+                                    <td>${loginUser.registDate}</td>
                                 </tr>
-                                <tr>
-                                    <td>학적상태 </td>
-                                    <td>재학</td>
-                                </tr>
+
                             </table>
 
                             <div class="profileButton">

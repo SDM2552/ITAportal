@@ -34,7 +34,7 @@
     </insert>
 
     <select id="getUserByLoginId" parameterType="String" resultType="com.izo.itaportal.model.LoginResponse">
-        SELECT login_id, password, role, id_user FROM user WHERE login_id = #{loginId}
+        SELECT login_id, password, role, id_user, email, regist_date FROM user WHERE login_id = #{loginId}
     </select>
     <!-- 교수 -->
     <select id="selectProf" parameterType="integer" resultType="com.izo.itaportal.model.Professor">
