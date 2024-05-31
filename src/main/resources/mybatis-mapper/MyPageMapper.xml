@@ -75,7 +75,7 @@
     </delete>
 
     <select id="selectUserById" resultType="com.izo.itaportal.model.User">
-        select login_id, password from user where id_user=#{idUser}
+        select login_id, password, email from user where id_user=#{idUser}
     </select>
 
     <update id="updatePassword">
