@@ -30,6 +30,7 @@
             <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>과제 관리</h3>
             <!-- 본문 -->
             <h4 class="subTit">과제 생성</h4>
+            <form action="/prof/makeExam" method="post">
             <div class="tblData mt10">
                 <table>
                     <colgroup>
@@ -42,7 +43,7 @@
                     <tr>
                         <th scope="col">강좌명</th>
                         <td colspan="3">
-                            <select name="pgmName">
+                            <select name="idProgram">
                                 <c:forEach var="program" items="${programs}">
                                     <option value="${program.idPgm}">${program.pgmName}</option>
                                 </c:forEach>
@@ -64,11 +65,11 @@
                     <tr>
                         <th scope="col">과제 시작일</th>
                         <td>
-                                <input type="date" name="startDate" value="#" id="examStartDate"/>
+                                <input type="date" name="startDate" id="examStartDate"/>
                         </td>
                         <th scope="col">과제 마감일</th>
                         <td>
-                            <input type="date" name="endDate" value="#"/>
+                            <input type="date" name="endDate"/>
                         </td>
                     </tr>
 
@@ -84,6 +85,7 @@
                     <span>목록으로</span>
                 </button>
             </div>
+            </form>
             <!-- btn -->
             <!-- 본문 끝 -->
         </div>

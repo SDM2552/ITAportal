@@ -37,7 +37,7 @@
                     <c:when test="${sessionScope.loginUser.role eq 'stu'}">
                     <!-- 학생 -->
                         <li>
-                            <a href="/user/info">MY(학생)</a>
+                            <a href="/user/info">MY</a>
                         </li>
                         <li>
                             <a href="/stu/myProgram">수업</a>
@@ -52,7 +52,7 @@
                     <c:when test="${sessionScope.loginUser.role eq 'prof'}">
                     <!-- 강사 -->
                         <li>
-                            <a href="/user/info">MY(강사)</a>
+                            <a href="/user/info">MY</a>
                         </li>
                         <li>
                             <a href="/prof/list">강의 관리</a>
@@ -64,7 +64,7 @@
                     <c:when test="${sessionScope.loginUser.role eq 'admin'}">
                     <!-- 관리자 -->
                         <li>
-                            <a href="/user/info">MY(관리자)</a>
+                            <a href="/user/info">MY</a>
                         </li>
                         <li>
                             <a href="/adminProgram">강의 관리</a>
@@ -79,7 +79,7 @@
                     <c:otherwise>
                     <!-- 비회원 -->
                         <li>
-                            <a href="#">MY(비회원)</a>
+                            <a href="#">MY</a>
                         </li>
                         <li>
                             <a href="#">수업</a>

@@ -1,8 +1,11 @@
 package com.izo.itaportal.controller;
 
+import com.izo.itaportal.dto.ExamListDto;
 import com.izo.itaportal.dto.ProgramAllDto;
 import com.izo.itaportal.dto.SugangDto;
+import com.izo.itaportal.model.Exam;
 import com.izo.itaportal.model.LoginResponse;
+import com.izo.itaportal.service.ExamService;
 import com.izo.itaportal.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +22,8 @@ import java.util.List;
 public class StudentController {
     @Autowired
     StudentService studentService;
+    @Autowired
+    ExamService examService;
     @Autowired
     HttpSession session;
 
@@ -40,8 +45,12 @@ public class StudentController {
         System.out.println("수강: " + sugangDto);
         return "enrollment/enrollmentapplylist";
     }
-    @GetMapping("/exam") //과제 제출 페이지
-    public String examPage(){
+    @GetMapping("/exam") //과제 리스트 페이지
+    public String examPage(Model model){
+        LoginResponse loginUser = (LoginResponse) session.getAttribute("loginUser");
+        int idStudent = loginUser.getCommonId();
+        List<ExamListDto> examList = examService.getExamsByStudentId(idStudent);
+        model.addAttribute("examList", examList);
         return "student/exam";
     }
     @GetMapping("/examSubmit") //선택한 과제 제출 페이지

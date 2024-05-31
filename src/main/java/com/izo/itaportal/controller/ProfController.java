@@ -193,8 +193,8 @@ public class ProfController {
     
     //과제 상세 페이지
     @GetMapping("/examDetail")
-    public String examDetail(@RequestParam("idPgm") int idPgm, @RequestParam("idProf") int idProf, Model model){
-        ExamDetailDto examDetail = examService.getExamDetail(idPgm, idProf);
+    public String examDetail(@RequestParam("idExam") int idExam, @RequestParam("idPgm") int idPgm, @RequestParam("idProf") int idProf, Model model){
+        ExamDetailDto examDetail = examService.getExamDetail(idExam, idPgm, idProf);
         model.addAttribute("examDetail", examDetail);
         return "prof/examDetail";
     }
@@ -207,6 +207,14 @@ public class ProfController {
         model.addAttribute("programs", getProgNameDtos);
         model.addAttribute("idProf",idProf);
         return "prof/examNew";
+    }
+    @PostMapping("/makeExam")
+    public String makeExam(@ModelAttribute Exam exam){
+        LoginResponse loginUser = (LoginResponse) session.getAttribute("loginUser");
+        int idProf = loginUser.getCommonId();
+        exam.setIdProf(idProf);
+        examService.insertExam(exam);
+        return "redirect:/prof/examList";
     }
 
 

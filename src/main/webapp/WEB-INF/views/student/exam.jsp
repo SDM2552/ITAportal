@@ -47,15 +47,17 @@
                     </tr>
                     </thead>
                     <tbody>
+                    <c:forEach var="exam" items="${examList}">
                     <tr>
-                        <td>무역</td>
-                        <td>김교수</td>
+                        <td>${exam.programName}</td>
+                        <td></td>
                         <td>무슨무슨과제</td>
                         <td>오늘부터</td>
                         <td>내일까지</td>
                         <td>아직임</td>
                         <td><button onclick="location.href='/stu/examSubmit'">제출</button></td>
                     </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
             </div>
