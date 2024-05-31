@@ -5,6 +5,8 @@ import com.izo.itaportal.model.LoginResponse;
 import com.izo.itaportal.service.MessengerService;
 import com.izo.itaportal.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -47,10 +49,10 @@ public class MessengerController {
     }
 
     @PostMapping("/send")
-    public String sendMessenger(HttpSession session, @RequestParam("receiverLoginId") String receiverLoginId, @RequestParam("subject") String subject, @RequestParam("messageText") String messageText) {
+    public ResponseEntity<String> sendMessenger(HttpSession session, @RequestParam("receiverLoginId") String receiverLoginId, @RequestParam("subject") String subject, @RequestParam("messageText") String messageText) {
         LoginResponse user = (LoginResponse) session.getAttribute("loginUser");
         if (user == null) {
-            return "redirect:/user/login";
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("로그인이 필요합니다.");
         }
         MessengerDto messenger = new MessengerDto();
         messenger.setSenderLoginId(user.getLoginId());
@@ -60,7 +62,7 @@ public class MessengerController {
         messenger.setSubject(subject);
         messenger.setMessageText(messageText);
         messengerService.sendMessenger(messenger);
-        return "redirect:/messenger/list";
+        return ResponseEntity.ok("쪽지가 전송되었습니다.");
     }
 
     @PostMapping("/sendBulk")
@@ -84,11 +86,10 @@ public class MessengerController {
     }
 
     @PostMapping("/save")
-    @ResponseBody
-    public void saveMessenger(HttpSession session, @RequestParam("receiverLoginId") String receiverLoginId, @RequestParam("subject") String subject, @RequestParam("messageText") String messageText) {
+    public ResponseEntity<String> saveMessenger(HttpSession session, @RequestParam("receiverLoginId") String receiverLoginId, @RequestParam("subject") String subject, @RequestParam("messageText") String messageText) {
         LoginResponse user = (LoginResponse) session.getAttribute("loginUser");
         if (user == null) {
-            return;
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("로그인이 필요합니다.");
         }
         MessengerDto messenger = new MessengerDto();
         messenger.setSenderLoginId(user.getLoginId());
@@ -98,6 +99,7 @@ public class MessengerController {
         messenger.setSubject(subject);
         messenger.setMessageText(messageText);
         messengerService.saveMessenger(messenger);
+        return ResponseEntity.ok("쪽지가 저장되었습니다.");
     }
 
     @PostMapping("/markAsRead")
