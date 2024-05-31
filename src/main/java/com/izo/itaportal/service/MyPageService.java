@@ -1,9 +1,6 @@
 package com.izo.itaportal.service;
 
-import com.izo.itaportal.model.Admin;
-import com.izo.itaportal.model.Professor;
-import com.izo.itaportal.model.Student;
-import com.izo.itaportal.model.User;
+import com.izo.itaportal.model.*;
 import com.izo.itaportal.repository.AdminRepository;
 import com.izo.itaportal.repository.MyPageRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -43,18 +40,18 @@ public class MyPageService {
         return myPageRepository.selectUserById(idUser);
     }
 
-    public int updateStudent(Student student) {
-        int updateStudent = myPageRepository.updateStudent(student);
+    public int updateStudent(SignUpRequest signUpRequest) {
+        int updateStudent = myPageRepository.updateStudent(signUpRequest);
         return updateStudent;
     }
 
-    public int updateProfessor(Professor professor) {
-        int updateProfessor = myPageRepository.updateProf(professor);
+    public int updateProfessor(SignUpRequest signUpRequest) {
+        int updateProfessor = myPageRepository.updateProf(signUpRequest);
         return updateProfessor;
     }
 
-    public int updateAdmin(Admin admin) {
-        int updateAdmin = myPageRepository.updateAdmin(admin);
+    public int updateAdmin(SignUpRequest signUpRequest) {
+        int updateAdmin = myPageRepository.updateAdmin(signUpRequest);
         return updateAdmin;
     }
 

@@ -16,9 +16,8 @@
 
 
     <select id="selectStudentById" resultType="com.izo.itaportal.model.Student">
-        select id_student, address, birth, gender, id_user, name, tel from student where id_user=#{idUser}
+        select * from student where id_user=#{idUser}
     </select>
-
 
 
     <select id="selectProfById" resultType="com.izo.itaportal.model.Professor">
@@ -30,7 +29,7 @@
     </select>
 
 
-    <update id="updateStudent" >
+    <update id="updateStudent" parameterType="com.izo.itaportal.model.SignUpRequest">
         update student
         set address = #{address},
             birth = #{birth},
@@ -38,7 +37,7 @@
         where id_user = #{idUser}
     </update>
 
-    <update id="updateProf">
+    <update id="updateProf" parameterType="com.izo.itaportal.model.SignUpRequest">
         update professor
         set address = #{address},
             birth = #{birth},
@@ -46,7 +45,7 @@
         where id_user = #{idUser}
     </update>
 
-    <update id="updateAdmin">
+    <update id="updateAdmin" parameterType="com.izo.itaportal.model.SignUpRequest">
         update admin
         set address = #{address},
             birth = #{birth},
@@ -75,7 +74,7 @@
     </delete>
 
     <select id="selectUserById" resultType="com.izo.itaportal.model.User">
-        select login_id, password, email from user where id_user=#{idUser}
+        select * from user where id_user=#{idUser}
     </select>
 
     <update id="updatePassword">

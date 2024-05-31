@@ -2,10 +2,7 @@ package com.izo.itaportal.repository;
 
 
 
-import com.izo.itaportal.model.Admin;
-import com.izo.itaportal.model.Professor;
-import com.izo.itaportal.model.Student;
-import com.izo.itaportal.model.User;
+import com.izo.itaportal.model.*;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -17,9 +14,9 @@ public interface MyPageRepository {
     public Admin selectAdminById(Integer idUser);
     public User selectUserById(Integer idUser);
 
-    public int updateStudent(Student student);
-    public int updateProf(Professor professor);
-    public int updateAdmin(Admin admin);
+    public int updateStudent(SignUpRequest signUpRequest);
+    public int updateProf(SignUpRequest signUpRequest);
+    public int updateAdmin(SignUpRequest signUpRequest);
     public int updatePassword(Integer idUser,String newPassword);
 
     public int deleteStudent(Integer idUser);
