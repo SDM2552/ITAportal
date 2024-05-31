@@ -38,7 +38,9 @@ public class TestRunner implements ApplicationRunner{
         jdbcTemplate.execute("INSERT INTO professor(name, birth, tel, gender, address, id_user)" +
                 "VALUES ('최교수07', '19931231', '010-9876-5432', 'M', '인천광역시', '7')");
         jdbcTemplate.execute("INSERT INTO admin(name, birth, tel, gender, address, id_user)" +
+
                 "VALUES ('관리자01', '19990101', '010-1000-2000', 'M', '서울시', '4')");
+
         jdbcTemplate.execute("INSERT INTO student(name, birth, tel, gender, address, id_user)" +
                 "VALUES ('김학생', '20020202', '010-2222-3333', 'M', '서울시 마포구', '1')");
         jdbcTemplate.execute("INSERT INTO student(name, birth, tel, gender, address, id_user)" +
