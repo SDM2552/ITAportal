@@ -48,7 +48,27 @@
                     <th>생년월일</th>
                     <td>
                         <form id="updateForm1" action="/user/updateInfo" method="post">
-                            <input type="date" name="birth" id="birth" value="${user.birth}"/>
+                            <select class="select selectBg" id="birthyy" name="birthyy" title="년도 선택">
+                                <option value="">년도</option>
+                                <c:forEach var="year" begin="1900" end="2100">
+                                    <option value="${year}" <c:if test="${birthYear == year}">selected</c:if>>${year}년</option>
+                                </c:forEach>
+                            </select>
+
+                            <select class="select selectBg" id="birthmm" name="birthmm" title="월 선택">
+                                <option value="">월</option>
+                                <c:forEach var="month" begin="1" end="12">
+                                    <option value="${month}" <c:if test="${birthMonth == (month < 10 ? '0' + month : month)}">selected</c:if>>${month}월</option>
+                                </c:forEach>
+                            </select>
+
+                            <select class="select selectBg" id="birthdd" name="birthdd" title="일 선택">
+                                <option value="">일</option>
+                                <c:forEach var="day" begin="1" end="31">
+                                    <option value="${day}" <c:if test="${birthDay == (day < 10 ? '0' + day : day)}">selected</c:if>>${day}일</option>
+                                </c:forEach>
+                            </select>
+                            <input type="hidden" name="birth" value="${birthYear}+${birthMonth}+${birthDay}"/>
                             <input type="hidden" name="idUser" value="${user.idUser}"/>
                             <input type="hidden" name="tel" value="${user.tel}"/>
                             <input type="hidden" name="address" value="${user.address}"/>
