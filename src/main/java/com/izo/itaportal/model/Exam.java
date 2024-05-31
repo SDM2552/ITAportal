@@ -23,6 +23,5 @@ public class Exam {
     private int idProgram;
     //강사코드 (FK)
     private int idProf;
-    //파일코드 (FK)
-    private int idFile;
+
 }

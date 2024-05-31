@@ -52,9 +52,9 @@
                         <td>${exam.name}</td>
                         <td>${exam.startDate}</td>
                         <td>${exam.endDate}</td>
-                        <td>${exam.count}/10 명</td>
+                        <td>${exam.count}/${exam.numOfStu} 명</td>
                         <td>${exam.status}</td>
-                        <td><button onclick="location.href='/prof/examDetail?idPgm=${exam.idPgm}&idProf=${exam.idProf}'">상세정보</button></td>
+                        <td><button onclick="location.href='/prof/examDetail?idExam=${exam.idExam}&idPgm=${exam.idPgm}&idProf=${exam.idProf}'">상세정보</button></td>
                     </tr>
                     </c:forEach>
                     </tbody>

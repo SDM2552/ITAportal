@@ -119,8 +119,8 @@
                             <td>${category.idCate}</td>
                             <td>${category.cateName}</td>
                             <td class="actions">
-                                <a href="categoryUpdateInput?idCate=${category.idCate}"><button type="button">수정</button></a>
-                                <a href="categoryDelete?idCate=${category.idCate}"><button type="button">삭제</button></a>
+                                <a href="categoryUpdateInput?idCate=${category.idCate}"><button type="button" class="miniBtn blueC">수정</button></a>
+                                <a href="categoryDelete?idCate=${category.idCate}"><button type="button" class="miniBtn redC">삭제</button></a>
                             </td>
                         </tr>
                     </c:forEach>
