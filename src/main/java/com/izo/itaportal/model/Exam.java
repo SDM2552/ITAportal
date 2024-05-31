@@ -1,12 +1,6 @@
 package com.izo.itaportal.model;
 
 import lombok.Data;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 //김봄이
 
 @Data
@@ -22,7 +16,7 @@ public class Exam {
     //진행상태
     private String status;
     //제출인원
-    private String  count;
+    private String count;
     //시험내용
     private String description;
     //프로그램코드 (FK)

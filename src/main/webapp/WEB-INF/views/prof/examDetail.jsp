@@ -44,39 +44,39 @@
                     <tr>
                         <th scope="col">강좌명</th>
                         <td colspan="3">
-                            자유무역의 이해
+                            ${examDetail.programName}
                         </td>
                     </tr>
                     <tr>
                         <th scope="col">과제명</th>
                         <td colspan="3">
-                            과제명을 입력하세요
+                            ${examDetail.name}
                         </td>
                     </tr>
                     <tr>
                         <th scope="col">과제 내용</th>
                         <td colspan="3">
-                            과제 설명을 입력하세요
+                            ${examDetail.description}
                         </td>
                     </tr>
                     <tr>
                         <th scope="col">과제 시작일</th>
                         <td>
-                            오늘부터
+                            ${examDetail.startDate}
                         </td>
                         <th scope="col">과제 마감일</th>
                         <td>
-                            내일까지
+                            ${examDetail.endDate}
                         </td>
                     </tr>
                     <tr>
                         <th scope="col">진행 상태</th>
                         <td>
-                            진행중
+                            ${examDetail.status}
                         </td>
                         <th scope="col">제출 인원</th>
                         <td>
-                            0/10명
+                            ${examDetail.count}/10명
                         </td>
                     </tr>
                     </tbody>

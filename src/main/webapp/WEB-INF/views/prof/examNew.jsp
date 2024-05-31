@@ -42,29 +42,33 @@
                     <tr>
                         <th scope="col">강좌명</th>
                         <td colspan="3">
-                            자유무역의 이해
+                            <select name="pgmName">
+                                <c:forEach var="program" items="${programs}">
+                                    <option value="${program.idPgm}">${program.pgmName}</option>
+                                </c:forEach>
+                            </select>
                         </td>
                     </tr>
                     <tr>
                         <th scope="col">과제명</th>
                         <td colspan="3">
-                            <input type="text" placeholder="과제명을 입력하세요.">
+                            <input type="text" name="name" placeholder="과제명을 입력하세요.">
                         </td>
                     </tr>
                     <tr>
                         <th scope="col">과제 내용</th>
                         <td colspan="3">
-                            <textarea placeholder="과제 내용을 입력하세요."></textarea>
+                            <textarea name="description" placeholder="과제 내용을 입력하세요."></textarea>
                         </td>
                     </tr>
                     <tr>
                         <th scope="col">과제 시작일</th>
                         <td>
-                            <input type="text" style="width: 100%;">
+                                <input type="date" name="startDate" value="#" id="examStartDate"/>
                         </td>
                         <th scope="col">과제 마감일</th>
                         <td>
-                            <input type="text"  style="width: 100%;">
+                            <input type="date" name="endDate" value="#"/>
                         </td>
                     </tr>
 
@@ -89,6 +93,23 @@
     <!-- footer -->
     <c:import url="../layout/footer.jsp" />
 </div>
+<script>
+    // 오늘 날짜를 yyyy-mm-dd 형식으로 포맷하는 함수
+    function formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+
+        if (month.length < 2) month = '0' + month;
+        if (day.length < 2) day = '0' + day;
+
+        return [year, month, day].join('-');
+    }
+
+    // input 요소에 오늘 날짜를 설정
+    document.getElementById('examStartDate').value = formatDate(new Date());
+</script>
 </body>
 
 </html>
