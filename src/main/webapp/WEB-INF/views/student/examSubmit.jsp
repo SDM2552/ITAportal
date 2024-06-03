@@ -47,24 +47,37 @@
                         <td>
                             자유무역의 이해
                         </td>
-                        <th scope="col">과제</th>
+                        <th scope="col">담당 강사</th>
                         <td>
-                            무슨무슨과제
+                            강사 이름
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">과제</th>
+                        <td colspan="3">
+                            과제 이름
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">과제 내용</th>
+                        <td colspan="3">
+                            과제 내용
                         </td>
                     </tr>
                     <tr>
                         <th scope="col">제출기한</th>
-                        <td colspan="3">
+                        <td>
                             언제부터 ~ 언제까지
                         </td>
-                    </tr>
-                    <tr>
                         <th scope="col">파일첨부</th>
-                        <td colspan="3">
+                        <td>
                             <div class="fileBox">
                                 <input type="file" id="uploadBtn" class="uploadBtn" multiple>
                             </div>
                         </td>
+                    </tr>
+                    <tr>
+
                     </tr>
                     </tbody>
                 </table>

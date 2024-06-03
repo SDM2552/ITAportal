@@ -35,3 +35,12 @@ out/
 
 ### VS Code ###
 .vscode/
+
+# Spring Boot configuration files
+/src/main/resources/application.properties
+
+# Security files
+*.pem
+*.crt
+*.key
+
