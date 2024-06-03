@@ -40,9 +40,11 @@
                     <th scope="row">
                         <label for="email_01">이메일</label>
                     </th>
-                    <form id="updateForm0" action="/user/updateInfo" method="post">
+                    <form id="updateForm4" action="/user/updateInfo" method="post">
+                        <input type="hidden" name="idUser" value="${user.idUser}"/>
                         <td colspan="3" class="email">
-                            <input type="hidden" name="m_szEmail"/>
+
+                            <%--                            <input type="hidden" name="idUser" value="${user.idUser}"/>--%>
                             <input type="text" class="inTxt rs-w40" id="email_01" name="email1" value="${email1}"
                                    onFocus="checkLen(this.value);" onBlur="checkMail(this.value);"
                                    style="width:120px;ime-mode:disabled;" title="이메일 아이디 입력"/>
@@ -53,7 +55,7 @@
                                    style="width:120px;ime-mode:disabled;" title="이메일 입력"/>
                             <span class="selectboxWrap" style="width:180px">
             <label for="email_03" class="disn">이메일 선택</label>
-            <select class="select selectBg" id="email_03" name="emailDomain"
+            <select class="select selectBg" id="email_03" name="email2"
                     onchange="chgEmail(this.value, this.selectedIndex);" title="이메일 선택">
                 <option value="">직접입력</option>
                 <option value="gmail.com" <c:if test="${email2 == 'gmail.com'}">selected</c:if>>gmail.com</option>
@@ -62,12 +64,17 @@
                 <option value="nate.com" <c:if test="${email2 == 'nate.com'}">selected</c:if>>nate.com</option>
                 <option value="yahoo.co.kr" <c:if test="${email2 == 'yahoo.co.kr'}">selected</c:if>>yahoo.co.kr</option>
             </select>
+                                <input type="hidden" name="phone1" value="${phone1}">
+                            <input type="hidden" name="phone2" value="${phone2}">
+                            <input type="hidden" name="phone3" value="${phone3}">
+                            <input type="hidden" name="address" value="${user.address}"/>
+                                 <input type="hidden" name="birthyy" value="${birthYear}">
+                            <input type="hidden" name="birthmm" value="${birthMonth}">
+                            <input type="hidden" name="birthdd" value="${birthDay}">
         </span>
-                            <button type="button" onclick="showModal('updateForm1')">수정</button>
+                            <button type="button" onclick="showModal('updateForm4')">수정</button>
                         </td>
                     </form>
-
-
                     </td>
                 </tr>
                 <tr>
@@ -106,7 +113,8 @@
                                     </option>
                                 </c:forEach>
                             </select>
-
+                            <input type="hidden" name="email1" value="${email1}"/>
+                            <input type="hidden" name="email2" value="${email2}">
                             <input type="hidden" name="idUser" value="${user.idUser}"/>
                             <input type="hidden" name="phone1" value="${phone1}">
                             <input type="hidden" name="phone2" value="${phone2}">
@@ -117,6 +125,7 @@
                     </td>
                 </tr>
                 <tr>
+
                     <th>휴대전화</th>
 
                     <td>
@@ -144,7 +153,8 @@
                             <input type="text" class="inTxt" id="phone3" name="phone3" maxlength="4" style="width:80px"
                                    title="휴대폰 세번째 자리 입력" value="${phone3}"/>
 
-
+                            <input type="hidden" name="email1" value="${email1}"/>
+                            <input type="hidden" name="email2" value="${email2}">
                             <input type="hidden" name="birthyy" value="${birthYear}">
                             <input type="hidden" name="birthmm" value="${birthMonth}">
                             <input type="hidden" name="birthdd" value="${birthDay}">
@@ -161,13 +171,15 @@
                     <td>
                         <form id="updateForm3" action="/user/updateInfo" method="post">
                             <input type="text" name="address" value="${user.address}"/>
+                            <input type="hidden" name="email1" value="${email1}"/>
+                            <input type="hidden" name="email2" value="${email2}">
                             <input type="hidden" name="phone1" value="${phone1}">
                             <input type="hidden" name="phone2" value="${phone2}">
                             <input type="hidden" name="phone3" value="${phone3}">
                             <input type="hidden" name="idUser" value="${user.idUser}"/>
                             <input type="hidden" name="birthyy" value="${birthYear}">
                             <input type="hidden" name="birthmm" value="${birthMonth}">
-                            <input type="hidden" name="birthdd" value="${birthDay}">
+                            <input type="hidden" name="birthdd" value="${birthDay}"/>
                             <input type="hidden" name="tel" value="${user.tel}"/>
                             <button type="button" onclick="showModal('updateForm3')">수정</button>
                         </form>
@@ -228,6 +240,46 @@
     </div>
 
     <script>
+        function chgEmail(selectedValue) {
+            var emailField = document.getElementById("email_02");
+
+            if (selectedValue) {
+                emailField.value = selectedValue;
+                emailField.disabled = true;
+            } else {
+                emailField.value = "";
+                emailField.disabled = false;
+            }
+        }
+
+        function disableInput(selectValue) {
+            var emailField = document.getElementById("email_02");
+            var selectField = document.getElementById("email_03");
+
+            if (selectValue) {
+                emailField.disabled = true;
+            } else {
+                emailField.disabled = false;
+            }
+        }
+
+        function disableSelect(inputValue) {
+            var selectField = document.getElementById("email_03");
+
+            if (inputValue) {
+                selectField.disabled = true;
+            } else {
+                selectField.disabled = false;
+            }
+        }
+
+        document.getElementById("email_02").addEventListener("input", function() {
+            disableSelect(this.value);
+        });
+
+        document.getElementById("email_03").addEventListener("change", function() {
+            disableInput(this.value);
+        });
 
         function showModal(formId) {
             $('#confirmBtn').attr('onclick', 'submitForm("' + formId + '")');
