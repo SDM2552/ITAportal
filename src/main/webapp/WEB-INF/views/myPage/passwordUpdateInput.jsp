@@ -32,34 +32,45 @@
 
             <h3 class="pgTit">비밀번호 변경</h3>
             <form id="passwordUpdate" action="/user/passwordUpdate" method="post">
-                <table class="table table-bordered">
+                <div class="tblData mt10" style="width: 80%">
+                <table>
+                    <colgroup>
+                        <col width="30%">
+                        <col width="70%">
+                    </colgroup>
+                    <tbody class="mid">
                     <tr>
-                        <th>현재 비밀번호</th>
-                        <td>
+                        <th th scope="col">현재 비밀번호</th>
+                        <td colspan="3">
                             <input type="password" name="currentPassword" placeholder="현재 비밀번호" required>
                         </td>
                     </tr>
                     <tr>
-                        <th>새 비밀번호</th>
-                        <td>
+                        <th th scope="col">새 비밀번호</th>
+                        <td colspan="3">
                             <input type="password" name="newPassword" placeholder="새 비밀번호" required>
                         </td>
                     </tr>
                     <tr>
-                        <th>새 비밀번호 확인</th>
-                        <td>
+                        <th th scope="col">새 비밀번호 확인</th>
+                        <td colspan="3">
                             <input type="password" name="confirmPassword" placeholder="새 비밀번호 확인" required>
                         </td>
                     </tr>
 
-                        <td colspan="2">
-                            <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#confirmationModal">수정</button>
-                        </td>
-
+                    </tbody>
                 </table>
+                </div>
+                <div class="btnArea" style="width: 80%">
+                    <button type="button" class="btns btnSt01" data-toggle="modal" data-target="#confirmationModal">수정</button>
+                </div>
+                    </button>
             </form>
         </div>
     </div>
+</div>
+
+
     <c:import url="../layout/footer.jsp" />
 
     <!-- Confirmation Modal -->
@@ -112,9 +123,11 @@
                 url: $('#passwordUpdate').attr('action'),
                 data: $('#passwordUpdate').serialize(),
                 success: function (response) {
-                    $('#confirmationModal').modal('hide');
-                    $('#resultModalBody').text(response.success || '비밀번호가 성공적으로 변경되었습니다.');
-                    $('#resultModal').modal('show');
+                    alert(response.success || '비밀번호가 성공적으로 변경되었습니다.');
+                    // $('#confirmationModal').modal('hide');
+                    // $('#resultModalBody').text(response.success || '비밀번호가 성공적으로 변경되었습니다.');
+                    // $('#resultModal').modal('show');
+                    window.location.href = '/';
 
                 },
                 error: function (xhr) {

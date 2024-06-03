@@ -3,6 +3,7 @@ package com.izo.itaportal.service;
 import com.izo.itaportal.model.*;
 import com.izo.itaportal.repository.AdminRepository;
 import com.izo.itaportal.repository.MyPageRepository;
+import com.izo.itaportal.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -23,6 +24,8 @@ public class MyPageService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private UserRepository userRepository;
 
     public Student getStudentById(Integer idUser) {
         return myPageRepository.selectStudentById(idUser);
@@ -91,6 +94,7 @@ public class MyPageService {
         Student student = myPageRepository.selectStudentById(idUser);
         return student != null;
     }
+
     public boolean isProfessor(Integer idUser) {
         Professor professor = myPageRepository.selectProfById(idUser);
         boolean isProfessor = professor != null;
@@ -116,5 +120,12 @@ public class MyPageService {
         return true;
     }
 
+    public boolean verifyPassword(Integer idUser, String password) {
+        // 이 메서드는 사용자의 비밀번호가 맞는지 확인하는 로직을 구현합니다.
+        // 예시로, 데이터베이스에서 사용자 정보를 조회하여 비밀번호를 비교하는 로직을 작성합니다.
+        User user = myPageRepository.selectUserById(idUser);
+        return user != null && passwordEncoder.matches(password, user.getPassword());
 
+
+    }
 }
