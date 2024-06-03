@@ -224,30 +224,37 @@ public class MyPageController {
 
 
 
-    @GetMapping("/delete2")
-    public String delete() {
+    @PostMapping("/delete")
+    public ResponseEntity<Map<String, Object>> deleteUser(@RequestBody Map<String, String> payload) {
+        String password = payload.get("password");
         LoginResponse user = (LoginResponse) httpSession.getAttribute("loginUser");
+
+        Map<String, Object> response = new HashMap<>();
+        if (user == null || !myPageService.verifyPassword(user.getIdUser(), password)) {
+            response.put("success", false);
+            response.put("error", "비밀번호가 일치하지 않습니다.");
+            System.out.println("비밀번호 불일치 또는 사용자 정보 없음");  // 로그 추가
+            return ResponseEntity.ok(response); // 상태 코드 200으로 변경
+        }
 
         Integer idUser = user.getIdUser();
 
+        // 탈퇴 처리 로직
         if (myPageService.isStudent(idUser)) {
             myPageService.deleteStudent(idUser);
             myPageService.deleteUser(idUser);
-            httpSession.invalidate();
-            return "redirect:/";
         } else if (myPageService.isProfessor(idUser)) {
             myPageService.deleteProfessor(idUser);
             myPageService.deleteUser(idUser);
-            httpSession.invalidate();
-            return "redirect:/";
         } else if (myPageService.isAdmin(idUser)) {
             myPageService.deleteAdmin(idUser);
             myPageService.deleteUser(idUser);
-            httpSession.invalidate();
-            return "redirect:/";
-        } else {
-            return "/";
         }
 
+        httpSession.invalidate();
+
+        response.put("success", true);
+        return ResponseEntity.ok(response);
     }
+
 }
