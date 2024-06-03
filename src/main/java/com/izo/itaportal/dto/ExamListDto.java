@@ -8,6 +8,7 @@ public class ExamListDto {
     private int idExam;
     private String ProgramName; //강의명
     private String name; //시험명
+    private String profName; // 담당 강사
     private String description; //시험내용
     private String startDate; //시험시작일
     private String endDate; //시험마감일

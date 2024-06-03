@@ -50,12 +50,12 @@
                     <c:forEach var="exam" items="${examList}">
                     <tr>
                         <td>${exam.programName}</td>
-                        <td></td>
-                        <td>무슨무슨과제</td>
-                        <td>오늘부터</td>
-                        <td>내일까지</td>
-                        <td>아직임</td>
-                        <td><button onclick="location.href='/stu/examSubmit'">제출</button></td>
+                        <td>${exam.profName}</td>
+                        <td>${exam.name}</td>
+                        <td>${exam.startDate}</td>
+                        <td>${exam.endDate}</td>
+                        <td>${exam.status}</td>
+                        <td><button onclick="location.href='/stu/examSubmit?idPgm=${exam.idPgm}'">상세보기</button></td>
                     </tr>
                     </c:forEach>
                     </tbody>
