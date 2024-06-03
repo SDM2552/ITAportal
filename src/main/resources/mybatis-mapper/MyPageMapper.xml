@@ -82,4 +82,10 @@
         set password = #{newPassword}
         where id_user = #{idUser}
     </update>
+
+    <update id="updateEmail" parameterType="com.izo.itaportal.model.SignUpRequest">
+        update user
+        set email = #{email}
+        where id_user = #{idUser}
+    </update>
 </mapper>

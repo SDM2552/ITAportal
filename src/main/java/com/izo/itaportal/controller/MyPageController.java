@@ -46,8 +46,13 @@ public class MyPageController {
         String email = userTb.getEmail();
         if (email != null && email.contains("@")) {
             String[] emailParts = email.split("@");
-            model.addAttribute("email1", emailParts[0]);
-            model.addAttribute("email2", emailParts[1]);
+            if (emailParts.length == 2) {
+                model.addAttribute("email1", emailParts[0]);
+                model.addAttribute("email2", emailParts[1]);
+            } else {
+                model.addAttribute("email1", "");
+                model.addAttribute("email2", "");
+            }
         } else {
             model.addAttribute("email1", "");
             model.addAttribute("email2", "");
@@ -110,7 +115,7 @@ public class MyPageController {
     }
 
     @PostMapping("/updateInfo")
-    public ResponseEntity<Map<String, Object>> updateInfo(SignUpRequest signUpRequest) {
+    public ResponseEntity<Map<String, Object>> updateInfo(SignUpRequest signUpRequest,String email1, String email2) {
         Map<String, Object> response = new HashMap<>();
         LoginResponse user = (LoginResponse) httpSession.getAttribute("loginUser");
         if (user == null) {
@@ -120,14 +125,20 @@ public class MyPageController {
         }
 
         Integer idUser = user.getIdUser();
+        String email = email1 + "@" + email2;
+        email = email.replace(",", "");
+        signUpRequest.setEmail(email);
 
         try {
             if (myPageService.isStudent(idUser)) {
                 myPageService.updateStudent(signUpRequest);
+                myPageService.updateEmail(signUpRequest);
             } else if (myPageService.isProfessor(idUser)) {
                 myPageService.updateProfessor(signUpRequest);
+                myPageService.updateEmail(signUpRequest);
             } else if (myPageService.isAdmin(idUser)) {
                 myPageService.updateAdmin(signUpRequest);
+                myPageService.updateEmail(signUpRequest);
             } else {
                 response.put("success", false);
                 response.put("error", "유효하지 않은 사용자입니다.");
@@ -221,7 +232,7 @@ public class MyPageController {
 
         if (myPageService.isStudent(idUser)) {
             myPageService.deleteStudent(idUser);
-            myPageService.deleteUser(idUser);       //외래묶으면 삭제
+            myPageService.deleteUser(idUser);
             httpSession.invalidate();
             return "redirect:/";
         } else if (myPageService.isProfessor(idUser)) {

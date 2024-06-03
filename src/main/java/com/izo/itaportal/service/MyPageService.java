@@ -55,6 +55,10 @@ public class MyPageService {
         return updateAdmin;
     }
 
+    public int updateEmail(SignUpRequest signUpRequest) {
+        int updateEmail = myPageRepository.updateEmail(signUpRequest);
+        return updateEmail;
+    }
 
 
     public int deleteStudent(Integer idUser) {
