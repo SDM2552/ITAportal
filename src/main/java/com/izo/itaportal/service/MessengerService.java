@@ -22,6 +22,10 @@ public class MessengerService {
         return messengerRepository.getSentMessengers(senderLoginId);
     }
 
+    public List<MessengerDto> getSavedMessengers(String senderLoginId) {
+        return messengerRepository.getSavedMessengers(senderLoginId);
+    }
+
     public void sendMessenger(MessengerDto messenger) {
         messenger.setSentAt(LocalDateTime.now());
         messengerRepository.sendMessenger(messenger);
@@ -32,13 +36,24 @@ public class MessengerService {
     }
 
     public void saveMessenger(MessengerDto messenger) {
-        messenger.setSentAt(LocalDateTime.now());
-        messenger.setDeleted(true);
+        messenger.setDeleted(false);
+        messenger.setUpdatedAt(LocalDateTime.now());
         messengerRepository.saveMessenger(messenger);
     }
 
-    public void markMessengerAsRead(int idMessenger) {
-        messengerRepository.markMessengerAsRead(idMessenger);
+    public void sendSavedMessenger(int idMessenger) {
+        messengerRepository.updateMessengerAsSent(idMessenger);
+    }
+
+    public void markMessengerAsRead(int idMessenger, String loginId) {
+        MessengerDto messenger = messengerRepository.getMessengerById(idMessenger);
+        if (messenger != null) {
+            if (loginId.equals(messenger.getReceiverLoginId())) {
+                messengerRepository.markReceiverAsRead(idMessenger);
+            } else if (loginId.equals(messenger.getSenderLoginId())) {
+                messengerRepository.markMessengerAsRead(idMessenger);
+            }
+        }
     }
 
     public void updateMessenger(MessengerDto messenger) {
@@ -51,5 +66,13 @@ public class MessengerService {
 
     public void deleteBulkMessengers(List<Integer> idMessengers) {
         messengerRepository.deleteBulkMessengers(idMessengers);
+    }
+
+    public MessengerDto getMessengerById(int idMessenger) {
+        return messengerRepository.getMessengerById(idMessenger);
+    }
+
+    public void sendMessengerFromSaved(int idMessenger) {
+        messengerRepository.updateMessengerAsSent(idMessenger);
     }
 }
