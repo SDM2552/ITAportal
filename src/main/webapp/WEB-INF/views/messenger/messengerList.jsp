@@ -22,6 +22,10 @@
                 loadSentMessages();
             });
 
+            $('#savedBtn').click(function() {
+                loadSavedMessages();
+            });
+
             $('#createBtn').click(function() {
                 showCreateMessengerModal();
             });
@@ -45,7 +49,7 @@
                 method: 'GET',
                 success: function(data) {
                     $('#messageListTitle').text('받은 메신저함');
-                    renderMessages(data);
+                    renderMessages(data, 'received');
                 }
             });
         }
@@ -56,52 +60,58 @@
                 method: 'GET',
                 success: function(data) {
                     $('#messageListTitle').text('보낸 메신저함');
-                    renderMessages(data);
+                    renderMessages(data, 'sent');
                 }
             });
         }
 
-        function renderMessages(messages) {
+        function loadSavedMessages() {
+            $.ajax({
+                url: '/messenger/saved',
+                method: 'GET',
+                success: function(data) {
+                    $('#messageListTitle').text('임시 저장함');
+                    renderMessages(data, 'saved');
+                }
+            });
+        }
+
+        function renderMessages(messages, type) {
             var tbody = $('#messageTable tbody');
             tbody.empty();
-            messages.forEach(function(message) {
+            messages.forEach(function(messenger) {
+                var readStatus = (type === 'received') ? messenger.messengerRead : messenger.receiverRead;
                 var tr = $('<tr></tr>');
-                tr.append('<td><input type="checkbox" class="messageCheckbox" value="' + message.idMessenger + '"></td>');
-                tr.append('<td>' + (message.senderLoginId || message.receiverLoginId) + '</td>');
-                tr.append('<td><a href="/messenger/view?id=' + message.idMessenger + '" style="color: ' + (message.isRead ? 'black' : 'red') + '">' + message.subject + '</a></td>');
-                tr.append('<td>' + message.messageText + '</td>');
-                tr.append('<td>' + message.sentAt + '</td>');
-                tr.append('<td>' + (message.isRead ? '읽음' : '읽지 않음') + '</td>');
-                tr.append('<td><button onclick="replyMessage(' + message.idMessenger + ')">답장</button></td>');
-                tr.append('<td><button onclick="updateMessage(' + message.idMessenger + ')">수정</button></td>');
-                tr.append('<td><button onclick="deleteMessage(' + message.idMessenger + ')">삭제</button></td>');
+                tr.append('<td><input type="checkbox" class="messageCheckbox" value="' + messenger.idMessenger + '"></td>');
+                tr.append('<td>' + (type === 'sent' || type === 'saved' ? messenger.receiverLoginId : messenger.senderLoginId) + '</td>');
+                tr.append('<td><a href="/messenger/view?idMessenger=' + messenger.idMessenger + '" style="color: ' + (readStatus ? 'black' : 'red') + '">' + messenger.subject + '</a></td>');
+                tr.append('<td>' + messenger.messageText + '</td>');
+                tr.append('<td>' + messenger.sentAt + '</td>');
+                tr.append('<td>' + (readStatus ? '읽음' : '읽지 않음') + '</td>');
+                tr.append('<td><button onclick="replyMessage(' + messenger.idMessenger + ')">답장</button></td>');
+                tr.append('<td><button onclick="updateMessage(' + messenger.idMessenger + ')">수정</button></td>');
+                tr.append('<td><button onclick="deleteMessage(' + messenger.idMessenger + ')">삭제</button></td>');
                 tbody.append(tr);
             });
         }
 
         function showCreateMessengerModal() {
-            console.log('showCreateMessengerModal 호출됨');
             $('#modalTitle').text('쪽지 작성');
             $('#modalContent').load('/messenger/create', function(response, status, xhr) {
                 if (status == "error") {
-                    console.log("Error: " + xhr.status + ": " + xhr.statusText);
                     alert("쪽지 작성 페이지를 불러오는 데 실패했습니다.");
                 } else {
-                    console.log("쪽지 작성 페이지 로드 성공");
                     $('#modal').show();
                 }
             });
         }
 
         function showBulkSendModal() {
-            console.log('showBulkSendModal 호출됨');
             $('#modalTitle').text('대량 전송');
             $('#modalContent').load('/messenger/manySend', function(response, status, xhr) {
                 if (status == "error") {
-                    console.log("Error: " + xhr.status + ": " + xhr.statusText);
                     alert("대량 전송 페이지를 불러오는 데 실패했습니다.");
                 } else {
-                    console.log("대량 전송 페이지 로드 성공");
                     $('#modal').show();
                 }
             });
@@ -181,6 +191,7 @@
                 }
             });
         }
+
         function saveMessenger() {
             var form = $('#createMessengerForm');
             $.ajax({
@@ -197,6 +208,7 @@
                 }
             });
         }
+
         function cancelCreateMessenger() {
             $('#modal').hide();
             loadMessengerList();
@@ -214,6 +226,105 @@
                 }
             });
         }
+
+        function sendMessenger() {
+            var form = $('#createMessengerForm');
+            $.ajax({
+                url: '/messenger/send',
+                method: 'POST',
+                data: form.serialize(),
+                success: function(response) {
+                    alert('쪽지가 전송되었습니다.');
+                    $('#modal').hide();
+                    loadReceivedMessages();
+                },
+                error: function(xhr, status, error) {
+                    alert('쪽지 전송에 실패했습니다: ' + xhr.responseText);
+                }
+            });
+        }
+
+        function saveMessenger() {
+            var form = $('#createMessengerForm');
+            $.ajax({
+                url: '/messenger/save',
+                method: 'POST',
+                data: form.serialize(),
+                success: function(response) {
+                    alert('쪽지가 저장되었습니다.');
+                    $('#modal').hide();
+                    loadReceivedMessages();
+                },
+                error: function(xhr, status, error) {
+                    alert('쪽지 저장에 실패했습니다: ' + xhr.responseText);
+                }
+            });
+        }
+
+        function sendMessage(idMessenger) {
+            $.ajax({
+                url: '/messenger/sendFromSaved',
+                method: 'POST',
+                data: { idMessenger: idMessenger },
+                success: function(response) {
+                    alert('쪽지가 전송되었습니다.');
+                    window.history.back();
+                },
+                error: function(xhr, status, error) {
+                    alert('쪽지 전송에 실패했습니다: ' + xhr.responseText);
+                }
+            });
+        }
+        function sendMessenger() {
+            var form = $('#createMessengerForm');
+            $.ajax({
+                url: '/messenger/send',
+                method: 'POST',
+                data: form.serialize(),
+                success: function(response) {
+                    alert('쪽지가 전송되었습니다.');
+                    $('#modal').hide();
+                    loadReceivedMessages();
+                },
+                error: function(xhr, status, error) {
+                    alert('쪽지 전송에 실패했습니다: ' + xhr.responseText);
+                }
+            });
+        }
+
+        function saveMessenger() {
+            var form = $('#createMessengerForm');
+            $.ajax({
+                url: '/messenger/save',
+                method: 'POST',
+                data: form.serialize(),
+                success: function(response) {
+                    alert('쪽지가 저장되었습니다.');
+                    $('#modal').hide();
+                    loadReceivedMessages();
+                },
+                error: function(xhr, status, error) {
+                    alert('쪽지 저장에 실패했습니다: ' + xhr.responseText);
+                }
+            });
+        }
+
+        function sendMessage(idMessenger) {
+            $.ajax({
+                url: '/messenger/sendFromSaved',
+                method: 'POST',
+                data: { idMessenger: idMessenger },
+                success: function(response) {
+                    alert('쪽지가 전송되었습니다.');
+                    window.history.back();
+                },
+                error: function(xhr, status, error) {
+                    alert('쪽지 전송에 실패했습니다: ' + xhr.responseText);
+                }
+            });
+        }
+
+
     </script>
 </head>
 <body>
@@ -221,6 +332,7 @@
 <div class="btnArea">
     <button id="receivedBtn">받은 메신저함</button>
     <button id="sentBtn">보낸 메신저함</button>
+    <button id="savedBtn">임시 저장함</button>
     <button id="createBtn">쪽지 작성</button>
     <button id="bulkDeleteBtn">선택 삭제</button>
     <button id="bulkSendBtn">대량 전송</button>

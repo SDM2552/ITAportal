@@ -14,6 +14,7 @@ public class MessengerDto {
     private String messageText;
     private LocalDateTime sentAt;
     private LocalDateTime updatedAt;
-    private boolean isRead;
+    private boolean messengerRead;
+    private boolean receiverRead;
     private boolean deleted;
 }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -41,6 +42,13 @@ public class MessengerController {
     public List<MessengerDto> getSentMessengers(HttpSession session) {
         LoginResponse user = (LoginResponse) session.getAttribute("loginUser");
         return user != null ? messengerService.getSentMessengers(user.getLoginId()) : null;
+    }
+
+    @GetMapping("/saved")
+    @ResponseBody
+    public List<MessengerDto> getSavedMessengers(HttpSession session) {
+        LoginResponse user = (LoginResponse) session.getAttribute("loginUser");
+        return user != null ? messengerService.getSavedMessengers(user.getLoginId()) : null;
     }
 
     @GetMapping("/create")
@@ -104,8 +112,11 @@ public class MessengerController {
 
     @PostMapping("/markAsRead")
     @ResponseBody
-    public void markAsRead(@RequestParam("idMessenger") int idMessenger) {
-        messengerService.markMessengerAsRead(idMessenger);
+    public void markAsRead(HttpSession session, @RequestParam("idMessenger") int idMessenger) {
+        LoginResponse user = (LoginResponse) session.getAttribute("loginUser");
+        if (user != null) {
+            messengerService.markMessengerAsRead(idMessenger, user.getLoginId());
+        }
     }
 
     @PostMapping("/update")
@@ -127,5 +138,28 @@ public class MessengerController {
     @ResponseBody
     public void deleteBulkMessengers(@RequestParam("idMessengers") List<Integer> idMessengers) {
         messengerService.deleteBulkMessengers(idMessengers);
+    }
+
+    @PostMapping("/sendFromSaved")
+    @ResponseBody
+    public void sendFromSaved(HttpSession session, @RequestParam("idMessenger") int idMessenger) {
+        LoginResponse user = (LoginResponse) session.getAttribute("loginUser");
+        if (user != null) {
+            messengerService.sendMessengerFromSaved(idMessenger);
+        }
+    }
+
+    @GetMapping("/view")
+    public String viewMessenger(@RequestParam("idMessenger") Integer idMessenger, HttpSession session, Model model) {
+        if (idMessenger == null) {
+            return "redirect:/messenger/list"; // idMessenger 파라미터가 없을 때 리스트 페이지로 리다이렉트
+        }
+        LoginResponse user = (LoginResponse) session.getAttribute("loginUser");
+        MessengerDto messenger = messengerService.getMessengerById(idMessenger);
+        if (user != null) {
+            messengerService.markMessengerAsRead(idMessenger, user.getLoginId()); // 메시지 읽음으로 표시
+        }
+        model.addAttribute("messenger", messenger);
+        return "messenger/messengerView";
     }
 }
