@@ -12,6 +12,24 @@
     <link rel="stylesheet" type="text/css" href="../css/common.css">
     <link rel="stylesheet" type="text/css" href="../css/table.css">
     <title>마이페이지</title>
+    <style>
+
+        .tblData th,
+        .tblData td {
+            text-align: left; /* 모든 셀을 좌측 정렬로 설정 */
+        }
+
+        .btn2 {
+            border: 1px solid #bfbfbf;
+            background: #e0e0e0;
+            color: #333;
+            float: right;
+            width: 50px; /* 너비 설정 */
+            height: 35px; /* 높이 설정 */
+        }
+
+
+    </style>
 </head>
 <body>
 <div class="wrap">
@@ -34,15 +52,16 @@
                 <!-- Other fields -->
                 <tr>
                     <th>아이디</th>
-                    <td><c:out value="${member.loginId}"/></td>
+                    <td style="text-align: left"><c:out value="${member.loginId}"/></td>
+
                 </tr>
                 <tr>
-                    <th scope="row">
-                        <label for="email_01">이메일</label>
+                    <th>
+                        이메일
                     </th>
                     <form id="updateForm4" action="/user/updateInfo" method="post">
                         <input type="hidden" name="idUser" value="${user.idUser}"/>
-                        <td colspan="3" class="email">
+                        <td td style="text-align: left" colspan="3" class="email">
 
                             <%--                            <input type="hidden" name="idUser" value="${user.idUser}"/>--%>
                             <input type="text" class="inTxt rs-w40" id="email_01" name="email1" value="${email1}"
@@ -54,8 +73,8 @@
                                    onFocus="checkLen(this.value);" onBlur="checkMail(this.value);"
                                    style="width:120px;ime-mode:disabled;" title="이메일 입력"/>
                             <span class="selectboxWrap" style="width:180px">
-            <label for="email_03" class="disn">이메일 선택</label>
-            <select class="select selectBg" id="email_03" name="email2"
+                <label for="email_03" class="disn">이메일 선택</label>
+                <select class="select selectBg" id="email_03" name="email2"
                     onchange="chgEmail(this.value, this.selectedIndex);" title="이메일 선택">
                 <option value="">직접입력</option>
                 <option value="gmail.com" <c:if test="${email2 == 'gmail.com'}">selected</c:if>>gmail.com</option>
@@ -63,7 +82,7 @@
                 <option value="naver.com" <c:if test="${email2 == 'naver.com'}">selected</c:if>>naver.com</option>
                 <option value="nate.com" <c:if test="${email2 == 'nate.com'}">selected</c:if>>nate.com</option>
                 <option value="yahoo.co.kr" <c:if test="${email2 == 'yahoo.co.kr'}">selected</c:if>>yahoo.co.kr</option>
-            </select>
+                </select>
                                 <input type="hidden" name="phone1" value="${phone1}">
                             <input type="hidden" name="phone2" value="${phone2}">
                             <input type="hidden" name="phone3" value="${phone3}">
@@ -71,19 +90,19 @@
                                  <input type="hidden" name="birthyy" value="${birthYear}">
                             <input type="hidden" name="birthmm" value="${birthMonth}">
                             <input type="hidden" name="birthdd" value="${birthDay}">
-        </span>
-                            <button type="button" onclick="showModal('updateForm4')">수정</button>
+                            </span>
+                            <button type="button" class="btn2" onclick="showModal('updateForm4')">수정</button>
                         </td>
                     </form>
                     </td>
                 </tr>
                 <tr>
                     <th>이름</th>
-                    <td><c:out value="${user.name}"/></td>
+                    <td td style="text-align: left"><c:out value="${user.name}"/></td>
                 </tr>
                 <tr>
                     <th>생년월일</th>
-                    <td>
+                    <td td style="text-align: left">
                         <form id="updateForm1" action="/user/updateInfo" method="post">
 
 
@@ -120,7 +139,7 @@
                             <input type="hidden" name="phone2" value="${phone2}">
                             <input type="hidden" name="phone3" value="${phone3}">
                             <input type="hidden" name="address" value="${user.address}"/>
-                            <button type="button" onclick="showModal('updateForm1')">수정</button>
+                            <button type="button" class="btn2" onclick="showModal('updateForm1')">수정</button>
                         </form>
                     </td>
                 </tr>
@@ -128,7 +147,7 @@
 
                     <th>휴대전화</th>
 
-                    <td>
+                    <td td style="text-align: left">
                         <form id="updateForm2" action="/user/updateInfo" method="post">
                             <span class="selectboxWrap" style="width:80px">
                                 <select class="select selectBg" id="phone1" name="phone1" title="휴대폰 번호 선택">
@@ -161,16 +180,16 @@
                             <input type="hidden" name="idUser" value="${user.idUser}"/>
                             <input type="hidden" name="address" value="${user.address}"/>
                             <input type="hidden" name="birth" value="${user.birth}"/>
-                            <button type="button" onclick="showModal('updateForm2')">수정</button>
+                            <button type="button" class="btn2" onclick="showModal('updateForm2')">수정</button>
                         </form>
                     </td>
                     </td>
                 </tr>
                 <tr>
                     <th>주소</th>
-                    <td>
+                    <td td style="text-align: left">
                         <form id="updateForm3" action="/user/updateInfo" method="post">
-                            <input type="text" name="address" value="${user.address}"/>
+                            <input type="text"  class="inTxt" name="address" value="${user.address}" style="width: 350px;"/>
                             <input type="hidden" name="email1" value="${email1}"/>
                             <input type="hidden" name="email2" value="${email2}">
                             <input type="hidden" name="phone1" value="${phone1}">
@@ -181,13 +200,13 @@
                             <input type="hidden" name="birthmm" value="${birthMonth}">
                             <input type="hidden" name="birthdd" value="${birthDay}"/>
                             <input type="hidden" name="tel" value="${user.tel}"/>
-                            <button type="button" onclick="showModal('updateForm3')">수정</button>
+                            <button type="button" class="btn2" onclick="showModal('updateForm3')">수정</button>
                         </form>
                     </td>
                 </tr>
                 <tr>
                     <th>성별</th>
-                    <td><c:out value="${user.gender == 'M' ? '남성' : '여성'}"/></td>
+                    <td td style="text-align: left"><c:out value="${user.gender == 'M' ? '남성' : '여성'}"/></td>
                 </tr>
 
             </table>
@@ -273,11 +292,11 @@
             }
         }
 
-        document.getElementById("email_02").addEventListener("input", function() {
+        document.getElementById("email_02").addEventListener("input", function () {
             disableSelect(this.value);
         });
 
-        document.getElementById("email_03").addEventListener("change", function() {
+        document.getElementById("email_03").addEventListener("change", function () {
             disableInput(this.value);
         });
 
