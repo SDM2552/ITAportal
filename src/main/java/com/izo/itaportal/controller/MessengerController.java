@@ -115,7 +115,7 @@ public class MessengerController {
     public void markAsRead(HttpSession session, @RequestParam("idMessenger") int idMessenger) {
         LoginResponse user = (LoginResponse) session.getAttribute("loginUser");
         if (user != null) {
-            messengerService.markAsRead(idMessenger, user.getLoginId());
+            messengerService.markMessengerAsRead(idMessenger, user.getLoginId());
         }
     }
 
@@ -145,7 +145,7 @@ public class MessengerController {
     public void sendFromSaved(HttpSession session, @RequestParam("idMessenger") int idMessenger) {
         LoginResponse user = (LoginResponse) session.getAttribute("loginUser");
         if (user != null) {
-            messengerService.sendFromSaved(idMessenger);
+            messengerService.sendSavedMessenger(idMessenger);
         }
     }
 
@@ -157,9 +157,27 @@ public class MessengerController {
         LoginResponse user = (LoginResponse) session.getAttribute("loginUser");
         MessengerDto messenger = messengerService.getMessengerById(idMessenger);
         if (user != null) {
-            messengerService.markAsRead(idMessenger, user.getLoginId()); // 메시지 읽음으로 표시
+            messengerService.markMessengerAsRead(idMessenger, user.getLoginId()); // 메시지 읽음으로 표시
         }
         model.addAttribute("messenger", messenger);
         return "messenger/messengerView";
+    }
+
+    @GetMapping("/reply")
+    public String replyMessenger(@RequestParam("idMessenger") Integer idMessenger, Model model) {
+        MessengerDto originalMessenger = messengerService.getMessengerById(idMessenger);
+        if (originalMessenger == null) {
+            return "redirect:/messenger/list"; // 원본 메시지가 없으면 리스트 페이지로 리다이렉트
+        }
+
+        MessengerDto replyMessenger = new MessengerDto();
+        replyMessenger.setReceiverLoginId(originalMessenger.getSenderLoginId());
+        replyMessenger.setReceiverRole(originalMessenger.getSenderRole());
+        replyMessenger.setSubject("RE: " + originalMessenger.getSubject());
+
+        model.addAttribute("originalMessenger", originalMessenger);
+        model.addAttribute("replyMessenger", replyMessenger);
+
+        return "messenger/replyMessenger";
     }
 }
