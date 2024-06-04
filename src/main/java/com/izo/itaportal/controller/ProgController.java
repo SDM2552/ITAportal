@@ -114,11 +114,18 @@ public class ProgController {
     @GetMapping("/categoryDelete")
     public String categoryDelete(int idCate) {
         categoryService.deleteCategory(idCate);
+        categoryService.deleteProgram(idCate);
         return "redirect:/adminCategory";
     }
 
 
     //-------------------------------------------------------------------
+
+    @GetMapping("progInfo")
+    public String programInfo(Model model, Integer idPgm) {
+        model.addAttribute("pr", programService.selectProgramDetail(idPgm));
+        return "/adminProgram/progInfo";
+    }
 
     @GetMapping("/progInput")
     public String progInput() {
@@ -178,14 +185,11 @@ public class ProgController {
     @GetMapping("/classRoomDelete")
     public String classRoomDelete(int idRoom) {
         classRoomService.deleteClassRoom(idRoom);
+        classRoomService.deleteProgram(idRoom);
         return "redirect:/adminClassRoom";
     }
 
-    @GetMapping("progInfo")
-    public String programInfo(Model model, Integer idPgm) {
-        model.addAttribute("pr", programService.selectProgramDetail(idPgm));
-        return "/adminProgram/progInfo";
-    }
+
 
 
     //-------------------------------------------------------------------------------------------------------

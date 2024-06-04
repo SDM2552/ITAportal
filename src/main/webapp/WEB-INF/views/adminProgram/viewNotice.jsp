@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="/css/common.css">
     <link rel="stylesheet" type="text/css" href="/css/table.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>샘플 페이지</title>
+    <title>공지사항 상세보기</title>
 </head>
 <body>
 <div class="wrap">
@@ -32,7 +32,6 @@
             <!-- 본문 -->
             <!-- 공지사항 상세보기 -->
             <div class="innerContView mt10">
-
                 <!-- 공지사항 영역 -->
                 <div class="viewArea">
                     <div class="titArea">
@@ -48,8 +47,6 @@
                         <p style="white-space: pre-line; font-size: 16px">${notice.content }</p>
                     </div>
                     <!-- 본문 끝 -->
-
-
                 </div>
             </div>
             <!-- //공지사항 영역 -->
@@ -59,6 +56,16 @@
                 <a href="/notice/noticeList" class="btns btnSt02">
                     <span>목록</span>
                 </a>
+                <c:choose>
+                    <c:when test="${sessionScope.loginUser.role eq 'admin'}">
+                        <a href="/notice/edit/${notice.idNotice}" class="btns btnSt03">
+                            <span>수정</span>
+                        </a>
+                        <a href="/notice/delete/${notice.idNotice}" class="btns btnSt03" onclick="return confirm('정말 삭제하시겠습니까?');">
+                            <span>삭제</span>
+                        </a>
+                    </c:when>
+                </c:choose>
             </div>
             <!-- btn -->
             <!-- 본문 끝 -->

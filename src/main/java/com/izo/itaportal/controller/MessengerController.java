@@ -145,7 +145,7 @@ public class MessengerController {
     public void sendFromSaved(HttpSession session, @RequestParam("idMessenger") int idMessenger) {
         LoginResponse user = (LoginResponse) session.getAttribute("loginUser");
         if (user != null) {
-            messengerService.sendMessengerFromSaved(idMessenger);
+            messengerService.sendSavedMessenger(idMessenger);
         }
     }
 
@@ -161,5 +161,23 @@ public class MessengerController {
         }
         model.addAttribute("messenger", messenger);
         return "messenger/messengerView";
+    }
+
+    @GetMapping("/reply")
+    public String replyMessenger(@RequestParam("idMessenger") Integer idMessenger, Model model) {
+        MessengerDto originalMessenger = messengerService.getMessengerById(idMessenger);
+        if (originalMessenger == null) {
+            return "redirect:/messenger/list"; // 원본 메시지가 없으면 리스트 페이지로 리다이렉트
+        }
+
+        MessengerDto replyMessenger = new MessengerDto();
+        replyMessenger.setReceiverLoginId(originalMessenger.getSenderLoginId());
+        replyMessenger.setReceiverRole(originalMessenger.getSenderRole());
+        replyMessenger.setSubject("RE: " + originalMessenger.getSubject());
+
+        model.addAttribute("originalMessenger", originalMessenger);
+        model.addAttribute("replyMessenger", replyMessenger);
+
+        return "messenger/replyMessenger";
     }
 }

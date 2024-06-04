@@ -49,5 +49,10 @@ public class ClassRoomService {
         return deleteClassRoom;
     }
 
+    public int deleteProgram(int idRoom){
+        int deleteProgram = classRoomRepository.deletePrg(idRoom);
+        return deleteProgram;
+    }
+
 
 }

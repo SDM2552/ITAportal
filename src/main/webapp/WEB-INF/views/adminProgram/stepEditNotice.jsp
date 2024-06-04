@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="../css/common.css">
     <link rel="stylesheet" type="text/css" href="../css/table.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>공지사항 작성</title>
+    <title>공지사항 수정</title>
 </head>
 <body>
 <div class="wrap">
@@ -23,15 +23,15 @@
         <div id="contents" class="noticesListCont">
             <!-- location -->
             <span class="home" title="홈"><i class="fa-solid fa-house"></i> <i class="fa-solid fa-angle-right"></i></span>
-            <span>공지사항 <i class="fa-solid fa-angle-right"></i></span><span class="on"> 공지사항 작성</span>
+            <span>공지사항 <i class="fa-solid fa-angle-right"></i></span><span class="on"> 공지사항 수정</span>
             <!-- //location -->
 
-            <h3 class="pgTit">공지사항 작성</h3>
+            <h3 class="pgTit">공지사항 수정</h3>
 
             <!-- 본문 -->
-            <h4 class="subTit">공지사항 작성</h4>
+            <h4 class="subTit">공지사항 수정</h4>
 
-            <form action="/notice/save" method="post">
+            <form action="/notice/edit" method="post">
                 <input type="hidden" id="idNotice" name="idNotice" value="${notice.idNotice}"/>
                 <div class="tblData mt10">
                     <table>

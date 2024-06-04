@@ -12,18 +12,18 @@
 
     <script>
         $(document).ready(function() {
-            loadReceivedMessages();
+            loadReceivedMessengers();
 
             $('#receivedBtn').click(function() {
-                loadReceivedMessages();
+                loadReceivedMessengers();
             });
 
             $('#sentBtn').click(function() {
-                loadSentMessages();
+                loadSentMessengers();
             });
 
             $('#savedBtn').click(function() {
-                loadSavedMessages();
+                loadSavedMessengers();
             });
 
             $('#createBtn').click(function() {
@@ -31,7 +31,7 @@
             });
 
             $('#bulkDeleteBtn').click(function() {
-                deleteBulkMessages();
+                deleteBulkMessengers();
             });
 
             $('#bulkSendBtn').click(function() {
@@ -43,43 +43,43 @@
             });
         });
 
-        function loadReceivedMessages() {
+        function loadReceivedMessengers() {
             $.ajax({
                 url: '/messenger/received',
                 method: 'GET',
                 success: function(data) {
                     $('#messageListTitle').text('받은 메신저함');
-                    renderMessages(data, 'received');
+                    renderMessengers(data, 'received');
                 }
             });
         }
 
-        function loadSentMessages() {
+        function loadSentMessengers() {
             $.ajax({
                 url: '/messenger/sent',
                 method: 'GET',
                 success: function(data) {
                     $('#messageListTitle').text('보낸 메신저함');
-                    renderMessages(data, 'sent');
+                    renderMessengers(data, 'sent');
                 }
             });
         }
 
-        function loadSavedMessages() {
+        function loadSavedMessengers() {
             $.ajax({
                 url: '/messenger/saved',
                 method: 'GET',
                 success: function(data) {
                     $('#messageListTitle').text('임시 저장함');
-                    renderMessages(data, 'saved');
+                    renderMessengers(data, 'saved');
                 }
             });
         }
 
-        function renderMessages(messages, type) {
+        function renderMessengers(messengers, type) {
             var tbody = $('#messageTable tbody');
             tbody.empty();
-            messages.forEach(function(messenger) {
+            messengers.forEach(function(messenger) {
                 var readStatus = (type === 'received') ? messenger.messengerRead : messenger.receiverRead;
                 var tr = $('<tr></tr>');
                 tr.append('<td><input type="checkbox" class="messageCheckbox" value="' + messenger.idMessenger + '"></td>');
@@ -88,9 +88,13 @@
                 tr.append('<td>' + messenger.messageText + '</td>');
                 tr.append('<td>' + messenger.sentAt + '</td>');
                 tr.append('<td>' + (readStatus ? '읽음' : '읽지 않음') + '</td>');
-                tr.append('<td><button onclick="replyMessage(' + messenger.idMessenger + ')">답장</button></td>');
-                tr.append('<td><button onclick="updateMessage(' + messenger.idMessenger + ')">수정</button></td>');
-                tr.append('<td><button onclick="deleteMessage(' + messenger.idMessenger + ')">삭제</button></td>');
+                if (type === 'saved') {
+                    tr.append('<td><button onclick="sendSavedMessenger(' + messenger.idMessenger + ')">전송</button></td>');
+                } else {
+                    tr.append('<td><button onclick="replyMessenger(' + messenger.idMessenger + ')">답장</button></td>');
+                }
+                tr.append('<td><button onclick="updateMessenger(' + messenger.idMessenger + ')">수정</button></td>');
+                tr.append('<td><button onclick="deleteMessenger(' + messenger.idMessenger + ')">삭제</button></td>');
                 tbody.append(tr);
             });
         }
@@ -121,11 +125,11 @@
             $('#modal').hide();
         }
 
-        function replyMessage(id) {
+        function replyMessenger(id) {
             // 답장 로직 추가
         }
 
-        function updateMessage(id) {
+        function updateMessenger(id) {
             var newText = prompt("메시지를 수정하세요:");
             if (newText) {
                 $.ajax({
@@ -133,26 +137,26 @@
                     method: 'POST',
                     data: { idMessenger: id, messageText: newText },
                     success: function() {
-                        loadReceivedMessages();
+                        loadReceivedMessengers();
                     }
                 });
             }
         }
 
-        function deleteMessage(id) {
+        function deleteMessenger(id) {
             if (confirm("정말 삭제하시겠습니까?")) {
                 $.ajax({
                     url: '/messenger/delete',
                     method: 'POST',
                     data: { idMessenger: id },
                     success: function() {
-                        loadReceivedMessages();
+                        loadReceivedMessengers();
                     }
                 });
             }
         }
 
-        function deleteBulkMessages() {
+        function deleteBulkMessengers() {
             var selectedIds = [];
             $('.messageCheckbox:checked').each(function() {
                 selectedIds.push($(this).val());
@@ -166,7 +170,7 @@
                         traditional: true,
                         data: { idMessengers: selectedIds },
                         success: function() {
-                            loadReceivedMessages();
+                            loadReceivedMessengers();
                         }
                     });
                 }
@@ -184,7 +188,7 @@
                 success: function(response) {
                     alert('쪽지가 전송되었습니다.');
                     $('#modal').hide();
-                    loadMessengerList();
+                    loadReceivedMessengers();
                 },
                 error: function(xhr, status, error) {
                     alert('쪽지 전송에 실패했습니다: ' + xhr.responseText);
@@ -201,7 +205,7 @@
                 success: function(response) {
                     alert('쪽지가 저장되었습니다.');
                     $('#modal').hide();
-                    loadMessengerList();
+                    loadReceivedMessengers();
                 },
                 error: function(xhr, status, error) {
                     alert('쪽지 저장에 실패했습니다: ' + xhr.responseText);
@@ -209,121 +213,20 @@
             });
         }
 
-        function cancelCreateMessenger() {
-            $('#modal').hide();
-            loadMessengerList();
-        }
-
-        function loadMessengerList() {
-            $.ajax({
-                url: '/messenger/list',
-                method: 'GET',
-                success: function(response) {
-                    $('#modalContent').html(response);
-                },
-                error: function(xhr, status, error) {
-                    alert('메신저 리스트를 불러오는 데 실패했습니다: ' + xhr.responseText);
-                }
-            });
-        }
-
-        function sendMessenger() {
-            var form = $('#createMessengerForm');
-            $.ajax({
-                url: '/messenger/send',
-                method: 'POST',
-                data: form.serialize(),
-                success: function(response) {
-                    alert('쪽지가 전송되었습니다.');
-                    $('#modal').hide();
-                    loadReceivedMessages();
-                },
-                error: function(xhr, status, error) {
-                    alert('쪽지 전송에 실패했습니다: ' + xhr.responseText);
-                }
-            });
-        }
-
-        function saveMessenger() {
-            var form = $('#createMessengerForm');
-            $.ajax({
-                url: '/messenger/save',
-                method: 'POST',
-                data: form.serialize(),
-                success: function(response) {
-                    alert('쪽지가 저장되었습니다.');
-                    $('#modal').hide();
-                    loadReceivedMessages();
-                },
-                error: function(xhr, status, error) {
-                    alert('쪽지 저장에 실패했습니다: ' + xhr.responseText);
-                }
-            });
-        }
-
-        function sendMessage(idMessenger) {
+        function sendSavedMessenger(idMessenger) {
             $.ajax({
                 url: '/messenger/sendFromSaved',
                 method: 'POST',
                 data: { idMessenger: idMessenger },
                 success: function(response) {
                     alert('쪽지가 전송되었습니다.');
-                    window.history.back();
+                    loadSentMessengers(); // 전송 후 보낸 메신저함 로드
                 },
                 error: function(xhr, status, error) {
                     alert('쪽지 전송에 실패했습니다: ' + xhr.responseText);
                 }
             });
         }
-        function sendMessenger() {
-            var form = $('#createMessengerForm');
-            $.ajax({
-                url: '/messenger/send',
-                method: 'POST',
-                data: form.serialize(),
-                success: function(response) {
-                    alert('쪽지가 전송되었습니다.');
-                    $('#modal').hide();
-                    loadReceivedMessages();
-                },
-                error: function(xhr, status, error) {
-                    alert('쪽지 전송에 실패했습니다: ' + xhr.responseText);
-                }
-            });
-        }
-
-        function saveMessenger() {
-            var form = $('#createMessengerForm');
-            $.ajax({
-                url: '/messenger/save',
-                method: 'POST',
-                data: form.serialize(),
-                success: function(response) {
-                    alert('쪽지가 저장되었습니다.');
-                    $('#modal').hide();
-                    loadReceivedMessages();
-                },
-                error: function(xhr, status, error) {
-                    alert('쪽지 저장에 실패했습니다: ' + xhr.responseText);
-                }
-            });
-        }
-
-        function sendMessage(idMessenger) {
-            $.ajax({
-                url: '/messenger/sendFromSaved',
-                method: 'POST',
-                data: { idMessenger: idMessenger },
-                success: function(response) {
-                    alert('쪽지가 전송되었습니다.');
-                    window.history.back();
-                },
-                error: function(xhr, status, error) {
-                    alert('쪽지 전송에 실패했습니다: ' + xhr.responseText);
-                }
-            });
-        }
-
 
     </script>
 </head>

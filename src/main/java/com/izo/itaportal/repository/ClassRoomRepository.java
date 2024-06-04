@@ -15,6 +15,7 @@ public interface ClassRoomRepository {
     public int insert(ClassRoom classRoom);
     public int update(ClassRoom classRoom);
     public int delete(int idRoom);
+    public int deletePrg(int idRoom);
     public int countAllClassRooms();
 
     public List<ClassRoom> getClassRoomsPerPage(int offset, int pageSize);
