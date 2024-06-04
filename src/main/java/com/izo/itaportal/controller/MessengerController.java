@@ -115,7 +115,7 @@ public class MessengerController {
     public void markAsRead(HttpSession session, @RequestParam("idMessenger") int idMessenger) {
         LoginResponse user = (LoginResponse) session.getAttribute("loginUser");
         if (user != null) {
-            messengerService.markMessengerAsRead(idMessenger, user.getLoginId());
+            messengerService.markAsRead(idMessenger, user.getLoginId());
         }
     }
 
@@ -145,7 +145,7 @@ public class MessengerController {
     public void sendFromSaved(HttpSession session, @RequestParam("idMessenger") int idMessenger) {
         LoginResponse user = (LoginResponse) session.getAttribute("loginUser");
         if (user != null) {
-            messengerService.sendMessengerFromSaved(idMessenger);
+            messengerService.sendFromSaved(idMessenger);
         }
     }
 
@@ -157,7 +157,7 @@ public class MessengerController {
         LoginResponse user = (LoginResponse) session.getAttribute("loginUser");
         MessengerDto messenger = messengerService.getMessengerById(idMessenger);
         if (user != null) {
-            messengerService.markMessengerAsRead(idMessenger, user.getLoginId()); // 메시지 읽음으로 표시
+            messengerService.markAsRead(idMessenger, user.getLoginId()); // 메시지 읽음으로 표시
         }
         model.addAttribute("messenger", messenger);
         return "messenger/messengerView";
