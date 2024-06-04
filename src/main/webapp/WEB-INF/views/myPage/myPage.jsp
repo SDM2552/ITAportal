@@ -208,6 +208,25 @@
                     <th>성별</th>
                     <td td style="text-align: left"><c:out value="${user.gender == 'M' ? '남성' : '여성'}"/></td>
                 </tr>
+                <tr>
+                    <th>권한</th>
+                    <td style="text-align: left">
+                        <c:choose>
+                            <c:when test="${member.role eq 'stu'}">
+                                학생
+                            </c:when>
+                            <c:when test="${member.role eq 'admin'}">
+                                관리자
+                            </c:when>
+                            <c:when test="${member.role eq 'prof'}">
+                                교수
+                            </c:when>
+                            <c:otherwise>
+                                기타
+                            </c:otherwise>
+                        </c:choose>
+                    </td>
+                </tr>
 
             </table>
         </div>
