@@ -21,7 +21,6 @@ public interface NoticeRepository {
 
     void deleteNotice(int idNotice);
 
-    //공지사항 검색 공지사항이동
     List<Notice> searchNoticesByKeyword(@Param("keyword") String keyword);
 
     List<Notice> findNoticesByPage(@Param("offset") int offset, @Param("limit") int limit);
@@ -32,11 +31,9 @@ public interface NoticeRepository {
 
     int countNoticesByKeyword(@Param("keyword") String keyword);
 
-    // 조회수 증가
-//    @Update("UPDATE notice SET views = views + 1 WHERE id_notice = #{idNotice}")
+    @Update("UPDATE notice SET views = views + 1 WHERE id_notice = #{idNotice}")
     void incrementViews(@Param("idNotice") int idNotice);
 
-    //최신공지사항을 메인으로
     @Select("SELECT id_notice, title, created_date FROM notice ORDER BY created_date DESC LIMIT 5")
     List<Notice> findLatestNotices();
 }
