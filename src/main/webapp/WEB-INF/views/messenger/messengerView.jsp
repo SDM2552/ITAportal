@@ -39,7 +39,7 @@
         </tr>
         <tr>
             <th scope="row">읽음 여부</th>
-            <td>${messenger.receiverRead ? '읽음' : '읽지 않음'}</td>
+            <td>${messenger.messengerRead ? '읽음' : '읽지 않음'}</td>
         </tr>
         </tbody>
     </table>
