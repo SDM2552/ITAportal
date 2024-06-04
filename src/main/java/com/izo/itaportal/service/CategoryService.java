@@ -7,6 +7,7 @@ import com.izo.itaportal.model.ClassRoom;
 import com.izo.itaportal.model.Program;
 import com.izo.itaportal.repository.CategoryRepository;
 
+import com.izo.itaportal.repository.ProgramRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,9 @@ import java.util.List;
 public class CategoryService {
     @Autowired
     private CategoryRepository categoryRepository;
+
+    @Autowired
+    private ProgramRepository programRepository;
 
     public List<Category> getAllCategory() {
         List<Category> category = categoryRepository.selectCategory();
@@ -47,8 +51,13 @@ public class CategoryService {
     }
 
     public int deleteCategory(int idCate) {
-        int deleteCategory = categoryRepository.delete(idCate);
+       int deleteCategory = categoryRepository.delete(idCate);
         return deleteCategory;
+    }
+
+    public int deleteProgram(int idCate) {
+        int deleteProgram = categoryRepository.deletePrg(idCate);
+        return deleteProgram;
     }
 
 }

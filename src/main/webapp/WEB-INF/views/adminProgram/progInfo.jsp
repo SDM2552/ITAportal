@@ -79,7 +79,7 @@
                             </td>
                             <th scope="col">강사명</th>
                             <td>
-                                ${pr.name}
+                                ${pr.profName}
                             </td>
                         </tr>
                         <tr>

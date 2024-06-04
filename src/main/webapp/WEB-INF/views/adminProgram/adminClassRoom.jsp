@@ -99,6 +99,7 @@
 
             <!-- 본문 -->
             <h4 class="subTit">강의실</h4>
+            <h4>※ 현재 항목 수정/삭제 시 관련 프로그램도 함께 변경됩니다.</h4><h6><br></h6>
             <div class="tblData mt10" >
                 <table>
                     <colgroup>
