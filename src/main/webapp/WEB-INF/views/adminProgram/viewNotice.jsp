@@ -61,6 +61,9 @@
                         <a href="/notice/edit/${notice.idNotice}" class="btns btnSt03">
                             <span>수정</span>
                         </a>
+                        <a href="/notice/delete/${notice.idNotice}" class="btns btnSt03" onclick="return confirm('정말 삭제하시겠습니까?');">
+                            <span>삭제</span>
+                        </a>
                     </c:when>
                 </c:choose>
             </div>
