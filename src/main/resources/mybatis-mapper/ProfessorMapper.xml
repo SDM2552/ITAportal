@@ -23,9 +23,9 @@
             attendance.abs_stat AS absenceStatus,
             `user`.email AS userEmail
         FROM
-            Sugang sugang
-                JOIN Student student ON sugang.id_Student = student.id_Student
-                JOIN Attendance attendance ON sugang.id_Student = attendance.id_Student AND sugang.id_Pgm = attendance.id_pgm
+            sugang sugang
+                JOIN student student ON sugang.id_Student = student.id_Student
+                JOIN attendance attendance ON sugang.id_Student = attendance.id_Student AND sugang.id_Pgm = attendance.id_pgm
                 JOIN `user` ON student.id_User = `user`.id_User
         WHERE
             sugang.id_Pgm = #{idPgm}

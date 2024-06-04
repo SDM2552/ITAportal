@@ -19,15 +19,15 @@
             cr.room_Name,
             prof.name
         FROM
-            Sugang s
+            sugang s
                 JOIN
-            Program p ON s.id_Pgm = p.id_Pgm
+            program p ON s.id_Pgm = p.id_Pgm
                 JOIN
-            Category c ON p.id_Cate = c.id_Cate
+            category c ON p.id_Cate = c.id_Cate
                 JOIN
-            Class_Room cr ON p.id_Room = cr.id_Room
+            class_room cr ON p.id_Room = cr.id_Room
                 JOIN
-            Professor prof ON p.id_Prof = prof.id_Prof
+            professor prof ON p.id_Prof = prof.id_Prof
         WHERE
             s.id_Student = #{idStudent}
     </select>
@@ -68,11 +68,11 @@
             prof.name,
             prof.id_Prof
         FROM
-            Sugang s
-                JOIN Program p ON s.id_Pgm = p.id_Pgm
-                JOIN Category c ON p.id_Cate = c.id_Cate
-                JOIN Class_Room cr ON p.id_Room = cr.id_Room
-                JOIN Professor prof ON p.id_Prof = prof.id_Prof
+            sugang s
+                JOIN program p ON s.id_Pgm = p.id_Pgm
+                JOIN category c ON p.id_Cate = c.id_Cate
+                JOIN class_room cr ON p.id_Room = cr.id_Room
+                JOIN professor prof ON p.id_Prof = prof.id_Prof
         WHERE
             s.id_Student = #{idStudent}
     </select>
@@ -95,11 +95,11 @@
             professor.name AS name,
             professor.id_Prof AS idProf
         FROM
-            Sugang sugang
-                JOIN Program program ON sugang.id_Pgm = program.id_Pgm
-                JOIN Category category ON program.id_Cate = category.id_Cate
-                JOIN Class_Room class_room ON program.id_Room = class_room.id_Room
-                JOIN Professor professor ON program.id_Prof = professor.id_Prof
+            sugang sugang
+                JOIN program program ON sugang.id_Pgm = program.id_Pgm
+                JOIN category category ON program.id_Cate = category.id_Cate
+                JOIN class_room class_room ON program.id_Room = class_room.id_Room
+                JOIN professor professor ON program.id_Prof = professor.id_Prof
         WHERE
             sugang.id_student = #{idStudent}
     </select>
@@ -121,11 +121,11 @@
             professor.name AS name,
             professor.id_Prof AS idProf
         FROM
-            Sugang sugang
-                JOIN Program program ON sugang.id_Pgm = program.id_Pgm
-                JOIN Category category ON program.id_Cate = category.id_Cate
-                JOIN Class_Room class_room ON program.id_Room = class_room.id_Room
-                JOIN Professor professor ON program.id_Prof = professor.id_Prof
+            sugang sugang
+                JOIN program program ON sugang.id_Pgm = program.id_Pgm
+                JOIN category category ON program.id_Cate = category.id_Cate
+                JOIN class_room class_room ON program.id_Room = class_room.id_Room
+                JOIN professor professor ON program.id_Prof = professor.id_Prof
         WHERE
             sugang.id_student = #{idStudent}
     </select>
@@ -149,10 +149,10 @@
             r.room_Name,
             pr.name AS prof_Name
         FROM
-            Program p
-                JOIN Category c ON p.id_Cate = c.id_Cate
+            program p
+                JOIN category c ON p.id_Cate = c.id_Cate
                 JOIN class_room r ON p.id_Room = r.id_Room
-                JOIN Professor pr ON p.id_Prof = pr.id_Prof
+                JOIN professor pr ON p.id_Prof = pr.id_Prof
         WHERE
             p.id_Pgm = #{id};
     </select>
@@ -176,10 +176,10 @@
             r.room_Name,
             pr.name AS prof_Name
         FROM
-            Program p
-                JOIN Category c ON p.id_Cate = c.id_Cate
+            program p
+                JOIN category c ON p.id_Cate = c.id_Cate
                 JOIN class_room r ON p.id_Room = r.id_Room
-                JOIN Professor pr ON p.id_Prof = pr.id_Prof
+                JOIN professor pr ON p.id_Prof = pr.id_Prof
         WHERE
             pr.id_Prof = #{id};
     </select>
@@ -203,12 +203,12 @@
             r.room_Name,
             pr.name AS prof_Name
         FROM
-            Program p
-                JOIN Category c ON p.id_Cate = c.id_Cate
+            program p
+                JOIN category c ON p.id_Cate = c.id_Cate
                 JOIN class_room r ON p.id_Room = r.id_Room
-                JOIN Professor pr ON p.id_Prof = pr.id_Prof
+                JOIN professor pr ON p.id_Prof = pr.id_Prof
         WHERE
-            p.id_Pgm IN (SELECT id_Pgm FROM Sugang WHERE id_student = #{idStudent});
+            p.id_Pgm IN (SELECT id_Pgm FROM sugang WHERE id_student = #{idStudent});
     </select>
     <select id="findProfessorsByProgramId" parameterType="int" resultType="com.izo.itaportal.dto.ProgramAllDto">
         SELECT
@@ -230,10 +230,10 @@
             pr.name AS profName,
             pr.id_Prof
         FROM
-            Program p
-                JOIN Category c ON p.id_Cate = c.id_Cate
+            program p
+                JOIN category c ON p.id_Cate = c.id_Cate
                 JOIN class_room r ON p.id_Room = r.id_Room
-                JOIN Professor pr ON p.id_Prof = pr.id_Prof
+                JOIN professor pr ON p.id_Prof = pr.id_Prof
         WHERE
             p.id_Pgm = #{id};
     </select>

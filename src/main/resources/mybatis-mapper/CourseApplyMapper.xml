@@ -3,15 +3,15 @@
 <mapper namespace="com.izo.itaportal.mapper.CourseApplyMapper">
 
     <insert id="insertCourseApply" parameterType="com.izo.itaportal.model.CourseApply">
-        INSERT INTO CourseApplies (course_name, course_apply_date, course_apply_status, id_student, id_cate)
+        INSERT INTO courseApplies (course_name, course_apply_date, course_apply_status, id_student, id_cate)
         VALUES (#{courseName}, #{courseApplyDate}, #{courseApplyStatus}, #{idStudent}, #{idCate})
     </insert>
 
     <select id="findAllCourseApplies" resultType="com.izo.itaportal.model.CourseApply">
-        SELECT * FROM CourseApplies
+        SELECT * FROM courseApplies
     </select>
 
     <select id="findCoursesByIdStudent" resultType="com.izo.itaportal.model.CourseApply">
-        SELECT * FROM CourseApplies WHERE id_student = #{IdStudent}
+        SELECT * FROM courseApplies WHERE id_student = #{IdStudent}
     </select>
 </mapper>

@@ -5,13 +5,13 @@
 
     <select id="findAllCategories" resultType="com.izo.itaportal.dto.CategoryDto">
         SELECT id_Cate AS idCate, cate_Name AS cateName
-        FROM Category
+        FROM category
     </select>
 
     <select id="searchProgramsByCategoryAndName" resultType="com.izo.itaportal.dto.ProgramSearchDto">
         SELECT p.id_Pgm, p.pgm_Name, c.cate_Name, p.st_Dt, p.end_Dt, p.sugang_St_Dt, p.sugang_End_Dt, p.pgm_Fee
-        FROM Program p
-        JOIN Category c ON p.id_Cate = c.id_Cate
+        FROM program p
+        JOIN category c ON p.id_Cate = c.id_Cate
         WHERE 1=1
         <if test="cateName != null and cateName != ''">
             AND c.cate_Name = #{cateName}

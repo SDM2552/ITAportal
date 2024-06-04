@@ -41,9 +41,9 @@
                p.pgm_day,
                p.pgm_time
         FROM program p
-                 JOIN Category c ON p.id_Cate = c.id_Cate
+                 JOIN category c ON p.id_Cate = c.id_Cate
                  JOIN class_room r ON p.id_Room = r.id_Room
-                 JOIN Professor pr ON p.id_Prof = pr.id_Prof
+                 JOIN professor pr ON p.id_Prof = pr.id_Prof
         WHERE p.id_pgm = #{idPgm}
     </select>
 
@@ -181,9 +181,9 @@
                r.room_Name,
                pr.name AS prof_Name
         FROM program p
-                 JOIN Category c ON p.id_Cate = c.id_Cate
+                 JOIN category c ON p.id_Cate = c.id_Cate
                  JOIN class_room r ON p.id_Room = r.id_Room
-                 JOIN Professor pr ON p.id_Prof = pr.id_Prof
+                 JOIN professor pr ON p.id_Prof = pr.id_Prof
         WHERE p.id_Prof = #{idProf}
           AND p.id_Pgm = #{idPgm}
     </select>
