@@ -136,6 +136,7 @@ public class NoticeController {
     // 공지사항 상세 조회 기능 추가
     @GetMapping("/view/{idNotice}")
     public ModelAndView viewNotice(@PathVariable int idNotice) {
+        noticeService.incrementViews(idNotice); // 조회수 증가
         Notice notice = noticeService.getNoticeById(idNotice);
         ModelAndView modelAndView = new ModelAndView("adminProgram/viewNotice");
         modelAndView.addObject("notice", notice);

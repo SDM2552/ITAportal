@@ -4,13 +4,13 @@
 
 <mapper namespace="com.izo.itaportal.repository.MessengerRepository">
 
-    <!-- 메신저 전송 -->
+    <!-- 메신저를 전송합니다 -->
     <insert id="sendMessenger" parameterType="com.izo.itaportal.dto.MessengerDto">
         INSERT INTO messenger (sender_login_id, receiver_login_id, sender_role, receiver_role, subject, message_text, sent_at, messenger_read, receiver_read, deleted)
         VALUES (#{senderLoginId}, #{receiverLoginId}, #{senderRole}, #{receiverRole}, #{subject}, #{messageText}, NOW(), FALSE, FALSE, FALSE)
     </insert>
 
-    <!-- 여러 메신저 일괄 전송 -->
+    <!-- 여러 메신저를 일괄 전송합니다 -->
     <insert id="sendBulkMessengers" parameterType="java.util.List">
         INSERT INTO messenger (sender_login_id, receiver_login_id, sender_role, receiver_role, subject, message_text, sent_at, messenger_read, receiver_read, deleted)
         VALUES
@@ -19,7 +19,7 @@
         </foreach>
     </insert>
 
-    <!-- 특정 수신자가 받은 메신저 목록 조회 -->
+    <!-- 특정 수신자가 받은 메신저 목록을 조회합니다 -->
     <select id="getReceivedMessengers" resultMap="MessengerResultMap">
         SELECT * FROM messenger
         WHERE receiver_login_id = #{receiverLoginId}
@@ -28,7 +28,7 @@
         ORDER BY sent_at DESC
     </select>
 
-    <!-- 특정 발신자가 보낸 메신저 목록 조회 -->
+    <!-- 특정 발신자가 보낸 메신저 목록을 조회합니다 -->
     <select id="getSentMessengers" resultMap="MessengerResultMap">
         SELECT id_messenger, sender_login_id, receiver_login_id, sender_role, receiver_role, subject, message_text, sent_at, updated_at, receiver_read AS receiverRead, deleted
         FROM messenger
@@ -38,7 +38,7 @@
         ORDER BY sent_at DESC
     </select>
 
-    <!-- 저장된 메신저 목록 조회 -->
+    <!-- 저장된 메신저 목록을 조회합니다 -->
     <select id="getSavedMessengers" resultMap="MessengerResultMap">
         SELECT * FROM messenger
         WHERE sender_login_id = #{senderLoginId}
@@ -47,33 +47,33 @@
         ORDER BY updated_at DESC
     </select>
 
-    <!-- 메신저 저장 -->
+    <!-- 메신저를 저장합니다 -->
     <insert id="saveMessenger" parameterType="com.izo.itaportal.dto.MessengerDto">
         INSERT INTO messenger (sender_login_id, receiver_login_id, sender_role, receiver_role, subject, message_text, messenger_read, receiver_read, deleted)
         VALUES (#{senderLoginId}, #{receiverLoginId}, #{senderRole}, #{receiverRole}, #{subject}, #{messageText}, FALSE, FALSE, FALSE)
     </insert>
 
-    <!-- 수신자가 메신저를 읽음으로 표시 -->
+    <!-- 수신자가 메신저를 읽음으로 표시합니다 -->
     <update id="markReceiverAsRead">
         UPDATE messenger SET receiver_read = TRUE WHERE id_messenger = #{idMessenger}
     </update>
 
-    <!-- 발신자가 메신저를 읽음으로 표시 -->
-    <update id="markSenderAsRead">
+    <!-- 발신자가 메신저를 읽음으로 표시합니다 -->
+    <update id="markMessengerAsRead">
         UPDATE messenger SET messenger_read = TRUE WHERE id_messenger = #{idMessenger}
     </update>
 
-    <!-- 메신저 업데이트 -->
+    <!-- 메신저의 내용을 업데이트합니다 -->
     <update id="updateMessenger" parameterType="com.izo.itaportal.dto.MessengerDto">
         UPDATE messenger SET message_text = #{messageText}, updated_at = NOW() WHERE id_messenger = #{idMessenger}
     </update>
 
-    <!-- 메신저 삭제 -->
+    <!-- 메신저를 삭제합니다 -->
     <update id="deleteMessenger">
         UPDATE messenger SET deleted = TRUE WHERE id_messenger = #{idMessenger}
     </update>
 
-    <!-- 여러 메신저 일괄 삭제 -->
+    <!-- 여러 메신저를 일괄 삭제합니다 -->
     <update id="deleteBulkMessengers">
         UPDATE messenger SET deleted = TRUE WHERE id_messenger IN
         <foreach item="id" collection="list" open="(" separator="," close=")">
@@ -81,12 +81,12 @@
         </foreach>
     </update>
 
-    <!-- 특정 메신저 조회 -->
+    <!-- 특정 메신저를 조회합니다 -->
     <select id="getMessengerById" parameterType="int" resultMap="MessengerResultMap">
         SELECT * FROM messenger WHERE id_messenger = #{idMessenger}
     </select>
 
-    <!-- 저장된 메신저 전송 상태로 업데이트 -->
+    <!-- 임시저장된 메신저를 전송 상태로 업데이트합니다 -->
     <update id="updateMessengerAsSent">
         UPDATE messenger SET sent_at = NOW(), updated_at = NULL WHERE id_messenger = #{idMessenger}
     </update>

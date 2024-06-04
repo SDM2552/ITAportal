@@ -49,6 +49,7 @@
             LIMIT #{offset}, #{limit}
     </select>
 
+    <!-- 공지사항 총 개수 조회 -->
     <select id="countAllNotices" resultType="int">
         SELECT COUNT(*) FROM notice
     </select>
@@ -57,4 +58,9 @@
     <select id="countNoticesByKeyword" parameterType="String" resultType="int">
         SELECT COUNT(*) FROM notice WHERE title LIKE CONCAT('%', #{keyword}, '%') OR content LIKE CONCAT('%', #{keyword}, '%')
     </select>
+
+    <!-- 조회수 증가 -->
+    <update id="incrementViews" parameterType="int">
+        UPDATE notice SET views = views + 1 WHERE id_notice = #{idNotice}
+    </update>
 </mapper>

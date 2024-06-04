@@ -34,7 +34,9 @@ public class NoticeService {
         noticeRepository.deleteNotice(idNotice);
     }
 
-
+    public void incrementViews(int idNotice) {
+        noticeRepository.incrementViews(idNotice); // 조회수 증가
+    }
 
 //    페이징
     public List<Notice> searchNoticesByKeyword(String keyword) {
