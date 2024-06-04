@@ -91,7 +91,7 @@
                 JOIN
             category category ON program.id_Cate = category.id_Cate
                 JOIN
-            class_Room class_room ON program.id_Room = class_room.id_Room
+            class_room class_room ON program.id_Room = class_room.id_Room
                 JOIN
             student student ON sugang.id_student = student.id_student
                 JOIN
@@ -126,7 +126,7 @@
                 JOIN
             category category ON program.id_Cate = category.id_Cate
                 JOIN
-            class_Room class_room ON program.id_Room = class_room.id_Room
+            class_room class_room ON program.id_Room = class_room.id_Room
                 JOIN
             student student ON sugang.id_student = student.id_student
                 JOIN

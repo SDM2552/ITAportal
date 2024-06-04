@@ -19,9 +19,9 @@
             e.count AS count
 
         FROM
-            Exam e
-            JOIN Program p ON e.id_Program = p.id_Pgm
-            JOIN Professor pr ON e.id_Prof = pr.id_Prof
+            exam e
+            JOIN program p ON e.id_Program = p.id_Pgm
+            JOIN professor pr ON e.id_Prof = pr.id_Prof
         WHERE
             e.id_Prof = #{idProf}
     </select>
@@ -39,9 +39,9 @@
             e.status AS status,
             e.count AS count
         FROM
-            Exam e
-            JOIN Program p ON e.id_Program = p.id_Pgm
-            JOIN Professor pr ON e.id_Prof = pr.id_Prof
+            exam e
+            JOIN program p ON e.id_Program = p.id_Pgm
+            JOIN professor pr ON e.id_Prof = pr.id_Prof
         WHERE
             e.id_Program = #{idPgm} AND
             e.id_Prof = #{idProf} AND
@@ -53,12 +53,12 @@
             id_Pgm,
             pgm_name AS pgmName
         FROM
-            Program
+            program
         WHERE
             id_Prof = #{idProf}
     </select>
     <insert id="insertExam" parameterType="com.izo.itaportal.model.Exam">
-        INSERT INTO Exam (name, start_Date, end_Date, description, status, count, id_Program, id_Prof)
+        INSERT INTO exam (name, start_Date, end_Date, description, status, count, id_Program, id_Prof)
         VALUES (#{name}, #{startDate}, #{endDate}, #{description}, '진행중',0, #{idProgram}, #{idProf})
     </insert>
 
@@ -77,13 +77,13 @@
             p.num_of_stu AS numOfStu,
             pr.name AS profName
         FROM
-            Exam e
+            exam e
                 JOIN
-            Attendance a ON e.id_Program = a.id_pgm
+            attendance a ON e.id_Program = a.id_pgm
                 JOIN
-            Program p ON e.id_Program = p.id_Pgm
+            program p ON e.id_Program = p.id_Pgm
                 JOIN
-            Professor pr ON e.id_Prof = pr.id_Prof
+            professor pr ON e.id_Prof = pr.id_Prof
         WHERE
             a.id_Student = #{idStudent}
     </select>
