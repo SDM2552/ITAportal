@@ -49,25 +49,18 @@
 </head>
 <body>
 <div class="wrap">
-    <!-- header -->
     <c:import url="../layout/header.jsp" />
 
-    <!-- container -->
     <div id="container" class="container responCont">
-        <!-- 왼쪽 네비바 -->
         <c:import url="../layout/nav_admin_notice.jsp" />
-        <!-- contents -->
         <div id="contents" class="noticesListCont">
-            <!-- location -->
             <div class="location">
                 <span class="home" title="홈"><i class="fa-solid fa-house"></i> <i class="fa-solid fa-angle-right"></i></span>
                 <span class="on">공지사항</span>
             </div>
-            <!-- //location -->
 
             <h3 class="pgTit">공지사항</h3>
 
-            <!-- 본문 -->
             <div class="btnArea">
                 <form action="/notice/noticeList" method="get">
                     <input type="text" name="keyword" placeholder="검색어 입력" value="${keyword}">
@@ -103,11 +96,9 @@
                 </table>
             </div>
 
-            <!-- 페이지네이션 -->
             <div class="pagination">
                 <a href="/notice/noticeList?page=1&keyword=${keyword}">처음</a>
                 <a href="/notice/noticeList?page=${currentPage - 1}&keyword=${keyword}" <c:if test="${currentPage == 1}">style="pointer-events: none; color: #ccc;"</c:if>><<</a>
-                <a href="/notice/noticeList?page=${currentPage - 1}&keyword=${keyword}" <c:if test="${currentPage == 1}">style="pointer-events: none; color: #ccc;"</c:if>><</a>
                 <c:forEach begin="1" end="${totalPages}" var="i">
                     <a href="/notice/noticeList?page=${i}&keyword=${keyword}" class="${currentPage == i ? 'active' : ''}">${i}</a>
                 </c:forEach>
@@ -116,13 +107,9 @@
                 <input type="number" id="pageInput" style="width: 50px;" min="1" max="${totalPages}" value="${currentPage}">
                 <button onclick="goToPage()">이동</button>
             </div>
-            <!-- 프로그램 목록 -->
-            <!-- 본문 끝 -->
         </div>
-        <!-- //contents -->
     </div>
 
-    <!-- footer -->
     <c:import url="../layout/footer.jsp"/>
 </div>
 </body>

@@ -12,7 +12,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Comparator;
 import java.util.List;
 
 @Controller
@@ -48,30 +47,17 @@ public class NoticeController {
         return "adminProgram/noticeList";
     }
 
-    //공지사항작성 common_id=admin
+    // 공지사항 작성
     @GetMapping("/create")
     public ModelAndView showCreateForm(HttpSession session) {
-//        if (!isAdmin(session)) {
-//            return new ModelAndView("error/403");
-//        }
         ModelAndView modelAndView = new ModelAndView("adminProgram/stepCreateNotice");
         modelAndView.addObject("notice", new Notice());
         return modelAndView;
     }
-//    @GetMapping("/create")
-//    public ModelAndView showCreateForm() {
-//        ModelAndView modelAndView = new ModelAndView("adminProgram/stepCreateNotice");
-//        modelAndView.addObject("notice", new Notice());
-//        return modelAndView;
-//    }
 
-
-    //공지사항 저장 common_id=admin이 아니면 에러
+    // 공지사항 저장
     @PostMapping("/save")
-    public String saveNotice(@ModelAttribute Notice notice, HttpSession session) {
-//        if (!isAdmin(session)) {
-//            return "error/403";
-//        }
+    public String saveNotice(@ModelAttribute Notice notice) {
         if (notice.getIdNotice() != 0) {  // 0이 아닌 경우 업데이트
             Notice existingNotice = noticeService.getNoticeById(notice.getIdNotice());
             notice.setCreatedDate(existingNotice.getCreatedDate());  // 기존 작성 날짜 유지
@@ -84,54 +70,31 @@ public class NoticeController {
         }
         return "redirect:/notice/noticeList";
     }
-//    @PostMapping("/save")
-//    public String saveNotice(@ModelAttribute Notice notice) {
-//        if (notice.getIdNotice() != 0) {  // 0이 아닌 경우 업데이트
-//            Notice existingNotice = noticeService.getNoticeById(notice.getIdNotice());
-//            notice.setCreatedDate(existingNotice.getCreatedDate());  // 기존 작성 날짜 유지
-//            notice.setViews(existingNotice.getViews());  // 기존 조회수 유지
-//            noticeService.updateNotice(notice.getIdNotice(), notice);
-//        } else {  // 0인 경우 새로 생성
-//            String createdDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-//            notice.setCreatedDate(createdDate);
-//            noticeService.createNotice(notice);
-//        }
-//        return "redirect:/notice/noticeList";
-//    }
 
-    //공지사항 수정
+    // 공지사항 수정
     @GetMapping("/edit/{idNotice}")
     public ModelAndView showEditForm(@PathVariable int idNotice, HttpSession session) {
-//        if (!isAdmin(session)) {
-//            return new ModelAndView("error/403");
-//        }
         Notice notice = noticeService.getNoticeById(idNotice);
-        ModelAndView modelAndView = new ModelAndView("adminProgram/stepCreateNotice");
+        ModelAndView modelAndView = new ModelAndView("adminProgram/stepEditNotice");
         modelAndView.addObject("notice", notice);
         return modelAndView;
     }
-//    @GetMapping("/edit/{idNotice}")
-//    public ModelAndView showEditForm(@PathVariable int idNotice) {
-//        Notice notice = noticeService.getNoticeById(idNotice);
-//        ModelAndView modelAndView = new ModelAndView("adminProgram/stepCreateNotice");
-//        modelAndView.addObject("notice", notice);
-//        return modelAndView;
-//    }
 
-    //삭제
+    @PostMapping("/edit")
+    public String editNotice(@ModelAttribute Notice notice) {
+        Notice existingNotice = noticeService.getNoticeById(notice.getIdNotice());
+        notice.setCreatedDate(existingNotice.getCreatedDate());  // 기존 작성 날짜 유지
+        notice.setViews(existingNotice.getViews());  // 기존 조회수 유지
+        noticeService.updateNotice(notice.getIdNotice(), notice);
+        return "redirect:/notice/noticeList";
+    }
+
+    // 삭제
     @GetMapping("/delete/{idNotice}")
     public String deleteNotice(@PathVariable int idNotice, HttpSession session) {
-//        if (!isAdmin(session)) {
-//            return "error/403";
-//        }
         noticeService.deleteNotice(idNotice);
         return "redirect:/notice/noticeList";
     }
-//    @GetMapping("/delete/{idNotice}")
-//    public String deleteNotice(@PathVariable int idNotice) {
-//        noticeService.deleteNotice(idNotice);
-//        return "redirect:/notice/noticeList";
-//    }
 
     // 공지사항 상세 조회 기능 추가
     @GetMapping("/view/{idNotice}")
@@ -158,14 +121,6 @@ public class NoticeController {
         return modelAndView;
     }
 
-    // 공지사항 페이지 이동 기능 추가
-//    @GetMapping("/page/{pageNum}")
-//    public ModelAndView paginateNotices(@PathVariable int pageNum) {
-//        List<Notice> notices = noticeService.getNoticesByPage(pageNum);
-//        ModelAndView modelAndView = new ModelAndView("adminProgram/noticeList");
-//        modelAndView.addObject("notices", notices);
-//        return modelAndView;
-//    }
     // 페이지네이션 기능
     @GetMapping("/page/{pageNum}")
     public ModelAndView paginateNotices(@PathVariable int pageNum, @RequestParam(value = "keyword", required = false) String keyword, RedirectAttributes redirectAttributes) {
@@ -196,21 +151,10 @@ public class NoticeController {
         return modelAndView;
     }
 
-    //최신공지사항을 메인화면으로
+    // 최신공지사항을 메인화면으로
     @GetMapping("/latest")
     @ResponseBody
     public List<Notice> getLatestNotices() {
-        // 최신 공지사항 5개 가져오기 (필요에 따라 개수 조정 가능)
         return noticeService.getLatestNotices();
-    }
-    
-    
-//
-    private boolean isAdmin(HttpSession session) {
-//        if (session.getAttribute("loginUser") == null) {
-//            return false;
-//        }
-        String role = (String) session.getAttribute("role");
-        return "admin".equals(role);
     }
 }
