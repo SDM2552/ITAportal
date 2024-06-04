@@ -36,8 +36,13 @@
         where id_room = #{idRoom}
     </update>
 
-    <delete id="delete">
+    <delete id="delete" parameterType="int">
         delete from class_room
+        where id_room = #{idRoom}
+    </delete>
+
+    <delete id="deletePrg" parameterType="int">
+        delete from program
         where id_room = #{idRoom}
     </delete>
 </mapper>

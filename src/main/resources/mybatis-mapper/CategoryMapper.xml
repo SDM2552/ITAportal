@@ -38,6 +38,13 @@
 
     <delete id="delete" parameterType="int">
         delete from category
-        where id_cate = #{idCate}
+        where id_cate = #{idCate};
     </delete>
+
+    <delete id="deletePrg" parameterType="int">
+        delete from program
+        where id_cate = #{idCate};
+    </delete>
+
+
 </mapper>
