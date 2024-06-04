@@ -71,8 +71,4 @@ public class MessengerService {
     public MessengerDto getMessengerById(int idMessenger) {
         return messengerRepository.getMessengerById(idMessenger);
     }
-
-    public void sendMessengerFromSaved(int idMessenger) {
-        messengerRepository.updateMessengerAsSent(idMessenger);
-    }
 }

@@ -1,15 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>메시지 보기</title>
+    <title>메신저 보기</title>
     <link rel="stylesheet" type="text/css" href="../css/common.css">
     <link rel="stylesheet" type="text/css" href="../css/table.css">
     <link rel="stylesheet" type="text/css" href="../css/messenger.css">
 </head>
 <body>
-<h2>메시지 내용</h2>
+<h2>메신저 내용</h2>
 <div class="tblForm inputForm mt10">
     <table>
         <colgroup>
@@ -39,7 +40,7 @@
         </tr>
         <tr>
             <th scope="row">읽음 여부</th>
-            <td>${messenger.receiverRead ? '읽음' : '읽지 않음'}</td>
+            <td>${messenger.messengerRead ? '읽음' : '읽지 않음'}</td>
         </tr>
         </tbody>
     </table>
@@ -48,7 +49,10 @@
 <div class="btnArea">
     <button type="button" class="btns btnSt03" onclick="closeView()">닫기</button>
     <c:if test="${messenger.sentAt == null}">
-        <button type="button" class="btns btnSt03" onclick="sendMessage(${messenger.idMessenger})">전송</button>
+        <button type="button" class="btns btnSt03" onclick="sendSavedMessenger(${messenger.idMessenger})">전송</button>
+    </c:if>
+    <c:if test="${messenger.sentAt != null}">
+        <button type="button" class="btns btnSt03" onclick="location.href='/messenger/reply?idMessenger=${messenger.idMessenger}'">답장</button>
     </c:if>
 </div>
 <!-- btn -->
@@ -58,7 +62,7 @@
         window.history.back();
     }
 
-    function sendMessage(idMessenger) {
+    function sendSavedMessenger(idMessenger) {
         $.ajax({
             url: '/messenger/sendFromSaved',
             method: 'POST',

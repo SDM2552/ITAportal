@@ -4,6 +4,7 @@ import com.izo.itaportal.model.Notice;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -30,6 +31,10 @@ public interface NoticeRepository {
     int countAllNotices();
 
     int countNoticesByKeyword(@Param("keyword") String keyword);
+
+    // 조회수 증가
+//    @Update("UPDATE notice SET views = views + 1 WHERE id_notice = #{idNotice}")
+    void incrementViews(@Param("idNotice") int idNotice);
 
     //최신공지사항을 메인으로
     @Select("SELECT id_notice, title, created_date FROM notice ORDER BY created_date DESC LIMIT 5")
