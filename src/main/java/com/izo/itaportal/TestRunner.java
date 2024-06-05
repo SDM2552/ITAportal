@@ -34,13 +34,13 @@ public class TestRunner implements ApplicationRunner{
         // List of SQL statements
         List<String> sqlStatements = new ArrayList<>();
 
-        // Adding professor entries
+        //professor
         sqlStatements.add("INSERT INTO professor(name, birth, tel, gender, address, id_user) VALUES ('김교수02', '19950320', '010-1234-1234', 'F', '고양시', '2')");
         sqlStatements.add("INSERT INTO professor(name, birth, tel, gender, address, id_user) VALUES ('박교수03', '19931231', '010-9876-5432', 'M', '서울시', '3')");
         sqlStatements.add("INSERT INTO professor(name, birth, tel, gender, address, id_user) VALUES ('최교수07', '19931231', '010-9876-5432', 'M', '인천광역시', '7')");
         sqlStatements.add("INSERT INTO admin(name, birth, tel, gender, address, id_user) VALUES ('관리자01', '19990101', '010-1000-2000', 'M', '서울시', '4')");
 
-        // Adding student entries
+        // student
         sqlStatements.add("INSERT INTO student(name, birth, tel, gender, address, id_user) VALUES ('김학생', '20020202', '010-2222-3333', 'M', '서울시 마포구', '1')");
         sqlStatements.add("INSERT INTO student(name, birth, tel, gender, address, id_user) VALUES ('홍지현', '19000130', '010-9685-6060', 'F', '서울시 송파구', '5')");
         sqlStatements.add("INSERT INTO student(name, birth, tel, gender, address, id_user) VALUES ('손재웅', '196001231', '010-7410-3539', 'M', '서울시 서초구', '6')");
@@ -52,7 +52,7 @@ public class TestRunner implements ApplicationRunner{
         sqlStatements.add("INSERT INTO student(name, birth, tel, gender, address, id_user) VALUES ('오강민', '19920505', '010-5353-7878', 'M', '세종시', '13')");
         sqlStatements.add("INSERT INTO student(name, birth, tel, gender, address, id_user) VALUES ('하경택', '19930623', '010-6868-5757', 'M', '강원도', '14')");
 
-        // Adding user entries
+        //user
         sqlStatements.add("INSERT INTO user(id_user, login_id, password, regist_date, email, role) VALUES(1, 'stu', '" + encryptedPassword + "', '2024-05-17', 'kim@email.com', 'stu')");
         sqlStatements.add("INSERT INTO user(id_user, login_id, password, regist_date, email, role) VALUES(2, 'prof', '" + encryptedPassword + "', '2024-05-19', 'kimprof@email.com', 'prof')");
         sqlStatements.add("INSERT INTO user(id_user, login_id, password, regist_date, email, role) VALUES(3, 'prof2', '" + encryptedPassword + "', '2024-05-23', 'parkprof@email.com', 'prof')");
@@ -68,10 +68,10 @@ public class TestRunner implements ApplicationRunner{
         sqlStatements.add("INSERT INTO user(id_user, login_id, password, regist_date, email, role) VALUES(13, 'stu7', '" + encryptedPassword + "', '2024-05-22', 'OKang@email.com', 'stu')");
         sqlStatements.add("INSERT INTO user(id_user, login_id, password, regist_date, email, role) VALUES(14, 'stu8', '" + encryptedPassword + "', '2024-05-22', 'hahaha@email.com', 'stu')");
 
-        // Adding program entries
-        sqlStatements.add("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,sugang_st_dt,sugang_end_dt,pgm_target,id_room,pgm_method,pgm_per, num_of_stu, pgm_fee, pgm_day, pgm_time, id_prof) VALUES (2,'통관 및 관세 실무 이해','2024-03-01', '2024-03-21', '2024-02-15', '2024-02-28','통관 및 관세에 관심이 있는 재직자',1,'오프라인',10,0,'55000','월,화,수','09:00~11:00',2)");
-        sqlStatements.add("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,sugang_st_dt,sugang_end_dt,pgm_target,id_room,pgm_method,pgm_per, num_of_stu, pgm_fee, pgm_day, pgm_time, id_prof) VALUES (1,'자유무역협정(FTA) 실무','2024-04-01', '2024-04-14', '2024-03-15', '2024-03-31','자유무역에 관심이 있는 성인',99,'온라인',30,1,'75000','수,목,금','13:00~18:00',1)");
-        sqlStatements.add("INSERT INTO program (id_cate,pgm_name,st_dt,end_dt,sugang_st_dt,sugang_end_dt,pgm_target,id_room,pgm_method,pgm_per, num_of_stu, pgm_fee, pgm_day, pgm_time, id_prof) VALUES (3,'검색 엔진 최적화(SEO) 원리','2024-05-01', '2024-05-21', '2024-04-15', '2024-04-30','SEO를 통한 마케팅에 관심있는 전공자',2,'오프라인',30,2,'35000','월,화,수,목,금','09:00~18:00',3)");
+        //program
+        sqlStatements.add("INSERT INTO program (id_cate, pgm_name, st_dt, end_dt, sugang_st_dt, sugang_end_dt, pgm_target, id_room, pgm_method, pgm_per, num_of_stu, pgm_fee, pgm_day, pgm_time, id_prof) VALUES (2,'통관 및 관세 실무 이해','2024-03-01', '2024-03-21', '2024-02-15', '2024-02-28','통관 및 관세에 관심이 있는 재직자',1,'오프라인',10,0,'55000','월,화,수','09:00~11:00',2)");
+        sqlStatements.add("INSERT INTO program (id_cate, pgm_name, st_dt, end_dt, sugang_st_dt, sugang_end_dt, pgm_target, id_room, pgm_method, pgm_per, num_of_stu, pgm_fee, pgm_day, pgm_time, id_prof) VALUES (1,'자유무역협정(FTA) 실무','2024-04-01', '2024-04-14', '2024-03-15', '2024-03-31','자유무역에 관심이 있는 성인',99,'온라인',30,1,'75000','수,목,금','13:00~18:00',1)");
+        sqlStatements.add("INSERT INTO program (id_cate, pgm_name, st_dt, end_dt, sugang_st_dt, sugang_end_dt, pgm_target, id_room, pgm_method, pgm_per, num_of_stu, pgm_fee, pgm_day, pgm_time, id_prof) VALUES (3,'검색 엔진 최적화(SEO) 원리','2024-05-01', '2024-05-21', '2024-04-15', '2024-04-30','SEO를 통한 마케팅에 관심있는 전공자',2,'오프라인',30,2,'35000','월,화,수,목,금','09:00~18:00',3)");
         sqlStatements.add("INSERT INTO program (id_cate, pgm_name, st_dt, end_dt, sugang_st_dt, sugang_end_dt, pgm_target, id_room, pgm_method, pgm_per, num_of_stu, pgm_fee, pgm_day, pgm_time, id_prof) VALUES (4, '공급망 관리의 기본 원리', '2024-06-01','2024-08-31','2024-04-15', '2024-04-30', '공급망 관리에 관심 있는 전공자', 3, '오프라인', 10, 0, '50000', '월,수,금', '10:00~12:00', 1)");
         sqlStatements.add("INSERT INTO program (id_cate, pgm_name, st_dt, end_dt, sugang_st_dt, sugang_end_dt, pgm_target, id_room, pgm_method, pgm_per, num_of_stu, pgm_fee, pgm_day, pgm_time, id_prof) VALUES (5, '노사 관계와 협상 기술', '2024-06-02','2024-08-31','2024-04-15', '2024-04-30', '노사 관계에 관심이 있는 직장인', 4, '오프라인', 20, 0, '45000', '화,목', '14:00~16:00', 2)");
         sqlStatements.add("INSERT INTO program (id_cate, pgm_name, st_dt, end_dt, sugang_st_dt, sugang_end_dt, pgm_target, id_room, pgm_method, pgm_per, num_of_stu, pgm_fee, pgm_day, pgm_time, id_prof) VALUES (6, '환경과 생태학', '2024-06-03', '2024-06-08', '2024-04-15', '2024-04-30', '환경에 관심이 있는 누구나', 5, '오프라인', 10, 0, '60000', '월,수,금', '09:00~11:00', 3)");
@@ -85,13 +85,13 @@ public class TestRunner implements ApplicationRunner{
         sqlStatements.add("INSERT INTO program (id_cate, pgm_name, st_dt, end_dt, sugang_st_dt, sugang_end_dt, pgm_target, id_room, pgm_method, pgm_per, num_of_stu, pgm_fee, pgm_day, pgm_time, id_prof) VALUES (2, '무역 보험과 리스크 관리', '2024-06-11', '2024-06-22', '2024-05-15', '2024-07-30', '무역 보험에 관심이 있는 사람', 6, '오프라인', 25, 0, '75000', '화,목', '13:00~15:00', 2)");
         sqlStatements.add("INSERT INTO program (id_cate, pgm_name, st_dt, end_dt, sugang_st_dt, sugang_end_dt, pgm_target, id_room, pgm_method, pgm_per, num_of_stu, pgm_fee, pgm_day, pgm_time, id_prof) VALUES (3, '전자 무역의 기술 혁신','2024-06-12', '2024-06-27', '2024-05-15', '2024-07-30', '관심이 있는 사람', 99, '온라인', 20, 0, '70000', '월,수,금', '10:00~12:00', 3)");
 
-        // Adding syllabus entries
+        //syllabus
         sqlStatements.add("INSERT INTO syllabus (id_pgm, course_overview, objective, teaching, book, evaluation, remarks, id_prof) VALUES (1, '임시데이터', '임시데이터', '온라인', '임시데이터', '임시데이터', '임시데이터', 1)");
 
-        // Adding schedule entries
+        //schedule
         sqlStatements.add("INSERT INTO schedule (id_pgm, day_sched, start_sched, end_sched, learning_contents, learning_detail, note) VALUES (1, '2024-04-01', '09:00:00', '12:00:00', '관세선의 개념에 대해 이해한다.', '대면수업', '오티랑 함께 진행합니다~~!')");
 
-        // Adding class room entries
+        //classroom
         sqlStatements.add("INSERT INTO class_room VALUES (1,'이대캠퍼스 301호')");
         sqlStatements.add("INSERT INTO class_room VALUES (2,'이대캠퍼스 302호')");
         sqlStatements.add("INSERT INTO class_room VALUES (3,'이대캠퍼스 601호')");
@@ -100,7 +100,7 @@ public class TestRunner implements ApplicationRunner{
         sqlStatements.add("INSERT INTO class_room VALUES (6,'강남캠퍼스 202호')");
         sqlStatements.add("INSERT INTO class_room VALUES (99,'온라인 학습 관리 시스템(LMS)')");
 
-        // Adding category entries
+        //category
         sqlStatements.add("INSERT INTO category VALUES (1,'국제통상정책')");
         sqlStatements.add("INSERT INTO category VALUES (2,'무역거래실무')");
         sqlStatements.add("INSERT INTO category VALUES (3,'디지털마케팅')");
@@ -108,26 +108,26 @@ public class TestRunner implements ApplicationRunner{
         sqlStatements.add("INSERT INTO category VALUES (5,'인적자원관리')");
         sqlStatements.add("INSERT INTO category VALUES (6,'일반교양')");
 
-        // Adding exam entries
+        //exam
         sqlStatements.add("INSERT INTO exam(name, start_date, end_date, status, count, description, id_program, id_prof) VALUES ('통관관세 시험', '2024-05-10', '2024-05-24', '진행중', '0', '수업 내용을 요약해서 레포트로 제출할 것.','1','2')");
         sqlStatements.add("INSERT INTO exam(name, start_date, end_date, status, count, description, id_program, id_prof) VALUES ('자유무역협정 시험', '2024-05-10', '2024-05-24', '진행중', '0', '수업 시간에 배운걸 다 써서 내세요.','2','1')");
         sqlStatements.add("INSERT INTO exam(name, start_date, end_date, status, count, description, id_program, id_prof) VALUES ('SEO 시험', '2024-05-10', '2024-05-24', '진행중', '0', 'SEO란 무엇인가? 500자 이내로 레포트 제출.','3','3')");
 
         sqlStatements.add("INSERT INTO exam_submission(id_program, id_exam, id_student, id_file) VALUES ('100', '1', '2', '9999')");
 
-        // Adding sugang entries
+        //sugang
         sqlStatements.add("INSERT INTO sugang(id_sugang, id_student, id_cate, id_pgm, st_dt, status,course_status) VALUES (1,1,3,3,'2024-05-22 12:47:53','신청 완료',1)");
         sqlStatements.add("INSERT INTO sugang(id_sugang, id_student, id_cate, id_pgm, st_dt, status,course_status) VALUES (2,1,1,2,'2024-05-22 12:47:53','신청 완료',1)");
         sqlStatements.add("INSERT INTO sugang(id_sugang, id_student, id_cate, id_pgm, st_dt, status,course_status) VALUES (3,2,3,3,'2024-05-22 12:47:53','신청 완료',1)");
         sqlStatements.add("INSERT INTO sugang(id_sugang, id_student, id_cate, id_pgm, st_dt, status,course_status) VALUES (4,3,3,3,'2024-05-22 12:47:53','신청 완료',1)");
 
-        // Adding attendance entries
+        //attendance
         sqlStatements.add("INSERT INTO attendance (id_pgm, id_student, att_stat, late_stat, abs_stat) VALUES (3, 1, 0,0,0)");
         sqlStatements.add("INSERT INTO attendance (id_pgm, id_student, att_stat, late_stat, abs_stat) VALUES (2, 1, 0,0,0)");
         sqlStatements.add("INSERT INTO attendance (id_pgm, id_student, att_stat, late_stat, abs_stat) VALUES (3, 2, 0,0,0)");
         sqlStatements.add("INSERT INTO attendance (id_pgm, id_student, att_stat, late_stat, abs_stat) VALUES (3, 3, 0,0,0)");
 
-        // Adding notice entries
+        //notice
         sqlStatements.add("INSERT INTO notice(title, content, created_date, views) VALUES ('[마감]4050을 위한 빅데이터 전문가 양성과정','●과정명 : 4050을 위한 빅데이터 전문가 양성과정\n" +
                 "●교육기간 : 2024.04.01.(화)~2024.04.26.(화)\n" +
                 "*4/9(수), 4/15(화)은 휴강예정*\n" +
