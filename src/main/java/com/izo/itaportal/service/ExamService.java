@@ -19,8 +19,8 @@ public class ExamService {
     public List<ExamListDto> getExamListByProfessor(int idProf) {
         return examRepository.getExamListByProfessor(idProf);
     }
-    public ExamDetailDto getExamDetail(int idExam, int idPgm, int idProf) {
-        return examRepository.getExamDetail(idExam, idPgm, idProf);
+    public ExamDetailDto getExamDetail(int idExam) {
+        return examRepository.getExamDetail(idExam);
     }
     public List<GetProgNameDto> getProgNameDtos(int idProf){
         return examRepository.GetProgNameById(idProf);

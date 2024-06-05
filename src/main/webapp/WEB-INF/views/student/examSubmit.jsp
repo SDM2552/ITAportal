@@ -45,29 +45,29 @@
                     <tr>
                         <th scope="col">프로그램</th>
                         <td>
-                            자유무역의 이해
+                            ${examDetail.programName}
                         </td>
                         <th scope="col">담당 강사</th>
                         <td>
-                            강사 이름
+                            ${examDetail.profName}
                         </td>
                     </tr>
                     <tr>
                         <th scope="col">과제</th>
                         <td colspan="3">
-                            과제 이름
+                            ${examDetail.name}
                         </td>
                     </tr>
                     <tr>
                         <th scope="col">과제 내용</th>
                         <td colspan="3">
-                            과제 내용
+                            ${examDetail.description}
                         </td>
                     </tr>
                     <tr>
-                        <th scope="col">제출기한</th>
+                        <th scope="col">제출 기한</th>
                         <td>
-                            언제부터 ~ 언제까지
+                            ${examDetail.startDate} ~ ${examDetail.endDate}
                         </td>
                         <th scope="col">파일첨부</th>
                         <td>

@@ -47,6 +47,11 @@ public class NoticeController {
         return "adminProgram/noticeList";
     }
 
+    @GetMapping("/Q&A")
+    public String QandA(){
+        return "adminProgram/Q&A";
+    }
+
     // 공지사항 작성
     @GetMapping("/create")
     public ModelAndView showCreateForm(HttpSession session) {

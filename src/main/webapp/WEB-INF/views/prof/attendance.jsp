@@ -62,7 +62,7 @@
                         </td>
                         <th scope="col">강의 요일/시간</th>
                         <td>
-                            토,일/09:00~18:00(수정해야함)
+                            ${ProgramDetail.pgmDay} / ${ProgramDetail.pgmTime}
                         </td>
                     </tr>
                     <tr>

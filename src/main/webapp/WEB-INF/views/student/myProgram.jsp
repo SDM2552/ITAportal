@@ -46,7 +46,7 @@
                     <thead>
                     <tr>
                         <th scope="col">분류</th>
-                        <th scope="col">프로그램명(클릭가능)</th>
+                        <th scope="col">프로그램명</th>
                         <th scope="col">교육 기간</th>
                         <th scope="col">담당 강사(클릭가능)</th>
                         <th scope="col">강의실</th>
@@ -95,7 +95,7 @@
                                     </td>
                                     <td>${sugang.roomName}</td>
                                     <td>
-                                        <button>보기</button>
+                                        <button><a href="/stu/programView/${sugang.idPgm}">보기</a></button>
                                     </td>
                                 </tr>
                             </c:forEach>

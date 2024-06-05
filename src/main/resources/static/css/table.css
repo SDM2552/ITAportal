@@ -498,6 +498,14 @@
     border: 1px solid #ccc;
     resize: vertical;
 }
+/* Non Page */
+.non-page {text-align: center;padding-top: 13rem;margin-top: 1.5rem;margin-bottom: 2.7rem;background: no-repeat top center;}
+.non-page h3 {background: none; padding: 0; margin: 0; color: #555;}
+.non-page h3>strong {color: #0e55c1;}
+.non-page p {color: #777; margin: 0.8rem 0 2rem;}
+.non-page .btn {padding-left: 1.3rem;	padding-right: 1.3rem;}
+.non-page.board {background-image: url('../image/non-board.png');}
+
 /*버튼*/
 .miniBtn {
     color: #e0e0e0;

@@ -17,7 +17,7 @@ public interface ExamRepository {
     List<ExamListDto> getExamListByProfessor(@Param("idProf") int idProf);
 
     //과제 상세
-    ExamDetailDto getExamDetail(@Param("idExam") int idExam, @Param("idPgm") int idPgm, @Param("idProf") int idProf);
+    ExamDetailDto getExamDetail(@Param("idExam") int idExam);
 
     List<GetProgNameDto> GetProgNameById(int idProf);
 
