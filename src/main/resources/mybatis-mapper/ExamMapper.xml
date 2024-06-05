@@ -32,6 +32,7 @@
             p.id_prof AS idProf,
             p.id_pgm AS idPgm,
             p.num_of_stu AS numOfStu,
+            pr.name AS profName,
             e.name AS name,
             e.description AS description,
             e.start_Date AS startDate,
@@ -43,8 +44,6 @@
             JOIN program p ON e.id_Program = p.id_Pgm
             JOIN professor pr ON e.id_Prof = pr.id_Prof
         WHERE
-            e.id_Program = #{idPgm} AND
-            e.id_Prof = #{idProf} AND
             e.id_Exam = #{idExam}
     </select>
 

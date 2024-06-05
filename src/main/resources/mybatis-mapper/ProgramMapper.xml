@@ -16,7 +16,7 @@
     <select id="getProgramsPerPage" parameterType="map" resultType="com.izo.itaportal.model.Program">
         SELECT *
         FROM program
-        ORDER BY id_pgm
+        ORDER BY id_pgm DESC
             LIMIT #{offset}, #{pageSize}
     </select>
 

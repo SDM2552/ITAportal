@@ -1,5 +1,6 @@
 package com.izo.itaportal.controller;
 
+import com.izo.itaportal.dto.ExamDetailDto;
 import com.izo.itaportal.dto.ExamListDto;
 import com.izo.itaportal.dto.ProgramAllDto;
 import com.izo.itaportal.dto.SugangDto;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -54,7 +56,9 @@ public class StudentController {
         return "student/exam";
     }
     @GetMapping("/examSubmit") //선택한 과제 제출 페이지
-    public String examSubmit(){
+    public String examSubmit(@RequestParam("idExam") int idExam, Model model){
+        ExamDetailDto examDetail = examService.getExamDetail(idExam);
+        model.addAttribute("examDetail", examDetail);
         return "student/examSubmit";
     }
 
