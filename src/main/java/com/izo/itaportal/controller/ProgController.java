@@ -38,7 +38,7 @@ public class ProgController {
 
 
     @GetMapping("/adminProgram")
-    public String adminProgram(@RequestParam(name = "page", defaultValue = "1") int page, Model model) {
+    public String adminProgram(@RequestParam(name = "page", defaultValue = "1") int page, @RequestParam(name = "keyword", required = false) String keyword, Model model) {
         // 전체 프로그램 수를 가져옵니다.
         int totalPrograms = programService.countAllPrograms();
 
@@ -46,23 +46,36 @@ public class ProgController {
         int totalPages = (int) Math.ceil((double) totalPrograms / PAGE_SIZE);
 
         // 현재 페이지의 프로그램 목록을 가져옵니다.
-        List<Program> programs = programService.getProgramsPerPage(page, PAGE_SIZE);
+        List<Program> programs;
+        if (keyword != null && !keyword.isEmpty()) {
+            programs = programService.searchProgramByName(keyword);
+        } else {
+            // 현재 페이지의 프로그램 목록을 가져옵니다.
+            programs = programService.getProgramsPerPage(page, PAGE_SIZE);
+        }
 
 
         model.addAttribute("prog", programs);
         model.addAttribute("totalPages", totalPages);
         model.addAttribute("currentPage", page);
+        model.addAttribute("keyword", keyword);
 
         return "adminProgram/adminProgram";
     }
 
     @GetMapping("/adminCategory")
-    public String adminCategory(@RequestParam(name = "page", defaultValue = "1") int page, Model model) {
+    public String adminCategory(@RequestParam(name = "page", defaultValue = "1") int page,@RequestParam(name = "keyword", required = false) String keyword, Model model) {
         int totalCategories = categoryService.countAllCategories();
 
         int totalPages = (int) Math.ceil((double) totalCategories / PAGE_SIZE);
 
-        List<Category> categories = categoryService.getCategoriesPerPage(page, PAGE_SIZE);
+        List<Category> categories;
+        if (keyword != null && !keyword.isEmpty()) {
+            categories = categoryService.searchCategoryByName(keyword);
+        } else {
+            // 현재 페이지의 프로그램 목록을 가져옵니다.
+            categories = categoryService.getCategoriesPerPage(page, PAGE_SIZE);
+        }
 
 
         model.addAttribute("cate", categories);
@@ -72,12 +85,18 @@ public class ProgController {
     }
 
     @GetMapping("/adminClassRoom")
-    public String classRoom(@RequestParam(name = "page", defaultValue = "1") int page, Model model) {
+    public String classRoom(@RequestParam(name = "page", defaultValue = "1") int page,@RequestParam(name = "keyword", required = false) String keyword, Model model) {
         int totalClassRooms = classRoomService.countAllClassRooms();
 
         int totalPages = (int) Math.ceil((double) totalClassRooms / PAGE_SIZE);
 
-        List<ClassRoom> classRooms = classRoomService.getClassRoomsPerPage(page, PAGE_SIZE);
+        List<ClassRoom> classRooms;
+        if (keyword != null && !keyword.isEmpty()) {
+            classRooms = classRoomService.searchClassRoomByName(keyword);
+        } else {
+            // 현재 페이지의 프로그램 목록을 가져옵니다.
+            classRooms = classRoomService.getClassRoomsPerPage(page, PAGE_SIZE);
+        }
 
         model.addAttribute("classRoom", classRooms);
         model.addAttribute("totalPages", totalPages);
@@ -188,8 +207,6 @@ public class ProgController {
         classRoomService.deleteProgram(idRoom);
         return "redirect:/adminClassRoom";
     }
-
-
 
 
     //-------------------------------------------------------------------------------------------------------

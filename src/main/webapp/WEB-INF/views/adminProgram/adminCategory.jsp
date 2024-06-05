@@ -10,6 +10,14 @@
     <link rel="stylesheet" type="text/css" href="css/table.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
+        .btnArea {
+            text-align: right;
+            margin-top: 1px;
+        }
+
+        .btnArea button {
+            margin-left: 10px;
+        }
         .pagination-wrapper {
             display: flex;
             justify-content: center;
@@ -96,10 +104,16 @@
             <!-- //location -->
 
             <h3 class="pgTit">카테고리관리</h3>
+            <div class="btnArea">
+                <form action="/adminCategory" method="get">
+                    <input type="text" name="keyword" placeholder="프로그램명 검색" value="${keyword}">
+                    <button type="submit">검색</button>
+                </form>
+            </div>
 
 
             <!-- 본문 -->
-            <h4 class="subTit">카테고리</h4>
+           
             <h4>※ 현재 항목 수정/삭제 시 관련 프로그램도 함께 변경됩니다.</h4><h6><br></h6>
             <div class="tblData mt10">
                 <table>

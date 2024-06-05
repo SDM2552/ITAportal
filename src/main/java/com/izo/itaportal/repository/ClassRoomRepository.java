@@ -18,6 +18,8 @@ public interface ClassRoomRepository {
     public int deletePrg(int idRoom);
     public int countAllClassRooms();
 
+    List<ClassRoom> searchClassRoomByName(String keyword);
+
     public List<ClassRoom> getClassRoomsPerPage(int offset, int pageSize);
 
 }

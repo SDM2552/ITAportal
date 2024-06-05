@@ -60,4 +60,8 @@ public class CategoryService {
         return deleteProgram;
     }
 
+    public List<Category> searchCategoryByName(String keyword) {
+        return categoryRepository.searchCategoryByName(keyword);
+    }
+
 }

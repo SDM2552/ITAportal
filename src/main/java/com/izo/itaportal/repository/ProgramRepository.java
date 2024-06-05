@@ -22,6 +22,8 @@ public interface ProgramRepository  {
 
     public List<Program> getProgramsPerPage(int offset, int pageSize);
 
+    List<Program> searchProgramByName(String keyword);
+
     public int insert(Program program);
 
     public int update(Program program);
