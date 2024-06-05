@@ -17,6 +17,7 @@ public interface CategoryRepository {
     public int delete(int idCate);
     public int deletePrg(int idCate);
     public int countAllCategories();
+    List<Category> searchCategoryByName(String keyword);
 
     public List<Category> getCategoriesPerPage(int offset, int pageSize);
 

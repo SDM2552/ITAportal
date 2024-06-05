@@ -10,6 +10,12 @@
         select id_cate,cate_name from category where id_cate=#{idCate}
     </select>
 
+    <select id="searchCategoryByName" parameterType="String" resultType="com.izo.itaportal.model.Category">
+        SELECT *
+        FROM category
+        WHERE cate_name LIKE CONCAT('%', #{keyword}, '%')
+    </select>
+
     <select id="countAllCategories" resultType="int">
         SELECT COUNT(*)
         FROM category

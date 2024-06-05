@@ -8,6 +8,12 @@
         order by id_pgm desc
     </select>
 
+    <select id="searchProgramByName" parameterType="String" resultType="com.izo.itaportal.model.Program">
+        SELECT *
+        FROM program
+        WHERE pgm_name LIKE CONCAT('%', #{keyword}, '%')
+    </select>
+
     <select id="countAllPrograms" resultType="int">
         SELECT COUNT(*)
         FROM program

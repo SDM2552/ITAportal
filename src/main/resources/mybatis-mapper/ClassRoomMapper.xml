@@ -10,6 +10,12 @@
         select * from class_room where id_room=#{idRoom}
     </select>
 
+    <select id="searchClassRoomByName" parameterType="String" resultType="com.izo.itaportal.model.ClassRoom">
+        SELECT *
+        FROM class_room
+        WHERE room_name LIKE CONCAT('%', #{keyword}, '%')
+    </select>
+
     <select id="countAllClassRooms" resultType="int">
         SELECT COUNT(*)
         FROM class_room

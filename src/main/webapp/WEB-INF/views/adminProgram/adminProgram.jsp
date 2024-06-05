@@ -10,6 +10,15 @@
     <link rel="stylesheet" type="text/css" href="css/table.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
+        .btnArea {
+            text-align: right;
+            margin-top: 1px;
+        }
+
+        .btnArea button {
+            margin-left: 10px;
+        }
+
         .pagination-wrapper {
             display: flex;
             justify-content: center;
@@ -88,12 +97,17 @@
             <!-- //location -->
 
             <h3 class="pgTit">프로그램관리</h3>
-
+            <div class="btnArea">
+                <form action="/adminProgram" method="get">
+                    <input type="text" name="keyword" placeholder="프로그램명 검색" value="${keyword}">
+                    <button type="submit">검색</button>
+                </form>
+            </div>
             <!-- 본문 -->
 
 
             <!-- 프로그램 목록 -->
-            <h4 class="subTit">프로그램</h4>
+
             <div class="tblData mt10">
                 <table>
                     <colgroup>
@@ -129,8 +143,12 @@
                             <td>${program.pgmPer}</td>
                             <td>${program.pgmFee}</td>
                             <td class="actions">
-                                <a href="progUpdateInput?idPgm=${program.idPgm}"><button type="button" class="miniBtn blueC" >수정</button></a>
-                                <a href="progDelete?idPgm=${program.idPgm}"><button type="button" class="miniBtn redC" >삭제</button> </a>
+                                <a href="progUpdateInput?idPgm=${program.idPgm}">
+                                    <button type="button" class="miniBtn blueC">수정</button>
+                                </a>
+                                <a href="progDelete?idPgm=${program.idPgm}">
+                                    <button type="button" class="miniBtn redC">삭제</button>
+                                </a>
                             </td>
                         </tr>
                     </c:forEach>
@@ -152,11 +170,12 @@
                         <a href="?page=${currentPage + 1}">다음 &raquo;</a>
                     </c:if>
                     <a href="/adminProgram?page=${totalPages}&keyword=${keyword}">끝</a>
-                    <input type="number" id="pageInput" style="width: 50px;" min="1" max="${totalPages}" value="${currentPage}">
+                    <input type="number" id="pageInput" style="width: 50px;" min="1" max="${totalPages}"
+                           value="${currentPage}">
                     <button onclick="goToPage()">이동</button>
                 </div>
 
-                <a href="/progInput" class="add-button" >
+                <a href="/progInput" class="add-button">
                     <button class="btns btnSt01">추가</button>
                 </a>
             </div>

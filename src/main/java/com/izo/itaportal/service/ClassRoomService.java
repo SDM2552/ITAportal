@@ -3,6 +3,7 @@ package com.izo.itaportal.service;
 
 import com.izo.itaportal.model.Category;
 import com.izo.itaportal.model.ClassRoom;
+import com.izo.itaportal.model.Program;
 import com.izo.itaportal.repository.ClassRoomRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +53,10 @@ public class ClassRoomService {
     public int deleteProgram(int idRoom){
         int deleteProgram = classRoomRepository.deletePrg(idRoom);
         return deleteProgram;
+    }
+
+    public List<ClassRoom> searchClassRoomByName(String keyword) {
+        return classRoomRepository.searchClassRoomByName(keyword);
     }
 
 

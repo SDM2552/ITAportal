@@ -55,6 +55,9 @@ public class ProgramService {
         return programRepository.getProgramsPerPage(offset, pageSize);
     }
 
+    public List<Program> searchProgramByName(String keyword) {
+        return programRepository.searchProgramByName(keyword);
+    }
 
 
     //어드민-신청대기신청취소신청완료
