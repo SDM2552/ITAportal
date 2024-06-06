@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.izo.itaportal.repository.FileRepository">
+    <resultMap id="FileResultMap" type="com.izo.itaportal.model.File">
+        <id column="id_file" property="idFile"/>
+        <result column="id_exam" property="idExam"/>
+        <result column="id_student" property="idStudent"/>
+        <result column="file_name" property="fileName"/>
+        <result column="file_size" property="fileSize"/>
+        <result column="file_type" property="fileType"/>
+        <result column="data" property="data"/>
+    </resultMap>
+
+    <insert id="saveFile">
+        INSERT INTO file (id_exam, file_name, id_student, file_size, file_type, data)
+        VALUES (#{idExam}, #{fileName}, #{idStudent}, #{fileSize}, #{fileType}, #{data})
+    </insert>
+
+    <select id="getFile" resultMap="FileResultMap">
+        SELECT * FROM file WHERE id_file = #{idFile}
+    </select>
+
+    <select id="getFileByExamAndStudent" resultMap="FileResultMap">
+        SELECT * FROM file WHERE id_exam = #{idExam} AND id_student = #{idStudent} ORDER BY id_file DESC LIMIT 1
+    </select>
+
+</mapper>

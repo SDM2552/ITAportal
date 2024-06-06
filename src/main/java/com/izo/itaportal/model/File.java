@@ -5,8 +5,9 @@ import lombok.Data;
 public class File {
 
     private int idFile; //파일코드
-    private int idSubfile; //파일일련번호
-    private  String fileName; //원본파일이름
+    private int idExam;
+    private int idStudent;
+    private  String fileName; //파일이름
     private int fileSize; //파일 용량
     private String fileType;
     private byte[] data;

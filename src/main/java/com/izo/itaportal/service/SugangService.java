@@ -48,6 +48,10 @@ private void checkSugangClosed(ProgramAllDto program) {
     public ProgramAllDto getProgramDetail(int programId) {
         return sugangRepository.findById(programId);
     }
+    // 수강 신청 중복 체크
+    public boolean isAlreadyEnrolled(int commonId, int idPgm) {
+        return sugangRepository.checkEnrollment(commonId, idPgm) > 0;
+    }
     //수강 신청
     public void applyEnrollmentRequest(int commonId, int idPgm, int idCate){
         sugangRepository.saveSugang(commonId, idPgm, idCate);

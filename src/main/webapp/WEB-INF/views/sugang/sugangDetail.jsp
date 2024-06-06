@@ -147,7 +147,7 @@
             <!-- btn -->
             <div class="btnArea">
 
-                <button type="button" class="btns btnSt01" onclick="applyEnrollment(${loginUser.commonId}, ${program.idPgm}, ${program.idCate});">
+                <button type="button" class="btns btnSt01" onclick="applyEnrollment(${loginUser.commonId}, ${program.idPgm}, ${program.idCate}, '${program.pgmName}');">
 
                     <span>수강신청</span>
                 </button>
@@ -165,28 +165,33 @@
     <c:import url="../layout/footer.jsp" />
 </div>
 <script>
-    function applyEnrollment(commonId, idPgm, idCate) {
-        $.ajax({
-            type: "POST",
-            url: "/program/result",
-            data: JSON.stringify({
-                commonId: commonId,
-                idPgm: idPgm,
-                idCate: idCate
-
-            }),
-            contentType: "application/json",
-            success: function(response) {
-                console.log("수강 신청이 완료되었습니다.");
-                window.location.href = "/program/result?idPgm=" + idPgm;
-            },
-            error: function(xhr, status, error) {
-                console.error("수강 신청 중 오류가 발생했습니다:", error);
-                // 실패 시 alert로 이유 알려주기
-            }
-        });
+    function applyEnrollment(commonId, idPgm, idCate, pgmName) {
+        if (confirm(pgmName + " 강의를 수강신청하시겠습니까?")) {
+            $.ajax({
+                type: "POST",
+                url: "/program/result",
+                data: JSON.stringify({
+                    commonId: commonId,
+                    idPgm: idPgm,
+                    idCate: idCate
+                }),
+                contentType: "application/json",
+                success: function(response) {
+                    if (response === "수강신청이 완료되었습니다.") {
+                        // 성공 시 페이지 이동
+                        window.location.href = "/program/result";
+                    } else if (response === "이미 수강신청한 강의입니다.") {
+                        // 이미 신청한 경우 경고 메시지
+                        alert(response);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("수강 신청 중 오류가 발생했습니다:", error);
+                    alert("수강 신청 중 오류가 발생했습니다.");
+                }
+            });
+        }
     }
-
 </script>
 </body>
 

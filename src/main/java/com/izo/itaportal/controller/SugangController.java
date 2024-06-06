@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -55,13 +56,17 @@ public class SugangController {
     }
 
     @PostMapping("/result") //수강신청 처리
+    @ResponseBody
+    @Transactional
     public String sugang(@RequestBody Sugang sugang){
         int commonId = sugang.getCommonId();
         int idPgm = sugang.getIdPgm();
         int idCate = sugang.getIdCate();
-        System.out.println("idcate값: "+idCate);
+        if (sugangService.isAlreadyEnrolled(commonId, idPgm)) {
+            return "이미 수강신청한 강의입니다.";
+        }
         sugangService.applyEnrollmentRequest(commonId, idPgm, idCate);
-        return "sugang/sugangSuccess";
+        return "수강신청이 완료되었습니다.";
     }
     @GetMapping("/result") //수강신청 결과 페이지
     public String sugang2(){

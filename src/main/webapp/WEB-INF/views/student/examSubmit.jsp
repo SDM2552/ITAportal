@@ -33,6 +33,9 @@
 
             <!-- 본문 -->
             <h4 class="subTit">과제 제출</h4>
+            <form method="post" enctype="multipart/form-data" action="/stu/submitExam" onsubmit="return validateFile()">
+                <input type="hidden" name="idExam" value="${examDetail.idExam}"/>
+                <input type="hidden" name="idProgram" value="${examDetail.idPgm}"/>
             <div class="tblData mt10">
                 <table>
                     <colgroup>
@@ -61,7 +64,7 @@
                     <tr>
                         <th scope="col">과제 내용</th>
                         <td colspan="3">
-                            ${examDetail.description}
+                            <pre style="white-space: pre-wrap;">${examDetail.description}</pre>
                         </td>
                     </tr>
                     <tr>
@@ -69,10 +72,11 @@
                         <td>
                             ${examDetail.startDate} ~ ${examDetail.endDate}
                         </td>
-                        <th scope="col">파일첨부</th>
+                        <th scope="col">파일 첨부</th>
                         <td>
                             <div class="fileBox">
-                                <input type="file" id="uploadBtn" class="uploadBtn" multiple>
+                                <input type="file" id="examFile" name="examFile" onchange="validateFile()">
+                                <div id="fileSizeDisplay"></div>
                             </div>
                         </td>
                     </tr>
@@ -91,6 +95,7 @@
                     <span>취소</span>
                 </button>
             </div>
+            </form>
             <!-- btn -->
             <!-- 본문 끝 -->
         </div>
@@ -100,6 +105,32 @@
     <!-- footer -->
     <c:import url="../layout/footer.jsp" />
 </div>
+<script type="text/javascript">
+    function validateFile() {
+        const fileInput = document.getElementById('examFile');
+        const fileSizeDisplay = document.getElementById('fileSizeDisplay');
+        const file = fileInput.files[0];
+
+        if (!file) {
+            alert('파일이 첨부되지 않았습니다.');
+            return false;
+        }
+
+        if (file) {
+            const fileSize = file.size / 1024 / 1024; // in MB
+            fileSizeDisplay.textContent = '파일 용량: ' + fileSize.toFixed(2) + ' MB';
+
+            const maxSize = 2; // 파일 최대 용량 MB
+            if (fileSize > maxSize) {
+                alert('파일 용량은 ' + maxSize + ' MB 미만이어야 합니다.');
+                fileInput.value = ''; // Clear the file input
+                fileSizeDisplay.textContent = '';
+                return false;
+            }
+        }
+        return true;
+    }
+</script>
 </body>
 
 </html>

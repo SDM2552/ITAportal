@@ -133,6 +133,9 @@
             professor professor ON program.id_Prof = professor.id_Prof
                 ORDER BY sugang.id_sugang DESC
     </select>
+    <select id="checkEnrollment" resultType="int">
+        SELECT COUNT(*) FROM sugang WHERE id_student = #{commonId} AND id_pgm = #{idPgm}
+    </select>
     <insert id="saveSugang" parameterType="com.izo.itaportal.model.Sugang">
         INSERT INTO sugang (id_student, id_Pgm, id_Cate, st_Dt, status, course_status)
         VALUES (#{commonId}, #{idPgm},#{idCate}, now(), '신청중', false)

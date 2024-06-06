@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.izo.itaportal.repository.ExamSubmissionRepository">
+    <resultMap id="ExamSubmissionResultMap" type="com.izo.itaportal.model.ExamSubmission">
+        <id column="id_submission" property="idSubmission"/>
+        <result column="id_program" property="idProgram"/>
+        <result column="id_exam" property="idExam"/>
+        <result column="id_student" property="idStudent"/>
+        <result column="id_file" property="idFile"/>
+        <result column="exam_status" property="examStatus"/>
+    </resultMap>
+
+    <insert id="saveExamSubmission">
+        INSERT INTO exam_submission (id_program, id_exam, id_student, id_file, exam_status)
+        VALUES (#{idProgram}, #{idExam}, #{idStudent}, #{idFile}, '제출완료')
+    </insert>
+
+    <select id="getExamSubmission" resultMap="ExamSubmissionResultMap">
+        SELECT * FROM exam_submission WHERE id_submission = #{idSubmission}
+    </select>
+
+</mapper>
