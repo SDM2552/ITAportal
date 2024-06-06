@@ -14,7 +14,7 @@ public interface SugangRepository {
     public ProgramAllDto findById(int programId);
     public List<SugangDto> findByIdStudentAndCourseStatus(int idStudent);
     public List<SugangDto> findAllSugang();
-
+    public int checkEnrollment(int commonId, int idPgm);
     public void saveSugang(int commonId, int idPgm, int idCate);
 
     public int updateSugangStatus(int idPgm, int idStudent);

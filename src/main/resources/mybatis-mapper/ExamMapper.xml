@@ -33,6 +33,7 @@
             p.id_pgm AS idPgm,
             p.num_of_stu AS numOfStu,
             pr.name AS profName,
+            e.id_exam as idExam,
             e.name AS name,
             e.description AS description,
             e.start_Date AS startDate,

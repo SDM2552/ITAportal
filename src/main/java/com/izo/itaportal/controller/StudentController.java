@@ -5,18 +5,22 @@ import com.izo.itaportal.dto.ExamListDto;
 import com.izo.itaportal.dto.ProgramAllDto;
 import com.izo.itaportal.dto.SugangDto;
 import com.izo.itaportal.model.Exam;
+import com.izo.itaportal.model.ExamSubmission;
+import com.izo.itaportal.model.File;
 import com.izo.itaportal.model.LoginResponse;
 import com.izo.itaportal.service.ExamService;
+import com.izo.itaportal.service.ExamSubmissionService;
+import com.izo.itaportal.service.FileService;
 import com.izo.itaportal.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -26,6 +30,10 @@ public class StudentController {
     StudentService studentService;
     @Autowired
     ExamService examService;
+    @Autowired
+    FileService fileService;
+    @Autowired
+    ExamSubmissionService examSubmissionService;
     @Autowired
     HttpSession session;
 
@@ -61,7 +69,36 @@ public class StudentController {
         model.addAttribute("examDetail", examDetail);
         return "student/examSubmit";
     }
+    @PostMapping("/submitExam")
+    @Transactional
+    public String submitExam(@RequestParam("idExam") int idExam,
+                             @RequestParam("examFile") MultipartFile examFile,
+                             @RequestParam("idProgram") int idProgram,
+                             Model model) {
+        LoginResponse loginUser = (LoginResponse) session.getAttribute("loginUser");
+        int idStudent = loginUser.getCommonId();
 
+        try {
+            // 파일 저장
+            fileService.saveFile(examFile, idExam, idStudent);
+            // 파일 저장 후 idFile 가져오기
+            File savedFile = fileService.getFileByExamAndStudent(idExam, idStudent);
+            int idFile = savedFile.getIdFile();
+            // 과제 제출 저장
+            ExamSubmission examSubmission = new ExamSubmission();
+            examSubmission.setIdProgram(idProgram);
+            examSubmission.setIdExam(idExam);
+            examSubmission.setIdStudent(idStudent);
+            examSubmission.setIdFile(idFile);
+            examSubmission.setExamStatus("Submitted");
+
+            examSubmissionService.saveExamSubmission(examSubmission);
+
+        } catch (IOException e) {
+            model.addAttribute("message", "과제 제출 실패: " + e.getMessage());
+        }
+        return "redirect:/stu/exam";
+}
 
     //수업디테일,강사디테일
     @GetMapping("/programView/{id}")
