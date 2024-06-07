@@ -64,7 +64,7 @@
                     <tr>
                         <th scope="col">과제 내용</th>
                         <td colspan="3">
-                            <pre style="white-space: pre-wrap;">${examDetail.description}</pre>
+                            ${examDetail.description}
                         </td>
                     </tr>
                     <tr>

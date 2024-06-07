@@ -13,8 +13,8 @@
     </resultMap>
 
     <insert id="saveExamSubmission">
-        INSERT INTO exam_submission (id_program, id_exam, id_student, id_file, exam_status)
-        VALUES (#{idProgram}, #{idExam}, #{idStudent}, #{idFile}, '제출완료')
+        INSERT INTO exam_submission (id_program, id_exam, id_student, id_file, submit_time, exam_status)
+        VALUES (#{idProgram}, #{idExam}, #{idStudent}, #{idFile}, now(),'제출완료')
     </insert>
 
     <select id="getExamSubmission" resultMap="ExamSubmissionResultMap">
