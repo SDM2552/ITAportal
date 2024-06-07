@@ -2,11 +2,7 @@ package com.izo.itaportal.controller;
 
 import com.izo.itaportal.dto.*;
 import com.izo.itaportal.model.*;
-import com.izo.itaportal.service.ExamService;
-import com.izo.itaportal.service.ClassRoomService;
-import com.izo.itaportal.service.ProfessorService;
-import com.izo.itaportal.service.ScheduleService;
-import com.izo.itaportal.service.SyllabusService;
+import com.izo.itaportal.service.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +32,8 @@ public class ProfController {
     HttpSession session;
     @Autowired
     ExamService examService;
+    @Autowired
+    ExamSubmissionService examSubmissionService;
 
     //idProf 값을 저장함. 이후 매개변수에 @RequestParam("idProf") int idProf를 넣으면 세션 생성 없이 idProf를 쓸수있음
     @ModelAttribute("idProf")
@@ -193,9 +191,12 @@ public class ProfController {
     
     //과제 상세 페이지
     @GetMapping("/examDetail")
-    public String examDetail(@RequestParam("idExam") int idExam,Model model){
+    public String examDetail(@RequestParam("idExam") int idExam, Model model){
         ExamDetailDto examDetail = examService.getExamDetail(idExam);
+        int idProgram = examDetail.getIdPgm();
+        List<ExamSubmitDataDto> examSubmitData = examSubmissionService.getExamSubmitData(idExam, idProgram);
         model.addAttribute("examDetail", examDetail);
+        model.addAttribute("examSubmitData", examSubmitData);
         return "prof/examDetail";
     }
     //과제 생성 페이지
