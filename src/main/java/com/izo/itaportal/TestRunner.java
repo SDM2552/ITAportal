@@ -113,7 +113,7 @@ public class TestRunner implements ApplicationRunner{
         sqlStatements.add("INSERT INTO exam(name, start_date, end_date, status, count, description, id_program, id_prof) VALUES ('자유무역협정 시험', '2024-05-10', '2024-05-24', '진행중', '0', '수업 시간에 배운걸 다 써서 내세요.','2','1')");
         sqlStatements.add("INSERT INTO exam(name, start_date, end_date, status, count, description, id_program, id_prof) VALUES ('SEO 시험', '2024-05-10', '2024-05-24', '진행중', '0', 'SEO란 무엇인가? 500자 이내로 레포트 제출.','3','3')");
 
-        sqlStatements.add("INSERT INTO exam_submission(id_program, id_exam, id_student, id_file) VALUES ('100', '1', '2', '9999')");
+//        sqlStatements.add("INSERT INTO exam_submission(id_program, id_exam, id_student, id_file) VALUES ('100', '1', '2', '9999')");
 
         //sugang
         sqlStatements.add("INSERT INTO sugang(id_student, id_cate, id_pgm, st_dt, status,course_status) VALUES (1,3,3,'2024-05-22 12:47:53','신청 완료',1)");

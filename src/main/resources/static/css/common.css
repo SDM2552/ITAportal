@@ -481,6 +481,7 @@ body {
 .leftWrap .lnbArea > ul > li > a:hover, .leftWrap .lnbArea > ul > li > a:focus, .leftWrap .lnbArea > ul > li > a:active, .leftWrap .lnbArea > ul > li > span,
 .leftWrap .lnbArea > ul > li.active > a {
     color: #005e93;
+    font-weight: bold;
 }
 
 .leftWrap .lnbArea > ul > li.off > span {
