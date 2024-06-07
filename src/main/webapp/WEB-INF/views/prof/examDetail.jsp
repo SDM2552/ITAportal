@@ -92,6 +92,68 @@
                 </button>
             </div>
             <!-- btn -->
+            <h4 class="subTit">수강생 성적 관리</h4>
+            <div class="tblData mt10">
+                <table>
+                    <colgroup>
+                        <col width="7%">
+                        <col width="15%">
+                        <col width="13%">
+                        <col width="25%">
+                        <col width="20%">
+                        <col width="25%">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th>학번</th>
+                        <th>이름</th>
+                        <th>제출 상태</th>
+                        <th>제출 시간</th>
+                        <th>파일</th>
+                        <th>점수</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="item" items="${examSubmitData}">
+                        <tr>
+                            <td><c:out value="${item.idStudent}"/></td>
+                            <td><c:out value="${item.studentName}"/></td>
+                            <td>
+                                <c:choose>
+                                    <c:when test="${item.status != null}">
+                                        <c:out value="${item.status}"/>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:out value="미제출"/>
+                                    </c:otherwise>
+                                </c:choose>
+                            </td>
+                            <td>
+                                <c:choose>
+                                    <c:when test="${item.submitTime != null}">
+                                        <c:out value="${item.submitTime}"/>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:out value=""/>
+                                    </c:otherwise>
+                                </c:choose>
+                            </td>
+                            <td>
+                                <c:choose>
+                                    <c:when test="${item.fileName != null}">
+                                        <a href="<c:url value='/downloadFile?idFile=${item.idFile}'/>"><c:out value="${item.fileName}"/></a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:out value=""/>
+                                    </c:otherwise>
+                                </c:choose>
+                            </td>
+                            <td><input type="text" name="score" /></td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </div>
             <!-- 본문 끝 -->
         </div>
         <!-- //contents -->

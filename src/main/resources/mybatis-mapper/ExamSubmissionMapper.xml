@@ -20,5 +20,25 @@
     <select id="getExamSubmission" resultMap="ExamSubmissionResultMap">
         SELECT * FROM exam_submission WHERE id_submission = #{idSubmission}
     </select>
+    <select id="getExamSubmitData" resultType="com.izo.itaportal.dto.ExamSubmitDataDto">
+        SELECT
+            s.id_student as idStudent,
+            s.name as studentName,
+            es.exam_status as status,
+            es.submit_time as submitTime,
+            f.data as data,
+            f.file_name as fileName,
+            es.id_file as idFile
+        FROM
+            attendance a
+                JOIN
+            student s ON a.id_student = s.id_student
+                LEFT JOIN
+            exam_submission es ON s.id_student = es.id_student AND es.id_exam = #{idExam}
+                LEFT JOIN
+            file f ON es.id_file = f.id_file
+        WHERE
+            a.id_pgm = #{idProgram};
+    </select>
 
 </mapper>

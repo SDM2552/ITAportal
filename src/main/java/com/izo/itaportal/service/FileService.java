@@ -29,6 +29,7 @@ public class FileService {
     public File getFile(Integer idFile) {
         return fileRepository.getFile(idFile);
     }
+
     public File getFileByExamAndStudent(Integer idExam, Integer idStudent) {
         return fileRepository.getFileByExamAndStudent(idExam, idStudent);
     }
