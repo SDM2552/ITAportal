@@ -31,5 +31,8 @@ public class ExamService {
     public List<ExamListDto> getExamsByStudentId(int idStudent){
         return examRepository.getExamsByStudentId(idStudent);
     }
+    public void incrementCount(int idExam) {
+        examRepository.incrementCount(idExam);
+    }
 
 }

@@ -16,7 +16,7 @@ public class Exam {
     //진행상태
     private String status;
     //제출인원
-    private String count;
+    private int count;
     //시험내용
     private String description;
     //프로그램코드 (FK)

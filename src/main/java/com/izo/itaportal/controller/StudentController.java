@@ -63,12 +63,14 @@ public class StudentController {
         model.addAttribute("examList", examList);
         return "student/exam";
     }
-    @GetMapping("/examSubmit") //선택한 과제 제출 페이지
+    //선택한 과제 제출 페이지
+    @GetMapping("/examSubmit")
     public String examSubmit(@RequestParam("idExam") int idExam, Model model){
         ExamDetailDto examDetail = examService.getExamDetail(idExam);
         model.addAttribute("examDetail", examDetail);
         return "student/examSubmit";
     }
+    //과제 제출 처리
     @PostMapping("/submitExam")
     @Transactional
     public String submitExam(@RequestParam("idExam") int idExam,
@@ -93,6 +95,8 @@ public class StudentController {
             examSubmission.setExamStatus("Submitted");
 
             examSubmissionService.saveExamSubmission(examSubmission);
+
+            examService.incrementCount(idExam);
 
         } catch (IOException e) {
             model.addAttribute("message", "과제 제출 실패: " + e.getMessage());

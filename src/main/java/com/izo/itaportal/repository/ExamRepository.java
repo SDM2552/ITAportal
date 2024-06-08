@@ -24,4 +24,5 @@ public interface ExamRepository {
     void insertExam(Exam exam);
 
     List<ExamListDto> getExamsByStudentId(int idStudent);
+    void incrementCount(@Param("idExam") int idExam);
 }

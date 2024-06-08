@@ -25,7 +25,7 @@
             <!-- location -->
             <span class="home" title="홈"><i class="fa-solid fa-house"></i> <i class="fa-solid fa-angle-right"></i></span>
             <span>강의 관리 <i class="fa-solid fa-angle-right"></i> </span><span>과제 관리 <i class="fa-solid fa-angle-right"></i> </span>
-            <span>프로그램 정보 <i class="fa-solid fa-angle-right"></i></span><span class="on"> 과제 상세</span>
+            <span>과제 현황 <i class="fa-solid fa-angle-right"></i></span><span class="on"> 과제 상세</span>
             <!-- //location -->
 
             <h3 class="pgTit">과제 관리</h3>
@@ -85,7 +85,7 @@
             <!-- btn -->
             <div class="btnArea">
                 <button type="submit" class="btns btnSt01">
-                    <span>수정</span>
+                    <span>내용 수정</span>
                 </button>
                 <button type="button" class="btns btnSt02" onclick="history.back();">
                     <span>목록으로</span>
@@ -96,12 +96,12 @@
             <div class="tblData mt10">
                 <table>
                     <colgroup>
-                        <col width="7%">
+                        <col width="15%">
                         <col width="15%">
                         <col width="13%">
                         <col width="25%">
                         <col width="20%">
-                        <col width="25%">
+                        <col width="15%">
                     </colgroup>
                     <thead>
                     <tr>
@@ -110,7 +110,7 @@
                         <th>제출 상태</th>
                         <th>제출 시간</th>
                         <th>파일</th>
-                        <th>점수</th>
+                        <th>점수 입력</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -148,11 +148,19 @@
                                     </c:otherwise>
                                 </c:choose>
                             </td>
-                            <td><input type="text" name="score" /></td>
+                            <td><input type="text" name="score" style="width: 50px"/></td>
                         </tr>
                     </c:forEach>
                     </tbody>
                 </table>
+            </div>
+            <div class="btnArea">
+                <button type="submit" class="btns btnSt01">
+                    <span>점수 등록</span>
+                </button>
+                <button type="button" class="btns btnSt02" onclick="history.back();">
+                    <span>목록으로</span>
+                </button>
             </div>
             <!-- 본문 끝 -->
         </div>

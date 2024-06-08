@@ -88,4 +88,10 @@
             a.id_Student = #{idStudent}
     </select>
 
+    <update id="incrementCount">
+        UPDATE exam
+        SET count = count + 1
+        WHERE id_exam = #{idExam}
+    </update>
+
 </mapper>
