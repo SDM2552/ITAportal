@@ -103,6 +103,10 @@ public class StudentController {
         }
         return "redirect:/stu/exam";
 }
+@GetMapping("/grade")
+public String grade(){
+        return "student/grade";
+}
 
     //수업디테일,강사디테일
     @GetMapping("/programView/{id}")

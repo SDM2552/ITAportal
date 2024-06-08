@@ -38,7 +38,7 @@
                                                 강사번호
                                             </c:when>
                                             <c:when test="${loginUser.role == 'admin'}">
-                                                관리자 번호
+                                                관리번호
                                             </c:when>
                                             <c:otherwise>
                                                 역할 없음

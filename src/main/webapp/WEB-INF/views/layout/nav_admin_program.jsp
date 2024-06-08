@@ -15,6 +15,17 @@
 
 <script type="text/javaScript">
     $(document).ready(function() {
-        $(".leftWrap li:eq(0)").attr("class", "active");// 좌측 메뉴 위치
+        $(".leftWrap li").click(function() {
+            $(".leftWrap li").removeClass("active"); // 모든 항목에서 active 클래스 제거
+            $(this).addClass("active"); // 클릭한 항목에 active 클래스 추가
+        });
+
+        // 현재 URL 경로에 따라 활성화할 항목 결정
+        var currentPath = window.location.pathname;
+        $(".leftWrap li a").each(function() {
+            if ($(this).attr('href') === currentPath) {
+                $(this).parent().addClass("active");
+            }
+        });
     });
 </script>
