@@ -29,27 +29,27 @@
                             <hr style="margin-top: 3px;">
                             <table>
                                 <tr>
-                                    <td>이메일</td>
-                                    <td>${loginUser.email}</td>
-                                </tr>
-                                <tr>
-                                    <td>직업</td>
                                     <td>
                                         <c:choose>
                                             <c:when test="${loginUser.role == 'stu'}">
-                                                학생
+                                                학번
                                             </c:when>
                                             <c:when test="${loginUser.role == 'prof'}">
-                                                강사
+                                                강사번호
                                             </c:when>
                                             <c:when test="${loginUser.role == 'admin'}">
-                                                관리자
+                                                관리번호
                                             </c:when>
                                             <c:otherwise>
                                                 역할 없음
                                             </c:otherwise>
                                         </c:choose>
                                     </td>
+                                    <td>${loginUser.commonId}</td>
+                                </tr>
+                                <tr>
+                                    <td>이메일</td>
+                                    <td>${loginUser.email}</td>
                                 </tr>
                                 <tr>
                                     <td>가입일</td>
