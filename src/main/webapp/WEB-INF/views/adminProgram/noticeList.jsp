@@ -30,7 +30,7 @@
             text-decoration: none;
         }
         .pagination a.active {
-            background-color: #007bff;
+            background-color: #142e4e;
             color: white;
         }
     </style>
