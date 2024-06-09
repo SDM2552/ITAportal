@@ -65,6 +65,12 @@
     background-color: #3c668a;
     margin-bottom: 10px;
 }
+#latestNotices td {
+    min-width: 350px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 .loginForm {
     margin-right: 12px;
     flex: 60;

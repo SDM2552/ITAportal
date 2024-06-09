@@ -5,8 +5,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <script src="https://kit.fontawesome.com/93205cc57d.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="../css/common.css">
-    <link rel="stylesheet" type="text/css" href="../css/table.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css?ver=1.0">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/table.css?ver=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>공지사항 수정</title>
 </head>
