@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -61,8 +63,17 @@ private void checkSugangClosed(ProgramAllDto program) {
         int rowsUpdated = sugangRepository.updateSugangStatus(idPgm, idStudent);
         return rowsUpdated > 0;
     }
-    public List<SugangDto>getAllSugang(){
-        return sugangRepository.findAllSugang();
+    public Map<String, Object> getAllSugang(int page, int pageSize) {
+        int totalCount = sugangRepository.selectSugangCount();
+        int offset = (page - 1) * pageSize;
+        List<SugangDto> sugangList = sugangRepository.findAllSugang(pageSize, offset);
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("sugangList", sugangList);
+        result.put("totalCount", totalCount);
+        result.put("page", page);
+        result.put("pageSize", pageSize);
+        return result;
     }
 
     //수강 승인

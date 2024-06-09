@@ -777,4 +777,41 @@ body {
 .pgTit .prev {
     display: none;
 }
+/*페이징*/
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    font-size: 1.2em;
+    transform: translateX(-10%);
+}
 
+.pagination a, .pagination span {
+    text-decoration: none;
+    color: #142e4e;
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    transition: background-color 0.3s;
+}
+
+.pagination a:hover, .pagination .active {
+    background-color: #142e4e;
+    color: white;
+}
+.s1 {
+    position:relative;
+    display:inline-block;
+    min-width:50px;
+    height:40px;
+    line-height:38px;
+    padding:0 10px;
+    letter-spacing:-.2px;
+    font-size:14px;
+    text-align:center;
+    vertical-align:top;
+    box-sizing:border-box;
+    color:#fff;
+    border:1px solid #fff;
+    background:rgb(1,100,156)}

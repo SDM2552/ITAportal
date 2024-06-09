@@ -11,6 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Map;
 
 
 @Controller
@@ -25,9 +28,14 @@ public class CourseStatusController {
 
     //관리자가 보는 수강 리스트
     @GetMapping("/list")
-    public String CourseList(Model model) {
-//        model.addAttribute("prog", programService.getAllPrograms());
-        model.addAttribute("sugangList",sugangService.getAllSugang());
+    public String CourseList(@RequestParam(value = "page", defaultValue = "1") int page,
+                             @RequestParam(value = "pageSize", defaultValue = "15") int pageSize,
+                             Model model) {
+        Map<String, Object> result = sugangService.getAllSugang(page, pageSize);
+        model.addAttribute("sugangList", result.get("sugangList"));
+        model.addAttribute("totalCount", result.get("totalCount"));
+        model.addAttribute("page", result.get("page"));
+        model.addAttribute("pageSize", result.get("pageSize"));
         return "/adminProgram/courseStatus";
     }
 

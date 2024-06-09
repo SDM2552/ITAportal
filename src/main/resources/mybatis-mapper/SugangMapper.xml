@@ -100,7 +100,7 @@
             sugang.id_student = #{idStudent}
           AND sugang.course_Status = true;
     </select>
-    <select id="findAllSugang" parameterType="int" resultType="com.izo.itaportal.dto.SugangDto">
+    <select id="findAllSugang" parameterType="map" resultType="com.izo.itaportal.dto.SugangDto">
         SELECT
             sugang.id_sugang AS idEnrollment,
             sugang.id_student AS idStudent,
@@ -121,17 +121,17 @@
             professor.name AS name
         FROM
             sugang sugang
-                JOIN
-            program program ON sugang.id_Pgm = program.id_Pgm
-                JOIN
-            category category ON program.id_Cate = category.id_Cate
-                JOIN
-            class_room class_room ON program.id_Room = class_room.id_Room
-                JOIN
-            student student ON sugang.id_student = student.id_student
-                JOIN
-            professor professor ON program.id_Prof = professor.id_Prof
-                ORDER BY sugang.id_sugang DESC
+                JOIN program program ON sugang.id_Pgm = program.id_Pgm
+                JOIN category category ON program.id_Cate = category.id_Cate
+                JOIN class_room class_room ON program.id_Room = class_room.id_Room
+                JOIN student student ON sugang.id_student = student.id_student
+                JOIN professor professor ON program.id_Prof = professor.id_Prof
+        ORDER BY sugang.id_sugang DESC
+            LIMIT #{limit} OFFSET #{offset}
+    </select>
+    <select id="selectSugangCount" resultType="int">
+        SELECT COUNT(*)
+        FROM sugang
     </select>
     <select id="checkEnrollment" resultType="int">
         SELECT COUNT(*) FROM sugang WHERE id_student = #{commonId} AND id_pgm = #{idPgm}

@@ -49,10 +49,10 @@
                     <colgroup>
                         <col width="5%">
                         <col width="15%">
-                        <col width="30%">
+                        <col width="25%">
                         <col width="25%">
                         <col width="20%">
-                        <col width="10%">
+                        <col width="13%">
                     </colgroup>
                     <thead>
                     <tr>
@@ -79,7 +79,7 @@
                                         <button type="button" disabled>마감</button>
                                     </c:when>
                                     <c:otherwise>
-                                        <button type="button" onclick="applyProgram(${program.idPgm});">수강신청</button>
+                                        <button type="button" class="s1" onclick="applyProgram(${program.idPgm});">수강신청</button>
                                     </c:otherwise>
                                 </c:choose>
                             </td>

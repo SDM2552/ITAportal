@@ -12,7 +12,7 @@
 <br>
 
 ## :date: 개발 기간
-* 24.05.01 - 24.06.08
+* 24.05.01 - 24.05.25
 
 <br>
 
@@ -26,7 +26,7 @@
 
 #### 의존성
 
-    	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'

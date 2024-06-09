@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -8,6 +10,9 @@
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <link rel="stylesheet" type="text/css" href="/css/table.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+
+    </style>
     <title>교육과정관리</title>
 </head>
 <body>
@@ -75,9 +80,20 @@
                     </c:forEach>
                     </tbody>
                 </table>
-
             </div>
-
+            <!-- Pagination -->
+            <div class="pagination">
+                <c:forEach var="i" begin="1" end="${(totalCount + pageSize - 1) / pageSize}">
+                    <c:choose>
+                        <c:when test="${page == i}">
+                            <span class="active">${i}</span>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="?page=${i}&pageSize=${pageSize}">${i}</a>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+            </div>
             <!-- 본문 끝 -->
         </div>
         <!-- //contents -->
