@@ -3,6 +3,8 @@ package com.izo.itaportal.service;
 import com.izo.itaportal.model.*;
 import com.izo.itaportal.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -103,5 +105,24 @@ public class UserService {
 //            throw new IllegalStateException("이미 가입된 회원입니다.");
 //        }
 //    }
+    // 찾기-로그인아이디,로그인비밀번호
+    public String findLoginIdByNameAndEmail(String name, String email) {
+        return userRepository.findLoginIdByNameAndEmail(name, email);
+    }
+
+    public String resetPasswordAndGetTempPassword(String loginId, String email) {
+        User user = userRepository.findByLoginIdAndEmail(loginId, email);
+        if (user != null) {
+            String tempPassword = generateTempPassword();
+            user.setPassword(passwordEncoder.encode(tempPassword));
+            userRepository.updateUserPassword(user);
+            return tempPassword;
+        }
+        return null;
+    }
+
+    private String generateTempPassword() {
+        return "temporaryPassword"; // 임시 비밀번호 생성 로직
+    }
 
 }

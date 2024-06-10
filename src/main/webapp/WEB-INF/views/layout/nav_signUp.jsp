@@ -5,7 +5,8 @@
         <ul>
             <li><a href="/user/signUp">회원 가입</a></li>
             <li><a href="/user/loginPage">로그인</a></li>
-            <li><a href="#">아이디/비밀번호 찾기</a></li>
+            <li><a href="/user/findId">아이디 찾기</a></li>
+            <li><a href="/user/findPassword">비밀번호 찾기</a></li>
         </ul>
     </div>
 </div>
