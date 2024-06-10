@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="../css/common.css">
     <link rel="stylesheet" type="text/css" href="../css/table.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>샘플 페이지</title>
+    <title>회원 가입</title>
 </head>
 <body>
 <div class="wrap">
@@ -99,7 +99,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row"><label for=phone1>휴대폰</label><span class="essR">필수</span></th>
+                            <th scope="row"><label for="phone1">휴대폰</label><span class="essR">필수</span></th>
                             <td colspan="3" class="hp">
                         <span class="selectboxWrap" style="width:80px">
                             <select class="select selectBg" id="phone1" name="phone1" title="휴대폰 번호 선택">
@@ -128,40 +128,27 @@
                                        style="width:120px;ime-mode:disabled;" title="이메일 아이디 입력" />
                                 <span class="dash"> @ </span>
                                 <label for="email_02" class="disn">이메일 입력</label>
-                                <input type="text" class="inTxt rs-w45" id="email_02" name="email2"
+                                <input type="text" class="inTxt rs-w45" id="email_02" name="email02"
                                        onFocus="checkLen(this.value);" onBlur="checkMail(this.value);"
                                        style="width:120px;ime-mode:disabled;" title="이메일 입력" />
                                 <span class="selectboxWrap" style="width:180px">
                             <label for="email_03" class="disn">이메일 선택</label>
-                            <select class="select selectBg" id="email_03" name="email2"
-                                    onchange="chgEmail(this.value, this.selectedIndex);" title="이메일 선택">
+                            <select class="select selectBg" id="email_03" name="email03"
+                                    onchange="chgEmail(this.value);" title="이메일 선택">
                                 <option value="">직접입력</option>
-
-                                <option value="gmail.com">
-                                    <span class='txt2'>gmail.com</span>
-                                </option>
-                                <option value="kakao.com">
-                                    <span class='txt2'>kakao.com</span>
-                                </option>
-                                <option value="naver.com">
-                                    <span class='txt2'>naver.com</span>
-                                </option>
-                                <option value="nate.com">
-                                    <span class='txt2'>nate.com</span>
-                                </option>
-                                <option value="yahoo.co.kr">
-                                    <span class='txt2'>yahoo.co.kr</span>
-                                </option>
-
+                                <option value="gmail.com">gmail.com</option>
+                                <option value="kakao.com">kakao.com</option>
+                                <option value="naver.com">naver.com</option>
+                                <option value="nate.com">nate.com</option>
+                                <option value="yahoo.co.kr">yahoo.co.kr</option>
                             </select>
                         </span>
                             </td>
                         <tr>
-                            <th scope="row"><label for="m_szPwdChk">주소</label></th>
+                            <th scope="row"><label for="address">주소</label></th>
                             <td colspan="3" class="line2"><input type="text" class="inTxt rs-w100"
                                                                  name="address" maxlength="50" style="width:180px;ime-mode:disabled;" title="주소">
                             </td>
-                        </tr>
                         </tr>
                         </tbody>
                     </table>
@@ -171,34 +158,30 @@
 
                 <!-- btn -->
                 <div class="btnArea">
-
                     <button type="submit" class="btns btnSt01">
                         <span>등록</span>
                     </button>
                     <button type="button" class="btns btnSt02" onclick="history.back();">
                         <span>취소</span>
                     </button>
-
                 </div>
                 <!-- btn -->
             </form>
 
-
             <script>
+                // 숫자만 입력 가능하게 제한하는 함수
                 function restrictToNumbers(inputField) {
-                    // 입력 필드의 현재 값 가져오기
                     var inputValue = inputField.value;
-                    // 숫자가 아닌 문자 제거 (정규 표현식을 사용)
                     var numericValue = inputValue.replace(/[^0-9]/g, '');
-                    // 입력 필드에 숫자만 남기기
                     inputField.value = numericValue;
                 }
+
+                // 년, 월, 일 옵션 추가
                 document.addEventListener("DOMContentLoaded", function () {
                     const years = document.getElementById("birthyy");
                     const months = document.getElementById("birthmm");
                     const days = document.getElementById("birthdd");
 
-                    // 년도 추가
                     for (let year = new Date().getFullYear(); year >= 1900; year--) {
                         let option = document.createElement("option");
                         option.value = year;
@@ -206,26 +189,22 @@
                         years.appendChild(option);
                     }
 
-                    // 월 추가
                     for (let month = 1; month <= 12; month++) {
                         let option = document.createElement("option");
                         option.value = month < 10 ? '0' + month : month;
                         option.text = month + "월";
                         months.appendChild(option);
                     }
-                    // 일 추가 함수
+
                     function populateDays(year, month) {
-                        // 기존의 일 옵션 제거
                         while (days.firstChild) {
                             days.removeChild(days.firstChild);
                         }
-                        // 기본 일 옵션 추가
                         let defaultOption = document.createElement("option");
                         defaultOption.value = "";
                         defaultOption.text = "일";
                         days.appendChild(defaultOption);
 
-                        // 선택된 년도와 월에 따라 일 추가
                         if (year && month) {
                             let daysInMonth = new Date(year, month, 0).getDate();
                             for (let day = 1; day <= daysInMonth; day++) {
@@ -237,7 +216,6 @@
                         }
                     }
 
-                    // 년도와 월이 변경될 때 일 옵션 갱신
                     years.addEventListener("change", function () {
                         populateDays(years.value, months.value);
                     });
@@ -246,21 +224,16 @@
                     });
                 });
 
-
-            </script>
-
-            <script>
                 // 중복 확인 버튼 클릭 시 실행되는 함수
                 function DupWebIdCheck() {
-                    var loginId = document.getElementById("m_szId").value; // 입력된 아이디 가져오기
+                    var loginId = document.getElementById("m_szId").value;
                     if (loginId.trim() === "") {
                         alert("아이디를 입력해주세요.");
                         return;
                     }
-                    // AJAX를 통해 서버로 중복 확인 요청 보내기
                     $.ajax({
-                        type: "GET", // 요청 방식을 GET으로 설정
-                        url: "checkDuplicateId?loginId=" + loginId, // 쿼리 문자열을 사용하여 loginId 전달
+                        type: "GET",
+                        url: "checkDuplicateId?loginId=" + loginId,
                         success: function (response) {
                             if (response === "duplicate") {
                                 alert("이미 사용 중인 아이디입니다.");
@@ -273,71 +246,43 @@
                         }
                     });
                 }
-            </script>
 
-
-                <script>
-                    // 폼 제출 전에 비밀번호 확인
-                    function validateForm() {
-                        var password = document.getElementById("m_szPwd").value;
-                        var confirmPassword = document.getElementById("m_szPwdChk").value;
-
-                        // 비밀번호와 비밀번호 확인이 다를 경우
-                        if (password !== confirmPassword) {
-                            alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
-                            return false; // 폼 제출을 막음
-                        }
-                        return true; // 폼 제출 허용
+                // 이메일 옵션 변경 시 실행되는 함수
+                function chgEmail(value) {
+                    var email02 = document.getElementById("email_02");
+                    if (value === "") {
+                        email02.value = "";
+                        email02.removeAttribute("readonly");
+                    } else {
+                        email02.value = value;
+                        email02.setAttribute("readonly", "readonly");
                     }
-                </script>
+                }
 
+                // 폼 제출 전에 비밀번호와 필수 입력 필드를 확인
+                function validateForm() {
+                    var requiredFields = [
+                        "m_szName", "m_szId", "m_szPwd", "m_szPwdChk",
+                        "birthyy", "birthmm", "birthdd", "phone2", "phone3", "email_01", "email_02"
+                    ];
 
+                    for (var i = 0; i < requiredFields.length; i++) {
+                        var field = document.getElementById(requiredFields[i]);
+                        if (!field || field.value.trim() === "") {
+                            alert("모든 필수 입력 필드를 채워주세요.");
+                            field.focus();
+                            return false;
+                        }
+                    }
 
-<%--            <form action="signUpCheck" method="post" onsubmit="submitForm(event)">--%>
-<%--                <div>--%>
-<%--                    <label for="loginId">아이디</label>--%>
-<%--                    <input type="text" id="loginId" placeholder="아이디" name="loginId"/>--%>
-<%--                </div>--%>
-<%--                <div>--%>
-<%--                    <label for="password">비밀번호</label>--%>
-<%--                    <input type="password" id="password" placeholder="비밀번호" name="password"/>--%>
-<%--                </div>--%>
-<%--                <div>--%>
-<%--                    <label for="confirmPassword">비밀번호 확인</label>--%>
-<%--                    <input type="password" id="confirmPassword" placeholder="비밀번호 확인" />--%>
-<%--                </div>--%>
-<%--                <div>--%>
-<%--                    <label for="name">이름</label>--%>
-<%--                    <input type="text" id="name" placeholder="이름" name="name"/>--%>
-<%--                </div>--%>
-<%--                <div>--%>
-<%--                    <label for="birth">생년월일</label>--%>
-<%--                    <input type="text" id="birth" placeholder="생년월일(YYMMDD)" name="birth"/>--%>
-<%--                </div>--%>
-<%--                <div>--%>
-<%--                    <label for="tel">연락처</label>--%>
-<%--                    <input type="tel" id="tel" placeholder="연락처" name="tel"/>--%>
-<%--                </div>--%>
-<%--                <div>--%>
-<%--                    <label for="address">주소</label>--%>
-<%--                    <input type="text" id="address" placeholder="주소" name="address"/>--%>
-<%--                </div>--%>
-<%--                <div>--%>
-<%--                    <label>성별</label><br>--%>
-<%--                    <input type="radio" id="M" name="gender" value="M">--%>
-<%--                    <label for="M">남성</label><br>--%>
-<%--                    <input type="radio" id="F" name="gender" value="F">--%>
-<%--                    <label for="F">여성</label><br>--%>
-<%--                </div>--%>
-<%--                <input type="hidden" id="role" value="${role}" name="role">--%>
-<%--                <button type="submit">가입하기</button>--%>
-<%--            </form>--%>
-            <script>
-                // function submitForm(event) {
-                //     event.preventDefault(); // 폼의 기본 동작을 막음
-                //     const roleValue = document.getElementById('role').value;
-                //     console.log('Role:', roleValue);
-                // }
+                    var password = document.getElementById("m_szPwd").value;
+                    var confirmPassword = document.getElementById("m_szPwdChk").value;
+                    if (password !== confirmPassword) {
+                        alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+                        return false;
+                    }
+                    return true;
+                }
             </script>
             <!-- 본문 끝 -->
         </div>
@@ -348,5 +293,4 @@
     <c:import url="/WEB-INF/views/layout/footer.jsp" />
 </div>
 </body>
-
 </html>
