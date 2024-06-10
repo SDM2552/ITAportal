@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="../css/common.css">
     <link rel="stylesheet" type="text/css" href="../css/table.css">
     <link rel="stylesheet" type="text/css" href="../css/messenger.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <h2>메신저 답장</h2>

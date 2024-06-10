@@ -112,7 +112,7 @@
 
         function showBulkSendModal() {
             $('#modalTitle').text('대량 전송');
-            $('#modalContent').load('/messenger/manySend', function(response, status, xhr) {
+            $('#modalContent').load('/messenger/bulkSend', function(response, status, xhr) {
                 if (status == "error") {
                     alert("대량 전송 페이지를 불러오는 데 실패했습니다.");
                 } else {
@@ -126,7 +126,7 @@
         }
 
         function replyMessenger(id) {
-            // 답장 로직 추가
+            window.location.href = '/messenger/reply?idMessenger=' + id;
         }
 
         function updateMessenger(id) {
@@ -228,6 +228,33 @@
             });
         }
 
+        function sendBulkMessages() {
+            var form = $('#bulkSendForm');
+            var receiverLoginIds = form.find('input[name="receiverLoginIds"]').val().split(',').map(id => id.trim());
+            var subject = form.find('input[name="subject"]').val();
+            var messageText = form.find('textarea[name="messageText"]').val();
+
+            var messengers = receiverLoginIds.map(receiverLoginId => ({
+                receiverLoginId: receiverLoginId,
+                subject: subject,
+                messageText: messageText
+            }));
+
+            $.ajax({
+                url: '/messenger/bulkSend',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(messengers),
+                success: function() {
+                    alert('쪽지가 전송되었습니다.');
+                    closeModal();
+                    loadSentMessages();
+                },
+                error: function(xhr, status, error) {
+                    alert('쪽지 전송에 실패했습니다: ' + xhr.responseText);
+                }
+            });
+        }
     </script>
 </head>
 <body>

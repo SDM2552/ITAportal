@@ -73,23 +73,27 @@ public class MessengerController {
         return ResponseEntity.ok("쪽지가 전송되었습니다.");
     }
 
-    @PostMapping("/sendBulk")
+    @GetMapping("/bulkSend")
+    public String showBulkSendPage() {
+        return "messenger/bulkSend";
+    }
+    @PostMapping("/bulkSend")
     @ResponseBody
-    public void sendBulkMessengers(HttpSession session, @RequestParam("receiverLoginIds") List<String> receiverLoginIds, @RequestParam("subject") String subject, @RequestParam("messageText") String messageText) {
+    public ResponseEntity<String> sendBulkMessengers(HttpSession session, @RequestBody List<MessengerDto> messengers) {
         LoginResponse user = (LoginResponse) session.getAttribute("loginUser");
-        if (user != null) {
-            List<MessengerDto> messengers = new ArrayList<>();
-            for (String receiverLoginId : receiverLoginIds) {
-                MessengerDto messenger = new MessengerDto();
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("로그인이 필요합니다.");
+        }
+        try {
+            for (MessengerDto messenger : messengers) {
                 messenger.setSenderLoginId(user.getLoginId());
-                messenger.setReceiverLoginId(receiverLoginId);
                 messenger.setSenderRole(user.getRole());
-                messenger.setReceiverRole(userService.getRoleByLoginId(receiverLoginId));
-                messenger.setSubject(subject);
-                messenger.setMessageText(messageText);
-                messengers.add(messenger);
+                messenger.setReceiverRole(userService.getRoleByLoginId(messenger.getReceiverLoginId()));
             }
             messengerService.sendBulkMessengers(messengers);
+            return ResponseEntity.ok("쪽지가 전송되었습니다.");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("쪽지 전송에 실패했습니다.");
         }
     }
 
@@ -142,11 +146,16 @@ public class MessengerController {
 
     @PostMapping("/sendFromSaved")
     @ResponseBody
-    public void sendFromSaved(HttpSession session, @RequestParam("idMessenger") int idMessenger) {
+    public ResponseEntity<String> sendFromSaved(HttpSession session, @RequestParam("idMessenger") int idMessenger) {
+        // 로그인 사용자 확인
         LoginResponse user = (LoginResponse) session.getAttribute("loginUser");
-        if (user != null) {
-            messengerService.sendSavedMessenger(idMessenger);
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("로그인이 필요합니다.");
         }
+
+        // 임시저장된 메시지 전송
+        messengerService.sendSavedMessenger(idMessenger);
+        return ResponseEntity.ok("메시지가 전송되었습니다.");
     }
 
     @GetMapping("/view")
