@@ -20,9 +20,6 @@
                 <img src="/image/message_icon_closed.png" alt="쪽지" id="messageIcon" class="menu-icon closed">
             </button>
 
-<%--            <button class="footer-menu-btn" id="kakaoButton" onclick="showKakaoForm()">--%>
-<%--                <img src="/image/kakao_icon.png" alt="카카오톡" id="kakaoIcon" class="menu-icon closed">--%>
-<%--            </button>--%>
         </div>
     </div>
     <!-- //footerArea -->
@@ -65,15 +62,6 @@
         modalContent.innerHTML = '<iframe src="/messenger/list" width="100%" height="100%" frameborder="0"></iframe>';
         modal.style.display = 'block';
     }
-
-    // function showKakaoForm() {
-    //     var modal = document.getElementById('modal');
-    //     var modalTitle = document.getElementById('modalTitle');
-    //     var modalContent = document.getElementById('modalContent');
-    //     modalTitle.innerText = '카카오톡 메시지 전송';
-    //     modalContent.innerHTML = '<iframe src="/kakao/form" width="100%" height="100%" frameborder="0"></iframe>';
-    //     modal.style.display = 'block';
-    // }
 
     function showModal(title) {
         var modal = document.getElementById('modal');
