@@ -30,11 +30,17 @@
             </c:if>
             <button type="submit" class="login-btn">로그인</button>
         </form>
+<%--        <div class="links">--%>
+<%--            <a href="/">홈으로</a>--%>
+<%--            <a href="/user/forgotId">아이디 찾기</a>--%>
+<%--            <a href="/user/forgotPassword">비밀번호 찾기</a>--%>
+<%--        </div>--%>
         <div class="links">
             <a href="/">홈으로</a>
-            <a href="/user/forgotId">아이디 찾기</a>
-            <a href="/user/forgotPassword">비밀번호 찾기</a>
+            <a href="/user/findId">아이디 찾기</a>
+            <a href="/user/findPassword">비밀번호 찾기</a>
         </div>
+
     </div>
 </div>
 </body>

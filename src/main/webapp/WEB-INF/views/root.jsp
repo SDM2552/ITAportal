@@ -86,7 +86,9 @@
                     <div class="profileButton">
                         <a href="/user/signUp">회원 가입</a>
                         <span>|</span>
-                        <a href="#">아이디 / 비밀번호 찾기</a>
+                        <a href="/user/findId">아이디 찾기</a>
+                        <span>|</span>
+                        <a href="/user/findPassword">비밀번호 찾기</a>
                     </div>
                 </c:otherwise>
                 </c:choose>

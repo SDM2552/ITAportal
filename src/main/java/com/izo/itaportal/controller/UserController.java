@@ -117,4 +117,36 @@ public class UserController {
         return "redirect:/";
     }
 
+    //찾기-id,비밀번호
+    @GetMapping("/findId")
+    public String showFindIdForm() {
+        return "member/findId";
+    }
+
+    @PostMapping("/findId")
+    public String findId(@RequestParam String name, @RequestParam String email, Model model) {
+        String loginId = userService.findLoginIdByNameAndEmail(name, email);
+        if (loginId != null) {
+            model.addAttribute("message", "아이디는 " + loginId + "입니다.");
+        } else {
+            model.addAttribute("message", "일치하는 사용자가 없습니다.");
+        }
+        return "member/findIdResult";
+    }
+
+    @GetMapping("/findPassword")
+    public String showFindPasswordForm() {
+        return "member/findPassword";
+    }
+
+    @PostMapping("/findPassword")
+    public String findPassword(@RequestParam String loginId, @RequestParam String email, Model model) {
+        String tempPassword = userService.resetPasswordAndGetTempPassword(loginId, email);
+        if (tempPassword != null) {
+            model.addAttribute("message", "임시 비밀번호는 " + tempPassword + " 입니다.");
+        } else {
+            model.addAttribute("message", "일치하는 사용자가 없습니다.");
+        }
+        return "member/findPasswordResult";
+    }
 }

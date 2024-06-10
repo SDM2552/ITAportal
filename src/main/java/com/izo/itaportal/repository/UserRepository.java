@@ -5,6 +5,8 @@ import com.izo.itaportal.model.Professor;
 import com.izo.itaportal.model.SignUpRequest;
 import com.izo.itaportal.model.Student;
 import org.apache.ibatis.annotations.Mapper;
+import com.izo.itaportal.model.User; //아이디찾기,비밀번호찾기
+import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface UserRepository {
@@ -48,4 +50,14 @@ public interface UserRepository {
     String getRoleById(int idUser);
     String getRoleByLoginId(String loginId);
     // 메신저용 추가 코드 끝
+
+    // 비밀번호 변경
+    void updateUserPassword(User user);
+
+
+    // 로그인 아이디 찾기
+    String findLoginIdByNameAndEmail(@Param("name") String name, @Param("email") String email);
+
+    // 로그인 비밀번호 찾기
+    User findByLoginIdAndEmail(@Param("loginId") String loginId, @Param("email") String email);
 }

@@ -68,8 +68,8 @@
 
                         <div class="links">
                             <a href="/">홈으로</a>&nbsp&nbsp|&nbsp&nbsp
-                            <a href="#">아이디 찾기</a>&nbsp&nbsp|&nbsp&nbsp
-                            <a href="#">비밀번호 찾기</a>
+                            <a href="/user/findId">아이디 찾기</a>&nbsp&nbsp|&nbsp&nbsp
+                            <a href="/user/findPassword">비밀번호 찾기</a>
                         </div>
                     </div>
                 </form>
