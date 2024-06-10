@@ -126,7 +126,7 @@
         }
 
         function replyMessenger(id) {
-            // 답장 로직 추가
+            window.location.href = '/messenger/reply?idMessenger=' + id;
         }
 
         function updateMessenger(id) {

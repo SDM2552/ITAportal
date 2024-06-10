@@ -20,9 +20,9 @@
                 <img src="/image/message_icon_closed.png" alt="쪽지" id="messageIcon" class="menu-icon closed">
             </button>
 
-<%--            <button class="footer-menu-btn" id="kakaoButton" onclick="showKakaoForm()">--%>
-<%--                <img src="/image/kakao_icon.png" alt="카카오톡" id="kakaoIcon" class="menu-icon closed">--%>
-<%--            </button>--%>
+            <button class="footer-menu-btn" id="kakaoButton" onclick="showKakaoForm()">
+                <img src="/image/kakao_icon.png" alt="카카오톡" id="kakaoIcon" class="menu-icon closed">
+            </button>
         </div>
     </div>
     <!-- //footerArea -->

@@ -68,6 +68,9 @@
                 alert('쪽지가 전송되었습니다.');
                 closeModal();
                 loadSentMessages();
+            },
+            error: function(xhr, status, error) {
+                alert('쪽지 전송에 실패했습니다: ' + xhr.responseText);
             }
         });
     }

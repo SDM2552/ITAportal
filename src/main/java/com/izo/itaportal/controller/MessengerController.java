@@ -142,11 +142,16 @@ public class MessengerController {
 
     @PostMapping("/sendFromSaved")
     @ResponseBody
-    public void sendFromSaved(HttpSession session, @RequestParam("idMessenger") int idMessenger) {
+    public ResponseEntity<String> sendFromSaved(HttpSession session, @RequestParam("idMessenger") int idMessenger) {
+        // 로그인 사용자 확인
         LoginResponse user = (LoginResponse) session.getAttribute("loginUser");
-        if (user != null) {
-            messengerService.sendSavedMessenger(idMessenger);
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("로그인이 필요합니다.");
         }
+
+        // 임시저장된 메시지 전송
+        messengerService.sendSavedMessenger(idMessenger);
+        return ResponseEntity.ok("메시지가 전송되었습니다.");
     }
 
     @GetMapping("/view")
