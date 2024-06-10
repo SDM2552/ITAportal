@@ -32,8 +32,12 @@ public class MessengerService {
     }
 
     public void sendBulkMessengers(List<MessengerDto> messengers) {
+        for (MessengerDto messenger : messengers) {
+            messenger.setSentAt(LocalDateTime.now());
+        }
         messengerRepository.sendBulkMessengers(messengers);
     }
+
 
     public void saveMessenger(MessengerDto messenger) {
         messenger.setDeleted(false);
