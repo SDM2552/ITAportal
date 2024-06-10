@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>비밀번호 찾기 결과</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/find.css">
 </head>
 <body>
 <h3>비밀번호 찾기 결과</h3>

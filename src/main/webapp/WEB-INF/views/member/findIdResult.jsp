@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>아이디 찾기 결과</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/find.css">
 </head>
 <body>
 <h3>아이디 찾기 결과</h3>
