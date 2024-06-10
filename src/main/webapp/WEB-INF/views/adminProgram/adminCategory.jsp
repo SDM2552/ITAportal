@@ -41,7 +41,7 @@
         }
 
         .pagination a.active {
-            background-color: #007bff;
+            background-color: #123867;
             color: white;
         }
 
@@ -63,11 +63,11 @@
         }
 
         .btns.btnSt01 {
-            margin-left: 160px;
+            margin-left: 50px;
             color: white; /* 글자 색상 흰색으로 설정 */
-            background-color: #005e93; /* 버튼 배경 색상 (예시) */
-            border: 1px solid black; /* 검정색 테두리 추가 */
-            padding: 8px;
+            background-color: #123867; /* 버튼 배경 색상 (예시) */
+            border: 1px solid #000000; /* 검정색 테두리 추가 */
+            padding: 4px;
             cursor: pointer;
             font-size: 13px;
         }
@@ -113,7 +113,7 @@
 
 
             <!-- 본문 -->
-           
+
             <h4>※ 현재 항목 수정/삭제 시 관련 프로그램도 함께 변경됩니다.</h4><h6><br></h6>
             <div class="tblData mt10">
                 <table>
