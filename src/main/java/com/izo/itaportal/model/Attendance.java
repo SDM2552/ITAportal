@@ -10,6 +10,7 @@ public class Attendance {
     private int att_stat; //출석횟수
     private int late_stat; //지각횟수
     private int abs_stat; //결석횟수
+    private int examScore; //과제 점수
 }
 
 

@@ -209,6 +209,7 @@ public class ProfController {
         model.addAttribute("idProf",idProf);
         return "prof/examNew";
     }
+    //과제 생성 로직
     @PostMapping("/makeExam")
     public String makeExam(@ModelAttribute Exam exam){
         LoginResponse loginUser = (LoginResponse) session.getAttribute("loginUser");
@@ -216,6 +217,28 @@ public class ProfController {
         exam.setIdProf(idProf);
         examService.insertExam(exam);
         return "redirect:/prof/examList";
+    }
+    //과제 평가 로직
+    @PostMapping("/grading")
+    public String grading(@RequestParam Map<String, String> allParams, Model model) {
+        for (Map.Entry<String, String> entry : allParams.entrySet()) {
+            String paramName = entry.getKey();
+            String paramValue = entry.getValue();
+
+            if (paramName.startsWith("score_")) {
+                String[] parts = paramName.split("_");
+                int idStudent = Integer.parseInt(parts[1]);
+                int idPgm = Integer.parseInt(parts[2]);
+                int score = Integer.parseInt(paramValue);
+                //
+                saveScore(idStudent, idPgm, score);
+            }
+        }
+        return "redirect:/prof/examDetail";
+    }
+
+    private void saveScore(int idStudent, int idPgm, int score) {
+
     }
 
 

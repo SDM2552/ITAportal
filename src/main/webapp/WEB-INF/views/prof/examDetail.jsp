@@ -93,6 +93,7 @@
             </div>
             <!-- btn -->
             <h4 class="subTit">수강생 성적 관리</h4>
+            <form action="/prof/grading" method="post">
             <div class="tblData mt10">
                 <table>
                     <colgroup>
@@ -148,7 +149,7 @@
                                     </c:otherwise>
                                 </c:choose>
                             </td>
-                            <td><input type="text" name="score" style="width: 50px"/></td>
+                            <td><input type="text" name="score_${item.idStudent}_${item.idPgm}" style="width: 50px"/></td>
                         </tr>
                     </c:forEach>
                     </tbody>
@@ -162,6 +163,7 @@
                     <span>목록으로</span>
                 </button>
             </div>
+            </form>
             <!-- 본문 끝 -->
         </div>
         <!-- //contents -->
