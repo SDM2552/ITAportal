@@ -116,6 +116,16 @@
             return false;
         }
 
+        // Check file extension
+        const allowedExtensions = ['txt'];
+        const fileExtension = file.name.split('.').pop().toLowerCase();
+        if (!allowedExtensions.includes(fileExtension)) {
+            alert('.txt 파일만 첨부할 수 있습니다.');
+            fileInput.value = ''; // Clear the file input
+            fileSizeDisplay.textContent = '';
+            return false;
+        }
+
         if (file) {
             const fileSize = file.size / 1024 / 1024; // in MB
             fileSizeDisplay.textContent = '파일 용량: ' + fileSize.toFixed(2) + ' MB';
