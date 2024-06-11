@@ -19,7 +19,7 @@ public class ExamSubmissionService {
     public ExamSubmission getExamSubmission(Integer idSubmission) {
         return examSubmissionRepository.getExamSubmission(idSubmission);
     }
-    public List<ExamSubmitDataDto> getExamSubmitData(int idExam, int idProgram) {
-        return examSubmissionRepository.getExamSubmitData(idExam, idProgram);
+    public List<ExamSubmitDataDto> getExamSubmitData(int idExam, int idPgm) {
+        return examSubmissionRepository.getExamSubmitData(idExam, idPgm);
     }
 }

@@ -19,12 +19,12 @@
     <!-- container -->
     <div id="container" class="container responCont">
         <!-- 왼쪽 네비바 -->
-        <c:import url="../layout/nav_student.jsp"/>
+        <c:import url="../layout/nav_sugang.jsp"/>
         <!-- contents -->
         <div id="contents" class="eduIntroCont">
             <!-- location -->
             <span class="home" title="홈"><i class="fa-solid fa-house"></i> <i class="fa-solid fa-angle-right"></i></span>
-            <span class="on">수업 <i class="fa-solid fa-angle-right"></i></span><span class="on"> 수강내역조회</span>
+            <span class="on">수강신청 <i class="fa-solid fa-angle-right"></i></span><span class="on"> 수강내역조회</span>
             <!-- //location -->
 
             <h3 class="pgTit">수강 내역 조회</h3>

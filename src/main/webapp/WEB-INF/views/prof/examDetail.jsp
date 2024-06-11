@@ -93,7 +93,8 @@
             </div>
             <!-- btn -->
             <h4 class="subTit">수강생 성적 관리</h4>
-            <form action="/prof/grading" method="post">
+            <form id="gradingForm" action="/prof/grading" method="post">
+                <input type="hidden" name="idExam" value="${examDetail.idExam}"/>
             <div class="tblData mt10">
                 <table>
                     <colgroup>
@@ -149,14 +150,14 @@
                                     </c:otherwise>
                                 </c:choose>
                             </td>
-                            <td><input type="text" name="score_${item.idStudent}_${item.idPgm}" style="width: 50px"/></td>
+                            <td><input type="text" name="score_${item.idStudent}_${item.idPgm}" style="width: 50px; text-align: center;" value="<c:out value='${item.score == -1 ? "" : item.score}'/>"/></td>
                         </tr>
                     </c:forEach>
                     </tbody>
                 </table>
             </div>
             <div class="btnArea">
-                <button type="submit" class="btns btnSt01">
+                <button type="submit" class="btns btnSt01" onclick="return confirmSubmission();">
                     <span>점수 등록</span>
                 </button>
                 <button type="button" class="btns btnSt02" onclick="history.back();">
@@ -172,6 +173,16 @@
     <!-- footer -->
     <c:import url="../layout/footer.jsp" />
 </div>
+<script>
+    function confirmSubmission() {
+        if (confirm('점수를 등록하시겠습니까?')) {
+            alert('점수가 등록됐습니다.');
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
 </body>
 
 </html>

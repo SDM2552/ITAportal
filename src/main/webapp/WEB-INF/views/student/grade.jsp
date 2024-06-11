@@ -62,22 +62,14 @@
                             </tr>
                         </c:when>
                         <c:otherwise>
-                            <c:forEach var="sugang" items="${sugangList}">
                                 <tr>
-                                    <td>${sugang.cateName}</td>
-                                    <td><a href="/stu/programView/${sugang.idPgm}">${sugang.pgmName}</a></td>
-                                    <td>${sugang.stDt} ~ <br>${sugang.endDt}</td>
-                                    <td>
-                                        <c:forEach var="professor" items="${sugang.professors}">
-                                            <a href="/stu/professorView/${professor.idProf}">${professor.profName}</a><br/>
-                                        </c:forEach>
-                                    </td>
-                                    <td>${sugang.roomName}</td>
-                                    <td>
-                                        <button><a href="/stu/programView/${sugang.idPgm}">보기</a></button>
-                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
-                            </c:forEach>
                         </c:otherwise>
                     </c:choose>
                     </tbody>

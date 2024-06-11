@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.izo.itaportal.repository.AttendanceRepository">
+    <update id="updateScore">
+        UPDATE attendance
+        SET exam_score = #{score}
+        WHERE id_student = #{idStudent} AND id_pgm = #{idPgm}
+    </update>
+</mapper>
