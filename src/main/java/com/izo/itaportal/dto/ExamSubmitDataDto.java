@@ -12,4 +12,6 @@ public class ExamSubmitDataDto {
     private String fileName; // 파일 이름
     private byte[] data; // 파일
     private int idFile;
+    private int idPgm;
+    private int score;
 }

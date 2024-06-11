@@ -5,7 +5,6 @@
     <div class="lnbArea">
         <ul>
             <li><a href="/stu/myProgram">나의 강의실</a></li>
-            <li><a href="/stu/program">수강 내역 조회</a></li>
             <li><a href="/stu/exam">과제 제출</a></li>
             <li><a href="/stu/grade">성적 조회</a></li>
         </ul>

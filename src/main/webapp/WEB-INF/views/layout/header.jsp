@@ -46,7 +46,7 @@
                             <a href="/program/list">수강 신청</a>
                         </li>
                         <li>
-                            <a href="/notice/noticeList">공지사항</a>
+                            <a href="/notice/noticeList">커뮤니티</a>
                         </li>
                     </c:when>
                     <c:when test="${sessionScope.loginUser.role eq 'prof'}">
@@ -58,7 +58,7 @@
                             <a href="/prof/list">강의 관리</a>
                         </li>
                         <li>
-                            <a href="/notice/noticeList">공지사항</a>
+                            <a href="/notice/noticeList">커뮤니티</a>
                         </li>
                     </c:when>
                     <c:when test="${sessionScope.loginUser.role eq 'admin'}">
@@ -73,7 +73,7 @@
                             <a href="/admin/studentList">회원 관리</a>
                         </li>
                         <li>
-                            <a href="/notice/noticeList">공지사항</a>
+                            <a href="/notice/noticeList">커뮤니티</a>
                         </li>
                     </c:when>
                     <c:otherwise>
@@ -87,7 +87,7 @@
                             <a href="/program/list">수강 신청</a>
                         </li>
                         <li>
-                            <a href="/notice/noticeList">공지사항</a>
+                            <a href="/notice/noticeList">커뮤니티</a>
                         </li>
                     </c:otherwise>
                     </c:choose>

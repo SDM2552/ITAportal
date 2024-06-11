@@ -10,6 +10,7 @@
         <result column="id_student" property="idStudent"/>
         <result column="id_file" property="idFile"/>
         <result column="exam_status" property="examStatus"/>
+        <result column="id_program" property="idPgm"/>
     </resultMap>
 
     <insert id="saveExamSubmission">
@@ -28,7 +29,9 @@
             es.submit_time as submitTime,
             f.data as data,
             f.file_name as fileName,
-            es.id_file as idFile
+            es.id_file as idFile,
+            es.id_program as idPgm,
+            a.exam_score as score
         FROM
             attendance a
                 JOIN

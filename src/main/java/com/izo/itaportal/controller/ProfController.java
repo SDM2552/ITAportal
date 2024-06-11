@@ -34,6 +34,8 @@ public class ProfController {
     ExamService examService;
     @Autowired
     ExamSubmissionService examSubmissionService;
+    @Autowired
+    AttendanceService attendanceService;
 
     //idProf 값을 저장함. 이후 매개변수에 @RequestParam("idProf") int idProf를 넣으면 세션 생성 없이 idProf를 쓸수있음
     @ModelAttribute("idProf")
@@ -193,8 +195,8 @@ public class ProfController {
     @GetMapping("/examDetail")
     public String examDetail(@RequestParam("idExam") int idExam, Model model){
         ExamDetailDto examDetail = examService.getExamDetail(idExam);
-        int idProgram = examDetail.getIdPgm();
-        List<ExamSubmitDataDto> examSubmitData = examSubmissionService.getExamSubmitData(idExam, idProgram);
+        int idPgm = examDetail.getIdPgm();
+        List<ExamSubmitDataDto> examSubmitData = examSubmissionService.getExamSubmitData(idExam, idPgm);
         model.addAttribute("examDetail", examDetail);
         model.addAttribute("examSubmitData", examSubmitData);
         return "prof/examDetail";
@@ -221,25 +223,25 @@ public class ProfController {
     //과제 평가 로직
     @PostMapping("/grading")
     public String grading(@RequestParam Map<String, String> allParams, Model model) {
+        int idExam = Integer.parseInt(allParams.get("idExam"));
         for (Map.Entry<String, String> entry : allParams.entrySet()) {
             String paramName = entry.getKey();
             String paramValue = entry.getValue();
 
             if (paramName.startsWith("score_")) {
-                String[] parts = paramName.split("_");
-                int idStudent = Integer.parseInt(parts[1]);
-                int idPgm = Integer.parseInt(parts[2]);
-                int score = Integer.parseInt(paramValue);
-                //
-                saveScore(idStudent, idPgm, score);
+                if (!paramValue.isEmpty()) {
+                    String[] parts = paramName.split("_");
+                    int idStudent = Integer.parseInt(parts[1]);
+                    int idPgm = Integer.parseInt(parts[2]);
+                    int score = Integer.parseInt(paramValue);
+
+                    attendanceService.saveScore(idStudent, idPgm, score);
+                }
             }
         }
-        return "redirect:/prof/examDetail";
+        return "redirect:/prof/examDetail?idExam=" + idExam;
     }
 
-    private void saveScore(int idStudent, int idPgm, int score) {
-
-    }
 
 
 

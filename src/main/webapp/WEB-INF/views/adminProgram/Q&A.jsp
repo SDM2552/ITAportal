@@ -88,7 +88,7 @@
                         <tr>
                             <td colspan="4"><div class="non-page board">
                                 <h3>
-                                    조회된 게시물이 없습니다.</h3>
+                                    작성된 게시물이 없습니다.</h3>
                             </div></td>
                         </tr>
 

@@ -3,9 +3,8 @@
     <h2 class="ltit">수강신청</h2>
     <div class="lnbArea">
         <ul>
-            <li><a href="#">수강신청 안내</a></li>
-            <li><a href="#">교육대상자 및 교육혜택</a></li>
             <li><a href="/program/list">수강신청</a></li>
+            <li><a href="/stu/program">수강 내역 조회</a></li>
         </ul>
     </div>
 </div>
