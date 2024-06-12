@@ -83,7 +83,8 @@
             category.cate_Name AS cateName,
             student.name AS stuName,
             class_room.room_Name AS roomName,
-            professor.name AS name
+            professor.name AS profName,
+            professor.id_prof AS idProf
         FROM
             sugang sugang
                 JOIN

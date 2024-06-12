@@ -48,7 +48,7 @@
                         <th scope="col">분류</th>
                         <th scope="col">프로그램명</th>
                         <th scope="col">교육 기간</th>
-                        <th scope="col">담당 강사(클릭가능)</th>
+                        <th scope="col">담당 강사</th>
                         <th scope="col">강의실</th>
                         <th scope="col">강의 정보</th>
                     </tr>
@@ -63,35 +63,12 @@
                         </c:when>
                         <c:otherwise>
                             <c:forEach var="sugang" items="${sugangList}">
-<%--                                <tr>--%>
-<%--                                    <td>${sugang.cateName}</td>--%>
-<%--                                    <td>${sugang.pgmName}</td>--%>
-<%--                                    <td>${sugang.stDt} ~ <br>${sugang.endDt}</td>--%>
-<%--                                    <td>${sugang.name}</td>--%>
-<%--                                    <td>${sugang.roomName}</td>--%>
-<%--                                    <td>--%>
-<%--                                        <button>보기</button>--%>
-<%--                                    </td>--%>
-
-<%--                                </tr>--%>
-<%--                                <tr>--%>
-<%--                                    <td>${sugang.cateName}</td>--%>
-<%--                                    <td><a href="/stu/programView/${sugang.idPgm}">${sugang.pgmName}</a></td>--%>
-<%--                                    <td>${sugang.stDt} ~ <br>${sugang.endDt}</td>--%>
-<%--                                    <td><a href="/stu/professorView/${sugang.idProf}">${sugang.name}</a></td>--%>
-<%--                                    <td>${sugang.roomName}</td>--%>
-<%--                                    <td>--%>
-<%--                                        <button>보기</button>--%>
-<%--                                    </td>--%>
-<%--                                </tr>--%>
                                 <tr>
                                     <td>${sugang.cateName}</td>
                                     <td><a href="/stu/programView/${sugang.idPgm}">${sugang.pgmName}</a></td>
                                     <td>${sugang.stDt} ~ <br>${sugang.endDt}</td>
                                     <td>
-                                        <c:forEach var="professor" items="${sugang.professors}">
-                                            <a href="/stu/professorView/${professor.idProf}">${professor.profName}</a><br/>
-                                        </c:forEach>
+                                            <a href="/stu/professorView/${sugang.idProf}">${sugang.profName}</a><br/>
                                     </td>
                                     <td>${sugang.roomName}</td>
                                     <td>

@@ -24,32 +24,24 @@
             <div class="tblData mt10">
                 <table>
                     <colgroup>
-                        <col width="20%">
                         <col width="30%">
-                        <col width="20%">
                         <col width="30%">
+                        <col width="30%">
+
                     </colgroup>
+                    <thead>
+                    <tr>
+                        <th scope="col">강사명</th>
+                        <th scope="col">전화번호</th>
+                        <th scope="col">이메일</th>
+                    </tr>
+                    </thead>
                     <tbody>
-                    <c:forEach var="professor" items="${professors}" varStatus="status">
-                        <c:if test="${status.index == 0}">
-                            <tr>
-                                <th scope="col">프로그램명</th>
-                                <td colspan="3">${professor.pgmName}</td>
-                            </tr>
-                            <tr>
-                                <th scope="col">교육 기간</th>
-                                <td colspan="3">${professor.stDt} ~ ${professor.endDt}</td>
-                            </tr>
-                            <tr>
-                                <th scope="col">강의실</th>
-                                <td colspan="3">${professor.roomName}</td>
-                            </tr>
-                        </c:if>
                         <tr>
-                            <th scope="col">강사 이름</th>
-                            <td colspan="3">${professor.profName}</td>
+                            <td>최교수</td>
+                            <td>010-1234-1234</td>
+                            <td>choiprof@email.com</td>
                         </tr>
-                    </c:forEach>
                     </tbody>
                 </table>
             </div>

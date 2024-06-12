@@ -95,7 +95,7 @@
                     <tr>
                         <th scope="col">수강료</th>
                         <td colspan="3">
-                            ${program.pgmFee}원
+                            ${program.pgmFee}
                         </td>
                     </tr>
                     </tbody>

@@ -57,7 +57,7 @@
                     </tr>
                     <tr>
                         <th scope="col">교육비</th>
-                        <td colspan="3">${program.pgmFee}원</td>
+                        <td colspan="3">${program.pgmFee}</td>
                     </tr>
                     </tbody>
                 </table>

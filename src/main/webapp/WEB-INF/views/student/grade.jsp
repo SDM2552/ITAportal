@@ -39,18 +39,16 @@
                         <col width="15%">
                         <col width="30%">
                         <col width="15%">
-                        <col width="10%">
                         <col width="15%">
-                        <col width="10%">
+                        <col width="15%">
                     </colgroup>
                     <thead>
                     <tr>
                         <th scope="col">분류</th>
                         <th scope="col">강의명</th>
                         <th scope="col">담당 강사</th>
-                        <th scope="col">출석 점수</th>
+                        <th scope="col">출석률</th>
                         <th scope="col">과제 점수</th>
-                        <th scope="col">통합 성적</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -58,12 +56,11 @@
                     <c:choose>
                         <c:when test="${empty sugangList}">
                             <tr>
-                                <td colspan="6">수강 중인 강좌가 없습니다</td>
+                                <td colspan="5">수강 중인 강좌가 없습니다</td>
                             </tr>
                         </c:when>
                         <c:otherwise>
                                 <tr>
-                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
