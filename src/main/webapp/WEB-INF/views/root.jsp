@@ -145,7 +145,7 @@
             },
             async : false,
             success : function (response) {
-                alert('로그인 되었습니다.>_<');
+                alert('로그인 성공.');
                 window.location.href = "/user/logined";
             },
             error : function (request, status, error) {
