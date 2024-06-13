@@ -98,7 +98,7 @@
 
             <div class="pagination">
                 <a href="/notice/noticeList?page=1&keyword=${keyword}">처음</a>
-                <a href="/notice/noticeList?page=${currentPage - 1}&keyword=${keyword}" <c:if test="${currentPage == 1}">style="pointer-events: none; color: #ccc;"</c:if>><<</a>
+                <a href="/notice/noticeList?page=${currentPage - 1}&keyword=${keyword}" <c:if test="${currentPage == 1}">style="pointer-events: none; color: #ccc;"</c:if>><</a>
                 <c:forEach begin="1" end="${totalPages}" var="i">
                     <a href="/notice/noticeList?page=${i}&keyword=${keyword}" class="${currentPage == i ? 'active' : ''}">${i}</a>
                 </c:forEach>
