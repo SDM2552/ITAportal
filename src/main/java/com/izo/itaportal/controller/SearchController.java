@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/search")
@@ -21,16 +23,13 @@ public class SearchController {
     SearchService searchService;
 
     @GetMapping("/program")
-    public String searchPrograms(@RequestParam(value = "cateName", required = false) String cateName,
-                                 @RequestParam(value = "pgmName", required = false) String pgmName,
-                                 Model model) {
+    @ResponseBody
+    public Map<String, Object> searchPrograms(@RequestParam(value = "cateName", required = false) String cateName,
+                                              @RequestParam(value = "pgmName", required = false) String pgmName) {
         List<ProgramSearchDto> programs = searchService.searchProgramsByCategoryAndName(cateName, pgmName);
-        List<CategoryDto> categories = searchService.getAllCategories();
-        model.addAttribute("programs", programs);
-        model.addAttribute("categories", categories);
-        model.addAttribute("param.cateName", cateName);
-        model.addAttribute("param.pgmName", pgmName);
-        return "search/programSearchResult";
+        Map<String, Object> response = new HashMap<>();
+        response.put("programs", programs);
+        return response;
     }
 
     @GetMapping("/list")

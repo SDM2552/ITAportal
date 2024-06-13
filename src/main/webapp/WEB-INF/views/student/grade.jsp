@@ -53,22 +53,22 @@
                     </thead>
                     <tbody>
 
-                    <c:choose>
-                        <c:when test="${empty sugangList}">
-                            <tr>
-                                <td colspan="5">수강 중인 강좌가 없습니다</td>
-                            </tr>
-                        </c:when>
-                        <c:otherwise>
+<%--                    <c:choose>--%>
+<%--                        <c:when test="${empty sugangList}">--%>
+<%--                            <tr>--%>
+<%--                                <td colspan="5">수강 중인 강좌가 없습니다</td>--%>
+<%--                            </tr>--%>
+<%--                        </c:when>--%>
+<%--                        <c:otherwise>--%>
                                 <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>무역거래실무</td>
+                                    <td>통관 및 관세 실무 이해</td>
+                                    <td>최교수</td>
+                                    <td>100%</td>
+                                    <td>100</td>
                                 </tr>
-                        </c:otherwise>
-                    </c:choose>
+<%--                        </c:otherwise>--%>
+<%--                    </c:choose>--%>
                     </tbody>
                 </table>
             </div>

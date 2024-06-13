@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -64,7 +64,7 @@
                         <th scope="col">수강신청</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="latestNotices">
                     <c:forEach var="program" items="${programs}">
                         <tr>
                             <td>${program.idPgm}</td>
@@ -79,7 +79,7 @@
                                         <button type="button" disabled>마감</button>
                                     </c:when>
                                     <c:otherwise>
-                                        <button type="button" class="s1" onclick="applyProgram(${program.idPgm});">수강신청</button>
+                                        <button type="button" class="s1 loginChecker" onclick="applyProgram(${program.idPgm});">수강신청</button>
                                     </c:otherwise>
                                 </c:choose>
                             </td>
@@ -100,7 +100,43 @@
     function searchPrograms() {
         var cateName = $('#lecIdxSel').val();
         var pgmName = $('#proTitleSel').val();
-        window.location.href = '/search/program?cateName=' + cateName + '&pgmName=' + pgmName;
+
+        $.ajax({
+            url: '/search/program',
+            type: 'GET',
+            data: {
+                cateName: cateName,
+                pgmName: pgmName
+            },
+            success: function(data) {
+                renderPrograms(data.programs);
+            },
+            error: function(error) {
+                console.error('Error fetching programs:', error);
+            }
+        });
+    }
+
+    function renderPrograms(programs) {
+        var tbody = $('#latestNotices');
+        tbody.empty(); // 기존 내용을 제거
+
+        programs.forEach(function(program) {
+            var row = '<tr>' +
+                '<td>' + program.idPgm + '</td>' +
+                '<td>' + program.cateName + '</td>' +
+                '<td>' + program.pgmName + '</td>' +
+                '<td>' + program.stDt + ' ~ ' + program.endDt + '</td>' +
+                '<td>' + program.sugangStDt + ' 09:00 ~<br>' + program.sugangEndDt + ' 18:00</td>' +
+                '<td>';
+            if (program.sugangClosed) {
+                row += '<button type="button" disabled>마감</button>';
+            } else {
+                row += '<button type="button" class="s1 loginChecker" onclick="applyProgram(' + program.idPgm + ');">수강신청</button>';
+            }
+            row += '</td></tr>';
+            tbody.append(row);
+        });
     }
 
     function applyProgram(programId) {

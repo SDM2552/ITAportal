@@ -99,13 +99,11 @@
             <h3 class="pgTit">프로그램관리</h3>
             <div class="btnArea">
                 <form action="/adminProgram" method="get">
-                    <input type="text" name="keyword" placeholder="프로그램명 검색" value="${keyword}">
-                    <button type="submit">검색</button>
+                    <input type="text" title="키워드 입력" placeholder="프로그램명 검색" id="proTitleSel" name="keyword" value="${keyword}"/>
+                    <button type="submit" class="btn_search">검색</button>
                 </form>
             </div>
             <!-- 본문 -->
-
-
             <!-- 프로그램 목록 -->
 
             <div class="tblData mt10">

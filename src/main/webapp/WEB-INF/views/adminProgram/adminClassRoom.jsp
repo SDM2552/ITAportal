@@ -104,14 +104,12 @@
             <!-- //location -->
 
             <h3 class="pgTit">강의실관리</h3>
-
             <div class="btnArea">
                 <form action="/adminClassRoom" method="get">
-                    <input type="text" name="keyword" placeholder="강의실명 검색" value="${keyword}">
-                    <button type="submit">검색</button>
+                    <input type="text" title="키워드 입력" placeholder="강의실명 검색" id="proTitleSel" name="keyword" value="${keyword}"/>
+                    <button type="submit" class="btn_search">검색</button>
                 </form>
             </div>
-
             <!-- 본문 -->
 
             <h4>※ 현재 항목 수정/삭제 시 관련 프로그램도 함께 변경됩니다.</h4><h6><br></h6>

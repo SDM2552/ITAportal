@@ -9,7 +9,8 @@
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <script src="https://kit.fontawesome.com/93205cc57d.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="/css/common.css">
+    <link rel="stylesheet" type="text/css" href="/css/table.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -57,7 +58,7 @@
                 <p>위 주의사항 및 사전 안내를 확인하시고, 회원 탈퇴에 동의하시는 경우 아래 버튼을 클릭하여 진행해 주세요.</p><br>
 
 
-                <a href="/user/delete" data-toggle="modal" data-target="#confirmModal" style="color:#007bff">[탈퇴하기]</a>
+                <button href="/user/delete" class="btns delet" data-toggle="modal" data-target="#confirmModal">탈퇴하기</button>
 
                 <br><br>
                 <p>탈퇴에 관한 자세한 내용은 고객센터로 문의해 주세요.</p>

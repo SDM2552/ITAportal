@@ -13,5 +13,6 @@ public class ProgramSearchDto {
     private String sugangStDt;
     private String sugangEndDt;
     private String pgmFee;
+    private boolean sugangClosed;
 
 }
