@@ -9,31 +9,8 @@
     <link rel="stylesheet" type="text/css" href="../css/common.css">
     <link rel="stylesheet" type="text/css" href="../css/table.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <style>
-        .btnArea {
-            text-align: right;
-            margin-top: 10px;
-        }
-        .btnArea button {
-            margin-left: 10px;
-        }
-        .pagination {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .pagination a {
-            display: inline-block;
-            margin: 0 5px;
-            padding: 5px 10px;
-            border: 1px solid #ddd;
-            color: #333;
-            text-decoration: none;
-        }
-        .pagination a.active {
-            background-color: #142e4e;
-            color: white;
-        }
-    </style>
+
+
     <script>
         function goToPage() {
             var page = document.getElementById('pageInput').value;
@@ -63,8 +40,8 @@
 
             <div class="btnArea">
                 <form action="/notice/noticeList" method="get">
-                    <input type="text" name="keyword" placeholder="검색어 입력" value="${keyword}">
-                    <button type="submit">검색</button>
+                    <input type="text" title="키워드 입력" placeholder="검색어 입력" id="proTitleSel" name="keyword" value="${keyword}"/>
+                    <button type="submit" class="btn_search">검색</button>
                 </form>
             </div>
             <div class="tblData mt10">

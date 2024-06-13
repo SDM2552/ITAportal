@@ -19,6 +19,7 @@
         <if test="pgmName != null and pgmName != ''">
             AND p.pgm_Name LIKE CONCAT('%', #{pgmName}, '%')
         </if>
+        ORDER BY p.id_Pgm DESC
     </select>
 
 </mapper>

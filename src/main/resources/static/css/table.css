@@ -326,6 +326,9 @@
     text-align: center;
     line-height: 30px;
 }
+.delet {
+    color:#fff; background-color: darkred; border: none; width: 140px; height: 35px; font-size: 16px
+}
 .coment_form{display: flex; position:relative;padding-right:100px;}
 .coment_form p{font-size:15px;color:#e65151; display: inline-block;  margin-bottom: -15px;}
 .coment_form strong{font-weight:600}
@@ -522,4 +525,31 @@
 .redC {
     background-color: #e65151;
     margin-left: -3px;
+}
+/*search bar*/
+.btnArea {
+    position: relative;
+    text-align: right;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    left: -20px;
+}
+.btnArea button {
+    margin-left: 10px;
+}
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+.pagination a {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    color: #333;
+    text-decoration: none;
+}
+.pagination a.active {
+    background-color: #007bff;
+    color: white;
 }

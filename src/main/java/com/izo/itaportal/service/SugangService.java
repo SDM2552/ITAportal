@@ -25,12 +25,12 @@ public class SugangService {
         programs.forEach(this::checkSugangClosed);
         return programs;
     }
-private void checkSugangClosed(ProgramAllDto program) {
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    LocalDate endDate = LocalDate.parse(program.getSugangEndDt(), formatter);
-    boolean isClosed = LocalDate.now().isAfter(endDate);
-    program.setSugangClosed(isClosed);
-}
+    private void checkSugangClosed(ProgramAllDto program) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate endDate = LocalDate.parse(program.getSugangEndDt(), formatter);
+        boolean isClosed = LocalDate.now().isAfter(endDate);
+        program.setSugangClosed(isClosed);
+    }
     //수강신청 기간 지나면 신청 못하게 막는 기능
     public boolean isSugangClosed(int idProgram) {
         Optional<ProgramAllDto> programOptional = findProgramById(idProgram);

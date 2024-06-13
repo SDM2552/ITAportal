@@ -37,6 +37,12 @@
 
             <!-- 프로그램 목록 -->
             <h4 class="subTit">신청자 목록</h4>
+            <div class="btnArea">
+                <form action="#" method="get">
+                    <input type="text" title="키워드 입력" placeholder="신청자 검색" id="proTitleSel" name="keyword" value="${keyword}"/>
+                    <button type="submit" class="btn_search">검색</button>
+                </form>
+            </div>
             <div class="tblData mt10">
                 <table>
                     <colgroup>
