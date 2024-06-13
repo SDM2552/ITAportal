@@ -179,12 +179,12 @@
     <c:import url="../layout/footer.jsp" />
 </div>
 <script>
-    function idshcedChange(idSched, idPgm) {
+    function idshcedChange(schedNo, idPgm) {
         $.ajax({
             url: '/prof/getDaySched',
             type: 'POST',
             data: {
-                idSched: idSched,
+                schedNo: schedNo,
                 idPgm: idPgm
             },
             success: function(daySched) {

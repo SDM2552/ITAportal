@@ -24,7 +24,7 @@ public interface ScheduleRepository {
     //입력 및 수정
     public void upsertSchedule(Schedule schedule);
     //주차별 강의계획 단건 조회(By idSched)
-    public String selectScheduleByIdSched(int idPgm, int idSched);
+    public String selectScheduleBySchedNo(int idPgm, int schedNo);
     //주차별 강의일자 조회 (요일별)
     public List<Schedule> selectByDayOfWeek(String stDtStr, String endDtStr, int dayOfWeekValue);
 }
