@@ -1,5 +1,7 @@
 package com.izo.itaportal.entity;
 
+import lombok.Data;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,24 +10,17 @@ import javax.persistence.Id;
 //김봄이
 
 @Entity
+@Data
 public class Syllabus {
 
-    //프로그램 코드 (PK/FK)
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)    //프로그램 코드 (PK/FK)
     private int idPgm;
-    //프로그램 개요
-    private String course_overview;
-    //수업목표
-    private String objective;
-    //강의 방식
-    private String teaching;
-    //교재
-    private String book;
-    //평가 방식
-    private String evaluation;
-    //비고
-    private String remarks;
-    //강사번호
-    private int idProf;
+    private String courseOverview;    //프로그램 개요
+    private String objective;    //수업목표
+    private String teaching;    //강의 방식
+    private String book;    //교재
+    private String evaluation;    //평가 방식
+    private String remarks;    //비고
+    private int idProf;    //강사번호
 }

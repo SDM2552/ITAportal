@@ -107,60 +107,48 @@
                     <colgroup>
                         <col width="5%">
                         <col width="10%">
-                        <col width="5%">
-                        <col width="5%">
+                        <col width="10%">
                         <col width="*%">
                         <col width="10%">
-                        <col width="15%%">
+                        <col width="*%">
                     </colgroup>
                     <thead>
                         <th scope="col">수업주차</th>
                         <th scope="col">수업일자</th>
-                        <th scope="col">시작시간</th>
-                        <th scope="col">종료시간</th>
+                        <th scope="col">수업시간</th>
                         <th scope="col">수업내용</th>
                         <th scope="col">수업방법</th>
                         <th scope="col">비고</th>
                     </thead>
 
                     <tbody>
-                    <c:forEach var="schedules" items="${schedules}" >
-                    <tr>
-                        <td>
-                            <span><select id="idSched" name="idShced">
-                                    <c:forEach var="i" begin="1" end="${maxIdSched}">
-                                        <option value="${i}">${i}</option>
-                                    </c:forEach>
-                            </select></span>
-                        </td>
-                        <td>
-                            <span><input type="date" id="daySched" value="${programInfo.stDt}" min="${programInfo.stDt}" max="${programInfo.endDt}"></span>
-                        </td>
-                        <td>
-                            <span><input type="time" id="startSched" value="${schedules.startSched}" min="06:00:00" max="19:00:00"></span>
-                        </td>
-                        <td>
-                            <span><input type="time" id="endSched" value="${schedules.endSched}" min="07:00:00" max="20:00:00"></span>
-                        </td>
-                        <td>
-                            <span><textarea id="learningContents" rows="3" placeholder="수업 내용" >${schedules.learningContents}</textarea></span>
-                        </td>
-                        <td>
-                            <span><input type="text" id="learningDetail" placeholder="학습 방법" value="${schedules.learningDetail}"></span>
-                        </td>
-                        <td>
-                            <textarea id="note" rows="3" placeholder="기타 메모사항 입력" >${schedules.note}</textarea>
-                        </td>
-                        <input type="hidden" id="idProf" value="${syllabus.idProf}">
-                        <input type="hidden" id="idPgm" value="${programInfo.idPgm}">
-
-                    </tr>
+                    <c:forEach var="i" begin="1" end="${maxIdSched}">
+                        <tr>
+                            <td>
+                                <span class="schedNo">${i}</span>
+                            </td>
+                            <td>
+                                    <span class="daySched">${schedules[i-1].daySched}</span>
+                            </td>
+                            <td>
+                                <span class="startSched">${programInfo.pgmTime}</span>
+                            </td>
+                            <td>
+                                <span><textarea class="learningContents" rows="3" placeholder="수업 내용">${schedules[i-1].learningContents}</textarea></span>
+                            </td>
+                            <td>
+                                <span><input type="text" class="learningDetail" placeholder="학습 방법" value="${schedules[i-1].learningDetail}"></span>
+                            </td>
+                            <td>
+                                <textarea class="note" rows="3" placeholder="기타 메모사항 입력">${schedules[i-1].note}</textarea>
+                            </td>
+                            <input type="hidden" class="idProf" value="${syllabus.idProf}">
+                            <input type="hidden" class="idPgm" value="${programInfo.idPgm}">
+                        </tr>
                     </c:forEach>
                     </tbody>
                 </table>
-
-                <button onclick="add()">추가</button>
-                <button onclick="save()">저장</button>
+                <button onclick="save_onclick()">저장</button>
             </div>
 
 
@@ -175,43 +163,10 @@
 </div>
 
 <script>
-    function add(){
-        const lastRow = document.querySelector("#schedule tbody tr:last-child");
-        const lastDate = new Date(lastRow.querySelector("#daySched").value);
-        const newDate = new Date(lastDate.getTime() + (7 * 24 * 60 * 60 * 1000)); // 현재 날짜에 7일을 더함
-        const formattedDate = newDate.toISOString().split('T')[0]; // 날짜 형식을 YYYY-MM-DD로 변환
 
-        const newRow = document.createElement("tr");
-        const newRowHTML = `
-    <td>
-        <span><select id="idSched" name="idShced">
-           <c:forEach var="i" begin="1" end="${weeks}">
-              <option value="${i}">${i}</option>
-           </c:forEach>
-        </select></span>
-    </td>
-    <td>
-        <span><input type="date" id="daySched" value="${formattedDate}" min="${formattedDate}" max="${programInfo.endDt}"></span>
-    </td>
-    <td>
-        <span><input type="time" id="startSched" value="09:00:00" min="06:00:00" max="19:00:00"></span>
-    </td>
-    <td>
-        <span><input type="time" id="endSched" value="10:00:00" min="07:00:00" max="20:00:00"></span>
-    </td>
-    <td>
-        <span><textarea id="learningContents" rows="3" placeholder="수업 내용"></textarea></span>
-    </td>
-    <td>
-        <span><input type="text" id="learningDetail" placeholder="학습 방법" value=""></span>
-    </td>
-    <td>
-        <textarea id="note" rows="3" placeholder="기타 메모사항 입력"></textarea>
-    </td>
-    <input type="hidden" id="idPgm" value="${programInfo.idPgm}">
-    `;
-        newRow.innerHTML = newRowHTML;
-        document.getElementById("schedule").getElementsByTagName("tbody")[0].appendChild(newRow);
+    function save_onclick(){
+        if(!confirm("저장하시겠습니까?")) return;
+        save();
     }
 
     function save(){
@@ -219,17 +174,17 @@
         const schedules = [];
 
         document.querySelectorAll("#schedule tbody tr").forEach(row => {
-            const idSched = parseInt(row.querySelector("#idSched").value);
-            const idPgm = document.querySelector('.classForm input#idPgm').value;
-            const daySched = row.querySelector("#daySched").value;
-            const startSched = row.querySelector("#startSched").value;
-            const endSched = row.querySelector("#endSched").value;
-            const learningContents = row.querySelector("#learningContents").value;
-            const learningDetail = row.querySelector("#learningDetail").value;
-            const note = row.querySelector("#note").value;
+            const schedNo = parseInt(row.querySelector(".schedNo").innerText);
+            const idPgm = document.querySelector('input.idPgm').value;
+            const daySched = row.querySelector(".daySched").value;
+            const startSched = row.querySelector(".startSched").value;
+            const endSched = row.querySelector(".endSched").value;
+            const learningContents = row.querySelector(".learningContents").value;
+            const learningDetail = row.querySelector(".learningDetail").value;
+            const note = row.querySelector(".note").value;
 
             schedules.push({
-                idSched: idSched,
+                schedNo: schedNo,
                 idPgm: idPgm,
                 daySched: daySched,
                 startSched: startSched,

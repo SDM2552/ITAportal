@@ -5,9 +5,12 @@ import com.izo.itaportal.repository.ScheduleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -15,6 +18,7 @@ public class ScheduleService {
 
     @Autowired
     ScheduleRepository scheduleRepository;
+
     //날짜 형식 지정("YYYY-MM-DD")
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
@@ -31,10 +35,27 @@ public class ScheduleService {
         return weeksBetween;
     }
 
-    //주차별 강의계획서 입력
-    public void insertSchedule(Schedule schedule){
-        scheduleRepository.insertSchedule(schedule);
+    //강의요일별 날짜 계산
+    @Transactional
+    public void generateSchedulesForProgram(int idPgm, String stDtStr, String endDtStr, String pgmTime) {
+        LocalDate stDt = LocalDate.parse(stDtStr, DATE_FORMATTER);
+        LocalDate endDt = LocalDate.parse(endDtStr, DATE_FORMATTER);
+        DayOfWeek classDay = stDt.getDayOfWeek();
+
+        LocalDate currentDate = stDt;
+        while (!currentDate.isAfter(endDt)) {
+            if (currentDate.getDayOfWeek() == classDay) {
+                Schedule schedule = new Schedule();
+                schedule.setIdPgm(idPgm);
+                schedule.setDaySched(currentDate.format(DATE_FORMATTER));
+                schedule.setPgmTime(pgmTime);
+                scheduleRepository.saveAll(schedule);
+            }
+            currentDate = currentDate.plusDays(1);
+        }
     }
+
+
 
     //입력 및 수정
     public void upsertSchedule(List<Schedule> schedules){

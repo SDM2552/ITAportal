@@ -81,7 +81,7 @@
         WHERE p.id_pgm = #{idPgm};
     </select>
 
-    <insert id="insert">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="idPgm">
         insert into program (id_pgm,
                              id_cate,
                              id_prof,

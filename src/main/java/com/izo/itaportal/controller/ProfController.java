@@ -98,8 +98,9 @@ public class ProfController {
     //주차별 강의계획 입력 및 수정
     @PostMapping("schedule/input")
     @ResponseBody
-    public void upsertSchedule(@RequestBody final List<Schedule> schedules) {
+    public ResponseEntity<String> upsertSchedule(@RequestBody final List<Schedule> schedules) {
         scheduleService.upsertSchedule(schedules);
+        return ResponseEntity.ok("저장되었습니다.");
     }
 
     //휴보강신청 폼
