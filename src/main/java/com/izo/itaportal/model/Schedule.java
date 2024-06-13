@@ -7,20 +7,13 @@ import lombok.Data;
 @Data
 public class Schedule {
 
-    private int idSched;
-    //프로그램코드 (FK)
-    private int idPgm;
-    //수업일자
-    private String daySched;
-    //시작시간
-    private String startSched;
-    //종료시간
-    private String endSched;
-    //학습내용
-    private String learningContents;
-    //학습방법
-    private String learningDetail;
-    //비고
-    private String note;
+    private int idSched;    //PK
+    private int idPgm;    //프로그램코드 (FK)
+    private int schedNo;    //주차
+    private String daySched;   //수업일자
+    private String pgmTime; //수업시간
+    private String learningContents;    //학습내용
+    private String learningDetail;    //학습방법
+    private String note;    //비고
 
 }

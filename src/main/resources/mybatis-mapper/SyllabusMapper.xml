@@ -31,7 +31,7 @@
 
     <!-- 강의계획서 입력을 위한 program + classroom + category -->
     <select id="selectJoinPgmByidPgm" parameterType="integer" resultType="com.izo.itaportal.model.ProgramView">
-        SELECT id_pgm, cate_name, room_name, pgm_name, st_dt, end_dt, pgm_per, pgm_fee, id_prof
+        SELECT id_pgm, cate_name, room_name, pgm_name, st_dt, end_dt, pgm_per, pgm_fee, id_prof, pgm_time, pgm_day
         FROM program p
                  JOIN category c ON p.id_cate = c.id_cate
                  JOIN class_room r ON p.id_room = r.id_room

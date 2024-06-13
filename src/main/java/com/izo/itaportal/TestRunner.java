@@ -96,7 +96,7 @@ public class TestRunner implements ApplicationRunner{
             sqlStatements.add("INSERT INTO syllabus (id_pgm, course_overview, objective, teaching, book, evaluation, remarks, id_prof) VALUES (1, '임시데이터', '임시데이터', '온라인', '임시데이터', '임시데이터', '임시데이터', 2401)");
 
             //schedule
-            sqlStatements.add("INSERT INTO schedule (id_pgm, day_sched, start_sched, end_sched, learning_contents, learning_detail, note) VALUES (1, '2024-04-01', '09:00:00', '12:00:00', '관세선의 개념에 대해 이해한다.', '대면수업', '오티랑 함께 진행합니다~~!')");
+            sqlStatements.add("INSERT INTO schedule (sched_no, id_pgm, day_sched, learning_contents, learning_detail, note) VALUES (1, 1, '2024-03-01', '관세선의 개념에 대해 이해한다.', '대면수업', '오티랑 함께 진행합니다~~!')");
 
             //classroom
             sqlStatements.add("INSERT INTO class_room VALUES (1,'온라인 학습 관리 시스템(LMS)')");

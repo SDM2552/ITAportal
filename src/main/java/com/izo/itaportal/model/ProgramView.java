@@ -23,4 +23,6 @@ public class ProgramView {
     private String endDt;
     private String pgmPer;
     private String pgmFee;
+    private String pgmTime;
+    private String pgmDay;
 }

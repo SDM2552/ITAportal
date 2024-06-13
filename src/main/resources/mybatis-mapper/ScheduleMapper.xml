@@ -8,30 +8,37 @@
 
 <mapper namespace="com.izo.itaportal.repository.ScheduleRepository">
 
-    <!-- 주차별 강의계획 입력 -->
-    <insert id="insertSchedule" parameterType="com.izo.itaportal.model.Schedule">
-        INSERT INTO schedule (id_pgm, day_sched, start_sched, end_sched, learning_contents, learning_detail, note)
-        VALUES (#{idPgm}, #{daySched}, #{startSched}, #{endSched}, #{learningContents}, #{learningDetail}, #{note})
+    <!-- 주차별 강의계획 생성 -->
+<!--    <insert id="saveAll" parameterType="java.util.List">-->
+<!--        <foreach collection="list" item="schedule" separator=";">-->
+<!--            INSERT INTO schedule (id_pgm, day_sched, pgm_time, learning_contents, learning_detail, note)-->
+<!--            VALUES (-->
+<!--            #{schedule.idPgm},-->
+<!--            #{schedule.daySched},-->
+<!--            #{schedule.pgmTime},-->
+<!--            )-->
+<!--        </foreach>-->
+<!--    </insert>-->
+    <insert id="saveAll" parameterType="com.izo.itaportal.model.Schedule">
+        INSERT INTO schedule(id_pgm, day_sched, pgm_time) VALUES (#{idPgm}, #{daySched}, #{pgmTime})
     </insert>
 
     <!-- 주차별 강의계획 입력 또는 업데이트 -->
     <insert id="upsertSchedule" parameterType="com.izo.itaportal.model.Schedule">
-        INSERT INTO schedule (id_sched, id_pgm, day_sched, start_sched, end_sched, learning_contents, learning_detail, note)
+        INSERT INTO schedule (sched_no, id_pgm, day_sched, pgm_time, learning_contents, learning_detail, note)
         VALUES
             (
-                #{idSched},
+                #{schedNo},
                 #{idPgm},
                 #{daySched},
-                #{startSched},
-                #{endSched},
+                #{pgmTime},
                 #{learningContents},
                 #{learningDetail},
                 #{note}
             )
             ON DUPLICATE KEY UPDATE
                                  day_sched = VALUES(day_sched),
-                                 start_sched = VALUES(start_sched),
-                                 end_sched = VALUES(end_sched),
+                                 pgm_time = VALUES(pgm_time),
                                  learning_contents = VALUES(learning_contents),
                                  learning_detail = VALUES(learning_detail),
                                  note = VALUES(note);
@@ -52,6 +59,14 @@
     <!-- 주차별 강의계획서 조회(by idSched) -->
     <select id="selectScheduleByIdSched" parameterType="integer" resultType="String">
         SELECT day_sched FROM schedule WHERE id_pgm=#{idPgm} and id_sched=#{idSched}
+    </select>
+
+    <!-- 요일별 날짜 계산 -->
+    <select id="selectByDayOfWeek" parameterType="java.util.Map" resultType="com.izo.itaportal.model.Schedule">
+        SELECT id_sched, id_pgm, day_sched, pgm_time, learning_contents, learning_detail, note
+        FROM schedule
+        WHERE day_sched BETWEEN #{stDt} AND #{endDt}
+          AND DAYOFWEEK(day_sched) = #{dayOfWeek}
     </select>
 
 

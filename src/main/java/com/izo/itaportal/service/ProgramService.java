@@ -8,6 +8,7 @@ import com.izo.itaportal.repository.ProgramRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,8 @@ import java.util.List;
 public class ProgramService {
     @Autowired
     private ProgramRepository programRepository;
+    @Autowired
+    private ScheduleService scheduleService;
 
     public List<Program> getAllPrograms() {
         List<Program> programs = programRepository.selectProgram();
@@ -32,8 +35,14 @@ public class ProgramService {
         return programRepository.selectProgramDetail(idPgm);
     }
 
+    @Transactional
     public int insertProgram(Program program) {
         int insertProgram = programRepository.insert(program);
+        if (insertProgram > 0) {
+            int idPgm = program.getIdPgm();
+            scheduleService.generateSchedulesForProgram(idPgm, program.getStDt(), program.getEndDt(),
+                    program.getPgmTime());
+        }
         return insertProgram;
     }
 
