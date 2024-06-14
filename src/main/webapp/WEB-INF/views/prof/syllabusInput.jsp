@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <link rel="stylesheet" type="text/css" href="/css/table.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>샘플 페이지</title>
+    <title>강의계획서</title>
     <style>
 
         .classForm {
@@ -54,7 +54,7 @@
             <h3 class="pgTit"><a href="javascript:history.go(-1);" class="prev">이전</a>강의계획서</h3>
 
             <!-- 본문 -->
-            <h4 class="subTit">프로그램 정보</h4>
+            <h4 class="subTit">강의 정보</h4>
                 <!-- 강의 정보 테이블 -->
                     <table class="tblData mt10">
                         <colgroup>

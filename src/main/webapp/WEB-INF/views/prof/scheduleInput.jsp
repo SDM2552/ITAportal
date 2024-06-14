@@ -6,49 +6,24 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <script src="https://kit.fontawesome.com/93205cc57d.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="/css/common.css">
+    <link rel="stylesheet" type="text/css" href="/css/table.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>샘플 페이지</title>
     <style>
-        div#contents.eduIntroCont {
-            display: flex;
-            flex-direction: column;
+        .tblData textarea {
+            border: none;
+            resize: none;
+            display: block;
+            padding: 0;
+            margin: 0;
+            outline: none;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-        .classForm {
-            margin-top: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-        }
-        .classForm div {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .classForm label {
-            font-weight: bold;
-            margin-bottom: 5px;
+        .tblData td {
+            padding: 0;
+            align-items: center;
         }
     </style>
+    <title>강의계획서 - 주차별 계획 입력</title>
 </head>
 <body>
 <div class="wrap">
@@ -72,55 +47,52 @@
             <h3 class="pgTit">주차별 계획 입력</h3>
 
             <!-- 본문 -->
-                <!-- 강의 정보 테이블 -->
-                    <table>
-                        <colgroup>
-                            <col style="width: 20%;">
-                            <col style="width: 30%;">
-                            <col style="width: 20%;">
-                            <col style="width: 30%;">
-                        </colgroup>
-                        <h2>강의 정보</h2>
-                        <tbody>
-                        <tr>
-                            <th><label for="category">카테고리<br>(Category)</label></th>
-                            <td><div id="category">${programInfo.cateName}</div></td>
-                            <th><label for="pgmName">교과목명<br>(Program Title)</label></th>
-                            <td><div id="pgmName">${programInfo.pgmName}</div></td>
-                        </tr>
-                        <tr>
-                            <th><label for="classRoom">수업시간/강의실<br>(Class Time/Class Room)</label></th>
-                            <td><div id="classRoom">${programInfo.roomName}</div></td>
-                            <th><label for="programDuration">강의기간<br>(Program Duration)</label></th>
-                            <td><div id="programDuration">${programInfo.stDt}~${programInfo.endDt}</div></td>
-                        </tr>
-                        </tbody>
-                    </table>
+            <h4 class="subTit">강의 정보</h4>
+            <!-- 강의 정보 테이블 -->
+            <table class="tblData mt10">
+                <colgroup>
+                    <col style="width: 20%;">
+                    <col style="width: 30%;">
+                    <col style="width: 20%;">
+                    <col style="width: 30%;">
+                </colgroup>
 
-
+                <tbody>
+                <tr>
+                    <th><label for="category">카테고리<br>(Category)</label></th>
+                    <td><div id="category">${programInfo.cateName}</div></td>
+                    <th><label for="pgmName">교과목명<br>(Program Title)</label></th>
+                    <td><div id="pgmName">${programInfo.pgmName}</div></td>
+                </tr>
+                <tr>
+                    <th><label for="classRoom">수업시간/강의실<br>(Class Time/Class Room)</label></th>
+                    <td><div id="classRoom">${programInfo.roomName}</div></td>
+                    <th><label for="programDuration">강의기간<br>(Program Duration)</label></th>
+                    <td><div id="programDuration">${programInfo.stDt} ~ ${programInfo.endDt}</div></td>
+                </tr>
+                </tbody>
+            </table><br>
                 <!-- 강의 정보 입력 폼 -->
-            <div class="classForm">
-                <table id="schedule" >
-                    <caption>
-
-                    </caption>
+            <div class="tblData mt10" id="schedule">
+            <table>
                     <colgroup>
                         <col width="5%">
                         <col width="10%">
-                        <col width="10%">
-                        <col width="*%">
-                        <col width="10%">
-                        <col width="*%">
+                        <col width="15%">
+                        <col width="25%">
+                        <col width="25%">
+                        <col width="20%">
                     </colgroup>
                     <thead>
+                    <tr>
                         <th scope="col">수업주차</th>
                         <th scope="col">수업일자</th>
                         <th scope="col">수업시간</th>
                         <th scope="col">수업내용</th>
                         <th scope="col">수업방법</th>
                         <th scope="col">비고</th>
+                    </tr>
                     </thead>
-
                     <tbody>
                     <c:forEach var="i" begin="1" end="${maxIdSched}">
                         <tr>
@@ -128,16 +100,16 @@
                                 <span class="schedNo">${i}</span>
                             </td>
                             <td>
-                                    <span class="daySched">${schedules[i-1].daySched}</span>
+                                <span class="daySched">${schedules[i-1].daySched}</span>
                             </td>
                             <td>
                                 <span class="startSched">${programInfo.pgmTime}</span>
                             </td>
                             <td>
-                                <span><textarea class="learningContents" rows="3" placeholder="수업 내용">${schedules[i-1].learningContents}</textarea></span>
+                                <span><textarea class="learningContents" rows="3" placeholder="수업 내용 입력">${schedules[i-1].learningContents}</textarea></span>
                             </td>
                             <td>
-                                <span><input type="text" class="learningDetail" placeholder="학습 방법" value="${schedules[i-1].learningDetail}"></span>
+                                <span><textarea class="learningDetail" rows="3" placeholder="수업 방법 입력">${schedules[i-1].learningDetail}</textarea></span>
                             </td>
                             <td>
                                 <textarea class="note" rows="3" placeholder="기타 메모사항 입력">${schedules[i-1].note}</textarea>
@@ -148,9 +120,12 @@
                     </c:forEach>
                     </tbody>
                 </table>
-                <button onclick="save_onclick()">저장</button>
             </div>
-
+            <div class="btnArea">
+                <button type="button" class="btns btnSt01" onclick="save_onclick()" style="display: block; margin: 0 auto;">
+                    <span>저장</span>
+                </button>
+            </div>
 
 
             <!-- 본문 끝 -->
@@ -176,9 +151,8 @@
         document.querySelectorAll("#schedule tbody tr").forEach(row => {
             const schedNo = parseInt(row.querySelector(".schedNo").innerText);
             const idPgm = document.querySelector('input.idPgm').value;
-            const daySched = row.querySelector(".daySched").value;
-            const startSched = row.querySelector(".startSched").value;
-            const endSched = row.querySelector(".endSched").value;
+            const daySched = row.querySelector(".daySched").innerText;
+            const startSched = row.querySelector(".startSched").innerText;
             const learningContents = row.querySelector(".learningContents").value;
             const learningDetail = row.querySelector(".learningDetail").value;
             const note = row.querySelector(".note").value;
@@ -188,12 +162,11 @@
                 idPgm: idPgm,
                 daySched: daySched,
                 startSched: startSched,
-                endSched: endSched,
                 learningContents: learningContents,
                 learningDetail: learningDetail,
                 note: note
-            })
-        })
+            });
+        });
 
         $.ajax({
             url : `/prof/schedule/input`,

@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -98,10 +99,13 @@ public class ProfController {
     //주차별 강의계획 입력 및 수정
     @PostMapping("schedule/input")
     @ResponseBody
-    public ResponseEntity<String> upsertSchedule(@RequestBody final List<Schedule> schedules) {
+    public ResponseEntity<Map<String, String>> upsertSchedule(@RequestBody final List<Schedule> schedules) {
         scheduleService.upsertSchedule(schedules);
-        return ResponseEntity.ok("저장되었습니다.");
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "저장되었습니다.");
+        return ResponseEntity.ok(response);
     }
+
 
     //휴보강신청 폼
     @GetMapping("/request")

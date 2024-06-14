@@ -7,7 +7,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <script src="https://kit.fontawesome.com/93205cc57d.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="/css/common.css">
     <link rel="stylesheet" type="text/css" href="/css/table.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
@@ -74,8 +74,8 @@
                             <td>
                                 <c:choose>
                                     <c:when test="${sugang.status == '신청중'}">
-                                        <button type="button" onclick="sugangOk(${sugang.idPgm}, ${sugang.idStudent})">승인</button>
-                                        <button type="button" onclick="sugangNo(${sugang.idPgm}, ${sugang.idStudent})">거부</button>
+                                        <button type="button blueC" onclick="sugangOk(${sugang.idPgm}, ${sugang.idStudent})">승인</button>
+                                        <button type="button redC" onclick="sugangNo(${sugang.idPgm}, ${sugang.idStudent})">거부</button>
                                     </c:when>
                                     <c:otherwise>
                                         -
