@@ -122,8 +122,8 @@ public class ProfController {
 
     //주차별 강의계획서상 강의 날짜 조회
     @PostMapping("/getDaySched")
-    public ResponseEntity<String> getDayShced(@RequestParam int idSched, @RequestParam int idPgm){
-        String daySched = scheduleService.selectScheduleByIdSched(idPgm, idSched);
+    public ResponseEntity<String> getDayShced(@RequestParam int schedNo, @RequestParam int idPgm){
+        String daySched = scheduleService.selectScheduleBySchedNo(idPgm, schedNo);
         return ResponseEntity.ok(daySched);
     }
 
