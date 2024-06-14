@@ -83,7 +83,7 @@
         <img src="image/academy.jpg" alt="" class="mainImg">
         <div class="textOverlay">
             <p class="txt1">세계로 나아가는 인재를 키우는</p>
-            <p class="txt2">국제무역아카데미와 함께하세요</p>
+            <p class="txt2">국제무역아카데미</p>
         </div>
 
 
