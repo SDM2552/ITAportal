@@ -128,7 +128,7 @@
             <!-- btn -->
             <div class="btnArea">
                 <button type="submit" class="btns btnSt01" onclick="submitForm()">
-                    <span>생성</span>
+                    <span>신청</span>
                 </button>
                 <button type="button" class="btns btnSt02" onclick="history.back();">
                     <span>목록으로</span>
@@ -182,6 +182,19 @@
                             </c:forEach>
                         </c:otherwise>
                     </c:choose>
+                    <tbody>
+                        <c:forEach var="classReq" items="${classRequest}">
+                        <tr>
+                            <td>${classReq.pgmName}</td>
+                            <td>${classReq.classDate}</td>
+                            <td>${classReq.makeUpDate}</td>
+                            <td>${classReq.roomName}</td>
+                            <td>${classReq.remarks}</td>
+                            <td>${classReq.procDate}</td>
+                            <td><button onclick="cancelRequest(${classReq.idClassRequest})">취소</button></td>
+                        </tr>
+                        </c:forEach>
+                    </tbody>
                 </table>
             </div>
 
@@ -216,8 +229,11 @@
         });
     }
 
-    function submitForm(){
-        document.getElementById('classRequestForm').submit();
+    function submitForm() {
+        if (confirm('휴(보)강을 신청하시겠습니까?')) {
+            document.getElementById('classRequestForm').submit();
+            alert('신청되었습니다.');
+        }
     }
 
     function cancelRequest(idClassRequest) {
