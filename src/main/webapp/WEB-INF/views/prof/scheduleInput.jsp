@@ -88,7 +88,7 @@
                     </colgroup>
                     <thead>
                     <tr>
-                        <th scope="col">수업주차${maxIdSched}</th>
+                        <th scope="col">수업주차</th>
                         <th scope="col">수업일자</th>
                         <th scope="col">수업시간</th>
                         <th scope="col">수업내용</th>
