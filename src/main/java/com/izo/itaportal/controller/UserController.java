@@ -33,9 +33,9 @@ public class UserController {
     }
 
     @PostMapping("signUpCheck")
-    public String signUpCheck(SignUpRequest signUpRequest, String email01, String email2){
+    public String signUpCheck(SignUpRequest signUpRequest, String email01, String email02){
 
-           String email = email01+"@"+email2;
+        String email = email01 + "@" + email02;
         email = email.replace(",", "");
         signUpRequest.setEmail(email);
         // 회원가입 요청 처리
@@ -45,12 +45,12 @@ public class UserController {
             // 중복된 로그인 아이디가 있을 경우 처리 로직
             return "redirect:/user/signUp?error=duplicate";
         }
-//        if(signUpRequest.getRole().equals("stu")) {
-//            userService.insertStu(signUpRequest);
-//        } else if (signUpRequest.getRole().equals("prof")) {
-//            //교수일경우
-//            userService.insertProf(signUpRequest);
-//        }
+//    if(signUpRequest.getRole().equals("stu")) {
+//        userService.insertStu(signUpRequest);
+//    } else if (signUpRequest.getRole().equals("prof")) {
+//        //교수일경우
+//        userService.insertProf(signUpRequest);
+//    }
         return "member/signUpSuccess";
     }
 
