@@ -137,6 +137,27 @@
 </div>
 
 <script>
+    const idPgm = document.querySelector('.classForm input#idPgm').value;
+    const courseOverview = document.querySelector('.classForm textarea#courseOverview').value;
+    const objective = document.querySelector('.classForm textarea#objective').value;
+    const teaching = document.querySelector('.classForm select#teaching').value;
+    const book = document.querySelector('.classForm input#book').value;
+    const evaluation = document.querySelector('.classForm textarea#evaluation').value;
+    const remarks = document.querySelector('.classForm textarea#remarks').value;
+    const idProf = document.querySelector('.classForm input#idProf').value;
+
+    const params = {
+        idPgm: idPgm,
+        courseOverview: courseOverview,
+        objective: objective,
+        teaching: teaching,
+        book: book,
+        evaluation: evaluation,
+        remarks: remarks,
+        idProf: idProf,
+    }
+    console.log(params);
+
     function save(){
         if(confirm('저장하시겠습니까?')) {
             const idPgm = document.querySelector('.classForm input#idPgm').value;
@@ -167,7 +188,6 @@
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json',
                 data: JSON.stringify(params),
-                async: false,
                 success: function (response) {
                     alert('입력되었습니다.')
                 },

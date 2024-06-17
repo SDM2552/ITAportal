@@ -76,13 +76,17 @@ public class ProfController {
     // 강의계획서 입력 및 수정
     @PostMapping("/syllabus/input")
     @ResponseBody
-    public void insertSyllabus(@RequestBody final Syllabus params) {
+    public ResponseEntity<Map<String, String>> insertSyllabus(@RequestBody final Syllabus params) {
         Syllabus syllabus = syllabusService.selectSyllabus(params.getIdPgm());
         if (syllabus == null) {
             syllabusService.insertSyllabus(params);
         } else {
             syllabusService.updateSyllabus(params);
         }
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Success");
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     //주차별 강의계획 입력폼 (교육 기간을 이용해 주수 계산하여 전달)

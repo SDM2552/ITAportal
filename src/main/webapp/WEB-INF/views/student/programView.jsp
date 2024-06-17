@@ -63,8 +63,15 @@
                 </table>
             </div>
 
-            <h3 class="pgTit">강의계획서</h3>
-            <div class="tblData mt10" id="syllabus">
+            <div class="tab-name">
+                <ul>
+                    <li><a href="javascript:;" onclick="showTab('syllabus')" id="tab1" class="active">강의계획</a></li>
+                    <li><a href="javascript:;" onclick="showTab('schedule')" id="tab2">주차별계획</a></li>
+                </ul>
+            </div>
+
+            <div class="tblData mt10" id="syllabus" style="display: none;">
+                <h3 class="pgTit">강의계획서</h3>
                 <table>
                     <colgroup>
                         <col width="20%">
@@ -99,11 +106,11 @@
                 </table>
             </div>
 
-            <h3 class="pgTit">주차별 강의계획</h3>
-            <div class="tblData mt10" id="schedule">
+            <div class="tblData mt10" id="schedule" style="display: none;">
+                <h3 class="pgTit">주차별 강의계획</h3>
                 <table>
                     <colgroup>
-                        <col width="5%">
+                        <col width="10%">
                         <col width="15%">
                         <col width="15%">
                         <col width="25%">
@@ -152,13 +159,33 @@
             <button type="button" class="btns btnSt02" onclick="history.back();">
                 <span>목록으로</span>
             </button>
-            <button type="button" class="btns btnSt02">
-                <span>주차별 강의계획</span>
-            </button>
+
             </div>
         </div>
     </div>
     <c:import url="../layout/footer.jsp"/>
 </div>
+
+<script>
+
+    // 탭 클릭 시 테이블 활성화 함수
+    function showTab(tabId) {
+        // 모든 테이블 숨기기
+        document.getElementById('syllabus').style.display = 'none';
+        document.getElementById('schedule').style.display = 'none';
+
+        // 클릭된 탭에 따라 해당 테이블 보이기
+        if (tabId === 'syllabus') {
+            document.getElementById('syllabus').style.display = 'block';
+            document.getElementById('tab1').classList.add('active');
+            document.getElementById('tab2').classList.remove('active');
+        } else if (tabId === 'schedule') {
+            document.getElementById('schedule').style.display = 'block';
+            document.getElementById('tab1').classList.remove('active');
+            document.getElementById('tab2').classList.add('active');
+        }
+    }
+</script>
+
 </body>
 </html>

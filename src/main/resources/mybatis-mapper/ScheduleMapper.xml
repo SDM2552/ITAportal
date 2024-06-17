@@ -8,17 +8,6 @@
 
 <mapper namespace="com.izo.itaportal.repository.ScheduleRepository">
 
-    <!-- 주차별 강의계획 생성 -->
-<!--    <insert id="saveAll" parameterType="java.util.List">-->
-<!--        <foreach collection="list" item="schedule" separator=";">-->
-<!--            INSERT INTO schedule (id_pgm, day_sched, pgm_time, learning_contents, learning_detail, note)-->
-<!--            VALUES (-->
-<!--            #{schedule.idPgm},-->
-<!--            #{schedule.daySched},-->
-<!--            #{schedule.pgmTime},-->
-<!--            )-->
-<!--        </foreach>-->
-<!--    </insert>-->
     <insert id="saveAll" parameterType="com.izo.itaportal.model.Schedule">
         INSERT INTO schedule(id_pgm, day_sched, pgm_time) VALUES (#{idPgm}, #{daySched}, #{pgmTime})
     </insert>
