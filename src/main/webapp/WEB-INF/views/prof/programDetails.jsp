@@ -74,8 +74,6 @@
                             ${ProgramDetail.roomName}
                         </td>
                     </tr>
-
-
                     </tbody>
                 </table>
             </div>
@@ -103,11 +101,6 @@
     <c:import url="/WEB-INF/views/layout/footer.jsp" />
 </div>
 
-
-<script>
-
-
-</script>
 </body>
 
 </html>

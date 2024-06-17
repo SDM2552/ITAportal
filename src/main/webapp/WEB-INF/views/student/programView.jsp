@@ -60,15 +60,16 @@
             </div><br><br>
 
 
-            <div class="tab-name">
+            <div class="tab-name" style="width: 80%">
                 <ul>
                     <li><a href="javascript:;" onclick="showTab('syllabus')" id="tab1" class="active">강의계획</a></li>
                     <li><a href="javascript:;" onclick="showTab('schedule')" id="tab2">주차별계획</a></li>
                 </ul>
             </div>
 
-            <div class="tblData mt10" id="syllabus" style="display: none;">
-                <h3 class="pgTit">강의계획서</h3>
+            <div class="scheduleWapper" id="syllabus" style="display: none;">
+                <h4 class="subTit">강의계획서</h4>
+            <div class="tblData mt10">
                 <table>
                     <colgroup>
                         <col width="20%">
@@ -101,9 +102,11 @@
                     </tbody>
                 </table>
             </div>
+            </div>
 
-            <div class="tblData mt10" id="schedule" style="display: none;">
-                <h3 class="pgTit">주차별 강의계획</h3>
+            <div class="scheduleWapper" id="schedule" style="display: none;">
+                <h4 class="subTit">주차별 강의계획</h4>
+                <div class="tblData mt10">
                 <table>
                     <colgroup>
                         <col width="10%">
@@ -158,7 +161,7 @@
             </div>
         </div>
     </div>
-    <c:import url="../layout/footer.jsp"/>
+
 </div>
 
 <script>
@@ -181,6 +184,6 @@
         }
     }
 </script>
-
+        <c:import url="../layout/footer.jsp"/>
 </body>
 </html>
