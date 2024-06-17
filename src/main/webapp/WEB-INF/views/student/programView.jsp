@@ -59,38 +59,6 @@
                 </table>
             </div><br><br>
 
-                <h4 class="subTit">강의계획서</h4>
-                <!-- 강의 정보 테이블 -->
-                <table class="tblData mt10">
-                    <colgroup>
-                        <col style="width: 30%;">
-                        <col style="width: 70%;">
-                    </colgroup>
-
-                    <tbody>
-                    <tr>
-                        <th><label for="category">강의 개요</label></th>
-                        <td><div id="category">${syllabus.courseOverview}</div></td>
-                    </tr>
-                    <tr>
-                        <th><label for="pgmName">교재 및 참고자료</label></th>
-                        <td><div id="pgmName">${syllabus.book}</div></td>
-                    </tr>
-                    <tr>
-                        <th><label for="objective">수업 목표</label></th>
-                        <td><div id="objective">${syllabus.objective}</div></td>
-                    </tr>
-                    <tr>
-                        <th><label for="evaluation">평가 방법</label></th>
-                        <td><div id="evaluation">${syllabus.evaluation}</div></td>
-                    </tr>
-                    <tr>
-                        <th><label for="remarks">비고</label></th>
-                        <td><div id="remarks">${syllabus.remarks}</div></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
 
             <h3 class="pgTit">강의계획서</h3>
             <div class="tblData mt10" id="syllabus">

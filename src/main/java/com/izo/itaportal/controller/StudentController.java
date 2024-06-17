@@ -33,8 +33,6 @@ public class StudentController {
     @Autowired
     HttpSession session;
     @Autowired
-    SyllabusService syllabusService;
-    @Autowired
     ScheduleService scheduleService;
 
     @GetMapping("/myProgram") //수강중인 강의 조회 페이지
