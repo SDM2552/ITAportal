@@ -30,7 +30,7 @@
             <h3 class="pgTit">회원 가입</h3>
 
             <!-- 본문 -->
-            <form action="signUpCheck" method="post" onsubmit="return validateForm();">
+            <form action="signUpCheck" method="post" onsubmit="return validateAndSubmit();">
                 <div class="tblForm inputForm mt10">
                     <table>
                         <colgroup>
@@ -54,6 +54,7 @@
                                        style="width:180px;ime-mode:disabled;" title="아이디 입력">
                                 <label for="m_szId"><a href="javascript:DupWebIdCheck();" class="tbtns rs-mt5"
                                                        title="중복확인">중복확인</a></label>
+                                <div id="idMessage" style="display: none; color: red; margin-top: 5px;"></div>
                             </td>
                         </tr>
                         <tr>
@@ -166,6 +167,8 @@
                     </button>
                 </div>
                 <!-- btn -->
+                <div id="duplicatePopup" style="display:none; position: absolute; top: 50px; left: 50%; transform: translateX(-50%); background-color: white; padding: 10px; border: 1px solid gray; z-index: 999;">
+                </div>
             </form>
 
             <script>
@@ -225,26 +228,53 @@
                 });
 
                 // 중복 확인 버튼 클릭 시 실행되는 함수
-                function DupWebIdCheck() {
+                function DupWebIdCheck(callback) {
                     var loginId = document.getElementById("m_szId").value;
                     if (loginId.trim() === "") {
                         alert("아이디를 입력해주세요.");
+                        if (callback) callback(false);  // 중복 확인 실패 콜백 호출
                         return;
                     }
                     $.ajax({
                         type: "GET",
                         url: "checkDuplicateId?loginId=" + loginId,
                         success: function (response) {
+                            var idMessage = document.getElementById("idMessage");
                             if (response === "duplicate") {
-                                alert("이미 사용 중인 아이디입니다.");
+                                idMessage.textContent = "이미 사용 중인 아이디입니다.";
+                                idMessage.style.color = "red";
+                                idMessage.style.display = "block";
+                                if (callback) callback(false);  // 중복 확인 실패 콜백 호출
                             } else {
-                                alert("사용 가능한 아이디입니다.");
+                                idMessage.textContent = "사용 가능한 아이디입니다.";
+                                idMessage.style.color = "green";
+                                idMessage.style.display = "block";
+                                if (callback) callback(true);  // 중복 확인 성공 콜백 호출
                             }
                         },
                         error: function () {
                             alert("서버 오류가 발생했습니다.");
+                            if (callback) callback(false);  // 서버 오류 콜백 호출
                         }
                     });
+                }
+
+                function validateAndSubmit() {
+                    // 클라이언트 측 유효성 검사 로직 추가 (예: 비밀번호 확인 등)
+                    if (!validateForm()) {
+                        return false;
+                    }
+
+                    // 중복 확인 함수 호출 후 폼 제출 여부 결정
+                    DupWebIdCheck(function(isValid) {
+                        if (isValid) {
+                            document.querySelector('form').submit(); // 중복 아이디가 아닌 경우, 폼 제출
+                        } else {
+                            alert('아이디 중복을 확인해주세요.'); // 중복 아이디인 경우, 경고 메시지
+                        }
+                    });
+
+                    return false; // 비동기 중복 확인을 기다리기 위해 폼 제출을 일단 막음
                 }
 
                 // 이메일 옵션 변경 시 실행되는 함수
