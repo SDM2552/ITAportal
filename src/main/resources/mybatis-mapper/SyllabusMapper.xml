@@ -19,8 +19,8 @@
 
     <!-- 강의계획서 입력 -->
     <insert id="insertSyllabus" parameterType="com.izo.itaportal.model.Syllabus">
-        INSERT INTO syllabus (course_overview, objective, teaching, book, evaluation, remarks, id_prof)
-        VALUES (#{courseOverview}, #{objective}, #{teaching}, #{book}, #{evaluation}, #{remarks}, #{idProf})
+        INSERT INTO syllabus (id_pgm, course_overview, objective, teaching, book, evaluation, remarks, id_prof)
+        VALUES (#{idPgm}, #{courseOverview}, #{objective}, #{teaching}, #{book}, #{evaluation}, #{remarks}, #{idProf})
     </insert>
 
     <!-- 강의계획서 수정 -->

@@ -61,8 +61,44 @@
                     </tr>
                     </tbody>
                 </table>
-
             </div>
+
+            <h3 class="pgTit">강의계획서</h3>
+            <div class="tblData mt10" id="syllabus">
+                <table>
+                    <colgroup>
+                        <col width="20%">
+                        <col width="30%">
+                        <col width="20%">
+                        <col width="30%">
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                        <th scope="col">강의방식</th>
+                        <td>${syllabus.teaching}</td>
+                        <th scope="col">교재 및 참고자료</th>
+                        <td>${syllabus.book}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">교과목 개요</th>
+                        <td colspan="3">${syllabus.courseOverview}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">수업 목표</th>
+                        <td colspan="3">${syllabus.objective}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">평가 방법</th>
+                        <td colspan="3">${syllabus.evaluation}</td>
+                    </tr>                    <tr>
+                        <th scope="col">비고</th>
+                        <td colspan="3">${syllabus.remarks}</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
             <div class="btnArea">
             <button type="button" class="btns btnSt02" onclick="history.back();">
                 <span>목록으로</span>

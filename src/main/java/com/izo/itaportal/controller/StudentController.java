@@ -4,14 +4,8 @@ import com.izo.itaportal.dto.ExamDetailDto;
 import com.izo.itaportal.dto.ExamListDto;
 import com.izo.itaportal.dto.ProgramAllDto;
 import com.izo.itaportal.dto.SugangDto;
-import com.izo.itaportal.model.Exam;
-import com.izo.itaportal.model.ExamSubmission;
-import com.izo.itaportal.model.File;
-import com.izo.itaportal.model.LoginResponse;
-import com.izo.itaportal.service.ExamService;
-import com.izo.itaportal.service.ExamSubmissionService;
-import com.izo.itaportal.service.FileService;
-import com.izo.itaportal.service.StudentService;
+import com.izo.itaportal.model.*;
+import com.izo.itaportal.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,6 +30,8 @@ public class StudentController {
     ExamSubmissionService examSubmissionService;
     @Autowired
     HttpSession session;
+    @Autowired
+    SyllabusService syllabusService;
 
     @GetMapping("/myProgram") //수강중인 강의 조회 페이지
     public String myProgram(Model model){
@@ -112,7 +108,10 @@ public String grade(){
     @GetMapping("/programView/{id}")
     public String programView(@PathVariable int id, Model model) {
         ProgramAllDto program = studentService.getProgramById(id);
+        Syllabus syllabus = syllabusService.selectSyllabus(program.getIdPgm());
+        System.out.println(syllabus);
         model.addAttribute("program", program);
+        model.addAttribute("syllabus", syllabus);
         return "student/programView";
     }
 

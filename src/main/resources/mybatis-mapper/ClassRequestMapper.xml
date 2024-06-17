@@ -31,6 +31,7 @@
     </update>
 
     <!-- 휴보강신청 내역 불러오기 -->
+    <!-- 6/17 작동안함ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ -->
     <select id="selectClassRequest" parameterType="integer" resultType="com.izo.itaportal.model.ClassRequest">
         SELECT
             cr.id_class_request,

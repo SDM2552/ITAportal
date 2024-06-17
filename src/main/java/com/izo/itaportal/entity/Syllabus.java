@@ -14,7 +14,6 @@ import javax.persistence.Id;
 public class Syllabus {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)    //프로그램 코드 (PK/FK)
     private int idPgm;
     private String courseOverview;    //프로그램 개요
     private String objective;    //수업목표
