@@ -38,5 +38,21 @@
         WHERE p.id_pgm=#{idPgm}
     </select>
 
+    <select id="selectSyllabusListByProfessor" parameterType="int" resultType="com.izo.itaportal.dto.SyllabusListDto">
+        SELECT
+            p.id_pgm AS idPgm,
+            p.id_prof AS idProf,
+            c.cate_name AS cateName,
+            p.pgm_name AS pgmName
+        FROM
+            program p
+                JOIN
+            category c ON p.id_cate = c.id_cate
+                JOIN
+            professor pr ON p.id_prof = pr.id_prof
+        WHERE
+            p.id_prof = #{idProf};
+    </select>
+
 
 </mapper>

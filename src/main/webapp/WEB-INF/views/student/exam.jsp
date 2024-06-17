@@ -55,7 +55,14 @@
                         <td>${exam.startDate}</td>
                         <td>${exam.endDate}</td>
                         <td>${exam.status}</td>
-                        <td><button class="s1" onclick="location.href='/stu/examSubmit?idExam=${exam.idExam}'">상세보기</button></td>
+                        <td> <c:choose>
+                            <c:when test="${not empty exam.examStatus}">
+                                <button class="s1" disabled>제출완료</button>
+                            </c:when>
+                            <c:otherwise>
+                                <button class="s1" onclick="location.href='/stu/examSubmit?idExam=${exam.idExam}'">상세보기</button>
+                            </c:otherwise>
+                        </c:choose></td>
                     </tr>
                     </c:forEach>
                     </tbody>

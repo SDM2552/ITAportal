@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page import="java.text.SimpleDateFormat, java.util.Date" %>
+
+<%
+    // 현재 날짜 가져오기
+    Date now = new Date();
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    String formattedDate = sdf.format(now);
+%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -103,7 +112,7 @@
                     </tr>
                     <tr>
                         <th scope="col">신청 일시</th>
-                        <td>
+                        <td><%= formattedDate %>
                         </td>
                         <th scope="col">진행 상태</th>
                         <td>
@@ -153,19 +162,26 @@
                         <th scope="col">신청취소</th>
                     </tr>
                     </thead>
-                    <tbody>
-                        <c:forEach var="classReq" items="${classRequest}">
-                        <tr>
-                            <td>${classReq.pgmName}</td>
-                            <td>${classReq.classDate}</td>
-                            <td>${classReq.makeUpDate}</td>
-                            <td>${classReq.roomName}</td>
-                            <td>${classReq.remarks}</td>
-                            <td></td>
-                            <td><button onclick="cancelRequest(${classReq.idClassRequest})">취소</button></td>
-                        </tr>
-                        </c:forEach>
-                    </tbody>
+                    <c:choose>
+                        <c:when test="${empty classRequest}">
+                            <tr>
+                                <td colspan="7" style="text-align: center;">휴보강 이력이 없습니다</td>
+                            </tr>
+                        </c:when>
+                        <c:otherwise>
+                            <c:forEach var="classReq" items="${classRequest}">
+                                <tr>
+                                    <td>${classReq.pgmName}</td>
+                                    <td>${classReq.classDate}</td>
+                                    <td>${classReq.makeUpDate}</td>
+                                    <td>${classReq.roomName}</td>
+                                    <td>${classReq.remarks}</td>
+                                    <td></td>
+                                    <td><button onclick="cancelRequest(${classReq.idClassRequest})">취소</button></td>
+                                </tr>
+                            </c:forEach>
+                        </c:otherwise>
+                    </c:choose>
                 </table>
             </div>
 

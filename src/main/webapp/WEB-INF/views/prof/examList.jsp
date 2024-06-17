@@ -34,6 +34,13 @@
             <h4 class="subTit">과제 현황</h4>
             <div class="tblData mt10">
                 <table>
+                    <col width="15%">
+                    <col width="15%">
+                    <col width="8%">
+                    <col width="8%">
+                    <col width="8%">
+                    <col width="8%">
+                    <col width="7%">
                     <thead>
                     <tr>
                         <th scope="col">과목</th>
@@ -49,12 +56,12 @@
                     <c:forEach var="exam" items="${ExamList}">
                     <tr>
                         <td>${exam.programName}</td>
-                        <td>${exam.name}</td>
+                        <td><a href="/prof/examDetail?idExam=${exam.idExam}">${exam.name}</a></td>
                         <td>${exam.startDate}</td>
                         <td>${exam.endDate}</td>
                         <td>${exam.count}/${exam.numOfStu} 명</td>
                         <td>${exam.status}</td>
-                        <td><button onclick="location.href='/prof/examDetail?idExam=${exam.idExam}'">상세정보</button></td>
+                        <td><button class="s1" onclick="location.href='/prof/examDetail?idExam=${exam.idExam}'">상세정보</button></td>
                     </tr>
                     </c:forEach>
                     </tbody>

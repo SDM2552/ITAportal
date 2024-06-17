@@ -803,29 +803,32 @@ body {
     color: white;
 }
 .s1 {
-    position:relative;
-    display:inline-block;
-    min-width:50px;
-    height:40px;
-    line-height:38px;
-    padding:0 10px;
-    letter-spacing:-.2px;
-    font-size:14px;
-    text-align:center;
-    vertical-align:top;
-    box-sizing:border-box;
-    color:#fff;
-    border:1px solid #fff;
-    background:rgb(1,100,156)
+    position: relative;
+    display: inline-block;
+    min-width: 50px;
+    height: 30px;
+    padding: 0 10px;
+    letter-spacing: -0.2px;
+    font-size: 14px;
+    text-align: center;
+    vertical-align: top;
+    box-sizing: border-box;
+    color: #fff;
+    background: rgb(1, 100, 156);
 }
+
 .s1 a {
     color: #fff;
     text-decoration: none;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 100%;
     width: 100%;
-    line-height: 38px;
-    background:rgb(1,100,156)
+    background: rgb(1, 100, 156);
+}
+.s1:disabled {
+    background: #ccc;
 }
 
 /* 기본 탭 토글메뉴 */

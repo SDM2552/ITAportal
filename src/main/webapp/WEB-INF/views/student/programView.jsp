@@ -102,6 +102,11 @@
                     </tbody>
                 </table>
             </div>
+                <div class="btnArea">
+                    <button type="button" class="btns btnSt02" onclick="history.back();">
+                        <span>목록으로</span>
+                    </button>
+                </div>
             </div>
 
             <div class="scheduleWapper" id="schedule" style="display: none;">
@@ -157,7 +162,6 @@
             <button type="button" class="btns btnSt02" onclick="history.back();">
                 <span>목록으로</span>
             </button>
-
             </div>
         </div>
     </div>

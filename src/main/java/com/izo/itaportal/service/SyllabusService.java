@@ -1,10 +1,13 @@
 package com.izo.itaportal.service;
 
+import com.izo.itaportal.dto.SyllabusListDto;
 import com.izo.itaportal.model.ProgramView;
 import com.izo.itaportal.model.Syllabus;
 import com.izo.itaportal.repository.SyllabusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * 강의계획서 CRUD
@@ -36,6 +39,11 @@ public class SyllabusService {
     //강의계획서 수정
     public void updateSyllabus(Syllabus syllabus){
         syllabusRepository.updateSyllabus(syllabus);
+    }
+
+    //강의계획서 목록
+    public List<SyllabusListDto> getSyllabusListByProfessor(int idProf) {
+        return syllabusRepository.selectSyllabusListByProfessor(idProf);
     }
 
 }

@@ -75,7 +75,8 @@
             e.id_Prof AS idProf,
             p.pgm_Name AS programName,
             p.num_of_stu AS numOfStu,
-            pr.name AS profName
+            pr.name AS profName,
+            es.exam_status AS examStatus
         FROM
             exam e
                 JOIN
@@ -84,6 +85,8 @@
             program p ON e.id_Program = p.id_Pgm
                 JOIN
             professor pr ON e.id_Prof = pr.id_Prof
+                LEFT JOIN
+            exam_submission es ON e.id_Exam = es.id_exam AND a.id_Student = es.id_student
         WHERE
             a.id_Student = #{idStudent}
     </select>

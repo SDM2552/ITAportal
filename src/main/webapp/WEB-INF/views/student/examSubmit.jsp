@@ -33,68 +33,55 @@
 
             <!-- 본문 -->
             <h4 class="subTit">과제 제출</h4>
-            <form method="post" enctype="multipart/form-data" action="/stu/submitExam" onsubmit="return validateFile()">
+            <form id="submitExamForm" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="idExam" value="${examDetail.idExam}"/>
                 <input type="hidden" name="idProgram" value="${examDetail.idPgm}"/>
-            <div class="tblData mt10">
-                <table>
-                    <colgroup>
-                        <col width="20%">
-                        <col width="30%">
-                        <col width="20%">
-                        <col width="30%">
-                    </colgroup>
-                    <tbody>
-                    <tr>
-                        <th scope="col">프로그램</th>
-                        <td>
-                            ${examDetail.programName}
-                        </td>
-                        <th scope="col">담당 강사</th>
-                        <td>
-                            ${examDetail.profName}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="col">과제</th>
-                        <td colspan="3">
-                            ${examDetail.name}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="col">과제 내용</th>
-                        <td colspan="3">
-                            ${examDetail.description}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="col">제출 기한</th>
-                        <td>
-                            ${examDetail.startDate} ~ ${examDetail.endDate}
-                        </td>
-                        <th scope="col">파일 첨부</th>
-                        <td>
-                            <div class="fileBox">
-                                <input type="file" id="examFile" name="examFile" onchange="validateFile()">
-                                <div id="fileSizeDisplay"></div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            <!-- btn -->
-            <div class="btnArea">
-                <button type="submit" class="btns btnSt01">
-                    <span>제출</span>
-                </button>
-                <button type="button" class="btns btnSt02" onclick="history.back();">
-                    <span>취소</span>
-                </button>
-            </div>
+                <div class="tblData mt10">
+                    <table>
+                        <colgroup>
+                            <col width="20%">
+                            <col width="30%">
+                            <col width="20%">
+                            <col width="30%">
+                        </colgroup>
+                        <tbody>
+                        <tr>
+                            <th scope="col">프로그램</th>
+                            <td>${examDetail.programName}</td>
+                            <th scope="col">담당 강사</th>
+                            <td>${examDetail.profName}</td>
+                        </tr>
+                        <tr>
+                            <th scope="col">과제</th>
+                            <td colspan="3">${examDetail.name}</td>
+                        </tr>
+                        <tr>
+                            <th scope="col">과제 내용</th>
+                            <td colspan="3">${examDetail.description}</td>
+                        </tr>
+                        <tr>
+                            <th scope="col">제출 기한</th>
+                            <td>${examDetail.startDate} ~ ${examDetail.endDate}</td>
+                            <th scope="col">파일 첨부</th>
+                            <td>
+                                <div class="fileBox">
+                                    <input type="file" id="examFile" name="examFile" onchange="validateFile()">
+                                    <div id="fileSizeDisplay"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- btn -->
+                <div class="btnArea">
+                    <button type="submit" class="btns btnSt01">
+                        <span>제출</span>
+                    </button>
+                    <button type="button" class="btns btnSt02" onclick="history.back();">
+                        <span>취소</span>
+                    </button>
+                </div>
             </form>
             <!-- btn -->
             <!-- 본문 끝 -->
@@ -140,6 +127,33 @@
         }
         return true;
     }
+
+    $(document).ready(function () {
+        $('#submitExamForm').submit(function (event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            if (!validateFile()) {
+                return false;
+            }
+
+            const formData = new FormData(this);
+
+            $.ajax({
+                url: '/stu/submitExam',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    alert('과제가 제출되었습니다.');
+                    window.location.href = '/stu/exam';
+                },
+                error: function (error) {
+                    alert('과제 제출에 실패하였습니다. 다시 시도해주세요.');
+                }
+            });
+        });
+    });
 </script>
 </body>
 
