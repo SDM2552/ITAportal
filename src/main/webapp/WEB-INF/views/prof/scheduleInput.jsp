@@ -72,11 +72,14 @@
                 </tr>
                 </tbody>
             </table><br>
+
+            <button class="s1" onclick="syllabusInput()">강의계획서 입력</button>
+
                 <!-- 강의 정보 입력 폼 -->
-            <div class="tblData mt10" id="schedule">
+            <div class="schedule tblData mt10" id="schedule">
             <table>
                     <colgroup>
-                        <col width="5%">
+                        <col width="10%">
                         <col width="15%">
                         <col width="15%">
                         <col width="25%">
@@ -85,7 +88,7 @@
                     </colgroup>
                     <thead>
                     <tr>
-                        <th scope="col">수업주차</th>
+                        <th scope="col">수업주차${maxIdSched}</th>
                         <th scope="col">수업일자</th>
                         <th scope="col">수업시간</th>
                         <th scope="col">수업내용</th>
@@ -121,6 +124,7 @@
                     </tbody>
                 </table>
             </div>
+
             <div class="btnArea">
                 <button type="button" class="btns btnSt01" onclick="save_onclick()" style="display: block; margin: 0 auto;">
                     <span>저장</span>
@@ -138,6 +142,11 @@
 </div>
 
 <script>
+    function syllabusInput(){
+        const idPgm = document.querySelector('input.idPgm').value;
+        console.log(idPgm);
+        window.location.href = '/prof/syllabus?idPgm=' + idPgm; // 프로그램 ID를 가지고 페이지 이동
+    }
 
     function save_onclick(){
         if(!confirm("저장하시겠습니까?")) return;

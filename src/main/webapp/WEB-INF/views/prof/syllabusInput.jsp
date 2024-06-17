@@ -91,6 +91,7 @@
                         <div>
                             <label for="teaching">강의방식</label>
                             <select id="teaching">
+                                <option value="" selected disabled hidden>선택</option>
                                 <option value="offline">오프라인</option>
                                 <option value="online">온라인</option>
                             </select>

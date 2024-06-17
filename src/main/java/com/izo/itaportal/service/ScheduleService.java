@@ -29,7 +29,7 @@ public class ScheduleService {
         long daysBetween = ChronoUnit.DAYS.between(stDt, endDt);
         System.out.println(daysBetween);
         long weeksBetween = daysBetween / 7;
-        if (daysBetween % 7 != 0){
+        if (daysBetween % 7 == 0){
             weeksBetween++;
         }
         return weeksBetween;
@@ -59,8 +59,8 @@ public class ScheduleService {
     //입력 및 수정
     public void upsertSchedule(List<Schedule> schedules){
         for(Schedule schedule : schedules){
-            Integer maxIdSched = scheduleRepository.selectMaxIdSchedByIdPgm(schedule.getIdPgm());
-            schedule.setIdSched((maxIdSched == null ? 1 : maxIdSched + 1));
+            Integer maxSched = scheduleRepository.selectMaxSchedNoByIdPgm(schedule.getIdPgm());
+            schedule.setSchedNo(maxSched == null ? 1 : maxSched + 1);
             scheduleRepository.upsertSchedule(schedule);
         }
     }

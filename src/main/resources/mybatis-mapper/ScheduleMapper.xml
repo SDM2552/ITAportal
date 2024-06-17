@@ -37,8 +37,8 @@
     </insert>
 
     <!-- idPgm별 최대 idSched값 -->
-    <select id="selectMaxIdSchedByIdPgm" resultType="Integer">
-        SELECT count(id_sched)
+    <select id="selectMaxSchedNoByIdPgm" resultType="Integer">
+        SELECT count(sched_no)
         FROM schedule
         WHERE id_pgm = #{idPgm}
     </select>
