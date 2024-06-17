@@ -814,7 +814,6 @@ body {
     box-sizing:border-box;
     color:#fff;
     border:1px solid #fff;
-<<<<<<< HEAD
     background:rgb(1,100,156)
 }
 .s1 a {
@@ -825,7 +824,6 @@ body {
     width: 100%;
     line-height: 38px;
 }
-=======
     background:rgb(1,100,156)}
 
 /* 기본 탭 토글메뉴 */
@@ -883,4 +881,3 @@ body {
     padding: 8px;
     text-align: center;
 }
->>>>>>> bomi

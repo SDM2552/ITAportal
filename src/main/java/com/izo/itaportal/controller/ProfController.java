@@ -89,7 +89,7 @@ public class ProfController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    //주차별 강의계획 입력폼 (교육 기간을 이용해 주수 계산하여 전달)
+    //주차별 강의계획 입력폼
     @GetMapping("/schedule")
     public String schedule(@RequestParam("idPgm") int idPgm, Model model) {
         ProgramView programInfo = syllabusService.selectJoinPgmByidPgm(idPgm);
