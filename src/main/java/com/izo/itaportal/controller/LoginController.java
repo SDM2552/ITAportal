@@ -45,10 +45,6 @@ public class LoginController {
     public String showLoginPage() {
         return "member/loginPage";
     }
-    @GetMapping("/loginPage2")
-    public String showLoginPage2() {
-        return "loginPage2";
-    }
 
     @PostMapping("/loginPage-login")
     @Transactional

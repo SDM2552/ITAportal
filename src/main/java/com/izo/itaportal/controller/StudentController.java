@@ -8,10 +8,7 @@ import com.izo.itaportal.model.Exam;
 import com.izo.itaportal.model.ExamSubmission;
 import com.izo.itaportal.model.File;
 import com.izo.itaportal.model.LoginResponse;
-import com.izo.itaportal.service.ExamService;
-import com.izo.itaportal.service.ExamSubmissionService;
-import com.izo.itaportal.service.FileService;
-import com.izo.itaportal.service.StudentService;
+import com.izo.itaportal.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,6 +31,8 @@ public class StudentController {
     FileService fileService;
     @Autowired
     ExamSubmissionService examSubmissionService;
+    @Autowired
+    SyllabusService syllabusService;
     @Autowired
     HttpSession session;
 
@@ -112,6 +111,8 @@ public String grade(){
     @GetMapping("/programView/{id}")
     public String programView(@PathVariable int id, Model model) {
         ProgramAllDto program = studentService.getProgramById(id);
+        int idPgm = program.getIdPgm();
+        model.addAttribute("syllabus", syllabusService.selectSyllabus(idPgm));
         model.addAttribute("program", program);
         return "student/programView";
     }

@@ -98,13 +98,6 @@ public class UserService {
         return userRepository.getLoginIdById(idUser);
     }
 
-    //중복 가입 체크
-//    private void validateDuplicateUser(User user){
-//        User findUser = userRepository.findByLoginId(user.getLoginId());
-//        if(findUser != null){
-//            throw new IllegalStateException("이미 가입된 회원입니다.");
-//        }
-//    }
     // 찾기-로그인아이디,로그인비밀번호
     public String findLoginIdByNameAndEmail(String name, String email) {
         return userRepository.findLoginIdByNameAndEmail(name, email);

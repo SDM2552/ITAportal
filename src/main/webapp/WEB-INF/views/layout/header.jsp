@@ -37,10 +37,10 @@
                     <c:when test="${sessionScope.loginUser.role eq 'stu'}">
                     <!-- 학생 -->
                         <li>
-                            <a href="/user/info">MY</a>
+                            <a href="/user/info" class="logincheck">MY</a>
                         </li>
                         <li>
-                            <a href="/stu/myProgram">수업</a>
+                            <a href="/stu/myProgram" class="logincheck">수업</a>
                         </li>
                         <li>
                             <a href="/program/list">수강 신청</a>
@@ -52,10 +52,10 @@
                     <c:when test="${sessionScope.loginUser.role eq 'prof'}">
                     <!-- 강사 -->
                         <li>
-                            <a href="/user/info">MY</a>
+                            <a href="/user/info" class="logincheck">MY</a>
                         </li>
                         <li>
-                            <a href="/prof/list">강의 관리</a>
+                            <a href="/prof/list" class="logincheck">강의 관리</a>
                         </li>
                         <li>
                             <a href="/notice/noticeList">커뮤니티</a>
@@ -64,13 +64,13 @@
                     <c:when test="${sessionScope.loginUser.role eq 'admin'}">
                     <!-- 관리자 -->
                         <li>
-                            <a href="/user/info">MY</a>
+                            <a href="/user/info" class="logincheck">MY</a>
                         </li>
                         <li>
-                            <a href="/adminProgram">강의 관리</a>
+                            <a href="/adminProgram" class="logincheck">강의 관리</a>
                         </li>
                         <li>
-                            <a href="/admin/studentList">회원 관리</a>
+                            <a href="/admin/studentList" class="logincheck">회원 관리</a>
                         </li>
                         <li>
                             <a href="/notice/noticeList">커뮤니티</a>
@@ -79,10 +79,11 @@
                     <c:otherwise>
                     <!-- 비회원 -->
                         <li>
-                            <a href="#">MY</a>
+                            <a href="/my" class="logincheck">MY</a>
                         </li>
                         <li>
-                            <a href="#">수업</a>
+                            <a href="/classes" class="logincheck">수업</a>
+                        </li>
                         <li>
                             <a href="/program/list">수강 신청</a>
                         </li>

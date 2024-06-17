@@ -2,7 +2,7 @@
 
 /* 버튼 스타일 */
 .button {
-    background-color: #007bff;
+    background-color: #123867;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -52,26 +52,26 @@
     margin: 0 5px;
     padding: 10px 15px;
     text-decoration: none;
-    color: #007bff;
+    color: #123867;
     border: 1px solid #ddd;
     border-radius: 5px;
 }
 
 .pagination a.active {
-    background-color: #007bff;
+    background-color: #123867;
     color: white;
-    border: 1px solid #007bff;
+    border: 1px solid #123867;
 }
 
 .pagination a:hover {
-    background-color: #0056b3;
+    background-color: #123867;
     color: white;
 }
 
 
 /* 링크 스타일 */
 .link {
-    color: #007bff;
+    color: #123867;
     text-decoration: none;
 }
 

@@ -9,7 +9,8 @@
     <link rel="stylesheet" type="text/css" href="/css/common.css">
     <link rel="stylesheet" type="text/css" href="/css/table.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>프로그램 검색</title>
+    <script src="/js/checkSession.js" defer></script>
+    <title>수강 신청</title>
 </head>
 <body>
 <div class="wrap">
@@ -79,7 +80,7 @@
                                         <button type="button" disabled>마감</button>
                                     </c:when>
                                     <c:otherwise>
-                                        <button type="button" class="s1 loginChecker" onclick="applyProgram(${program.idPgm});">수강신청</button>
+                                        <button type="button" class="s1 logincheck" onclick="applyProgram(${program.idPgm});">수강신청</button>
                                     </c:otherwise>
                                 </c:choose>
                             </td>
@@ -132,14 +133,15 @@
             if (program.sugangClosed) {
                 row += '<button type="button" disabled>마감</button>';
             } else {
-                row += '<button type="button" class="s1 loginChecker" onclick="applyProgram(' + program.idPgm + ');">수강신청</button>';
+                row += '<button type="button" class="s1 logincheck" onclick="applyProgram(' + program.idPgm + ', event);">수강신청</button>';
             }
             row += '</td></tr>';
             tbody.append(row);
         });
     }
 
-    function applyProgram(programId) {
+    function applyProgram(programId, event) {
+        event.preventDefault();
         window.location.href = '/program/applyForm?id=' + programId;
     }
 </script>

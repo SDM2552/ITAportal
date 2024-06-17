@@ -14,6 +14,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
@@ -21,11 +23,6 @@ import javax.servlet.http.HttpSession;
 public class UserController {
 
     private final UserService userService;
-
-//    @GetMapping("signUp1")
-//    public String signUpSun(){
-//        return "member/signUpSun";
-//    }
 
     @GetMapping("signUp")
     public String signUp(){
@@ -45,12 +42,6 @@ public class UserController {
             // 중복된 로그인 아이디가 있을 경우 처리 로직
             return "redirect:/user/signUp?error=duplicate";
         }
-//        if(signUpRequest.getRole().equals("stu")) {
-//            userService.insertStu(signUpRequest);
-//        } else if (signUpRequest.getRole().equals("prof")) {
-//            //교수일경우
-//            userService.insertProf(signUpRequest);
-//        }
         return "member/signUpSuccess";
     }
 

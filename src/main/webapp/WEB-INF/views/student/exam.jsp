@@ -55,7 +55,7 @@
                         <td>${exam.startDate}</td>
                         <td>${exam.endDate}</td>
                         <td>${exam.status}</td>
-                        <td><button onclick="location.href='/stu/examSubmit?idExam=${exam.idExam}'">상세보기</button></td>
+                        <td><button class="s1" onclick="location.href='/stu/examSubmit?idExam=${exam.idExam}'">상세보기</button></td>
                     </tr>
                     </c:forEach>
                     </tbody>

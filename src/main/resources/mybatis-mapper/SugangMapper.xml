@@ -164,8 +164,8 @@
           AND id_student = #{idStudent}
     </update>
     <insert id="createAttendance">
-        INSERT INTO attendance (id_pgm, id_student, att_stat, late_stat, abs_stat)
-        VALUES (#{idPgm}, #{idStudent}, 0, 0, 0)
+        INSERT INTO attendance (id_pgm, id_student, att_stat, late_stat, abs_stat, exam_score)
+        VALUES (#{idPgm}, #{idStudent}, 0, 0, 0, '-1')
     </insert>
     <update id="updateNumOfStu">
         UPDATE program

@@ -72,7 +72,7 @@
                                     </td>
                                     <td>${sugang.roomName}</td>
                                     <td>
-                                        <button><a href="/stu/programView/${sugang.idPgm}">보기</a></button>
+                                        <button class="s1"><a href="/stu/programView/${sugang.idPgm}">보기</a></button>
                                     </td>
                                 </tr>
                             </c:forEach>

@@ -80,7 +80,7 @@
                         </tbody>
                     </table>
 
-            <button onclick="scheduleInput()">주차별 강의계획 입력</button>
+            <button class="s1" onclick="scheduleInput()">주차별 강의계획 입력</button>
                 <!-- 강의 정보 입력 폼 -->
 
                     <div class="classForm tblData mt10">
@@ -91,8 +91,8 @@
                         <div>
                             <label for="teaching">강의방식</label>
                             <select id="teaching">
-                                <option value="online">온라인</option>
                                 <option value="offline">오프라인</option>
+                                <option value="online">온라인</option>
                             </select>
                         </div>
                         <div>
@@ -100,7 +100,7 @@
                             <input type="text" id="book" placeholder="교재 및 참고 자료 입력" value="${syllabus.book}">
                         </div>
                         <div>
-                            <label for="courseOverview">교과목 개요:</label>
+                            <label for="courseOverview">강의 개요:</label>
                             <textarea id="courseOverview" rows="5" placeholder="강의 개요 입력" >${syllabus.courseOverview}</textarea>
                         </div>
                         <div>

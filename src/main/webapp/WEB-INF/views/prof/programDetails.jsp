@@ -79,7 +79,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="btnArea">
+            <div class="btnArea" style="text-align: center;">
                 <button class="btns btnSt01" onclick="window.location.href='/prof/syllabus?idPgm=${ProgramDetail.idPgm}'">
                     강의계획서
                 </button>
