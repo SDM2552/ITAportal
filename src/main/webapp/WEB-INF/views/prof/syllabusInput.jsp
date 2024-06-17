@@ -118,12 +118,13 @@
                         </div>
                         <input type="hidden" id="idProf" value="${programInfo.idProf}">
                         <input type="hidden" id="idPgm" value="${programInfo.idPgm}">
+                    </div>
                         <div class="btnArea">
                             <button type="button" class="btns btnSt01" onclick="save()" style="display: block; margin: 0 auto;">
                                 <span>저장</span>
                             </button>
                         </div>
-                    </div>
+
 
 
 

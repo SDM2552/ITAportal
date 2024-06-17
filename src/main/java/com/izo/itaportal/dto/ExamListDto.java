@@ -13,6 +13,7 @@ public class ExamListDto {
     private String startDate; //시험시작일
     private String endDate; //시험마감일
     private String status; //진행상태
+    private String examStatus; //학생제출상태
     private int numOfStu; //수강인원
     private int count; //제출인원
     private int idProf;

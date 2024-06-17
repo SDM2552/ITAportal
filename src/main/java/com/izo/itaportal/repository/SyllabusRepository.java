@@ -7,9 +7,13 @@ package com.izo.itaportal.repository;
  * @author 김봄이
  */
 
+import com.izo.itaportal.dto.SyllabusListDto;
 import com.izo.itaportal.model.ProgramView;
 import com.izo.itaportal.model.Syllabus;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 @Mapper
 public interface SyllabusRepository {
@@ -21,5 +25,7 @@ public interface SyllabusRepository {
     public void updateSyllabus(Syllabus syllabus);
     //프로그램 정보(카테고리 + 강의실)
     public ProgramView selectJoinPgmByidPgm(int idPgm);
+
+    public List<SyllabusListDto> selectSyllabusListByProfessor(@Param("idProf") int idProf);
 
 }

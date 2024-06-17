@@ -77,7 +77,7 @@
                             <td>
                                 <c:choose>
                                     <c:when test="${program.sugangClosed}">
-                                        <button type="button" disabled>마감</button>
+                                        <button type="button" class="s1" disabled>마감</button>
                                     </c:when>
                                     <c:otherwise>
                                         <button type="button" class="s1 logincheck" onclick="applyProgram(${program.idPgm});">수강신청</button>

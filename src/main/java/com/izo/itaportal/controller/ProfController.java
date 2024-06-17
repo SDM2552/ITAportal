@@ -63,6 +63,15 @@ public class ProfController {
         model.addAttribute("ProgramDetail", programAllDto);
         return "prof/programDetails";
     }
+    // 전체 강의계획서 리스트
+    @GetMapping("/syllabusList")
+    public String syllabusList(Model model){
+        LoginResponse loginUser = (LoginResponse) session.getAttribute("loginUser");
+        int idProf = loginUser.getCommonId();
+        List<SyllabusListDto> syllabusList = syllabusService.getSyllabusListByProfessor(idProf);
+        model.addAttribute("syllabusList", syllabusList);
+        return "prof/syllabusList";
+    }
 
     // 강의계획서 입력폼
     @GetMapping("/syllabus")
@@ -108,7 +117,15 @@ public class ProfController {
         response.put("message", "저장되었습니다.");
         return ResponseEntity.ok(response);
     }
-
+    //휴보강신청을 위한 강의리스트 페이지
+    @GetMapping("/scheduleList")
+    public String scheduleList(Model model) {
+        LoginResponse loginUser = (LoginResponse) session.getAttribute("loginUser");
+        int idProf = loginUser.getCommonId();
+        List<ProgramAllDto> pgms = professorService.selectAllPgmForProf(idProf);
+        model.addAttribute("pgms", pgms);
+        return "prof/scheduleList";
+    }
 
     //휴보강신청 폼
     @GetMapping("/request")
