@@ -9,68 +9,7 @@
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <style>
-        @font-face {
-            font-family: 'BlackHanSans';
-            src: url('../font/BlackHanSans-Regular.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-        }
-        .mainArea {
-            position: relative;
-        }
-
-        .textOverlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start; /* 텍스트를 위로 정렬 */
-            padding-top: 50px; /* 필요에 따라 패딩 조정 */
-            color: white; /* 텍스트 색상 */
-            text-align: center;
-            opacity: 0; /* 초기 상태를 투명하게 설정 */
-            animation: fadeIn 1s ease-in-out forwards; /* 애니메이션 적용 */
-            animation-delay: 0.5s; /* 애니메이션 딜레이 추가 */
-            pointer-events: none; /* 오버레이 요소가 클릭 이벤트를 받지 않도록 함 */
-        }
-
-        .textOverlay p {
-            margin: 10px 0; /* 필요에 따라 조정 */
-            font-size: 3em; /* 필요에 따라 조정 */
-            font-family: 'BlackHanSans', serif; /* 폰트 적용 */
-            text-shadow:
-                    1px 1px 2px rgba(0, 0, 0, 0.8),  /* 기본 그림자 */
-                    2px 2px 4px rgba(0, 0, 0, 0.6),  /* 추가 그림자 */
-                    3px 3px 8px rgba(0, 0, 0, 0.4);  /* 더 멀리 있는 그림자 */
-            opacity: 0; /* 초기 상태를 투명하게 설정 */
-            animation: fadeIn 1s ease-in-out forwards; /* 애니메이션 적용 */
-        }
-
-        .textOverlay .txt1 {
-            animation-delay: 0s; /* 첫 번째 텍스트 애니메이션 딜레이 */
-        }
-
-        .textOverlay .txt2 {
-            animation-delay: 1.5s; /* 두 번째 텍스트 애니메이션 딜레이 */
-        }
-
-        /* 스르륵 나타나는 애니메이션 정의 */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
+    <script src="/js/checkSession.js" defer></script>
     <title>국제무역아카데미 포털</title>
 </head>
 <body>

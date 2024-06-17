@@ -4,12 +4,12 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>공지사항 목록</title>
+    <title>공지사항</title>
     <script src="https://kit.fontawesome.com/93205cc57d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="../css/common.css">
     <link rel="stylesheet" type="text/css" href="../css/table.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+    <script src="/js/checkSession.js" defer></script>
 
     <script>
         function goToPage() {

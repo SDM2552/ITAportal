@@ -4,7 +4,7 @@
     <div class="lnbArea">
         <ul>
             <li><a href="/program/list">수강신청</a></li>
-            <li><a href="/stu/program">수강 내역 조회</a></li>
+            <li><a href="/stu/program" class="logincheck">수강 내역 조회</a></li>
         </ul>
     </div>
 </div>

@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="/css/common.css">
     <link rel="stylesheet" type="text/css" href="/css/table.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/checkSession.js" defer></script>
     <title>공지사항 상세보기</title>
 </head>
 <body>

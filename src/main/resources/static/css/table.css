@@ -519,7 +519,7 @@
     cursor: pointer;
 }
 .blueC {
-    background-color: #007bff;
+    background-color: rgb(1,125,195);
     margin-right: -3px;
 }
 .redC {
@@ -550,6 +550,6 @@
     text-decoration: none;
 }
 .pagination a.active {
-    background-color: #007bff;
+    background-color: #123867;
     color: white;
 }

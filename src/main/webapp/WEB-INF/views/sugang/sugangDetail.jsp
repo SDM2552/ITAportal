@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="/css/common.css">
     <link rel="stylesheet" type="text/css" href="/css/table.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>샘플 페이지</title>
+    <title>수강 신청</title>
 </head>
 <body>
 <div class="wrap">
@@ -165,6 +165,7 @@
     <c:import url="../layout/footer.jsp" />
 </div>
 <script>
+
     function applyEnrollment(commonId, idPgm, idCate, pgmName) {
         if (confirm(pgmName + " 강의를 수강신청하시겠습니까?")) {
             $.ajax({

@@ -814,4 +814,13 @@ body {
     box-sizing:border-box;
     color:#fff;
     border:1px solid #fff;
-    background:rgb(1,100,156)}
+    background:rgb(1,100,156)
+}
+.s1 a {
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    line-height: 38px;
+}

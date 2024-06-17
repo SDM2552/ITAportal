@@ -29,6 +29,8 @@ public class StudentController {
     @Autowired
     ExamSubmissionService examSubmissionService;
     @Autowired
+    SyllabusService syllabusService;
+    @Autowired
     HttpSession session;
     @Autowired
     SyllabusService syllabusService;
