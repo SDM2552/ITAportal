@@ -814,7 +814,6 @@ body {
     box-sizing:border-box;
     color:#fff;
     border:1px solid #fff;
-<<<<<<< HEAD
     background:rgb(1,100,156)
 }
 .s1 a {
@@ -824,9 +823,8 @@ body {
     height: 100%;
     width: 100%;
     line-height: 38px;
+    background:rgb(1,100,156)
 }
-=======
-    background:rgb(1,100,156)}
 
 /* 기본 탭 토글메뉴 */
 .tab-name {
@@ -871,16 +869,5 @@ body {
     margin-right: 5px;
 }
 
-/* 테이블 스타일 */
-.tblData {
-    border-collapse: collapse;
-    width: 100%;
-    margin-top: 10px;
-}
 
-.tblData th, .tblData td {
-    border: 1px solid #ccc;
-    padding: 8px;
-    text-align: center;
-}
->>>>>>> bomi
+

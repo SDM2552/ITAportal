@@ -74,8 +74,8 @@
                             <td>
                                 <c:choose>
                                     <c:when test="${sugang.status == '신청중'}">
-                                        <button type="button blueC" onclick="sugangOk(${sugang.idPgm}, ${sugang.idStudent})">승인</button>
-                                        <button type="button redC" onclick="sugangNo(${sugang.idPgm}, ${sugang.idStudent})">거부</button>
+                                        <button type="button" class="miniBtn blueC" style="margin-right: 1px" onclick="sugangOk(${sugang.idPgm}, ${sugang.idStudent})">승인</button>
+                                        <button type="button" class="miniBtn redC" style="margin-left: 1px" onclick="sugangNo(${sugang.idPgm}, ${sugang.idStudent})">거부</button>
                                     </c:when>
                                     <c:otherwise>
                                         -
