@@ -99,11 +99,63 @@
                 </table>
             </div>
 
+            <h3 class="pgTit">주차별 강의계획</h3>
+            <div class="tblData mt10" id="schedule">
+                <table>
+                    <colgroup>
+                        <col width="5%">
+                        <col width="15%">
+                        <col width="15%">
+                        <col width="25%">
+                        <col width="25%">
+                        <col width="20%">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th scope="col">수업주차</th>
+                        <th scope="col">수업일자</th>
+                        <th scope="col">수업시간</th>
+                        <th scope="col">수업내용</th>
+                        <th scope="col">수업방법</th>
+                        <th scope="col">비고</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="schedule" items="#{schedules}">
+                        <tr>
+                            <td>
+                                <span class="schedNo">${schedule.schedNo}</span>
+                            </td>
+                            <td>
+                                <span class="daySched">${schedule.daySched}</span>
+                            </td>
+                            <td>
+                                <span class="pgmTime">${schedule.pgmTime}</span>
+                            </td>
+                            <td>
+                                <span class="learningContents">${schedule.learningContents}</span>
+                            </td>
+                            <td>
+                                <span class="learningDetail">${schedule.learningDetail}</span>
+                            </td>
+                            <td>
+                                <span class="note">${schedule.note}</span>
+                            </td>
+                            <input type="hidden" class="idSched" value="${schedule.idSched}">
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+
             <div class="btnArea">
             <button type="button" class="btns btnSt02" onclick="history.back();">
                 <span>목록으로</span>
             </button>
-        </div>
+            <button type="button" class="btns btnSt02">
+                <span>주차별 강의계획</span>
+            </button>
+            </div>
         </div>
     </div>
     <c:import url="../layout/footer.jsp"/>

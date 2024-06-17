@@ -32,6 +32,8 @@ public class StudentController {
     HttpSession session;
     @Autowired
     SyllabusService syllabusService;
+    @Autowired
+    ScheduleService scheduleService;
 
     @GetMapping("/myProgram") //수강중인 강의 조회 페이지
     public String myProgram(Model model){
@@ -109,9 +111,10 @@ public String grade(){
     public String programView(@PathVariable int id, Model model) {
         ProgramAllDto program = studentService.getProgramById(id);
         Syllabus syllabus = syllabusService.selectSyllabus(program.getIdPgm());
-        System.out.println(syllabus);
+        List<Schedule> schedules = scheduleService.selectAllSchedule(program.getIdPgm());
         model.addAttribute("program", program);
         model.addAttribute("syllabus", syllabus);
+        model.addAttribute("schedules", schedules);
         return "student/programView";
     }
 
