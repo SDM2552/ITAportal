@@ -77,7 +77,7 @@
             <table>
                     <colgroup>
                         <col width="5%">
-                        <col width="10%">
+                        <col width="15%">
                         <col width="15%">
                         <col width="25%">
                         <col width="25%">
@@ -103,7 +103,7 @@
                                 <span class="daySched">${schedules[i-1].daySched}</span>
                             </td>
                             <td>
-                                <span class="startSched">${programInfo.pgmTime}</span>
+                                <span class="pgmTime">${programInfo.pgmTime}</span>
                             </td>
                             <td>
                                 <span><textarea class="learningContents" rows="3" placeholder="수업 내용 입력">${schedules[i-1].learningContents}</textarea></span>
@@ -114,7 +114,7 @@
                             <td>
                                 <textarea class="note" rows="3" placeholder="기타 메모사항 입력">${schedules[i-1].note}</textarea>
                             </td>
-                            <input type="hidden" class="idProf" value="${syllabus.idProf}">
+                            <input type="hidden" class="idSched" value="${schedules[i-1].idSched}">
                             <input type="hidden" class="idPgm" value="${programInfo.idPgm}">
                         </tr>
                     </c:forEach>
@@ -149,24 +149,28 @@
         const schedules = [];
 
         document.querySelectorAll("#schedule tbody tr").forEach(row => {
+            const idSched = document.querySelector('input.idSched').value;
             const schedNo = parseInt(row.querySelector(".schedNo").innerText);
             const idPgm = document.querySelector('input.idPgm').value;
             const daySched = row.querySelector(".daySched").innerText;
-            const startSched = row.querySelector(".startSched").innerText;
+            const pgmTime = row.querySelector(".pgmTime").innerText;
             const learningContents = row.querySelector(".learningContents").value;
             const learningDetail = row.querySelector(".learningDetail").value;
             const note = row.querySelector(".note").value;
 
             schedules.push({
+                idSched: idSched,
                 schedNo: schedNo,
                 idPgm: idPgm,
                 daySched: daySched,
-                startSched: startSched,
+                pgmTime: pgmTime,
                 learningContents: learningContents,
                 learningDetail: learningDetail,
                 note: note
             });
         });
+
+        console.log(schedules);
 
         $.ajax({
             url : `/prof/schedule/input`,

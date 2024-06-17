@@ -67,7 +67,7 @@
                     <tbody class="mid">
                     <tr>
                         <th scope="col">강의 주차</th>
-                        <td><select id="idSched" name="idShced" onchange="idshcedChange(this.value, ${programInfo.idPgm})">
+                        <td><select id="schedNo" name="schedNo" onchange="idshcedChange(this.value, ${programInfo.idPgm})">
                             <option value="" selected disabled hidden>선택</option>
                             <c:forEach var="i" begin="1" end="${maxIdSched}">
                                 <option value="${i}">${i}</option>
@@ -161,8 +161,8 @@
                             <td>${classReq.makeUpDate}</td>
                             <td>${classReq.roomName}</td>
                             <td>${classReq.remarks}</td>
-                            <td>1</td>
-                            <td>1</td>
+                            <td></td>
+                            <td><button onclick="cancelRequest(${classReq.idClassRequest})">취소</button></td>
                         </tr>
                         </c:forEach>
                     </tbody>
@@ -204,6 +204,22 @@
         document.getElementById('classRequestForm').submit();
     }
 
+    function cancelRequest(idClassRequest) {
+        if (confirm('신청을 취소하시겠습니까?')) {
+            // $.ajax({
+            //     url: '/request/cancel',
+            //     type: 'POST',
+            //     data: { id: id },
+            //     success: function(response) {
+            //         alert('신청이 취소되었습니다.');
+            //         location.reload();
+            //     },
+            //     error: function(error) {
+            //         alert('신청 취소 중 오류가 발생했습니다.');
+            //     }
+            // });
+        }
+    }
 
 
 </script>

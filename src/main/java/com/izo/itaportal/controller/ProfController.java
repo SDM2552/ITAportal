@@ -76,14 +76,13 @@ public class ProfController {
     // 강의계획서 입력 및 수정
     @PostMapping("/syllabus/input")
     @ResponseBody
-    public Syllabus insertSyllabus(@RequestBody final Syllabus params) {
+    public void insertSyllabus(@RequestBody final Syllabus params) {
         Syllabus syllabus = syllabusService.selectSyllabus(params.getIdPgm());
         if (syllabus == null) {
             syllabusService.insertSyllabus(params);
         } else {
             syllabusService.updateSyllabus(params);
         }
-        return syllabus;
     }
 
     //주차별 강의계획 입력폼 (교육 기간을 이용해 주수 계산하여 전달)
@@ -113,9 +112,10 @@ public class ProfController {
         ProgramView programInfo = syllabusService.selectJoinPgmByidPgm(idPgm);
         long maxIdSched = scheduleService.calculateWeekBetween(programInfo.getStDt(),programInfo.getEndDt());
         List<ClassRoom> classRooms = classRoomService.getAllClassRoom();
+        List<ClassRequest> classRequest = professorService.selectClassRequest(idPgm);
         model.addAttribute("programInfo",programInfo);
         model.addAttribute("maxIdSched",maxIdSched);
-        model.addAttribute("classRequest", professorService.selectClassRequest(idPgm));
+        model.addAttribute("classRequest", classRequest);
         model.addAttribute("classRoom", classRooms);
         return "prof/requestProg";
     }
