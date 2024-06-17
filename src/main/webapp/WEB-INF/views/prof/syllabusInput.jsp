@@ -83,7 +83,7 @@
             <button class="s1" onclick="scheduleInput()">주차별 강의계획 입력</button>
                 <!-- 강의 정보 입력 폼 -->
 
-                    <div class="classForm tblData mt10">
+                    <div class="classForm tblData mt10" id="classForm">
                         <div>
                             <label for="lectureName">강의명:</label>
                             <input type="text" id="lectureName" value="${programInfo.pgmName}" readonly>
@@ -115,7 +115,7 @@
                             <label for="remarks">비고</label>
                             <textarea id="remarks" rows="3" placeholder="기타 메모사항 입력" >${syllabus.remarks}</textarea>
                         </div>
-                        <input type="hidden" id="idProf" value="${syllabus.idProf}">
+                        <input type="hidden" id="idProf" value="${programInfo.idProf}">
                         <input type="hidden" id="idPgm" value="${programInfo.idPgm}">
                         <div class="btnArea">
                             <button type="button" class="btns btnSt01" onclick="save()" style="display: block; margin: 0 auto;">
@@ -138,47 +138,58 @@
 
 <script>
     function save(){
-        const idPgm = document.querySelector('.classForm input#idPgm').value;
-        const courseOverview = document.querySelector('.classForm textarea#courseOverview').value;
-        const objective = document.querySelector('.classForm textarea#objective').value;
-        const teaching = document.querySelector('.classForm select#teaching').value;
-        const book = document.querySelector('.classForm input#book').value;
-        const evaluation = document.querySelector('.classForm textarea#evaluation').value;
-        const remarks = document.querySelector('.classForm textarea#remarks').value;
-        const idProf = document.querySelector('.classForm input#idProf').value;
+        if(confirm('저장하시겠습니까?')) {
+            const idPgm = document.querySelector('.classForm input#idPgm').value;
+            const courseOverview = document.querySelector('.classForm textarea#courseOverview').value;
+            const objective = document.querySelector('.classForm textarea#objective').value;
+            const teaching = document.querySelector('.classForm select#teaching').value;
+            const book = document.querySelector('.classForm input#book').value;
+            const evaluation = document.querySelector('.classForm textarea#evaluation').value;
+            const remarks = document.querySelector('.classForm textarea#remarks').value;
+            const idProf = document.querySelector('.classForm input#idProf').value;
 
-        const params = {
-            idPgm : idPgm,
-            courseOverview : courseOverview,
-            objective : objective,
-            teaching : teaching,
-            book : book,
-            evaluation : evaluation,
-            remarks : remarks,
-            idProf : idProf,
-        }
-
-        console.log(params);
-
-        $.ajax({
-            url : `/prof/syllabus/input`,
-            type : 'post',
-            contentType : 'application/json; charset=utf-8',
-            dataType : 'json',
-            data : JSON.stringify(params),
-            async : false,
-            success : function (response) {
-                alert('입력되었습니다.')
-            },
-            error : function (request, status, error) {
-                console.log(error)
+            const params = {
+                idPgm: idPgm,
+                courseOverview: courseOverview,
+                objective: objective,
+                teaching: teaching,
+                book: book,
+                evaluation: evaluation,
+                remarks: remarks,
+                idProf: idProf,
             }
-        });
+
+            console.log(params);
+
+            $.ajax({
+                url: `/prof/syllabus/input`,
+                type: 'post',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                data: JSON.stringify(params),
+                async: false,
+                success: function (response) {
+                    alert('입력되었습니다.')
+                },
+                error: function (request, status, error) {
+                    console.log(error)
+                }
+            });
+        }
     }
 
     function scheduleInput(){
             const idPgm = document.querySelector('.classForm input#idPgm').value;
             window.location.href = '/prof/schedule?idPgm=' + idPgm; // 프로그램 ID를 가지고 페이지 이동
+    }
+
+    function countingLength(courseOverview) {
+        if (courseOverview.value.length > 300) {
+            alert('교과목 개요는 300자 이하로 입력해 주세요.');
+            courseOverview.value = courseOverview.value.substring(0, 300); //300자 만큼의 문자열 추출
+            courseOverview.focus();
+        }
+        document.getElementById('counter').innerText = courseOverview.value.length + '/300자';
     }
 </script>
 </body>

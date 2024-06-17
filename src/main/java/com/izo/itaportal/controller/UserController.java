@@ -30,9 +30,9 @@ public class UserController {
     }
 
     @PostMapping("signUpCheck")
-    public String signUpCheck(SignUpRequest signUpRequest, String email01, String email2){
+    public String signUpCheck(SignUpRequest signUpRequest, String email01, String email02){
 
-           String email = email01+"@"+email2;
+        String email = email01 + "@" + email02;
         email = email.replace(",", "");
         signUpRequest.setEmail(email);
         // 회원가입 요청 처리

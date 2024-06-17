@@ -25,9 +25,10 @@
 
     <!-- 주차별 강의계획 입력 또는 업데이트 -->
     <insert id="upsertSchedule" parameterType="com.izo.itaportal.model.Schedule">
-        INSERT INTO schedule (sched_no, id_pgm, day_sched, pgm_time, learning_contents, learning_detail, note)
+        INSERT INTO schedule (id_sched, sched_no, id_pgm, day_sched, pgm_time, learning_contents, learning_detail, note)
         VALUES
             (
+                #{idSched},
                 #{schedNo},
                 #{idPgm},
                 #{daySched},
@@ -37,11 +38,13 @@
                 #{note}
             )
             ON DUPLICATE KEY UPDATE
-                                 day_sched = VALUES(day_sched),
-                                 pgm_time = VALUES(pgm_time),
-                                 learning_contents = VALUES(learning_contents),
-                                 learning_detail = VALUES(learning_detail),
-                                 note = VALUES(note);
+                                sched_no = VALUES(sched_no),
+                                id_pgm = VALUES(id_pgm),
+                                day_sched = VALUES(day_sched),
+                                pgm_time = VALUES(pgm_time),
+                                learning_contents = VALUES(learning_contents),
+                                learning_detail = VALUES(learning_detail),
+                                note = VALUES(note);
     </insert>
 
     <!-- idPgm별 최대 idSched값 -->

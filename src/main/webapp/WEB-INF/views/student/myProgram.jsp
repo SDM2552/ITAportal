@@ -50,7 +50,7 @@
                         <th scope="col">교육 기간</th>
                         <th scope="col">담당 강사</th>
                         <th scope="col">강의실</th>
-                        <th scope="col">강의 정보</th>
+                        <th scope="col">강의계획서</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -72,7 +72,7 @@
                                     </td>
                                     <td>${sugang.roomName}</td>
                                     <td>
-                                        <button class="s1"><a href="/stu/programView/${sugang.idPgm}">보기</a></button>
+                                        <button class="s1"><a href="/stu/programView/${sugang.idPgm}">조회</a></button>
                                     </td>
                                 </tr>
                             </c:forEach>
