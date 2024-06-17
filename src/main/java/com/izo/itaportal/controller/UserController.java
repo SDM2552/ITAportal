@@ -30,17 +30,24 @@ public class UserController {
     }
 
     @PostMapping("signUpCheck")
-    public String signUpCheck(SignUpRequest signUpRequest, String email01, String email02){
-
+    public String signUpCheck(SignUpRequest signUpRequest, String email01, String email02, Model model){
         String email = email01 + "@" + email02;
         email = email.replace(",", "");
         signUpRequest.setEmail(email);
-        // 회원가입 요청 처리
+
+        // 로그인 ID 중복 확인
+        if (userService.isLoginIdDuplicate(signUpRequest.getLoginId())) {
+            model.addAttribute("duplicateMessage", "이미 사용 중인 아이디입니다.");
+            model.addAttribute("signUpRequest", signUpRequest); // 입력값 유지
+            return "member/signUp"; // 회원 가입 페이지로 이동
+        }
+
+        // 중복이 없으면 사용자 등록을 시도합니다.
         try {
             userService.insertStu(signUpRequest);
         } catch (IllegalArgumentException e) {
-            // 중복된 로그인 아이디가 있을 경우 처리 로직
-            return "redirect:/user/signUp?error=duplicate";
+            model.addAttribute("errorMessage", "회원 가입 중 오류가 발생했습니다.");
+            return "member/signUp";
         }
         return "member/signUpSuccess";
     }
