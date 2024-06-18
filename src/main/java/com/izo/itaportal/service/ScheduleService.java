@@ -1,5 +1,6 @@
 package com.izo.itaportal.service;
 
+import com.izo.itaportal.model.SchedReq;
 import com.izo.itaportal.model.Schedule;
 import com.izo.itaportal.repository.ScheduleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,7 @@ public class ScheduleService {
         return weeksBetween;
     }
 
-    //강의요일별 날짜 계산
+    //강의요일별 날짜 계산 > schedule 생성
     @Transactional
     public void generateSchedulesForProgram(int idPgm, String stDtStr, String endDtStr, String pgmTime) {
         LocalDate stDt = LocalDate.parse(stDtStr, DATE_FORMATTER);
@@ -72,7 +73,7 @@ public class ScheduleService {
     }
 
     //주차별 강의계획서상 강의날짜 조회(By schedNo)
-    public String selectScheduleBySchedNo(int idPgm, int schedNo){
+    public SchedReq selectScheduleBySchedNo(int idPgm, int schedNo){
         return scheduleRepository.selectScheduleBySchedNo(idPgm, schedNo);
     }
 

@@ -92,4 +92,11 @@ public class AdminController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("수강 거부에 실패했습니다.");
         }
     }
+
+    //휴보강신청 관리 페이지
+    @GetMapping("/classReq")
+    public String adminClassReqForm(Model model){
+        model.addAttribute("classReq", adminService.selectAllClassRequest());
+        return "/adminProgram/adminClassReq";
+    }
 }

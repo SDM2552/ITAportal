@@ -48,10 +48,11 @@
         SELECT * FROM schedule WHERE id_pgm=#{idPgm}
     </select>
 
-    <!-- 주차별 강의계획서 조회(by schedNo) -->
-    <select id="selectScheduleBySchedNo" parameterType="integer" resultType="String">
-        SELECT day_sched FROM schedule WHERE id_pgm=#{idPgm} and sched_no=#{schedNo}
+    <!-- 주차별 강의날짜, idsched 조회(by schedNo) -->
+    <select id="selectScheduleBySchedNo" parameterType="integer" resultType="com.izo.itaportal.model.SchedReq">
+        SELECT id_sched, day_sched FROM schedule WHERE id_pgm=#{idPgm} and sched_no=#{schedNo}
     </select>
+
 
     <!-- 요일별 날짜 계산 -->
     <select id="selectByDayOfWeek" parameterType="java.util.Map" resultType="com.izo.itaportal.model.Schedule">
