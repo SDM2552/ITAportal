@@ -29,4 +29,5 @@ public class ClassRequest {
     private String pgmName;
     private String roomName;
     private String daySched;
+    private String name;
 }

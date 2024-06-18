@@ -23,4 +23,10 @@ public interface ClassRequestRepository {
 
     //휴보강신청 수정
     public void updateClassRequest(ClassRequest classRequest);
+
+    //승인
+    public void updateApprove(int idClassRequest);
+
+    //반려
+    public void updateReject(int idClassRequest);
 }

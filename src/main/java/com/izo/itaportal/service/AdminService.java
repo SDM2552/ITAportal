@@ -22,7 +22,16 @@ public class AdminService {
         return adminRepository.findAll();
     }
 
+    //휴보강신청 현황 조회
     public List<ClassRequest> selectAllClassRequest(){
         return classRequestRepository.selectAllClassRequest();
+    }
+    //휴보강신청 승인
+    public void updateApprove(int idClassRequest){
+        classRequestRepository.updateApprove(idClassRequest);
+    }
+    //휴보강신청 반려
+    public void updateReject(int idClassRequest){
+        classRequestRepository.updateReject(idClassRequest);
     }
 }

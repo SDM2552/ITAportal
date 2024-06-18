@@ -58,14 +58,26 @@
             cr.remarks,
             cr.app_date,
             cr.proc_date,
+            pf.name,
             s.day_sched,
             pg.pgm_name,
             c.room_name
         FROM class_request cr
-                 JOIN schedule s ON cr.id_sched = s.id_sched
-                 JOIN program pg ON cr.id_pgm = pg.id_pgm
-                 JOIN class_room c ON cr.id_room = c.id_room
+                JOIN schedule s ON cr.id_sched = s.id_sched
+                JOIN program pg ON cr.id_pgm = pg.id_pgm
+                JOIN class_room c ON cr.id_room = c.id_room
+                JOIN professor pf ON cr.id_prof = pf.id_prof
     </select>
+
+    <!-- 신청 승인 -->
+    <update id="updateApprove" parameterType="integer">
+        UPDATE class_request SET proc_date = NOW() WHERE id_class_request = ${idClassRequest}
+    </update>
+
+    <!-- 신청 반려 -->
+    <update id="updateReject" parameterType="integer">
+        UPDATE class_request SET proc_date = 'reject' WHERE id_class_request = ${idClassRequest}
+    </update>
 
 
 </mapper>

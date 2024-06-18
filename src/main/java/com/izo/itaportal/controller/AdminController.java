@@ -99,4 +99,18 @@ public class AdminController {
         model.addAttribute("classReq", adminService.selectAllClassRequest());
         return "/adminProgram/adminClassReq";
     }
+    //휴보강신청 승인
+    @PostMapping("/classReqOk")
+    @ResponseBody
+    public ResponseEntity<String> classReqOk(@RequestParam("idClassRequest") int idClassRequest) {
+            adminService.updateApprove(idClassRequest);
+            return ResponseEntity.ok("휴/보강 신청이 승인되었습니다.");
+    }
+    //휴보강신청 반려
+    @PostMapping("/classReqNo")
+    @ResponseBody
+    public ResponseEntity<String> classReqNo(@RequestParam("idClassRequest") int idClassRequest) {
+        adminService.updateReject(idClassRequest);
+        return ResponseEntity.ok("휴/보강 신청을 반려했습니다.");
+    }
 }

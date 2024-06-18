@@ -6,8 +6,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <script src="https://kit.fontawesome.com/93205cc57d.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="css/common.css">
-    <link rel="stylesheet" type="text/css" href="css/table.css">
+    <link rel="stylesheet" type="text/css" href="<c:url value='/css/common.css'/>">
+    <link rel="stylesheet" type="text/css" href="<c:url value='/css/table.css'/>">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         .btnArea {
@@ -92,9 +92,9 @@
                 </form>
             </div>
             <!-- 본문 -->
-            <h4 class="subTit">휴보강 이력</h4>
-            <div class="tblData mt10">
-                <table>
+            <h4 class="subTit">휴/보강 신청 현황</h4>
+            <div>
+                <table class="tblData mt10">
                     <colgroup>
                         <col width="20%">
                         <col width="10%">
@@ -104,7 +104,6 @@
                         <col width="20%">
                         <col width="10%">
                         <col width="10%">
-
                     </colgroup>
                     <thead>
                     <tr>
@@ -115,7 +114,7 @@
                         <th scope="col">보강강의실</th>
                         <th scope="col">보강사유</th>
                         <th scope="col">진행상태</th>
-                        <th scope="col">승인</th>
+                        <th scope="col">처리</th>
                     </tr>
                     </thead>
                     <c:choose>
@@ -128,13 +127,28 @@
                             <c:forEach var="classReq" items="${classReq}">
                                 <tr>
                                     <td>${classReq.pgmName}</td>
-                                    <td></td>
+                                    <td>${classReq.name}</td>
                                     <td>${classReq.classDate}</td>
                                     <td>${classReq.makeUpDate}</td>
                                     <td>${classReq.roomName}</td>
                                     <td>${classReq.remarks}</td>
-                                    <td>${classReq.procDate}</td>
-                                    <td><button onclick="approveReq(${classReq.idClassRequest})">승인</button></td>
+                                    <td>
+                                        <c:choose>
+                                            <c:when test="${classReq.procDate == null}">
+                                                <span>미승인</span>
+                                            </c:when>
+                                            <c:when test="${classReq.procDate == 'reject'}">
+                                                <span>반려</span>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <span>승인 (${classReq.procDate})</span>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </td>
+                                    <td>
+                                        <button onclick="approveReq(${classReq.idClassRequest})">승인</button>
+                                        <button onclick="rejectReq(${classReq.idClassRequest})">반려</button>
+                                    </td>
                                 </tr>
                             </c:forEach>
                         </c:otherwise>
@@ -160,17 +174,53 @@
                            value="${currentPage}">
                     <button onclick="goToPage()">이동</button>
                 </div>
-
             </div>
-
             <!-- 본문 끝 -->
+
         </div>
         <!-- //contents -->
     </div>
-
     <!-- footer -->
     <c:import url="../layout/footer.jsp"/>
 </div>
+<script>
+    function approveReq(idClassRequest){
+        confirm('승인 처리 하시겠습니까?')
+        $.ajax({
+            url: '/admin/classReqOk',
+            type: 'POST',
+            data: {
+                idClassRequest: idClassRequest
+            },
+            success: function(response) {
+                alert(response);
+                location.reload();
+            },
+            error: function(xhr, status, error){
+                alert("에러가 발생했습니다: " + xhr.responseText);
+            }
+        });
+    }
+
+    function rejectReq(idClassRequest){
+        confirm('반려 처리 하시겠습니까?')
+        $.ajax({
+            url: '/admin/classReqNo',
+            type: 'POST',
+            data: {
+                idClassRequest: idClassRequest
+            },
+            success: function(response) {
+                alert(response);
+                location.reload();
+            },
+            error: function(xhr, status, error){
+                alert("에러가 발생했습니다: " + xhr.responseText);
+            }
+        });
+    }
+</script>
+
 </body>
 
 </html>
