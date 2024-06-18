@@ -185,39 +185,41 @@
 </div>
 <script>
     function approveReq(idClassRequest){
-        confirm('승인 처리 하시겠습니까?')
-        $.ajax({
-            url: '/admin/classReqOk',
-            type: 'POST',
-            data: {
-                idClassRequest: idClassRequest
-            },
-            success: function(response) {
-                alert(response);
-                location.reload();
-            },
-            error: function(xhr, status, error){
-                alert("에러가 발생했습니다: " + xhr.responseText);
-            }
-        });
+        if(confirm('승인 처리 하시겠습니까?')) {
+            $.ajax({
+                url: '/admin/classReqOk',
+                type: 'POST',
+                data: {
+                    idClassRequest: idClassRequest
+                },
+                success: function (response) {
+                    alert(response);
+                    location.reload();
+                },
+                error: function (xhr, status, error) {
+                    alert("에러가 발생했습니다: " + xhr.responseText);
+                }
+            });
+        }
     }
 
     function rejectReq(idClassRequest){
-        confirm('반려 처리 하시겠습니까?')
-        $.ajax({
-            url: '/admin/classReqNo',
-            type: 'POST',
-            data: {
-                idClassRequest: idClassRequest
-            },
-            success: function(response) {
-                alert(response);
-                location.reload();
-            },
-            error: function(xhr, status, error){
-                alert("에러가 발생했습니다: " + xhr.responseText);
-            }
-        });
+        if(confirm('반려 처리 하시겠습니까?')) {
+            $.ajax({
+                url: '/admin/classReqNo',
+                type: 'POST',
+                data: {
+                    idClassRequest: idClassRequest
+                },
+                success: function (response) {
+                    alert(response);
+                    location.reload();
+                },
+                error: function (xhr, status, error) {
+                    alert("에러가 발생했습니다: " + xhr.responseText);
+                }
+            });
+        }
     }
 </script>
 
