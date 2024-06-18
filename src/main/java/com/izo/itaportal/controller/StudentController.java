@@ -124,4 +124,11 @@ public String grade(){
         model.addAttribute("professors", professors);
         return "student/professorView";
     }
+
+    @GetMapping("/completion")
+    public String completionPage(Model model) {
+        // 수료 현황 관련 데이터 처리 로직이 있을 수 있음
+        return "student/completion"; // 수료 현황 페이지로 이동
+    }
+
 }
