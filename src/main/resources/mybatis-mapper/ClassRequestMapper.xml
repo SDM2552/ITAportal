@@ -30,8 +30,7 @@
         WHERE id_class_request = #{idClassRequest}
     </update>
 
-    <!-- 휴보강신청 내역 불러오기 -->
-    <!-- 6/17 작동안함ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ -->
+    <!-- 휴보강신청 내역 불러오기(강사) -->
     <select id="selectClassRequest" parameterType="integer" resultType="com.izo.itaportal.model.ClassRequest">
         SELECT
             cr.id_class_request,
@@ -48,6 +47,24 @@
                  JOIN program pg ON cr.id_pgm = pg.id_pgm
                  JOIN class_room c ON cr.id_room = c.id_room
         WHERE cr.id_pgm = #{idPgm}
+    </select>
+
+    <!-- 휴보강신청 내역 불러오기(관리자) -->
+    <select id="selectAllClassRequest" resultType="com.izo.itaportal.model.ClassRequest">
+        SELECT
+            cr.id_class_request,
+            cr.class_date,
+            cr.make_up_date,
+            cr.remarks,
+            cr.app_date,
+            cr.proc_date,
+            s.day_sched,
+            pg.pgm_name,
+            c.room_name
+        FROM class_request cr
+                 JOIN schedule s ON cr.id_sched = s.id_sched
+                 JOIN program pg ON cr.id_pgm = pg.id_pgm
+                 JOIN class_room c ON cr.id_room = c.id_room
     </select>
 
 

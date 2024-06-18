@@ -1,5 +1,6 @@
 package com.izo.itaportal.repository;
 
+import com.izo.itaportal.model.SchedReq;
 import com.izo.itaportal.model.Schedule;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -23,8 +24,9 @@ public interface ScheduleRepository {
     public int selectMaxSchedNoByIdPgm(int idPgm);
     //입력 및 수정
     public void upsertSchedule(Schedule schedule);
-    //주차별 강의계획 단건 조회(By idSched)
-    public String selectScheduleBySchedNo(int idPgm, int schedNo);
-    //주차별 강의일자 조회 (요일별)
+    //주차별 강의일자 조회(By idSched)
+    public SchedReq selectScheduleBySchedNo(int idPgm, int schedNo);
+    //주차별 강의일자 계산 (요일별)
     public List<Schedule> selectByDayOfWeek(String stDtStr, String endDtStr, int dayOfWeekValue);
+
 }

@@ -138,14 +138,15 @@ public class ProfController {
         model.addAttribute("maxIdSched",maxIdSched);
         model.addAttribute("classRequest", classRequest);
         model.addAttribute("classRoom", classRooms);
+
         return "prof/requestProg";
     }
 
-    //주차별 강의계획서상 강의 날짜 조회
+    //주차별 강의계획서상 강의 날짜 및 아이디 조회
     @PostMapping("/getDaySched")
-    public ResponseEntity<String> getDayShced(@RequestParam int schedNo, @RequestParam int idPgm){
-        String daySched = scheduleService.selectScheduleBySchedNo(idPgm, schedNo);
-        return ResponseEntity.ok(daySched);
+    public ResponseEntity<SchedReq> getDayShced(@RequestParam int schedNo, @RequestParam int idPgm){
+        SchedReq sched = scheduleService.selectScheduleBySchedNo(idPgm, schedNo);
+        return ResponseEntity.ok(sched);
     }
 
     //휴보강신청 등록

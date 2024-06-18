@@ -8,7 +8,7 @@
             <li><a href="/adminCategory">카테고리관리</a></li>
             <li><a href="/adminClassRoom">강의실관리</a></li>
             <li><a href="/courseStatus/list">수강현황조회</a></li>
-            <li><a href="#">휴보강신청 현황</a></li>
+            <li><a href="/admin/classReq">휴보강신청 현황</a></li>
         </ul>
     </div>
 </div>

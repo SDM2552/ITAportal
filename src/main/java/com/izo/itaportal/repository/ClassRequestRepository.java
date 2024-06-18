@@ -15,8 +15,11 @@ public interface ClassRequestRepository {
     //휴보강신청 등록
     public void insertClassRequest(ClassRequest classRequest);
 
-    //휴보강신청 내역 조회
+    //휴보강신청 내역 조회(강사)
     public List<ClassRequest> selectClassRequest(int idPgm);
+
+    //휴보강신청 내역 조회(관리자)
+    public List<ClassRequest> selectAllClassRequest();
 
     //휴보강신청 수정
     public void updateClassRequest(ClassRequest classRequest);

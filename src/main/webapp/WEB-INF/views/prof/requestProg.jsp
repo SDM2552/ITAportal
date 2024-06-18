@@ -120,7 +120,7 @@
                     </tr>
                     <input type="hidden" name="idProf" value="${programInfo.idProf}">
                     <input type="hidden" name="idPgm" value="${programInfo.idPgm}">
-
+                    <input type="hidden" name="idSched" value="" id="idSched">
                     </tbody>
                 </table>
                 </form>
@@ -176,25 +176,12 @@
                                     <td>${classReq.makeUpDate}</td>
                                     <td>${classReq.roomName}</td>
                                     <td>${classReq.remarks}</td>
-                                    <td></td>
+                                    <td>${classReq.procDate}</td>
                                     <td><button onclick="cancelRequest(${classReq.idClassRequest})">취소</button></td>
                                 </tr>
                             </c:forEach>
                         </c:otherwise>
                     </c:choose>
-                    <tbody>
-                        <c:forEach var="classReq" items="${classRequest}">
-                        <tr>
-                            <td>${classReq.pgmName}</td>
-                            <td>${classReq.classDate}</td>
-                            <td>${classReq.makeUpDate}</td>
-                            <td>${classReq.roomName}</td>
-                            <td>${classReq.remarks}</td>
-                            <td>${classReq.procDate}</td>
-                            <td><button onclick="cancelRequest(${classReq.idClassRequest})">취소</button></td>
-                        </tr>
-                        </c:forEach>
-                    </tbody>
                 </table>
             </div>
 
@@ -216,12 +203,13 @@
                 schedNo: schedNo,
                 idPgm: idPgm
             },
-            success: function(daySched) {
-                if(!daySched){
+            success: function(sched) {
+                if(!sched.daySched){
                     alert('강의 날짜가 입력되지 않았습니다. 주차별 강의계획을 먼저 입력해주세요.')
                 }
-                $('#classDateForm').text(daySched);
-                $('#classDate').val(daySched);
+                $('#classDateForm').text(sched.daySched);
+                $('#classDate').val(sched.daySched);
+                $('#idSched').val(sched.idSched);
             },
             error: function(request, status, error) {
                 console.error("Error: ", error);
