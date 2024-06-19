@@ -45,38 +45,25 @@
                     <thead>
                     <tr>
                         <th scope="col">과목명</th>
-                        <th scope="col">출석률</th>
+                        <th scope="col">출석률(%)</th>
                         <th scope="col">과제제출여부</th>
                         <th scope="col">수료일자</th>
                         <th scope="col">수료여부</th>
                     </tr>
                     </thead>
-                    <tbody>
 
-                    <c:choose>
-                        <c:when test="${empty sugangList}">
-                            <tr>
-                                <td colspan="6">수강 중인 강좌가 없습니다</td>
-                            </tr>
-                        </c:when>
-                        <c:otherwise>
-                            <c:forEach var="sugang" items="${sugangList}">
-                                <tr>
-                                    <td>${sugang.cateName}</td>
-                                    <td><a href="/stu/programView/${sugang.idPgm}">${sugang.pgmName}</a></td>
-                                    <td>${sugang.stDt} ~ <br>${sugang.endDt}</td>
-                                    <td>
-                                        <a href="/stu/professorView/${sugang.idProf}">${sugang.profName}</a><br/>
-                                    </td>
-                                    <td>${sugang.roomName}</td>
-                                    <td>
-                                        <button><a href="/stu/programView/${sugang.idPgm}">보기</a></button>
-                                    </td>
-                                </tr>
-                            </c:forEach>
-                        </c:otherwise>
-                    </c:choose>
+                    <tbody>
+                    <c:forEach var="exam" items="${examList}">
+                        <tr>
+                            <td>${exam.programName}</td>
+                            <td></td>
+                            <td>${exam.examStatus == 'Submitted' ? '제출' : '미제출'}</td>
+                            <td>${exam.endDate}</td>
+                            <td></td>
+                        </tr>
+                    </c:forEach>
                     </tbody>
+
                 </table>
             </div>
             <!-- 본문 끝 -->
