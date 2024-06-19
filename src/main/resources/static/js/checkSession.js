@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (event.target.matches("a.logincheck, button.logincheck")) {
             event.preventDefault();
             const url = event.target.getAttribute("href");
-            const programId = event.target.getAttribute("onclick") ? event.target.getAttribute("onclick").match(/applyProgram\((\d+)\)/)[1] : null;
+            const programId = event.target.getAttribute("data-program-id");
             checkSessionAndRedirect(url, programId, event);
         }
     });
@@ -20,7 +20,7 @@ function checkSessionAndRedirect(url, programId, event) {
             if (data.isLoggedIn) {
                 if (programId) {
                     applyProgram(programId, event);
-                } else {
+                } else if (url) {
                     window.location.href = url;
                 }
             } else {
@@ -34,7 +34,4 @@ function checkSessionAndRedirect(url, programId, event) {
         });
 }
 
-function applyProgram(programId, event) {
-    event.preventDefault();
-    window.location.href = '/program/applyForm?id=' + programId;
-}
+

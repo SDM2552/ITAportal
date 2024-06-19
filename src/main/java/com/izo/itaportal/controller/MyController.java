@@ -11,16 +11,6 @@ public class MyController {
     public String root(){
         return "root";
     }
-    @GetMapping("/sample")
-    public String sample01(){
-        return "sample";
-    }
-    @GetMapping("/sample2")
-    public String sample02(){
-        return "sample2";
-    }
-    @GetMapping("/sample3")
-    public String sample03(){ return "sample3"; }
 
 
     @GetMapping("/classList")

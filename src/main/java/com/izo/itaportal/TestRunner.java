@@ -90,7 +90,7 @@ public class TestRunner implements ApplicationRunner{
             sqlStatements.add("INSERT INTO program (id_cate, pgm_name, st_dt, end_dt, sugang_st_dt, sugang_end_dt, pgm_target, id_room, pgm_method, pgm_per, num_of_stu, pgm_fee, pgm_day, pgm_time, id_prof) VALUES (3, '예술과 문화의 이해', '2024-06-09', '2024-06-11', '2024-05-15', '2024-07-30', '누구나', 4, '오프라인', 15, 0, '무료', '월,수,금', '09:00~11:00', 2403)");
             sqlStatements.add("INSERT INTO program (id_cate, pgm_name, st_dt, end_dt, sugang_st_dt, sugang_end_dt, pgm_target, id_room, pgm_method, pgm_per, num_of_stu, pgm_fee, pgm_day, pgm_time, id_prof) VALUES (1, '국제통상의 주요 사례 연구', '2024-06-10', '2024-06-30', '2024-05-15', '2024-07-30', '통상에 관심이 있는 누구나', 5, '오프라인', 20, 0, '무료', '화,목', '14:00~16:00', 2401)");
             sqlStatements.add("INSERT INTO program (id_cate, pgm_name, st_dt, end_dt, sugang_st_dt, sugang_end_dt, pgm_target, id_room, pgm_method, pgm_per, num_of_stu, pgm_fee, pgm_day, pgm_time, id_prof) VALUES (2, '무역 보험과 리스크 관리', '2024-06-11', '2024-06-22', '2024-05-15', '2024-07-30', '무역 보험에 관심이 있는 사람', 6, '오프라인', 25, 0, '무료', '화,목', '13:00~15:00', 2402)");
-            sqlStatements.add("INSERT INTO program (id_cate, pgm_name, st_dt, end_dt, sugang_st_dt, sugang_end_dt, pgm_target, id_room, pgm_method, pgm_per, num_of_stu, pgm_fee, pgm_day, pgm_time, id_prof) VALUES (3, '전자 무역의 기술 혁신','2024-06-12', '2024-06-27', '2024-05-15', '2024-07-30', '관심이 있는 사람', 7, '오프라인', 20, 7, '무료', '월,수,금', '10:00~12:00', 3)");
+            sqlStatements.add("INSERT INTO program (id_cate, pgm_name, st_dt, end_dt, sugang_st_dt, sugang_end_dt, pgm_target, id_room, pgm_method, pgm_per, num_of_stu, pgm_fee, pgm_day, pgm_time, id_prof) VALUES (3, '전자 무역의 기술 혁신','2024-06-12', '2024-06-27', '2024-05-15', '2024-07-30', '관심이 있는 사람', 7, '오프라인', 20, 7, '무료', '월,수,금', '10:00~12:00', 2403)");
 
             //syllabus
             sqlStatements.add("INSERT INTO syllabus (id_pgm, course_overview, objective, teaching, book, evaluation, remarks, id_prof) VALUES (1,'이 강좌는 통관 및 관세 실무의 기본 원리를 다룹니다. 통관 절차와 관세의 이론적 배경을 이해하고 실제 적용 사례를 학습합니다.', '학생들이 통관 및 관세의 기본 원리를 이해하고, 이를 실제 무역 업무에 적용할 수 있도록 하는 것이 목표입니다.', '오프라인', '통관 및 관세 실무 이해 (저자: Shoot Goalkeeper, lance 출판사)', '수료기준 출석률 80% 이상, 과제 100%', '없음', 2402)");
@@ -104,6 +104,7 @@ public class TestRunner implements ApplicationRunner{
             sqlStatements.add("INSERT INTO schedule (sched_no, id_pgm, pgm_time, day_sched, learning_contents, learning_detail, note) VALUES (2, 1, '09:00 ~ 11:00', '2024-03-08', 'HS코드에 대한 이해', '대면수업', '노트북 지참')");
             sqlStatements.add("INSERT INTO schedule (sched_no, id_pgm, pgm_time, day_sched, learning_contents, learning_detail, note) VALUES (3, 1, '09:00 ~ 11:00', '2024-03-15', '관세율표 읽기', '대면수업', '노트북 및 필기구 지참')");
             sqlStatements.add("INSERT INTO schedule (sched_no, id_pgm, pgm_time, day_sched, learning_contents, learning_detail, note) VALUES (4, 1, '09:00 ~ 11:00', '2024-03-22', 'FTA 기초', '대면수업', '유인물 수업')");
+            sqlStatements.add("INSERT INTO schedule (sched_no, id_pgm, pgm_time, day_sched, learning_contents, learning_detail, note) VALUES (1, 2, '13:00 ~ 18:00', '2024-04-01', '자유무역협정(FTA)  기초', '대면수업', '')");
 
 
             //classroom
