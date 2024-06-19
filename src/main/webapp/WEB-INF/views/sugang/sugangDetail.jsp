@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="/css/common.css">
     <link rel="stylesheet" type="text/css" href="/css/table.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/checkSession.js" defer></script>
     <title>수강 신청</title>
 </head>
 <body>
@@ -104,7 +105,7 @@
             <br><br><br><br><br>
             <h4 class="subTit">신청자 정보</h4>
             <div class="coment_form mt10">
-                <p>* 주소, 휴대폰번호, 이메일 정보를 변경하시려면 <strong>마이페이지 > 회원정보변경</strong>에서 변경하시면 됩니다</p>
+                <p>* 주소, 휴대폰번호, 이메일 정보를 변경하시려면 <strong>MY > 회원정보변경</strong>에서 변경하시면 됩니다</p>
                 <a href="/user/info">회원정보변경</a>
             </div>
             <div class="tblData mt10">
@@ -147,7 +148,7 @@
             <!-- btn -->
             <div class="btnArea">
 
-                <button type="button" class="btns btnSt01" onclick="applyEnrollment(${loginUser.commonId}, ${program.idPgm}, ${program.idCate}, '${program.pgmName}');">
+                <button type="button" class="btns btnSt01 logincheck" onclick="applyEnrollment(${loginUser.commonId}, ${program.idPgm}, ${program.idCate}, '${program.pgmName}');">
 
                     <span>수강신청</span>
                 </button>

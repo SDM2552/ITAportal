@@ -830,6 +830,9 @@ body {
 .s1:disabled {
     background: #ccc;
 }
+.gray {
+    background: #ccc;
+}
 
 /* 기본 탭 토글메뉴 */
 .tab-name {

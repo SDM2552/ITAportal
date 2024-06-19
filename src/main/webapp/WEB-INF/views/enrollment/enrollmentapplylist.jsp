@@ -63,7 +63,7 @@
                                     <td>
                                         <c:choose>
                                             <c:when test="${sugang.status == '신청중'}">
-                                                <button type="button" onclick="cancelEnrollment(${sugang.idPgm})">수강 취소</button>
+                                                <button type="button" class="s1 gray" onclick="cancelEnrollment(${sugang.idPgm})">수강 취소</button>
                                             </c:when>
                                             <c:otherwise>
                                                 -

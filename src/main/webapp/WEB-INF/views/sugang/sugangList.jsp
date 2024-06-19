@@ -80,7 +80,7 @@
                                         <button type="button" class="s1" disabled>마감</button>
                                     </c:when>
                                     <c:otherwise>
-                                        <button type="button" class="s1 logincheck" onclick="applyProgram(${program.idPgm});">수강신청</button>
+                                        <button type="button" class="s1" onclick="applyProgram(${program.idPgm});">수강신청</button>
                                     </c:otherwise>
                                 </c:choose>
                             </td>
@@ -139,11 +139,10 @@
             tbody.append(row);
         });
     }
-
     function applyProgram(programId, event) {
-        event.preventDefault();
         window.location.href = '/program/applyForm?id=' + programId;
     }
+
 </script>
 </body>
 </html>

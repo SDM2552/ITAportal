@@ -33,9 +33,9 @@
 
             <!-- 본문 -->
             <h1>수강 신청이 접수되었습니다.</h1><br>
-            <ul>
-                <li>※ 신청하신 수강을 취소하시려면  <strong>수업 > 수강 내역 조회</strong> 에서 하시면 됩니다. </li>
-                <li>※ 교육생 합격자 발표는 추후 SMS 로 알려드립니다.</li>
+            <ul style="font-size: 18px">
+                <li>※ 신청하신 수강 확인은  <strong>수강 신청 <i class="fa-solid fa-angle-right"></i> 수강 내역 조회</strong> 에서 하시면 됩니다. </li>
+                <li>※ 교육생 합격자 발표는 추후에 알려드립니다.</li>
             </ul><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
             <!-- 본문 끝 -->

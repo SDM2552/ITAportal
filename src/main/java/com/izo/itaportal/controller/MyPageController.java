@@ -36,7 +36,7 @@ public class MyPageController {
         LoginResponse user = (LoginResponse) httpSession.getAttribute("loginUser");
         if (user == null) {
             // 세션에 사용자가 없으면 로그인 페이지로 리다이렉트
-            return "redirect:/user/login";
+            return "redirect:/user/loginPage";
         }
         Integer idUser = user.getIdUser();
         model.addAttribute("member", myPageService.getUserById(idUser));
