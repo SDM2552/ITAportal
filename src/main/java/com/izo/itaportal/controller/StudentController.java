@@ -127,8 +127,13 @@ public String grade(){
 
     @GetMapping("/completion")
     public String completionPage(Model model) {
-        // 수료 현황 관련 데이터 처리 로직이 있을 수 있음
-        return "student/completion"; // 수료 현황 페이지로 이동
-    }
+        LoginResponse loginUser = (LoginResponse) session.getAttribute("loginUser");
+        int idStudent = loginUser.getCommonId();
 
+        List<ExamListDto> examList = examService.getExamsByStudentId(idStudent);
+
+        model.addAttribute("examList", examList);
+
+        return "student/completion";
+    }
 }
