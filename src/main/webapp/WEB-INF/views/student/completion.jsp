@@ -6,7 +6,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <script src="https://kit.fontawesome.com/93205cc57d.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="/css/common.css">
     <link rel="stylesheet" type="text/css" href="/css/table.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>수료 강의 목록</title>
@@ -37,35 +37,39 @@
                 <table>
                     <colgroup>
                         <col width="15%">
+                        <col width="25%">
+                        <col width="10%">
+                        <col width="10%">
                         <col width="20%">
-                        <col width="20%">
-                        <col width="30%">
-                        <col width="15%">
+                        <col width="10%">
                     </colgroup>
                     <thead>
                     <tr>
+                        <th scope="col">분류</th>
                         <th scope="col">과목명</th>
                         <th scope="col">출석률(%)</th>
                         <th scope="col">과제제출여부</th>
                         <th scope="col">수료일자</th>
-                        <th scope="col">수료여부</th>
+                        <th scope="col">수료증 출력</th>
                     </tr>
                     </thead>
 
                     <tbody>
-                    <c:forEach var="exam" items="${examList}">
+                    <c:forEach var="grade" items="${grades}">
                         <tr>
-                            <td>${exam.programName}</td>
-                            <td></td>
-                            <td>${exam.examStatus == 'Submitted' ? '제출' : '미제출'}</td>
-                            <td>${exam.endDate}</td>
-                            <td></td>
+                            <td>${grade.cateName}</td>
+                            <td>${grade.pgmName}</td>
+                            <td>${grade.attendanceRate} %</td>
+                            <td>${grade.examScore == null ? '미제출' : '제출'}</td>
+                            <td>${grade.endDt}</td>
+                            <td><button class="s1" onclick="printCertificate('${grade.pgmName}', '${grade.stuName}')">출력</button>
+                            </td>
                         </tr>
                     </c:forEach>
                     </tbody>
 
                 </table>
-            </div>
+            </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
             <!-- 본문 끝 -->
         </div>
         <!-- //contents -->
@@ -75,5 +79,27 @@
     <c:import url="../layout/footer.jsp"/>
 
 </div>
+<script>
+    function printCertificate(pgmName, stuName) {
+        console.log("Original pgmName:", pgmName); // 디버깅을 위한 로그
+        console.log("Original stuName:", stuName); // 디버깅을 위한 로그
+
+        $.ajax({
+            url: '/api/certificate',
+            method: 'POST',
+            data: JSON.stringify({ pgmName: pgmName, stuName: stuName }),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            success: function(response) {
+                const url = response.url;
+                window.open(url, 'certificateWindow', 'width=800,height=600');
+            },
+            error: function(xhr, status, error) {
+                console.error('Error:', error);
+            }
+        });
+    }
+</script>
+
 </body>
 </html>

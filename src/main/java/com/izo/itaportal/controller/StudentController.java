@@ -138,11 +138,8 @@ public class StudentController {
     public String completionPage(Model model) {
         LoginResponse loginUser = (LoginResponse) session.getAttribute("loginUser");
         int idStudent = loginUser.getCommonId();
-
-        List<ExamListDto> examList = examService.getExamsByStudentId(idStudent);
-
-        model.addAttribute("examList", examList);
-
+        List<GradeDto> grade = attendanceService.selectGradeByIdStudent(idStudent);
+        model.addAttribute("grades", grade);
         return "student/completion";
     }
 }

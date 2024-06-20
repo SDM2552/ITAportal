@@ -12,11 +12,13 @@
         SELECT
             c.cate_name,
             p.pgm_name,
+            p.end_dt,
             pr.name AS profName,
             a.att_stat,
             a.late_stat,
             a.abs_stat,
-            a.exam_score
+            a.exam_score,
+            s.name AS stuName
         FROM
             attendance a
                 JOIN
@@ -25,6 +27,8 @@
             professor pr ON p.id_prof = pr.id_prof
                 JOIN
             category c ON p.id_cate = c.id_cate
+                JOIN
+            student s ON a.id_student = s.id_student
         WHERE
             a.id_student = #{idStudent}
           AND a.exam_score != -1;
