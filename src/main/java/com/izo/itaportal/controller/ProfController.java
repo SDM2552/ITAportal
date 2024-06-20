@@ -154,7 +154,7 @@ public class ProfController {
     public String classRequest(ClassRequest classRequest, Model model){
         professorService.insertClassRequest(classRequest);
         model.addAttribute("idPgm", classRequest.getIdPgm());
-        return "prof/list";
+        return "redirect:prof/list";
     }
 
     //출결 페이지

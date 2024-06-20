@@ -1,9 +1,6 @@
 package com.izo.itaportal.controller;
 
-import com.izo.itaportal.dto.ExamDetailDto;
-import com.izo.itaportal.dto.ExamListDto;
-import com.izo.itaportal.dto.ProgramAllDto;
-import com.izo.itaportal.dto.SugangDto;
+import com.izo.itaportal.dto.*;
 import com.izo.itaportal.model.*;
 import com.izo.itaportal.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,9 +31,11 @@ public class StudentController {
     HttpSession session;
     @Autowired
     ScheduleService scheduleService;
+    @Autowired
+    AttendanceService attendanceService;
 
     @GetMapping("/myProgram") //수강중인 강의 조회 페이지
-    public String myProgram(Model model){
+    public String myProgram(Model model) {
         LoginResponse loginUser = (LoginResponse) session.getAttribute("loginUser");
         int idStudent = loginUser.getCommonId();
         List<SugangDto> sugangDto = studentService.GetCourceList(idStudent);
@@ -44,8 +43,9 @@ public class StudentController {
         System.out.println("수강: " + sugangDto);
         return "/student/myProgram";
     }
+
     @GetMapping("/program") //수강 내역 조회 페이지
-    public String sugangList(Model model){
+    public String sugangList(Model model) {
         LoginResponse loginUser = (LoginResponse) session.getAttribute("loginUser");
         int idStudent = loginUser.getCommonId();
         List<SugangDto> sugangDto = studentService.GetSugangList(idStudent);
@@ -53,21 +53,24 @@ public class StudentController {
         System.out.println("수강: " + sugangDto);
         return "enrollment/enrollmentapplylist";
     }
+
     @GetMapping("/exam") //과제 리스트 페이지
-    public String examPage(Model model){
+    public String examPage(Model model) {
         LoginResponse loginUser = (LoginResponse) session.getAttribute("loginUser");
         int idStudent = loginUser.getCommonId();
         List<ExamListDto> examList = examService.getExamsByStudentId(idStudent);
         model.addAttribute("examList", examList);
         return "student/exam";
     }
+
     //선택한 과제 제출 페이지
     @GetMapping("/examSubmit")
-    public String examSubmit(@RequestParam("idExam") int idExam, Model model){
+    public String examSubmit(@RequestParam("idExam") int idExam, Model model) {
         ExamDetailDto examDetail = examService.getExamDetail(idExam);
         model.addAttribute("examDetail", examDetail);
         return "student/examSubmit";
     }
+
     //과제 제출 처리
     @PostMapping("/submitExam")
     @Transactional
@@ -100,11 +103,17 @@ public class StudentController {
             model.addAttribute("message", "과제 제출 실패: " + e.getMessage());
         }
         return "redirect:/stu/exam";
-}
-@GetMapping("/grade")
-public String grade(){
+    }
+
+    //성적 조회 페이지
+    @GetMapping("/grade")
+    public String grade(Model model) {
+        LoginResponse loginUser = (LoginResponse) session.getAttribute("loginUser");
+        int idStudent = loginUser.getCommonId();
+        List<GradeDto> grade = attendanceService.selectGradeByIdStudent(idStudent);
+        model.addAttribute("grade", grade);
         return "student/grade";
-}
+    }
 
     //수업디테일,강사디테일
     @GetMapping("/programView/{id}")

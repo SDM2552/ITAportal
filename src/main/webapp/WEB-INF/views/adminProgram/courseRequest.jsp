@@ -69,7 +69,7 @@
                 </table>
             </div>
                 ※ 강좌개설의뢰는 피드백이 없습니다.
-                <div class="btnArea">
+                <div class="btnArea" style="text-align: center">
                     <button type="button" class="btns btnSt01" onclick="sendRequest()">
                         <span>보내기</span>
                     </button>

@@ -67,6 +67,7 @@
                 JOIN program pg ON cr.id_pgm = pg.id_pgm
                 JOIN class_room c ON cr.id_room = c.id_room
                 JOIN professor pf ON cr.id_prof = pf.id_prof
+        ORDER BY cr.app_date
     </select>
 
     <!-- 신청 승인 -->
