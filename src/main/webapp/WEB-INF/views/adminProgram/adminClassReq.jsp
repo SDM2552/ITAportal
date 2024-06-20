@@ -89,7 +89,7 @@
             <!-- 본문 -->
             <h4 class="subTit">휴/보강 신청 현황</h4>
             <div class="btnArea">
-                <form action="/adminProgram" method="get">
+                <form action="#" method="get">
                     <input type="text" title="키워드 입력" placeholder="프로그램명 검색" id="proTitleSel" name="keyword" value="${keyword}"/>
                     <button type="submit" class="btn_search">검색</button>
                 </form>
@@ -97,14 +97,14 @@
             <div>
                 <table class="tblData mt10">
                     <colgroup>
-                        <col width="15%">
-                        <col width="10%">
-                        <col width="10%">
-                        <col width="10%">
-                        <col width="10%">
-                        <col width="20%">
+                        <col width="12%">
                         <col width="8%">
                         <col width="10%">
+                        <col width="10%">
+                        <col width="10%">
+                        <col width="15%">
+                        <col width="10%">
+                        <col width="8%">
                     </colgroup>
                     <thead>
                     <tr>
@@ -167,7 +167,7 @@
 
         </div>
         <!-- //contents -->
-    </div>
+    </div><br><br><br>
     <!-- footer -->
     <c:import url="../layout/footer.jsp"/>
 </div>

@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="/css/common.css">
     <link rel="stylesheet" type="text/css" href="/css/table.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>샘플 페이지</title>
+    <title>과제 제출</title>
 </head>
 <body>
 <div class="wrap">
@@ -74,7 +74,7 @@
                     </table>
                 </div>
                 <!-- btn -->
-                <div class="btnArea">
+                <div class="btnArea" style="text-align: center">
                     <button type="submit" class="btns btnSt01">
                         <span>제출</span>
                     </button>

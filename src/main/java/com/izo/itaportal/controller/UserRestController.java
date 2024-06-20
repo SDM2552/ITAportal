@@ -72,9 +72,9 @@ public class UserRestController {
         content.add(Chunk.NEWLINE);
         content.add(new Paragraph("과정명: " + pgmName, nameFont));
         content.add(Chunk.NEWLINE);
-        content.add(new Paragraph("위 사람은 본 기관이 실시한 교육 과정을 성실히 이수 하였기에 이 증서를 수여합니다.", contentFont));
+        content.add(new Paragraph("위 사람은 본 기관이 실시한 교육 과정을 성실히 이수 하였기에 이 증서를 수여합니다.", nameFont));
         content.add(Chunk.NEWLINE);
-        content.add(new Paragraph("국제무역아카데미", contentFont));
+        content.add(new Paragraph("국제무역아카데미", nameFont));
 
         document.add(title);
         document.add(Chunk.NEWLINE);

@@ -146,9 +146,9 @@
                 </table>
             </div>
             <!-- btn -->
-            <div class="btnArea">
+            <div class="btnArea" style="text-align: center">
 
-                <button type="button" class="btns btnSt01 logincheck" onclick="applyEnrollment(${loginUser.commonId}, ${program.idPgm}, ${program.idCate}, '${program.pgmName}');">
+                <button type="button" class="btns btnSt01 logincheck"  onclick="applyEnrollment(${loginUser.commonId}, ${program.idPgm}, ${program.idCate}, '${program.pgmName}');">
                     <span onclick="event.stopPropagation(); this.parentNode.click();">수강신청</span>
                 </button>
                 <button type="button" class="btns btnSt02" onclick="history.back();">

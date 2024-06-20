@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>샘플 페이지</title>
+    <title>수강 내역</title>
 </head>
 <body>
 <div class="wrap">

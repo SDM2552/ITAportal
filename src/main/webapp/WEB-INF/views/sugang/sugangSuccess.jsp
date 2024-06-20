@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="/css/common.css">
     <link rel="stylesheet" type="text/css" href="/css/table.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>샘플 페이지</title>
+    <title>수강 신청</title>
 </head>
 <body>
 <div class="wrap">

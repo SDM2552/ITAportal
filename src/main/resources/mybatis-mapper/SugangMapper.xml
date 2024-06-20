@@ -145,7 +145,7 @@
     </insert>
     <update id="updateSugangStatus">
         UPDATE sugang
-        SET status = '취소됨'
+        SET status = '본인 취소'
         WHERE id_pgm = #{idPgm} AND id_student = #{idStudent}
     </update>
     <update id="updateToSugangOk">

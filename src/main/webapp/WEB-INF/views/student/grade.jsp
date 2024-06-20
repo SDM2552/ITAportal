@@ -77,7 +77,7 @@
         </div>
             <!-- //contents -->
 
-    </div>
+    </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         <!-- footer -->
         <c:import url="../layout/footer.jsp"/>
 

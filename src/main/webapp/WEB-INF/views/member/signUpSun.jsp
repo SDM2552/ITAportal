@@ -8,7 +8,7 @@
     <script src="https://kit.fontawesome.com/93205cc57d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>샘플 페이지</title>
+    <title>회원가입</title>
 </head>
 <body>
 <div class="wrap">

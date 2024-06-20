@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="/css/common.css">
     <link rel="stylesheet" type="text/css" href="/css/table.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>샘플 페이지</title>
+    <title>과제 제출</title>
 </head>
 <body>
 <div class="wrap">
@@ -71,7 +71,7 @@
             <!-- 본문 끝 -->
         </div>
         <!-- //contents -->
-    </div>
+    </div><br><br><br><br><br><br><br><br>
 
     <!-- footer -->
     <c:import url="../layout/footer.jsp" />
