@@ -138,46 +138,61 @@
             <br>
 
 
-            <h4 class="subTit">휴보강 이력</h4>
+            <h4 class="subTit">강의 휴보강 이력</h4>
             <div class="tblData mt10">
                 <table>
                     <colgroup>
                         <col width="15%">
                         <col width="15%">
-                        <col width="30%">
                         <col width="25%">
                         <col width="25%">
                         <col width="25%">
-                        <col width="25%">
+                        <col width="15%">
 
                     </colgroup>
                     <thead>
                     <tr>
-                        <th scope="col">개설강좌명</th>
                         <th scope="col">휴강일자</th>
                         <th scope="col">보강일자</th>
                         <th scope="col">보강강의실</th>
                         <th scope="col">보강사유</th>
-                        <th scope="col">진행상태</th>
+                        <th scope="col">승인시간</th>
                         <th scope="col">신청취소</th>
                     </tr>
                     </thead>
                     <c:choose>
                         <c:when test="${empty classRequest}">
                             <tr>
-                                <td colspan="7" style="text-align: center;">휴보강 이력이 없습니다</td>
+                                <td colspan="6" style="text-align: center;">휴보강 이력이 없습니다</td>
                             </tr>
                         </c:when>
                         <c:otherwise>
                             <c:forEach var="classReq" items="${classRequest}">
                                 <tr>
-                                    <td>${classReq.pgmName}</td>
                                     <td>${classReq.classDate}</td>
                                     <td>${classReq.makeUpDate}</td>
                                     <td>${classReq.roomName}</td>
                                     <td>${classReq.remarks}</td>
-                                    <td>${classReq.procDate}</td>
-                                    <td><button onclick="cancelRequest(${classReq.idClassRequest})">취소</button></td>
+                                    <td>
+                                        <c:choose>
+                                            <c:when test="${classReq.procDate == null}">
+                                                <span>처리중</span>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <span>승인 (${classReq.procDate})</span>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </td>
+                                    <td>
+                                        <c:choose>
+                                            <c:when test="${classReq.procDate == null}">
+                                                <button class="s1" style="background-color: #555555" onclick="cancelRequest(${classReq.idClassRequest})">취소</button>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <button type="button" class="s1" disabled>처리완료</button>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </td>
                                 </tr>
                             </c:forEach>
                         </c:otherwise>

@@ -11,18 +11,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/js/checkSession.js" defer></script>
 
-    <script>
-        function goToPage() {
-            var page = document.getElementById('pageInput').value;
-            var totalPages = ${totalPages};
-            var keyword = '${keyword}';
-            if (page < 1 || page > totalPages) {
-                alert('잘못된 페이지 번호입니다.');
-                return;
-            }
-            window.location.href = '/notice/noticeList?page=' + page + '&keyword=' + keyword;
-        }
-    </script>
+
 </head>
 <body>
 <div class="wrap">
@@ -73,17 +62,7 @@
                 </table>
             </div>
 
-            <div class="pagination">
-                <a href="/notice/noticeList?page=1&keyword=${keyword}">처음</a>
-                <a href="/notice/noticeList?page=${currentPage - 1}&keyword=${keyword}" <c:if test="${currentPage == 1}">style="pointer-events: none; color: #ccc;"</c:if>><<</a>
-                <c:forEach begin="1" end="${totalPages}" var="i">
-                    <a href="/notice/noticeList?page=${i}&keyword=${keyword}" class="${currentPage == i ? 'active' : ''}">${i}</a>
-                </c:forEach>
-                <a href="/notice/noticeList?page=${currentPage + 1}&keyword=${keyword}" <c:if test="${currentPage == totalPages}">style="pointer-events: none; color: #ccc;"</c:if>>></a>
-                <a href="/notice/noticeList?page=${totalPages}&keyword=${keyword}">끝</a>
-                <input type="number" id="pageInput" style="width: 50px;" min="1" max="${totalPages}" value="${currentPage}">
-                <button onclick="goToPage()">이동</button>
-            </div>
+
         </div>
     </div>
 

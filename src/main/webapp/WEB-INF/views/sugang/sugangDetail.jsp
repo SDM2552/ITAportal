@@ -33,7 +33,7 @@
             <h3 class="pgTit">수강 신청</h3>
 
             <!-- 본문 -->
-            <h4 class="subTit">프로그램 정보</h4>
+            <h4 class="subTit">강의 정보</h4>
             <div class="tblData mt10">
                 <table>
                     <colgroup>

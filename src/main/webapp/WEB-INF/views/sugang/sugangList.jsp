@@ -70,7 +70,16 @@
                         <tr>
                             <td>${program.idPgm}</td>
                             <td>${program.cateName}</td>
-                            <td>${program.pgmName}</td>
+                            <td>
+                                <c:choose>
+                                    <c:when test="${program.sugangClosed}">
+                                       ${program.pgmName}
+                                    </c:when>
+                                    <c:otherwise>
+                                        <a href="javascript:void(0);" onclick="applyProgram(${program.idPgm});">${program.pgmName}</a>
+                                    </c:otherwise>
+                                </c:choose>
+                            </td>
                             <td>${program.stDt} ~ ${program.endDt}</td>
                             <td>${program.sugangStDt} 09:00 ~<br>
                                     ${program.sugangEndDt} 18:00</td>

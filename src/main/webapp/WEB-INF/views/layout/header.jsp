@@ -67,7 +67,10 @@
                             <a href="/user/info" class="logincheck">MY</a>
                         </li>
                         <li>
-                            <a href="/adminProgram" class="logincheck">강의 관리</a>
+                            <a href="/adminProgram" class="logincheck">콘텐츠 관리</a>
+                        </li>
+                        <li>
+                            <a href="/courseStatus/list" class="logincheck">신청 관리</a>
                         </li>
                         <li>
                             <a href="/admin/studentList" class="logincheck">회원 관리</a>

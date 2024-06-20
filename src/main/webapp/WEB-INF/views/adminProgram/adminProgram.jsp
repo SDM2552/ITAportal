@@ -93,7 +93,7 @@
             <!-- location -->
             <span class="home" title="홈"><i class="fa-solid fa-house"></i> <i
                     class="fa-solid fa-angle-right"></i></span>
-            <span class="on">강의 관리 <i class="fa-solid fa-angle-right"></i></span><span class="on"> 교육과정관리</span>
+            <span class="on">콘텐츠 관리 <i class="fa-solid fa-angle-right"></i></span><span class="on"> 프로그램 관리</span>
             <!-- //location -->
 
             <h3 class="pgTit">프로그램관리</h3>

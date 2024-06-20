@@ -23,12 +23,12 @@
     <!-- container -->
     <div id="container" class="container responCont">
         <!-- 왼쪽 네비바 -->
-        <c:import url="../layout/nav_admin_program.jsp"/>
+        <c:import url="../layout/nav_admin_request.jsp"/>
         <!-- contents -->
         <div id="contents" class="eduIntroCont">
             <!-- location -->
             <span class="home" title="홈"><i class="fa-solid fa-house"></i> <i class="fa-solid fa-angle-right"></i></span>
-            <span>강의 관리 <i class="fa-solid fa-angle-right"></i></span><span class="on"> 수강현황조회</span>
+            <span>신청 관리 <i class="fa-solid fa-angle-right"></i></span><span class="on"> 수강현황조회</span>
             <!-- //location -->
 
             <h3 class="pgTit">수강현황조회</h3>

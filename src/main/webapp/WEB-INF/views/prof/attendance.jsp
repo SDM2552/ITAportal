@@ -107,15 +107,17 @@
             <div class="tblData mt10">
                 <table>
                     <colgroup>
-                        <col width="15%">
-                        <col width="15%">
                         <col width="10%">
                         <col width="10%">
-                        <col width="10%">
+                        <col width="18%">
+                        <col width="6%">
+                        <col width="6%">
+                        <col width="6%">
                         <col width="10%">
                     </colgroup>
                     <thead>
                     <tr>
+                        <th scope="col">학번</th>
                         <th scope="col">성명</th>
                         <th scope="col">이메일</th>
                         <th scope="col">출석</th>
@@ -127,6 +129,7 @@
                     <tbody>
                     <c:forEach var="attendance" items="${attendanceList}">
                         <tr>
+                            <td>${attendance.idStudent}</td>
                             <td>${attendance.studentName}</td>
                             <td>${attendance.userEmail}</td>
                             <td>${attendance.attendanceStatus}</td>
@@ -138,7 +141,7 @@
                                         -
                                     </c:when>
                                     <c:otherwise>
-                                        <c:set var="total" value="${attendance.attendanceStatus + attendance.lateStatus + attendance.absenceStatus}" />
+                                        <c:set var="total" value="${attendance.attendanceStatus + attendance.absenceStatus}" />
                                         <c:set var="rate" value="${attendance.attendanceStatus * 100.0 / total}" />
                                         <fmt:formatNumber value="${rate}" type="number" maxFractionDigits="1" minFractionDigits="1" />%
                                     </c:otherwise>
