@@ -149,8 +149,7 @@
             <div class="btnArea">
 
                 <button type="button" class="btns btnSt01 logincheck" onclick="applyEnrollment(${loginUser.commonId}, ${program.idPgm}, ${program.idCate}, '${program.pgmName}');">
-
-                    <span>수강신청</span>
+                    <span onclick="event.stopPropagation(); this.parentNode.click();">수강신청</span>
                 </button>
                 <button type="button" class="btns btnSt02" onclick="history.back();">
                     <span>취소</span>

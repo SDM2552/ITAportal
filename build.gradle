@@ -30,7 +30,6 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
 	runtimeOnly 'org.springframework.boot:spring-boot-devtools'
 	compileOnly 'org.projectlombok:lombok'
-//	runtimeOnly 'com.h2database:h2'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.junit.jupiter:junit-jupiter:5.5.0'
@@ -42,6 +41,7 @@ dependencies {
 	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:2.2.0'
 //	testImplementation 'org.springframework.security:spring-security-test'
 	implementation 'org.springframework.security:spring-security-core:5.7.3'
+	implementation 'com.itextpdf:itextpdf:5.5.13.2' // pdf 출력용
 
 	implementation 'org.springframework.boot:spring-boot-starter-mail' // 이메일 발송 의존성 추가
 }

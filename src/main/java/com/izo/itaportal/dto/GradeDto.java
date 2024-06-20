@@ -10,6 +10,8 @@ public class GradeDto {
     private String cateName;
     private String pgmName;
     private String profName;
+    private String stuName;
+    private String endDt; //교육종료일자
     private int attStat;
     private int lateStat;
     private int absStat;
