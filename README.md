@@ -1,7 +1,6 @@
 # 국제무역아카데미 학사관리 시스템
 
-
-(메인 이미지)
+![main](https://github.com/SDM2552/ITAportal/assets/155132128/80cd444e-2db1-4ea5-853f-1107f3d1c491)
 
 
 ## 🖥️ 프로젝트 소개
@@ -17,37 +16,12 @@
 <br>
 
 ## ⚙️ 개발 환경
-- BackEnd :   `SpringBoot`  `MySQL`
-- FrontEnd :  `HTML5`  `CSS`  `JavaScript`
-- Collaboration : `Git` `GitHub`
-
+![env](https://github.com/SDM2552/ITAportal/assets/155132128/9eff1406-1e8e-4ba1-b2ac-a3eb3fbb990f)
 
 <br>
 
-#### 의존성
-
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
-	runtimeOnly 'org.springframework.boot:spring-boot-devtools'
-	compileOnly 'org.projectlombok:lombok'
-	runtimeOnly 'com.mysql:mysql-connector-j'
-	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.junit.jupiter:junit-jupiter:5.5.0'
-	implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4:1.16'
-	implementation 'javax.servlet:jstl'
-	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
-	runtimeOnly 'org.springframework.boot:spring-boot-starter-tomcat'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:2.2.0'
-	implementation 'org.springframework.security:spring-security-core:5.7.3'
-<br>
-
-## 📝 테이블 명세서
-
-<br>
 
 ## 📌 주요 기능
 
 
+<br>
