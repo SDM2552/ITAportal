@@ -81,13 +81,14 @@
                 <button class="btns btnSt01" onclick="window.location.href='/prof/syllabus?idPgm=${ProgramDetail.idPgm}'">
                     강의계획서
                 </button>
-                <button type="button" class="btns btnSt01" onclick="window.location.href='/prof/request?idPgm=${ProgramDetail.idPgm}'">
-                    <span>휴·보강신청</span>
-                </button><button type="button" class="btns btnSt01" onclick="window.location.href='/prof/attendance?idPgm=${ProgramDetail.idPgm}'">
+                <button type="button" class="btns btnSt01" onclick="window.location.href='/prof/attendance?idPgm=${ProgramDetail.idPgm}'">
                 <span>출결관리</span>
             </button><button type="button" class="btns btnSt01" onclick="window.location.href='/prof/examList'">
                 <span>과제관리</span>
             </button>
+                <button type="button" class="btns btnSt01" onclick="window.location.href='/prof/request?idPgm=${ProgramDetail.idPgm}'">
+                    <span>휴·보강신청</span>
+                </button>
                 <button type="button" class="btns btnSt02" onclick="history.back();">
                     <span>목록으로</span>
                 </button>

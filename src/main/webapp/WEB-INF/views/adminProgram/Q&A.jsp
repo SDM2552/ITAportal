@@ -27,7 +27,7 @@
 
             <h3 class="pgTit">Q&A</h3>
 
-            <div class="btnArea">
+            <div class="btnArea right">
                 <form action="" method="get">
                     <input type="text" title="키워드 입력" placeholder="검색어 입력" id="proTitleSel" name="keyword" value="${keyword}"/>
                     <button type="submit" class="btn_search">검색</button>

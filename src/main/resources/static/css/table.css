@@ -529,10 +529,12 @@
 /*search bar*/
 .btnArea {
     position: relative;
-    text-align: right;
     margin-top: 10px;
     margin-bottom: 15px;
     left: -20px;
+}
+.right {
+    text-align: right;
 }
 .btnArea button {
     margin-left: 10px;
