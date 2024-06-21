@@ -38,7 +38,7 @@
 
             <h3 class="pgTit">공지사항</h3>
 
-            <div class="btnArea">
+            <div class="btnArea right">
                 <form action="/notice/noticeList" method="get">
                     <input type="text" title="키워드 입력" placeholder="검색어 입력" id="proTitleSel" name="keyword" value="${keyword}"/>
                     <button type="submit" class="btn_search">검색</button>

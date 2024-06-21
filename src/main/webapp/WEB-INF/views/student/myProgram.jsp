@@ -46,7 +46,7 @@
                     <thead>
                     <tr>
                         <th scope="col">분류</th>
-                        <th scope="col">프로그램명</th>
+                        <th scope="col">강의명</th>
                         <th scope="col">교육 기간</th>
                         <th scope="col">담당 강사</th>
                         <th scope="col">강의실</th>

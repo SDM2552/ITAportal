@@ -4,8 +4,8 @@
     <h2 class="ltit">콘텐츠 관리</h2>
     <div class="lnbArea">
         <ul>
-            <li><a href="/adminProgram">프로그램 관리</a></li>
             <li><a href="/adminCategory">카테고리 관리</a></li>
+            <li><a href="/adminProgram">프로그램 관리</a></li>
             <li><a href="/adminClassRoom">강의실 관리</a></li>
         </ul>
     </div>

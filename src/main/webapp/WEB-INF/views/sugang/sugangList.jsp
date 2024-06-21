@@ -140,7 +140,7 @@
                 '<td>' + program.sugangStDt + ' 09:00 ~<br>' + program.sugangEndDt + ' 18:00</td>' +
                 '<td>';
             if (program.sugangClosed) {
-                row += '<button type="button" disabled>마감</button>';
+                row += '<button type="button"  class="s1" disabled>마감</button>';
             } else {
                 row += '<button type="button" class="s1 logincheck" onclick="applyProgram(' + program.idPgm + ', event);">수강신청</button>';
             }

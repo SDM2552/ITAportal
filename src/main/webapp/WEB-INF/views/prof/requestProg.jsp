@@ -155,7 +155,7 @@
                         <th scope="col">휴강일자</th>
                         <th scope="col">보강일자</th>
                         <th scope="col">보강강의실</th>
-                        <th scope="col">보강사유</th>
+                        <th scope="col">휴보강사유</th>
                         <th scope="col">승인시간</th>
                         <th scope="col">신청취소</th>
                     </tr>

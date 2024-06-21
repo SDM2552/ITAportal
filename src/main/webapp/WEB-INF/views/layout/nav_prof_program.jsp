@@ -5,8 +5,8 @@
     <div class="lnbArea">
         <ul>
             <li><a href="/prof/list">내 강의 목록</a></li>
-            <li><a href="/prof/examList?idPgm=${idProf}">과제관리</a></li>
             <li><a href="/prof/syllabusList?idPgm=${idProf}">강의계획서</a></li>
+            <li><a href="/prof/examList?idPgm=${idProf}">과제관리</a></li>
             <li><a href="/prof/scheduleList">휴보강신청</a></li>
         </ul>
     </div>

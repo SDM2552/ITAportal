@@ -32,7 +32,7 @@
             <h3 class="pgTit">수료 페이지</h3>
 
             <!-- 본문 -->
-            <h4 class="subTit">나의 수료 목록</h4>
+            <h4 class="subTit">수료 과목 목록</h4>
             <div class="tblData mt10">
                 <table>
                     <colgroup>
@@ -81,8 +81,6 @@
 </div>
 <script>
     function printCertificate(pgmName, stuName) {
-        console.log("Original pgmName:", pgmName); // 디버깅을 위한 로그
-        console.log("Original stuName:", stuName); // 디버깅을 위한 로그
 
         $.ajax({
             url: '/api/certificate',
