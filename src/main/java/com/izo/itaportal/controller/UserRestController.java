@@ -58,6 +58,12 @@ public class UserRestController {
         PdfWriter writer = PdfWriter.getInstance(document, out);
         document.open();
 
+        ClassLoader classLoader = getClass().getClassLoader();
+        InputStream fontStream = classLoader.getResourceAsStream("static/font/NotoSansKR-VariableFont_wght.ttf");
+        if (fontStream == null) {
+            throw new FileNotFoundException("Font file not found in WAR");
+        }
+
         BaseFont baseFont = BaseFont.createFont("src/main/resources/static/font/NotoSansKR-VariableFont_wght.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
         Font titleFont = new Font(baseFont, 35, Font.BOLD);
         Font contentFont = new Font(baseFont, 23);
